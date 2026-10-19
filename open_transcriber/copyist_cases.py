@@ -6,6 +6,7 @@ importing the copyist package (only evaluate.py is loaded for scoring).
 from __future__ import annotations
 
 import importlib.util
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -70,12 +71,20 @@ def _roundtrip_case_songs(root: Path) -> list[Path]:
     rt_path = root / "scripts/transcribe/roundtrip.py"
     if not rt_path.is_file():
         return []
+    mod_name = "copyist_roundtrip_cases"
     try:
-        spec = importlib.util.spec_from_file_location("copyist_roundtrip_cases", rt_path)
+        spec = importlib.util.spec_from_file_location(mod_name, rt_path)
         if spec is None or spec.loader is None:
             return []
         mod = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(mod)
+        # roundtrip.py defines its Case via @dataclass; dataclasses resolves the
+        # defining module through sys.modules, so the module must be registered
+        # there before exec_module or the decorator raises. Register, then clean up.
+        sys.modules[mod_name] = mod
+        try:
+            spec.loader.exec_module(mod)
+        finally:
+            sys.modules.pop(mod_name, None)
     except Exception:
         return []
     songs = []
