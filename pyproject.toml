@@ -14,8 +14,17 @@ dependencies = []
 
 [project.optional-dependencies]
 dev = []
-# T0 extras will pin MT3 / Omnizart / torch when baselines land.
-baseline = []
+# T0: Spotify Basic Pitch (Apache-2.0) via CoreML on macOS.
+# On Python 3.12+, pip's basic-pitch meta-dep wants tensorflow-macos which is
+# unpublished for that range — install with the script in README ( --no-deps ).
+baseline = [
+    "basic-pitch>=0.4.0",
+    "mir-eval>=0.6",
+    "pretty-midi>=0.2.9",
+    "resampy>=0.2.2,<0.4.3",
+    "coremltools; platform_system == 'Darwin'",
+    "setuptools<81",
+]
 
 [project.urls]
 Homepage = "https://github.com/Digital-Defiance/open-transcriber"

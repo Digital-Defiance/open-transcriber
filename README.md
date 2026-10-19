@@ -10,7 +10,7 @@ Used by [Copyist](https://github.com/Digital-Defiance/copyist) as an optional en
 
 | Repo | Role |
 |---|---|
-| **open-transcriber** (this) | Models, training, inference CLI, baselines (MT3 / Omnizart / trained heads) |
+| **open-transcriber** (this) | Models, training, inference CLI, baselines (Basic Pitch / later MT3 · Omnizart / trained heads) |
 | **copyist** | Product: song files, tidy path (`clean_notes`, lyric targets), `roundtrip.py` gate, UI |
 
 Copyist vendors this tree as a git submodule at `open-transcriber/`. Product integration and the round-trip yardstick live in Copyist (`docs/open-transcriber.md`, `scripts/transcribe/roundtrip.py`).
@@ -26,30 +26,44 @@ python scripts/transcribe/roundtrip.py
 
 Public-domain YuE2 truth takes only. No owner Broadway masters in training data.
 
+## T0 — Basic Pitch baseline (ready)
+
+[Spotify Basic Pitch](https://github.com/spotify/basic-pitch) (Apache-2.0) on Copyist vocal stems → note F1 via Copyist's `evaluate.py`.
+
+```bash
+# from Copyist
+git submodule update --init open-transcriber
+bash open-transcriber/scripts/setup_baseline.sh
+python scripts/transcribe/neural_baseline.py
+python scripts/transcribe/neural_baseline.py --only silent-night --write out/t0-basic-pitch.md
+```
+
+Uses the bundled CoreML model (no separate weight download). No chords yet — melody only. Full table: [docs/t0-results.md](docs/t0-results.md).
+
+**Verdict:** raw Basic Pitch ≪ Copyist open engine on lyrical takes (over-segmentation); ≈ open on Major-General patter. Next is tidy-through-Copyist (T0b) and/or training (T1).
+
 ## Phases
 
-1. **T0 — Baselines:** run off-the-shelf Apache/MIT AMT (MT3, Omnizart) on Copyist’s truth takes; report note/chord F1 next to the open engine.
+1. **T0 — Baselines:** Basic Pitch first; add Omnizart chords / MT3 when useful. Report next to the open engine in Copyist's `docs/transcribing.md`.
 2. **T1 — Train:** supervised lead-sheet head on PD band renders + gated YuE2 takes; tidy through Copyist’s note path.
 3. **T2 — Ship:** Copyist `--engine neural` + Install extras weights pack when the full table wins.
 
-## Layout (growing)
+## Layout
 
 ```
-open_transcriber/   Python package
-scripts/            T0 baselines, train, export
+open_transcriber/   Python package (engines, case list, note types)
+scripts/            t0_baseline.py
 tests/
-docs/               design notes that belong here (not Copyist product docs)
 ```
 
 ## Develop
 
 ```bash
-# from Copyist
 git submodule update --init open-transcriber
 cd open-transcriber
 python -m venv .venv && source .venv/bin/activate
-pip install -e ".[dev]"
+pip install -e ".[dev,baseline]"
 python -m unittest discover -s tests
 ```
 
-Weights and large checkpoints stay out of git (see `.gitignore`). Pin downloads with checksums when T0 lands.
+Weights and large checkpoints stay out of git (see `.gitignore`).

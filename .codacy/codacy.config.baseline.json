@@ -1,0 +1,619 @@
+{
+  "version": 1,
+  "metadata": {
+    "source": "auto",
+    "provider": null,
+    "organization": null,
+    "repositoryId": null,
+    "repositoryName": null,
+    "createdAt": "2026-10-19T00:52:57.120Z",
+    "updatedAt": "2026-10-19T00:52:57.120Z",
+    "languages": [
+      "Markdown",
+      "Python"
+    ]
+  },
+  "tools": [
+    {
+      "toolId": "markdownlint",
+      "patterns": [
+        {
+          "patternId": "markdownlint_MD001"
+        },
+        {
+          "patternId": "markdownlint_MD003"
+        },
+        {
+          "patternId": "markdownlint_MD004"
+        },
+        {
+          "patternId": "markdownlint_MD005"
+        },
+        {
+          "patternId": "markdownlint_MD007"
+        },
+        {
+          "patternId": "markdownlint_MD010"
+        },
+        {
+          "patternId": "markdownlint_MD011"
+        },
+        {
+          "patternId": "markdownlint_MD012"
+        },
+        {
+          "patternId": "markdownlint_MD014"
+        },
+        {
+          "patternId": "markdownlint_MD018"
+        },
+        {
+          "patternId": "markdownlint_MD019"
+        },
+        {
+          "patternId": "markdownlint_MD020"
+        },
+        {
+          "patternId": "markdownlint_MD021"
+        },
+        {
+          "patternId": "markdownlint_MD022"
+        },
+        {
+          "patternId": "markdownlint_MD023"
+        },
+        {
+          "patternId": "markdownlint_MD024"
+        },
+        {
+          "patternId": "markdownlint_MD025"
+        },
+        {
+          "patternId": "markdownlint_MD026"
+        },
+        {
+          "patternId": "markdownlint_MD027"
+        },
+        {
+          "patternId": "markdownlint_MD028"
+        },
+        {
+          "patternId": "markdownlint_MD029"
+        },
+        {
+          "patternId": "markdownlint_MD030"
+        },
+        {
+          "patternId": "markdownlint_MD032"
+        },
+        {
+          "patternId": "markdownlint_MD033"
+        },
+        {
+          "patternId": "markdownlint_MD034"
+        },
+        {
+          "patternId": "markdownlint_MD035"
+        },
+        {
+          "patternId": "markdownlint_MD036"
+        },
+        {
+          "patternId": "markdownlint_MD037"
+        },
+        {
+          "patternId": "markdownlint_MD038"
+        },
+        {
+          "patternId": "markdownlint_MD039"
+        },
+        {
+          "patternId": "markdownlint_MD042"
+        },
+        {
+          "patternId": "markdownlint_MD044"
+        },
+        {
+          "patternId": "markdownlint_MD045"
+        },
+        {
+          "patternId": "markdownlint_MD046"
+        },
+        {
+          "patternId": "markdownlint_MD048"
+        },
+        {
+          "patternId": "markdownlint_MD049"
+        },
+        {
+          "patternId": "markdownlint_MD050"
+        },
+        {
+          "patternId": "markdownlint_MD051"
+        },
+        {
+          "patternId": "markdownlint_MD052"
+        },
+        {
+          "patternId": "markdownlint_MD053"
+        },
+        {
+          "patternId": "markdownlint_MD054"
+        },
+        {
+          "patternId": "markdownlint_MD055"
+        },
+        {
+          "patternId": "markdownlint_MD056"
+        }
+      ]
+    },
+    {
+      "toolId": "Ruff",
+      "localConfigurationFile": "pyproject.toml",
+      "useLocalConfigurationFile": true,
+      "patterns": []
+    },
+    {
+      "toolId": "Trivy",
+      "patterns": [
+        {
+          "patternId": "Trivy_malicious_packages"
+        },
+        {
+          "patternId": "Trivy_secret"
+        },
+        {
+          "patternId": "Trivy_vulnerability_critical"
+        },
+        {
+          "patternId": "Trivy_vulnerability_high"
+        },
+        {
+          "patternId": "Trivy_vulnerability_medium"
+        },
+        {
+          "patternId": "Trivy_vulnerability_minor"
+        }
+      ]
+    },
+    {
+      "toolId": "Semgrep",
+      "patterns": [
+        {
+          "patternId": "Semgrep_generic.secrets.security.detected-onfido-live-api-token.detected-onfido-live-api-token"
+        },
+        {
+          "patternId": "Semgrep_generic.secrets.security.detected-stripe-restricted-api-key.detected-stripe-restricted-api-key"
+        },
+        {
+          "patternId": "Semgrep_generic.secrets.security.detected-username-and-password-in-uri.detected-username-and-password-in-uri"
+        },
+        {
+          "patternId": "Semgrep_generic.secrets.security.google-maps-apikeyleak.google-maps-apikeyleak"
+        },
+        {
+          "patternId": "Semgrep_python.cryptography.security.empty-aes-key.empty-aes-key"
+        },
+        {
+          "patternId": "Semgrep_python.cryptography.security.insecure-cipher-algorithms-arc4.insecure-cipher-algorithm-arc4"
+        },
+        {
+          "patternId": "Semgrep_python.cryptography.security.insecure-cipher-algorithms-blowfish.insecure-cipher-algorithm-blowfish"
+        },
+        {
+          "patternId": "Semgrep_python.cryptography.security.insecure-cipher-algorithms.insecure-cipher-algorithm-idea"
+        },
+        {
+          "patternId": "Semgrep_python.cryptography.security.insecure-cipher-mode-ecb.insecure-cipher-mode-ecb"
+        },
+        {
+          "patternId": "Semgrep_python.cryptography.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1"
+        },
+        {
+          "patternId": "Semgrep_python.cryptography.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5"
+        },
+        {
+          "patternId": "Semgrep_python.cryptography.security.insufficient-dsa-key-size.insufficient-dsa-key-size"
+        },
+        {
+          "patternId": "Semgrep_python.cryptography.security.insufficient-ec-key-size.insufficient-ec-key-size"
+        },
+        {
+          "patternId": "Semgrep_python.cryptography.security.insufficient-rsa-key-size.insufficient-rsa-key-size"
+        },
+        {
+          "patternId": "Semgrep_python.cryptography.security.mode-without-authentication.crypto-mode-without-authentication"
+        },
+        {
+          "patternId": "Semgrep_python_crypto_rule-HTTPConnectionPool"
+        },
+        {
+          "patternId": "Semgrep_python.distributed.security.require-encryption"
+        },
+        {
+          "patternId": "Semgrep_python_flask_rule-path-traversal-open"
+        },
+        {
+          "patternId": "Semgrep_python_jwt_rule-jwt-none-alg"
+        },
+        {
+          "patternId": "Semgrep_python.jwt.security.jwt-hardcode.jwt-python-hardcoded-secret"
+        },
+        {
+          "patternId": "Semgrep_python.jwt.security.jwt-none-alg.jwt-python-none-alg"
+        },
+        {
+          "patternId": "Semgrep_python.jwt.security.unverified-jwt-decode.unverified-jwt-decode"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.audit.dangerous-asyncio-exec-tainted-env-args.dangerous-asyncio-exec-tainted-env-args"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.audit.dangerous-asyncio-shell-tainted-env-args.dangerous-asyncio-shell-tainted-env-args"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.audit.dangerous-code-run-tainted-env-args.dangerous-interactive-code-run-tainted-env-args"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.audit.dangerous-os-exec-tainted-env-args.dangerous-os-exec-tainted-env-args"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.audit.dangerous-spawn-process-tainted-env-args.dangerous-spawn-process-tainted-env-args"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.audit.dangerous-subinterpreters-run-string-tainted-env-args.dangerous-subinterpreters-run-string-tainted-env-args"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.audit.dangerous-subprocess-use-tainted-env-args.dangerous-subprocess-use-tainted-env-args"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.audit.dangerous-system-call-tainted-env-args.dangerous-system-call-tainted-env-args"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.audit.dangerous-testcapi-run-in-subinterp-tainted-env-args.dangerous-testcapi-run-in-subinterp-tainted-env-args"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.audit.insecure-file-permissions.insecure-file-permissions"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.audit.insecure-transport.requests.request-session-http-in-with-context.request-session-http-in-with-context"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.audit.insecure-transport.requests.request-session-with-http.request-session-with-http"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.audit.insecure-transport.requests.request-with-http.request-with-http"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.audit.logging.logger-credential-leak.python-logger-credential-disclosure"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.audit.md5-used-as-password.md5-used-as-password"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.audit.network.bind.avoid-bind-to-all-interfaces"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.audit.network.disabled-cert-validation.disabled-cert-validation"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.audit.network.http-not-https-connection.http-not-https-connection"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.audit.ssl-wrap-socket-is-deprecated.ssl-wrap-socket-is-deprecated"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.audit.subprocess-shell-true.subprocess-shell-true"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.audit.weak-ssl-version.weak-ssl-version"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.dangerous-code-run.dangerous-interactive-code-run"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.dangerous-os-exec.dangerous-os-exec"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.dangerous-spawn-process.dangerous-spawn-process"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.dangerous-subinterpreters-run-string.dangerous-subinterpreters-run-string"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.dangerous-subprocess-use.dangerous-subprocess-use"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.dangerous-system-call.dangerous-system-call"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.dangerous-testcapi-run-in-subinterp.dangerous-testcapi-run-in-subinterp"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.deserialization.avoid-pyyaml-load.avoid-pyyaml-load"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.deserialization.avoid-unsafe-ruamel.avoid-unsafe-ruamel"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.deserialization.pickle.avoid-shelve"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.insecure-hash-algorithms.insecure-hash-algorithm-sha1"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.insecure-hash-algorithms-md5.insecure-hash-algorithm-md5"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.insecure-hash-function.insecure-hash-function"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.insecure-uuid-version.insecure-uuid-version"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.unverified-ssl-context.unverified-ssl-context"
+        },
+        {
+          "patternId": "Semgrep_python.lang.security.use-defused-xml-parse.use-defused-xml-parse"
+        },
+        {
+          "patternId": "Semgrep_python_pyramid_rule-pyramid-csrf-origin-check"
+        }
+      ]
+    },
+    {
+      "toolId": "Bandit",
+      "patterns": [
+        {
+          "patternId": "Bandit_B101"
+        },
+        {
+          "patternId": "Bandit_B102"
+        },
+        {
+          "patternId": "Bandit_B103"
+        },
+        {
+          "patternId": "Bandit_B104"
+        },
+        {
+          "patternId": "Bandit_B105"
+        },
+        {
+          "patternId": "Bandit_B106"
+        },
+        {
+          "patternId": "Bandit_B107"
+        },
+        {
+          "patternId": "Bandit_B108"
+        },
+        {
+          "patternId": "Bandit_B110"
+        },
+        {
+          "patternId": "Bandit_B112"
+        },
+        {
+          "patternId": "Bandit_B202"
+        },
+        {
+          "patternId": "Bandit_B301"
+        },
+        {
+          "patternId": "Bandit_B302"
+        },
+        {
+          "patternId": "Bandit_B303"
+        },
+        {
+          "patternId": "Bandit_B304"
+        },
+        {
+          "patternId": "Bandit_B305"
+        },
+        {
+          "patternId": "Bandit_B306"
+        },
+        {
+          "patternId": "Bandit_B307"
+        },
+        {
+          "patternId": "Bandit_B309"
+        },
+        {
+          "patternId": "Bandit_B310"
+        },
+        {
+          "patternId": "Bandit_B311"
+        },
+        {
+          "patternId": "Bandit_B312"
+        },
+        {
+          "patternId": "Bandit_B313"
+        },
+        {
+          "patternId": "Bandit_B314"
+        },
+        {
+          "patternId": "Bandit_B315"
+        },
+        {
+          "patternId": "Bandit_B316"
+        },
+        {
+          "patternId": "Bandit_B317"
+        },
+        {
+          "patternId": "Bandit_B318"
+        },
+        {
+          "patternId": "Bandit_B319"
+        },
+        {
+          "patternId": "Bandit_B321"
+        },
+        {
+          "patternId": "Bandit_B322"
+        },
+        {
+          "patternId": "Bandit_B323"
+        },
+        {
+          "patternId": "Bandit_B324"
+        },
+        {
+          "patternId": "Bandit_B325"
+        },
+        {
+          "patternId": "Bandit_B401"
+        },
+        {
+          "patternId": "Bandit_B402"
+        },
+        {
+          "patternId": "Bandit_B403"
+        },
+        {
+          "patternId": "Bandit_B404"
+        },
+        {
+          "patternId": "Bandit_B405"
+        },
+        {
+          "patternId": "Bandit_B406"
+        },
+        {
+          "patternId": "Bandit_B407"
+        },
+        {
+          "patternId": "Bandit_B408"
+        },
+        {
+          "patternId": "Bandit_B409"
+        },
+        {
+          "patternId": "Bandit_B411"
+        },
+        {
+          "patternId": "Bandit_B412"
+        },
+        {
+          "patternId": "Bandit_B415"
+        },
+        {
+          "patternId": "Bandit_B502"
+        },
+        {
+          "patternId": "Bandit_B503"
+        },
+        {
+          "patternId": "Bandit_B504"
+        },
+        {
+          "patternId": "Bandit_B505"
+        },
+        {
+          "patternId": "Bandit_B602"
+        },
+        {
+          "patternId": "Bandit_B603"
+        },
+        {
+          "patternId": "Bandit_B604"
+        },
+        {
+          "patternId": "Bandit_B605"
+        },
+        {
+          "patternId": "Bandit_B606"
+        },
+        {
+          "patternId": "Bandit_B607"
+        },
+        {
+          "patternId": "Bandit_B608"
+        },
+        {
+          "patternId": "Bandit_B609"
+        },
+        {
+          "patternId": "Bandit_B612"
+        },
+        {
+          "patternId": "Bandit_B613"
+        },
+        {
+          "patternId": "Bandit_B614"
+        },
+        {
+          "patternId": "Bandit_B615"
+        },
+        {
+          "patternId": "Bandit_B704"
+        }
+      ]
+    },
+    {
+      "toolId": "PyLintPython3",
+      "localConfigurationFile": "pyproject.toml",
+      "useLocalConfigurationFile": true,
+      "patterns": []
+    },
+    {
+      "toolId": "Lizard",
+      "patterns": [
+        {
+          "patternId": "Lizard_file-nloc-medium"
+        },
+        {
+          "patternId": "Lizard_nloc-medium"
+        },
+        {
+          "patternId": "Lizard_parameter-count-medium"
+        },
+        {
+          "patternId": "Lizard_nloc-critical"
+        },
+        {
+          "patternId": "Lizard_ccn-critical"
+        },
+        {
+          "patternId": "Lizard_ccn-medium"
+        },
+        {
+          "patternId": "Lizard_parameter-count-critical"
+        },
+        {
+          "patternId": "Lizard_file-nloc-critical"
+        }
+      ]
+    },
+    {
+      "toolId": "Prospector",
+      "patterns": [
+        {
+          "patternId": "Prospector_dodgy"
+        },
+        {
+          "patternId": "Prospector_mccabe"
+        },
+        {
+          "patternId": "Prospector_profile-validator"
+        },
+        {
+          "patternId": "Prospector_pycodestyle"
+        },
+        {
+          "patternId": "Prospector_pydocstyle"
+        },
+        {
+          "patternId": "Prospector_pyflakes"
+        }
+      ]
+    }
+  ],
+  "exclude": []
+}
