@@ -11,6 +11,7 @@ class NoteEvent:
     start: float
     duration: float
     midi: int
+    amp: float = 1.0  # Basic Pitch confidence; used to rank adaptive candidates
 
     def as_eval_row(self) -> list[float | int]:
         """Shape expected by Copyist's scripts/transcribe/evaluate.py match()."""
@@ -19,3 +20,9 @@ class NoteEvent:
 
 def to_eval_notes(events: list[NoteEvent]) -> list[list[float | int]]:
     return [e.as_eval_row() for e in events]
+
+
+def mean_amp(events: list[NoteEvent]) -> float:
+    if not events:
+        return 0.0
+    return sum(e.amp for e in events) / len(events)

@@ -44,6 +44,6 @@ def transcribe_melody(
         dur = float(end) - float(start)
         if dur <= 0 or float(amp) < min_amp:
             continue
-        out.append(NoteEvent(float(start), dur, int(pitch)))
+        out.append(NoteEvent(float(start), dur, int(pitch), float(amp)))
     out.sort(key=lambda n: n.start)
     return out

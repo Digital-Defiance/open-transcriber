@@ -46,7 +46,9 @@ def merge_same_pitch(events: list[NoteEvent], gap: float = 0.15) -> list[NoteEve
                 out.append(e)
             else:
                 end = max(prev_end, e.start + e.duration)
-                out[-1] = NoteEvent(prev.start, end - prev.start, prev.midi)
+                out[-1] = NoteEvent(
+                    prev.start, end - prev.start, prev.midi, max(prev.amp, e.amp)
+                )
         else:
             out.append(e)
     return out
@@ -74,7 +76,9 @@ def fold_short(events: list[NoteEvent], short: float = 0.10) -> list[NoteEvent]:
             j = cands[0][1]
             a, b = out[min(i, j)], out[max(i, j)]
             pitch = a.midi if a.duration >= b.duration else b.midi
-            out[min(i, j)] = NoteEvent(a.start, (b.start + b.duration) - a.start, pitch)
+            out[min(i, j)] = NoteEvent(
+                a.start, (b.start + b.duration) - a.start, pitch, max(a.amp, b.amp)
+            )
             del out[max(i, j)]
             changed = True
             break
@@ -96,7 +100,9 @@ def fold_to_target(events: list[NoteEvent], target: int | None) -> list[NoteEven
             j = i - 1 if abs(evs[i].midi - evs[i - 1].midi) <= abs(evs[i].midi - evs[i + 1].midi) else i + 1
         a, b = evs[min(i, j)], evs[max(i, j)]
         pitch = a.midi if a.duration >= b.duration else b.midi
-        evs[min(i, j)] = NoteEvent(a.start, (b.start + b.duration) - a.start, pitch)
+        evs[min(i, j)] = NoteEvent(
+            a.start, (b.start + b.duration) - a.start, pitch, max(a.amp, b.amp)
+        )
         del evs[max(i, j)]
     return evs
 
