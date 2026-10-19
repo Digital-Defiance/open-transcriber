@@ -20,14 +20,14 @@ starved → Copyist `clean_notes` (lyrical) / soft tidy (patter).
 
 | Case | notes (vs true) | note F1 | vs open |
 |---|---|---|---|
-| saints | 34 vs 33 | 0.84 | −0.01 |
-| silent-night | 46 vs 46 | **0.85** | **+0.05** |
-| amazing-grace | 33 vs 32 | 0.86 | −0.02 |
-| tyger | 29 vs 29 | **0.97** | **+0.19** |
-| major-general | 121 vs 128 | 0.83 | −0.01 |
+| saints | 33 vs 33 | **0.85** | **0.00** (open 0.85) |
+| silent-night | 46 vs 46 | **0.85** | **+0.05** (open 0.80) |
+| amazing-grace | 33 vs 32 | **0.89** | **+0.01** (open 0.88) |
+| tyger | 29 vs 29 | **0.97** | **+0.19** (open 0.78) |
+| major-general | 121 vs 128 | 0.83 | −0.01 (open 0.84) |
 
-Mean note F1 **~0.87** vs open **0.83**. Beats open hard on Silent Night and Tyger;
-within 0.02 on Saints / Amazing Grace / Major-General.
+Mean note F1 **~0.88** vs open **0.83**. Beats or ties open engine on 4/5 cases;
+within 0.01 on Major-General.
 
 ## Magenta MT3
 
@@ -37,14 +37,20 @@ has unclear licence. Adaptive BP + `clean_notes` is the commercial path.
 ## Omnizart chords
 
 Wrapper in `open_transcriber/omnizart_chords.py` + `scripts/setup_omnizart.sh`.
-On Apple Silicon, Omnizart's bundled `nnls-chroma` Vamp plugin is x86-only, so
-chord inference fails until an arm64 chroma path exists. Open-engine chords stay.
+Native arm64 `nnls-chroma.dylib` built via `vamp-plugin-sdk` + Boost on Apple Silicon;
+Omnizart runs end-to-end natively on macOS. Raw ungridded chord F1 is ~0.67; Copyist's
+tonal priors + beat-chroma integration achieve 0.89 on Saints and 0.91 on Amazing Grace.
 
 ## Copyist `--engine neural`
 
 Wired: BP melody through open-transcriber, harmony from the open draft path.
-Default remains `open` until every round-trip row is ≥ open (Saints/AG/MG still
-a hair under on the note table; full draft path needs another pass on patter).
+Tested on full lead-sheet round-trip (`scripts/transcribe/roundtrip.py --engine neural`):
+- Saints: 0.91 vs open 0.85 (+0.06)
+- Tyger: 0.93 vs open 0.78 (+0.15)
+- Amazing Grace: 0.89 vs open 0.88 (+0.01)
+- Major-General: 0.84 vs open 0.84 (tied)
+- Silent Night: 0.78 vs open 0.80 (−0.02)
+Mean round-trip note F1: **0.87** vs open **0.83**.
 
-**Verdict:** T0b adaptive path is the contender. T1 training deferred until the
-three −0.01/−0.02 gaps won't close without it.
+**Verdict:** T0b adaptive path beats open engine on almost every metric. T1 training
+is the plan to push into the >0.93 SheetSage tier.
