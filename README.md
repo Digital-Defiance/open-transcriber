@@ -40,19 +40,19 @@ python scripts/transcribe/neural_baseline.py --only silent-night --write out/t0-
 
 Uses the bundled CoreML model (no separate weight download). No chords yet — melody only. Full table: [docs/t0-results.md](docs/t0-results.md).
 
-**Verdict:** raw Basic Pitch ≪ Copyist open engine on lyrical takes (over-segmentation); ≈ open on Major-General patter. Next is tidy-through-Copyist (T0b) and/or training (T1).
+**Verdict:** adaptive BP + Copyist `clean_notes` mean note F1 ~0.87 vs open 0.83 (see [docs/t0-results.md](docs/t0-results.md)). Magenta MT3 skipped for singing. Omnizart chords wrapped but blocked on Apple Silicon Vamp. Copyist `--engine neural` is wired; default stays open until every row wins.
 
 ## Phases
 
-1. **T0 — Baselines:** Basic Pitch first; add Omnizart chords / MT3 when useful. Report next to the open engine in Copyist's `docs/transcribing.md`.
-2. **T1 — Train:** supervised lead-sheet head on PD band renders + gated YuE2 takes; tidy through Copyist’s note path.
-3. **T2 — Ship:** Copyist `--engine neural` + Install extras weights pack when the full table wins.
+1. **T0 — Baselines:** Basic Pitch + adaptive tidy / `clean_notes` (done). Omnizart chords when arm64 chroma works.
+2. **T1 — Train:** only if the remaining −0.01/−0.02 note gaps won't close without it.
+3. **T2 — Ship:** Copyist `--engine neural` as default when the full round-trip table wins.
 
 ## Layout
 
 ```
-open_transcriber/   Python package (engines, case list, note types)
-scripts/            t0_baseline.py
+open_transcriber/   Python package (engines, pipeline, tidy, bridges)
+scripts/            t0_baseline.py, setup_baseline.sh, setup_omnizart.sh
 tests/
 ```
 
