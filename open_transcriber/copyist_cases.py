@@ -5,6 +5,7 @@ importing the copyist package (only evaluate.py is loaded for scoring).
 """
 from __future__ import annotations
 
+import importlib.util
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -18,7 +19,9 @@ class Case:
     accompaniment: str
 
 
-# Keep in sync with copyist/scripts/transcribe/roundtrip.py CASES.
+# The round-trip audio cases for T0 (mix/stem paths). The held-out *song* set is
+# not this list: held_out_songs() derives it at runtime from songs/*.yaml plus the
+# roundtrip CASES, so the two big songs added later are picked up automatically.
 CASES: list[Case] = [
     Case(
         "saints",
@@ -56,6 +59,48 @@ CASES: list[Case] = [
         "out/major-general/takes/truth/htdemucs/production/no_vocals.wav",
     ),
 ]
+
+
+def _roundtrip_case_songs(root: Path) -> list[Path]:
+    """Song paths from copyist's scripts/transcribe/roundtrip.py CASES.
+
+    roundtrip.py inserts its ROOT on sys.path itself, so importing it by file
+    path is enough. Returns [] if the import fails (e.g. copyist not importable).
+    """
+    rt_path = root / "scripts/transcribe/roundtrip.py"
+    if not rt_path.is_file():
+        return []
+    try:
+        spec = importlib.util.spec_from_file_location("copyist_roundtrip_cases", rt_path)
+        if spec is None or spec.loader is None:
+            return []
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+    except Exception:
+        return []
+    songs = []
+    for case in getattr(mod, "CASES", []):
+        song = getattr(case, "song", None)
+        if song is not None:
+            songs.append(Path(song))
+    return songs
+
+
+def held_out_songs(root: Path) -> list[Path]:
+    """The held-out song YAML paths, derived at runtime (never a hard-coded list).
+
+    De-duplicated union of songs/*.yaml and every song referenced by roundtrip.py's
+    CASES. Falls back to the songs/ glob alone if the roundtrip import fails. This is
+    why the two big songs added to songs/ (and CASES) later need no edit here.
+    """
+    seen: dict[str, Path] = {}
+    for path in sorted((root / "songs").glob("*.yaml")):
+        seen[str(path.resolve())] = path
+    for path in _roundtrip_case_songs(root):
+        key = str(path.resolve())
+        if key not in seen:
+            seen[key] = path
+    return list(seen.values())
 
 
 def resolve_audio(root: Path, case: Case) -> Path:
