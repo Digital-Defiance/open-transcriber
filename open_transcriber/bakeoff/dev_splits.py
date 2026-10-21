@@ -25,11 +25,14 @@ import sys
 from pathlib import Path
 
 from . import manifests, vocalset_split
-from .make_sampler_audio import BASE_SEED as SAMPLER_BASE_SEED
-from .make_soulx_slice import BASE_SEED as SOULX_BASE_SEED
 
 SEED_TEXT = "copyist-ot2-20261020"
 SPLITS_DIR = Path(__file__).with_name("splits")
+
+#: Base seeds for the material scripts' unseen blocks (defined here so dev_splits stays free of music21/
+#: copyist imports and the probe-eval path can run in the torch-only env). The material scripts import these.
+SAMPLER_BASE_SEED = 90_000_000
+SOULX_BASE_SEED = 91_000_000
 
 #: RWC-other dev stratum sizes by collection letter (report §3.1).
 RWC_OTHER_DEV_STRATA = {"G": 20, "R": 6, "C": 3, "J": 1}
@@ -108,10 +111,23 @@ def karaoke_dev(data_manifest: dict | None = None, data: Path | None = None) -> 
     return sorted(sorted(survivors, key=_rank)[:KARAOKE_DEV_N])
 
 
+def _frozen_karaoke_dev(directory: Path = SPLITS_DIR) -> list[str] | None:
+    """The committed karaoke-dev member ids, if the frozen manifest exists (avoids importing qa/scipy)."""
+    path = Path(directory) / "karaoke-dev.json"
+    if path.exists():
+        return list(load_split("karaoke-dev", directory)["members"])
+    return None
+
+
 def karaoke_test(data_manifest: dict | None = None, data: Path | None = None) -> list[str]:
-    """Karaoke ids not in the dev split (diagnostic secondary + HookTheory overlap), sealed from the bake-off."""
+    """Karaoke ids not in the dev split (diagnostic secondary + HookTheory overlap), sealed from the bake-off.
+
+    Prefers the committed frozen ``karaoke-dev`` manifest so the sealed set can be computed without importing
+    the QA/CREPE tooling (the probe-eval env has no scipy); falls back to rebuilding from QA if unfrozen.
+    """
     m = data_manifest or manifests.load("usdx")
-    dev = set(karaoke_dev(m, data))
+    frozen = _frozen_karaoke_dev()
+    dev = set(frozen) if frozen is not None else set(karaoke_dev(m, data))
     return sorted(i["id"] for i in m["items"]
                   if not i["status"].startswith("excluded") and i["id"] not in dev)
 

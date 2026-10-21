@@ -25,10 +25,8 @@ from typing import Callable
 from open_transcriber.data import scores
 
 from . import jobs, labels, paths
-
-#: New seed block for the bake-off's unseen sampler scores. Chosen not to overlap the existing
-#: ``.cache/t1/scores`` seeds (those start at 0); recorded here and in the report.
-BASE_SEED = 90_000_000
+from .dev_splits import SAMPLER_BASE_SEED as BASE_SEED  # single source of truth; chosen not to overlap
+# the existing .cache/t1/scores seeds (those start at 0). Recorded here and in the report.
 #: Deterministic render variants: (style, perform-seed). Styles are chosen to vary timbre/mix; a None style
 #: lets the arranger pick its default. The perform seed makes the expressive performance deterministic.
 VARIANTS: tuple[tuple[str | None, int], ...] = (

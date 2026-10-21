@@ -24,9 +24,7 @@ from typing import Callable
 from open_transcriber.data import scores
 
 from . import jobs, labels, paths
-
-#: Unseen sampler seeds for the sung slice (a separate block from the rendered sampler audio).
-BASE_SEED = 91_000_000
+from .dev_splits import SOULX_BASE_SEED as BASE_SEED  # single source of truth (separate block from sampler)
 #: Target accepted-clip count and the estimated GPU time (SoulX ~0.5x real time + gating).
 TARGET_CLIPS = 120
 SECONDS_PER_CLIP_GPU = 45.0        # ~15-20 s sung audio at ~0.5x real time, plus gating overhead
