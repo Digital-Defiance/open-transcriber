@@ -1,0 +1,82 @@
+{
+ "version": 1,
+ "status": "written before any chart was checked or any system scored (2026-10-19); never changed after a system is scored",
+ "source": "stage 0a plan, D11 (copied verbatim); implementation details pinned below before any chart was checked",
+ "audio": {
+  "input": "the item's seeded Demucs vocal stem (OUT/stems/<item>/vocals.wav)",
+  "mono": "mean of the channels",
+  "rate_hz": 16000,
+  "resampler": "scipy.signal.resample_poly"
+ },
+ "pitch_tracker": {
+  "model": "CREPE full, torchcrepe 0.0.24 weights, through ONNX (crepe-full.onnx sha256 26f8366666fd9831d92fb168a9652fc89cffa1b0b2af73fd5ed974b20f1939bf)",
+  "hop_ms": 10,
+  "fmin_hz": 50,
+  "fmax_hz": 1100,
+  "decoder": "Viterbi (torchcrepe's transition, librosa's algorithm); no dither"
+ },
+ "voiced_frame": {
+  "periodicity_median_frames": 3,
+  "periodicity_median_edges": "at the first and last frame, the lower of the two available values (torchcrepe.filter.median)",
+  "periodicity_min": 0.50,
+  "rms_rule": "frame RMS >= p95(frame RMS over the whole stem) * 10^(-40/20)",
+  "rms_floor_db_below_p95": 40
+ },
+ "pitch_window": {
+  "rule": "[onset + 0.2 d, offset - 0.1 d], or the whole note if d < 0.05 s (d = offset - onset)",
+  "short_note_s": 0.05,
+  "head_fraction": 0.2,
+  "tail_fraction": 0.1,
+  "frames": "frames whose centre (t * 10 ms) lies inside the window, ends included"
+ },
+ "verifiable": {
+  "min_voiced_frames": 3,
+  "min_voiced_share": 0.25
+ },
+ "pitch_pass": {
+  "rule": "circular pitch-class distance between the chart pitch and the median MIDI pitch of the window's voiced frames <= 0.50 semitone",
+  "max_semitones": 0.50,
+  "distance": "abs(((median - chart_midi) + 6) mod 12 - 6)"
+ },
+ "onset_evidence": {
+  "flux": {
+   "stft": "1024-sample Hann window, hop 160 at 16 kHz, frames centred at t * 10 ms (zero-padded by 512)",
+   "compression": "L = log(1 + 100 |X|)",
+   "flux": "sum over bins of max(0, L[t] - L[t-1]), divided by its 99th percentile",
+   "peak": "a local maximum within +-3 frames and >= median(+-25 frames) + 0.10",
+   "peak_half_width_frames": 3,
+   "median_half_width_frames": 25,
+   "delta": 0.10,
+   "min_gap_s": 0.030,
+   "min_gap_rule": "of two peaks closer than 30 ms the higher is kept"
+  },
+  "voicing": {
+   "rule": "a voiced frame after at least 3 unvoiced frames (frames before the start count as unvoiced)",
+   "unvoiced_before": 3
+  },
+  "pitch_change": {
+   "rule": "|median of the next 5 voiced frames - median of the previous 5| >= 0.75 semitone; one time per run of such frames: the middle of the frames where the change is largest",
+   "context_frames": 5,
+   "min_step_semitones": 0.75
+  }
+ },
+ "onset_pass": {
+  "rule": "any evidence (flux, voicing or pitch change) within +-100 ms of the chart onset",
+  "tolerance_s": 0.100
+ },
+ "note_verdict": {
+  "rule": "a note is kept only if its pitch and its onset both pass; otherwise it is masked with one reason",
+  "reason_order": ["unverifiable", "pitch", "onset"],
+  "freestyle": "always masked (reason: freestyle)"
+ },
+ "song_drop": {
+  "rule": "a song is dropped if more than 50% of its pitched notes are masked",
+  "max_masked_share": 0.50
+ },
+ "reported_never_used_to_correct": [
+  "each song's median signed offset: chart onset minus the nearest onset evidence, over its pitched notes",
+  "each song's masked share by reason"
+ ],
+ "never": "no shift, octave change or note edit is ever applied to a chart",
+ "sensitivity_analysis": "the karaoke sets are also scored with freestyle masks only (no QA masks), pre-registered; the QA reads the same Demucs stems Copyist uses, so the unmasked score bounds that bias"
+}

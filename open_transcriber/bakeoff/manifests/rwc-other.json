@@ -1,0 +1,2522 @@
+{
+ "format": "copyist-judge-manifest/1",
+ "source": {
+  "audio": {
+   "record": "https://zenodo.org/records/17177919",
+   "doi": "10.5281/zenodo.17177919",
+   "download": "https://zenodo.org/api/records/17177919/files/RWC-CGJPR.zip/content",
+   "file": "RWC-CGJPR.zip",
+   "bytes": 13418904710,
+   "md5": "272309ed06121e6ed2ac5c8f55664baa",
+   "sha256": "0a064310a3d233e0a8b0819bbb1a718c11bafa51cf28cfa97b96dd5614f7e48c"
+  },
+  "annotations": {
+   "url": "https://github.com/rwc-music/rwc-annotations",
+   "commit": "0a1a6c31dbe73a7f5d44f7caef8cd0999402a4c2"
+  },
+  "archive": {
+   "url": "https://github.com/rwc-music/rwc-annotations-archive",
+   "commit": "994499597853664890b517711f97df9f47c0358a"
+  }
+ },
+ "licence": "CC BY-NC 4.0 (RWC 2.0 audio, rwc-annotations and the AIST archive)",
+ "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+ "credit": "RWC Music Database (Goto et al., 2002-2003), re-released as RWC 2.0 under CC BY-NC 4.0 (Zenodo 10.5281/zenodo.17177919); annotations from rwc-music/rwc-annotations",
+ "shared_annotations": [
+  {
+   "path": "rwc/annotations/metadata.csv",
+   "sha256": "eba3fe129f835db58a9c23dad554547201ab02ef3af90c10857ef5b50b8b99da",
+   "bytes": 48516
+  },
+  {
+   "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/metadata_mapping_vocals.csv",
+   "sha256": "3b720432af1c9a5168908cf94aa46e184f7e7771904818f6b6848e64a4727dc1",
+   "bytes": 4491
+  },
+  {
+   "path": "rwc/annotations/01_annotations_preprocessed/melody/metadata_mapping_melody_annotations.csv",
+   "sha256": "de2bf3507befa55e8e86ab13b580c4944fefd83a0cca276fb9590b8ad624fec0",
+   "bytes": 2602
+  }
+ ],
+ "set": "rwc-other",
+ "title": "RWC 2.0's other 75 sung pieces (52 Genre, 15 Royalty-Free, 6 Classical, 2 Jazz)",
+ "notes": "The pieces with a vocal track in the June 2026 vocal mapping. SheetSage2 never reported on these. RWC-R012 and RWC-R013 are recordings of two songs Copyist's rules were tuned on (When the Saints, Silent Night), so P2 is also reported without them.",
+ "items": [
+  {
+   "id": "rwc-c045",
+   "source_id": "RWC_C045",
+   "collection": "RWC-C",
+   "title": "Air \"Ombra mai fu\" (Largo) from \"Serse\" (Xerxes)",
+   "artist": "Rihoko Yanagisawa",
+   "language": "Italian",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-c045",
+   "audio": {
+    "path": "rwc/audio/RWC_C045.wav",
+    "sha256": "6d4eb869f74aa956c095ffd3f45099cfc04c9dccd4b402ef62ce4ae9a669957d",
+    "bytes": 29565920,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 167.607007,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-C/RWC_C045.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-C/RWC_C045.mid",
+     "sha256": "597353ece2c04b77c9856083bc64b2ae9eae427296203b6d2177e0d153ee5a5c",
+     "bytes": 6774
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-c045.tsv",
+    "sha256": "9c2513841631331b07dfa0ce0d6e2d195d0678832c054d441896cae9e4859130"
+   }
+  },
+  {
+   "id": "rwc-c046",
+   "source_id": "RWC_C046",
+   "collection": "RWC-C",
+   "title": "Air 14 (Queen of the Night's Air) \"Der Hölle Rache kocht in meinem Herzen\" from \"Die Zauberflöte\" (The Magic Flute), KV 620",
+   "artist": "Makiko Saito",
+   "language": "German",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-c046",
+   "audio": {
+    "path": "rwc/audio/RWC_C046.wav",
+    "sha256": "e4b9af4c8bba18c49ca9bc5d7f3f1f48717a2356f36b2a663593c444ad741152",
+    "bytes": 32928100,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 186.666984,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-C/RWC_C046.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-C/RWC_C046.mid",
+     "sha256": "a479be48f0e7aca2f4df7199fba2a5ba93441e5c6f457320a6f96d0e10f6e200",
+     "bytes": 18660
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-c046.tsv",
+    "sha256": "68b5438c1bb3fb9662aa9e65e1b34691501238d3fab3487645808cc93dbf68ee"
+   }
+  },
+  {
+   "id": "rwc-c047",
+   "source_id": "RWC_C047",
+   "collection": "RWC-C",
+   "title": "\"Ständchen\" (Serenade) from \"Schwanengesang\", D.957",
+   "artist": "Asuka Ueda",
+   "language": "German",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-c047",
+   "audio": {
+    "path": "rwc/audio/RWC_C047.wav",
+    "sha256": "c5726445ba58fef08aec079598341fcf333c472ad5bbd7a8698281c63bcd6cda",
+    "bytes": 39566372,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 224.298912,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-C/RWC_C047.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-C/RWC_C047.mid",
+     "sha256": "1389b9161f12d9f246df1f6a5ac399b4b7bfa45a4853df7f49cb25180191d2d6",
+     "bytes": 12747
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-c047.tsv",
+    "sha256": "94ad54648ffbe77a0b1caa10259407a1164b821e12623ebf2adec69f8ca188ed"
+   }
+  },
+  {
+   "id": "rwc-c048",
+   "source_id": "RWC_C048",
+   "collection": "RWC-C",
+   "title": "\"Der Lindenbaum\" from \"Winterreise\", Op.89/D.911",
+   "artist": "Tomihiko Kotaka",
+   "language": "German",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-c048",
+   "audio": {
+    "path": "rwc/audio/RWC_C048.wav",
+    "sha256": "4bc310a2398219662fd21521b88585009774c8ab2aebdde214a9cae34394f3b3",
+    "bytes": 46646928,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 264.438118,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-C/RWC_C048.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-C/RWC_C048.mid",
+     "sha256": "8379f1f2ba3c13c142dc7d0df4d94c3fdb022976a74a20d7e327b1e46c426476",
+     "bytes": 15156
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-c048.tsv",
+    "sha256": "50580a4cd230c84542c5a400b6e6c8fade59900872cc88306064101e4b17ed08"
+   }
+  },
+  {
+   "id": "rwc-c049",
+   "source_id": "RWC_C049",
+   "collection": "RWC-C",
+   "title": "Air \"La donna è mobile qual piuma al vento\" from \"Rigoletto\"",
+   "artist": "Ryosuke Hagino",
+   "language": "Italian",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-c049",
+   "audio": {
+    "path": "rwc/audio/RWC_C049.wav",
+    "sha256": "280f914e23923b807d2fc32f402f464b8a74dd083fcd371d6131462dda60f3de",
+    "bytes": 22852136,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 129.547007,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-C/RWC_C049.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-C/RWC_C049.mid",
+     "sha256": "c3e6b7e34092851331d2aa03ed321874dc470d2a88b2d10645cb2f99e06808ee",
+     "bytes": 10179
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-c049.tsv",
+    "sha256": "06fcd3044f3e3d7594ac59ddd918b2f04b4e92e901c7fef2ce857b4caa82863a"
+   }
+  },
+  {
+   "id": "rwc-c050",
+   "source_id": "RWC_C050",
+   "collection": "RWC-C",
+   "title": "Micaela's Air \"Je dis que rien ne m'épouvante\" from \"Carmen\"",
+   "artist": "Hiromi Tohyama",
+   "language": "French",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-c050",
+   "audio": {
+    "path": "rwc/audio/RWC_C050.wav",
+    "sha256": "74482ad96b9308f2485678dd0792f2ec9d2a69152a5e5a3b69f7a9cacd715a49",
+    "bytes": 53931332,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 305.732925,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-C/RWC_C050.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-C/RWC_C050.mid",
+     "sha256": "b2f717c3e6f6c5f5c04fd314cc4584c834cc9603428a50e5f698de61e57f26a1",
+     "bytes": 26400
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-c050.tsv",
+    "sha256": "59a12e72993ad262bd50494b53e3cfa800331348e11dab9d6f8d5d412c560bb2"
+   }
+  },
+  {
+   "id": "rwc-g001",
+   "source_id": "RWC_G001",
+   "collection": "RWC-G",
+   "title": "Wasting Time",
+   "artist": "Shinya Iguchi",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-g001",
+   "audio": {
+    "path": "rwc/audio/RWC_G001.wav",
+    "sha256": "9c260d04e9f0729dc60b667c54f816ac22e7ad0088bf649a72b3da54858b275d",
+    "bytes": 61495340,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 348.612789,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G001.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G001.mid",
+     "sha256": "384b37714f9321ff417bb2a3f1024353ad640be1514ff4a542a5a51bd37f84e0",
+     "bytes": 61693
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g001.tsv",
+    "sha256": "828c833498ba09f982c4b9caeb7fa2cd5e9285cdf2f3834223e04b0b6c2a8937"
+   }
+  },
+  {
+   "id": "rwc-g002",
+   "source_id": "RWC_G002",
+   "collection": "RWC-G",
+   "title": "Forget about It",
+   "artist": "Shinya Iguchi",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-g002",
+   "audio": {
+    "path": "rwc/audio/RWC_G002.wav",
+    "sha256": "a5ba291420a0368ba5227f78a7c51dd4a2b3f0e89e051eaa22bc6f5dbbbf499b",
+    "bytes": 45976200,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 260.635805,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G002.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G002.mid",
+     "sha256": "74c2b4386a815bfa622b1bdbc0fbe41ddc9b74a506361184a6ef1ce9c0d8b6dd",
+     "bytes": 60120
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g002.tsv",
+    "sha256": "f8a3e50a3098e109e3a16da1fde4afc618d5f34c1409a2a8315b12cb45ecdd7e"
+   }
+  },
+  {
+   "id": "rwc-g003",
+   "source_id": "RWC_G003",
+   "collection": "RWC-G",
+   "title": "In Your Arms",
+   "artist": "Donna Burke",
+   "language": "English",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-g003",
+   "audio": {
+    "path": "rwc/audio/RWC_G003.wav",
+    "sha256": "1f4d1c09c352b5cb06758dfb1baa5170ea91d6ad50c7bea47f5c487e6a23c6b8",
+    "bytes": 40093428,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 227.286757,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G003.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G003.mid",
+     "sha256": "ace374703e53f630745c8e5b9af0c84165e3a70fe2a7cddf596c3527bfafc780",
+     "bytes": 93301
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g003.tsv",
+    "sha256": "ab3e685926cab39073a4d36270c4707dbd78cfa82f4cf5a9592db57329099c9d"
+   }
+  },
+  {
+   "id": "rwc-g004",
+   "source_id": "RWC_G004",
+   "collection": "RWC-G",
+   "title": "Hold On",
+   "artist": "Shinya Iguchi",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-g004",
+   "audio": {
+    "path": "rwc/audio/RWC_G004.wav",
+    "sha256": "28e1ffc558b067d97d24a83d801d0b97c3c6413f7f38f8ede84c6a1181a80e29",
+    "bytes": 55276936,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 313.361066,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G004.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G004.mid",
+     "sha256": "273f95cc8029e7a4c15eed9bcc7dad2077a0186ff32b503469d5bc8073323ce5",
+     "bytes": 55177
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g004.tsv",
+    "sha256": "4304e26e130bc9f9a24600d3ad0a0b90361729a31ca65d16b06d671eac29557e"
+   }
+  },
+  {
+   "id": "rwc-g005",
+   "source_id": "RWC_G005",
+   "collection": "RWC-G",
+   "title": "Taking Your Heart",
+   "artist": "Shinya Iguchi",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-g005",
+   "audio": {
+    "path": "rwc/audio/RWC_G005.wav",
+    "sha256": "7f8f01e04e87649d19be178fefa5b4039cc3164c70a9a128e8c884e62bdfb5ef",
+    "bytes": 64843396,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 367.592698,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G005.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G005.mid",
+     "sha256": "89f2020fff405e3f9b86c4100b03c4d4f8f6f2fa4a70cc2559ef6123105f5be9",
+     "bytes": 100638
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g005.tsv",
+    "sha256": "ebc094b6b9643302c53fc8f6d850a41a8ef925e6764667664c0dc94298892683"
+   }
+  },
+  {
+   "id": "rwc-g006",
+   "source_id": "RWC_G006",
+   "collection": "RWC-G",
+   "title": "Let's Take Some Time ... To Think It Over",
+   "artist": "Betty",
+   "language": "English",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-g006",
+   "audio": {
+    "path": "rwc/audio/RWC_G006.wav",
+    "sha256": "cc0e25484c6558686b32be5df60be9f040d02805368d6c7cd014e91938b72eb6",
+    "bytes": 42661896,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 241.847234,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G006.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G006.mid",
+     "sha256": "3217221e8db3cfe3b5b21314e5ae899c0e9b2cffc854d77f336601776e82afc6",
+     "bytes": 51463
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g006.tsv",
+    "sha256": "a484828aae2cce6b37203ec419f2d70be07e140dcacea0c84d40b9e3f8cc6376"
+   }
+  },
+  {
+   "id": "rwc-g007",
+   "source_id": "RWC_G007",
+   "collection": "RWC-G",
+   "title": "Everyday Lovin'",
+   "artist": "Donna Burke",
+   "language": "English",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-g007",
+   "audio": {
+    "path": "rwc/audio/RWC_G007.wav",
+    "sha256": "b0869690a0644b0115144347d4cfb6792e7b5ade0428dd4cd779c4767c08921b",
+    "bytes": 45256156,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 256.553923,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G007.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G007.mid",
+     "sha256": "0a0d59005fcee9779f86213005f207539b50c78c8d0d88fecca1b0e43a27b63a",
+     "bytes": 39635
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g007.tsv",
+    "sha256": "cb8d2c95c2319ab2536151a053e646f8452702eb0c1a78d68fe6b975cd072ff1"
+   }
+  },
+  {
+   "id": "rwc-g008",
+   "source_id": "RWC_G008",
+   "collection": "RWC-G",
+   "title": "Living in a World of Destruction",
+   "artist": "Jeff Manning",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-g008",
+   "audio": {
+    "path": "rwc/audio/RWC_G008.wav",
+    "sha256": "aad5c76feafd17d0a16b897d85e4c173f7d25ab43d0347c109e655bdad9871e9",
+    "bytes": 36030592,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 204.254807,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G008.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G008.mid",
+     "sha256": "8d28c4694b29771e08d0cdeb7c61e7939455ceff751cecb4185d4aca07d41fff",
+     "bytes": 30644
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g008.tsv",
+    "sha256": "a028089243f8df137a6f24adc96c23bc968d8f6a7b9eacc1260ee43d18f23db6"
+   }
+  },
+  {
+   "id": "rwc-g009",
+   "source_id": "RWC_G009",
+   "collection": "RWC-G",
+   "title": "Waiting for Your Love",
+   "artist": "Donna Burke",
+   "language": "English",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-g009",
+   "audio": {
+    "path": "rwc/audio/RWC_G009.wav",
+    "sha256": "426c9388ab40c0d3ce9afc95586e1afcaedd07260685cc1c1f8052e6aefaec6c",
+    "bytes": 36716136,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 208.141111,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G009.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G009.mid",
+     "sha256": "5cce4ab88d61251d6359fdc83636d0a2eaf0cd53d0f275d595f3454fe999225d",
+     "bytes": 56641
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g009.tsv",
+    "sha256": "b4fc6007d10c1f41de2231d785204a2d8707bcd95fb677f19bbb66ee50b35b24"
+   }
+  },
+  {
+   "id": "rwc-g010",
+   "source_id": "RWC_G010",
+   "collection": "RWC-G",
+   "title": "Lost in My Dreams",
+   "artist": "Jeff Manning",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-g010",
+   "audio": {
+    "path": "rwc/audio/RWC_G010.wav",
+    "sha256": "a9881db31ab0eb3e2b689aef08e90400c974a42df6df110a33f7b06081f64edd",
+    "bytes": 40643540,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 230.405306,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G010.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G010.mid",
+     "sha256": "e85031bf2112cd0dc67d0a44934c1864ef2168032bf7e80f363249724890b10f",
+     "bytes": 62582
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g010.tsv",
+    "sha256": "50dda61c7f831b1345e8c5e2bfa5e67df639ad8b4d579ada31e96308dce4f551"
+   }
+  },
+  {
+   "id": "rwc-g011",
+   "source_id": "RWC_G011",
+   "collection": "RWC-G",
+   "title": "21st Century",
+   "artist": "Donna Burke",
+   "language": "English",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-g011",
+   "audio": {
+    "path": "rwc/audio/RWC_G011.wav",
+    "sha256": "b3c9612ad61ce6dfa0a05bd28dd84254e76f3aa64fde8ce982c0f9cab4925196",
+    "bytes": 53326684,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 302.305215,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G011.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G011.mid",
+     "sha256": "802270ccf459f4c8dd119f88f55d06b6b0d1f48123ade27c76da09569a58f8d3",
+     "bytes": 61207
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g011.tsv",
+    "sha256": "b7e9b6e57fcdb818d96ebdf6406383261a901fdeb464e8316175deb318c89b0a"
+   }
+  },
+  {
+   "id": "rwc-g012",
+   "source_id": "RWC_G012",
+   "collection": "RWC-G",
+   "title": "Woman",
+   "artist": "Betty",
+   "language": "English",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-g012",
+   "audio": {
+    "path": "rwc/audio/RWC_G012.wav",
+    "sha256": "b4baffc75c8f65ea4218796fbc0ae15c117d673dea983aa514c891a31e8bbbc2",
+    "bytes": 35483732,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 201.154694,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G012.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G012.mid",
+     "sha256": "c1a4c932297aca87ec77f5e0fd3e46874341fb4c4fde55b04b686a81eb141ff1",
+     "bytes": 53309
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g012.tsv",
+    "sha256": "8fe54df0e280de1cc7250419b65230518874714953adc1ffb667bb078d3558a5"
+   }
+  },
+  {
+   "id": "rwc-g013",
+   "source_id": "RWC_G013",
+   "collection": "RWC-G",
+   "title": "Guess Again",
+   "artist": "Donna Burke",
+   "language": "English",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-g013",
+   "audio": {
+    "path": "rwc/audio/RWC_G013.wav",
+    "sha256": "7a638fb07e6e08c6a217df274fbcf25690853120c20dfa2070e1ae91e271e687",
+    "bytes": 38929464,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 220.688322,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G013.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G013.mid",
+     "sha256": "e48e424fd342c17e49d52310e4d1fc1bd15d269143b169903c4f66633ad5e7d2",
+     "bytes": 38075
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g013.tsv",
+    "sha256": "9919f879dfbe0630f83851252523d8ff1fe5e09b63d913c20eb98cf7822c0e90"
+   }
+  },
+  {
+   "id": "rwc-g014",
+   "source_id": "RWC_G014",
+   "collection": "RWC-G",
+   "title": "Tuesday Morning",
+   "artist": "Jeff Manning",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-g014",
+   "audio": {
+    "path": "rwc/audio/RWC_G014.wav",
+    "sha256": "5a5d65995f5e766e24637a254a4b15ff22f7f6b6dce0bb13fda4e4a83856cacd",
+    "bytes": 32716408,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 185.466916,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G014.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G014.mid",
+     "sha256": "985cf27838e9bb8d91f12c7ae365f583210e7b9cc2e2635b576339d356f286d5",
+     "bytes": 59727
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g014.tsv",
+    "sha256": "e115c936f3eb06a68f8eedead7ca60bd488bb8ed15a5d0213a160d7c44abfa4f"
+   }
+  },
+  {
+   "id": "rwc-g015",
+   "source_id": "RWC_G015",
+   "collection": "RWC-G",
+   "title": "Rocket in My Pocket",
+   "artist": "Greg Irwin",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-g015",
+   "audio": {
+    "path": "rwc/audio/RWC_G015.wav",
+    "sha256": "dfe66fcc45adb9387c53c8e8e1087f0d55e6fec1c7a9c7bb5db80db6ae94f1dd",
+    "bytes": 54675816,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 309.953356,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G015.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G015.mid",
+     "sha256": "3a47e3fc15ea1241bbfbdcba2018e9f383022adbea74170e0488fda6bbf57b6e",
+     "bytes": 75106
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g015.tsv",
+    "sha256": "3fec456628cc5d2da7495a65d7e3243edb425a82c3caf3f71ac743ce4c0be8d7"
+   }
+  },
+  {
+   "id": "rwc-g016",
+   "source_id": "RWC_G016",
+   "collection": "RWC-G",
+   "title": "Life Gage",
+   "artist": "Nishi feat.T",
+   "language": null,
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-g016",
+   "audio": {
+    "path": "rwc/audio/RWC_G016.wav",
+    "sha256": "a62691a327d5bc4710eb03f19f6097061f3ebfef80ca3211880c6e4859720839",
+    "bytes": 33492768,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 189.86805,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G016.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G016.mid",
+     "sha256": "8c9d5be2827f8ba629588fdb5150c3890a79e054cb717dc95db18fd05856b54f",
+     "bytes": 47340
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g016.tsv",
+    "sha256": "c9df72822cf9a50278822c84f9a64d46e3048250df1d3f06e2ef013bdc20c342"
+   }
+  },
+  {
+   "id": "rwc-g017",
+   "source_id": "RWC_G017",
+   "collection": "RWC-G",
+   "title": "Tonight's the Night for Love",
+   "artist": "Donna Burke",
+   "language": "English",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-g017",
+   "audio": {
+    "path": "rwc/audio/RWC_G017.wav",
+    "sha256": "4f76a3af97653ed24cc1b1725d3428e07b99799227fa8d18b0969b0919ac924b",
+    "bytes": 32551384,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 184.531406,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G017.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G017.mid",
+     "sha256": "caf89a10a7ec169fc07eb61661a1c08991ad62c3e981b78b20a770a115d2f2b4",
+     "bytes": 56008
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g017.tsv",
+    "sha256": "57e2ef2b510f04e377f565aadb40f65ceaad200d5964dcb942abe7363261423e"
+   }
+  },
+  {
+   "id": "rwc-g018",
+   "source_id": "RWC_G018",
+   "collection": "RWC-G",
+   "title": "Anything for Your Love",
+   "artist": "Jeff Manning",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-g018",
+   "audio": {
+    "path": "rwc/audio/RWC_G018.wav",
+    "sha256": "4d1661434089b3d1ae6f45da1213224a27af2c6d367e93defc4035e0cdff56b8",
+    "bytes": 32627500,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 184.962902,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G018.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G018.mid",
+     "sha256": "6cd67764a9faa5107c2745a9930ca4389ce5083236531639fac6e5a702cfff3a",
+     "bytes": 36467
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g018.tsv",
+    "sha256": "cd1997f82fc59addf70daf010785235d47f902d18c1a33953a2e602432565e46"
+   }
+  },
+  {
+   "id": "rwc-g019",
+   "source_id": "RWC_G019",
+   "collection": "RWC-G",
+   "title": "Asia 2",
+   "artist": "Kazuo Nishi",
+   "language": null,
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-g019",
+   "audio": {
+    "path": "rwc/audio/RWC_G019.wav",
+    "sha256": "441123e7e1ed3980500ddf5669970e76c0c782641d361ba9d12db0845b0178bf",
+    "bytes": 38819440,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 220.064603,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G019.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G019.mid",
+     "sha256": "5b23e06484bf8fc2cc212249a268cb12eeeda8613d74e4c6101b37ad928fa1c0",
+     "bytes": 53294
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g019.tsv",
+    "sha256": "304b3485427500e310dca8104cf05085688db2951fad2772fec823621df6f4b2"
+   }
+  },
+  {
+   "id": "rwc-g020",
+   "source_id": "RWC_G020",
+   "collection": "RWC-G",
+   "title": "Keep Running",
+   "artist": "Donna Burke",
+   "language": "English",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-g020",
+   "audio": {
+    "path": "rwc/audio/RWC_G020.wav",
+    "sha256": "abc163486cceeaf23d79354874e9ac9c68de7df4226ef5f246c0eee0e6f50c58",
+    "bytes": 28340360,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 160.659388,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G020.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G020.mid",
+     "sha256": "8190a9e6523c53d3b0ddeaf3b6b1fabf90e8c5bc5b80a514b96ac6395ef72c33",
+     "bytes": 47940
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g020.tsv",
+    "sha256": "4026c52ce2e7fb539ecd2f13a24ac07cea0d6111394aba76937f13299e75e58c"
+   }
+  },
+  {
+   "id": "rwc-g022",
+   "source_id": "RWC_G022",
+   "collection": "RWC-G",
+   "title": "Get on up and Dance",
+   "artist": "Donna Burke",
+   "language": "English",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-g022",
+   "audio": {
+    "path": "rwc/audio/RWC_G022.wav",
+    "sha256": "0065009776faa5a2c4e2d3d5516e8e4950b2269169dcdf8778954ff07f83bb7b",
+    "bytes": 48490768,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 274.890726,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G022.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G022.mid",
+     "sha256": "cd48902bf212807fd527e38e53cc170f0bd0509c40acb509cfb95e39e0bf6640",
+     "bytes": 118540
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g022.tsv",
+    "sha256": "74ec6495463f93c58521b8a0a04dc318f7272401fcf7c316d0c30763af59ac71"
+   }
+  },
+  {
+   "id": "rwc-g023",
+   "source_id": "RWC_G023",
+   "collection": "RWC-G",
+   "title": "Feeling the Hate",
+   "artist": "Greg Irwin",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-g023",
+   "audio": {
+    "path": "rwc/audio/RWC_G023.wav",
+    "sha256": "7d1eab0300c3d04b33167d0561646da28b0c9e158ec172ed5bcdcd889a11f690",
+    "bytes": 48910696,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 277.27127,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G023.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G023.mid",
+     "sha256": "94f1cc652a604905b68c3d6791749923edfdaed3f936527807c906114b6ea8d2",
+     "bytes": 73391
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g023.tsv",
+    "sha256": "86792b97c8c413d2c0864a12dc2b8062e9fff0a412c05051a901c9626ff80890"
+   }
+  },
+  {
+   "id": "rwc-g024",
+   "source_id": "RWC_G024",
+   "collection": "RWC-G",
+   "title": "Trustin' in Your Groove",
+   "artist": "Greg Irwin",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-g024",
+   "audio": {
+    "path": "rwc/audio/RWC_G024.wav",
+    "sha256": "e10308f7a9d348680bdce2b1423ee40efb49b2594c4b232811dca6428d1da38b",
+    "bytes": 42706332,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 242.099138,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G024.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G024.mid",
+     "sha256": "418ee699c7cacc2d473566d4b7f810b50255f532b52f7b52a8bdfd285f87c21e",
+     "bytes": 49691
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g024.tsv",
+    "sha256": "961c40498979636dfbf81a4c5c1f48d61ca8a7670fbca338679c9bef8ca14a8d"
+   }
+  },
+  {
+   "id": "rwc-g025",
+   "source_id": "RWC_G025",
+   "collection": "RWC-G",
+   "title": "It's Time to Fly",
+   "artist": "Donna Burke",
+   "language": "English",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-g025",
+   "audio": {
+    "path": "rwc/audio/RWC_G025.wav",
+    "sha256": "0be88c2ab13df5d83acdd0c9063725471cb14e8597bb8792c8878f414de6f646",
+    "bytes": 42652728,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 241.795261,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G025.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G025.mid",
+     "sha256": "b76b35496db3700c9ee015be2611b6f9f71d282e1467be7088aef70b9dea337a",
+     "bytes": 72721
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g025.tsv",
+    "sha256": "cffb8cc30a0ee78377842ef987b2bb904387bb56d8cd008542a44a2a7d41c992"
+   }
+  },
+  {
+   "id": "rwc-g026",
+   "source_id": "RWC_G026",
+   "collection": "RWC-G",
+   "title": "Secret Dreams",
+   "artist": "Donna Burke",
+   "language": "English",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-g026",
+   "audio": {
+    "path": "rwc/audio/RWC_G026.wav",
+    "sha256": "d3ec6ef7f15befcd3f0622037a6fa64784551c4c1828b72a064559c7eed29aa0",
+    "bytes": 40247828,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 228.162041,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G026.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G026.mid",
+     "sha256": "afdff2bf2d432c14de9adccd8b91f39a0ac80787de5b539dcd4fa59d7dbe4ab3",
+     "bytes": 126838
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g026.tsv",
+    "sha256": "33c25cd91249fd92b7df68eb8cbcabaf936dbba5298bc6016293d11ead0569bd"
+   }
+  },
+  {
+   "id": "rwc-g027",
+   "source_id": "RWC_G027",
+   "collection": "RWC-G",
+   "title": "Suddenly",
+   "artist": "Greg Irwin",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-g027",
+   "audio": {
+    "path": "rwc/audio/RWC_G027.wav",
+    "sha256": "c9dc719b142f953e46c9ad400c5b49e3a5ba7f56e4587109f76a2ea6d78c7ba7",
+    "bytes": 37905524,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 214.883673,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G027.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G027.mid",
+     "sha256": "de936c6b6c220c49fbf0bbc615b25a2e1b1cb0cf0a63dff9d153c7daa9846c6a",
+     "bytes": 46039
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g027.tsv",
+    "sha256": "617d525d3919ea04cb97ddc3c88ae63d94917d4e0faab6db97c3e75832457dda"
+   }
+  },
+  {
+   "id": "rwc-g039",
+   "source_id": "RWC_G039",
+   "collection": "RWC-G",
+   "title": "Jullia",
+   "artist": "S Project Band",
+   "language": "English",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-g039",
+   "audio": {
+    "path": "rwc/audio/RWC_G039.wav",
+    "sha256": "77431dc0bdeefae67498c543261e805723aab96fe26d3930a2c90ff8a3fe263c",
+    "bytes": 36939340,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 209.40644,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G039.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G039.mid",
+     "sha256": "bba30b01877f307e527666a358f905a77f9384218f5de1b47f6107ff0f8cb4cb",
+     "bytes": 41853
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g039.tsv",
+    "sha256": "a262991c559835df2c32455bc99c195dd4cfea81361b42414997263dba58198a"
+   }
+  },
+  {
+   "id": "rwc-g041",
+   "source_id": "RWC_G041",
+   "collection": "RWC-G",
+   "title": "Dance to the Samba",
+   "artist": "Sambars",
+   "language": "English",
+   "singers": "Female, Vocal group (mixed)",
+   "status": "scored",
+   "cluster": "rwc-g041",
+   "audio": {
+    "path": "rwc/audio/RWC_G041.wav",
+    "sha256": "bf16006e65db3142dbc8ecf6d620d45f706b1c00607b3f5eb0f17f8ee1ad0053",
+    "bytes": 43958816,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 249.199388,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G041.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G041.mid",
+     "sha256": "086c7d8aeba9b1e586f4df3bd12432f4df8ca61f533115f2cbe7598c5ea94b35",
+     "bytes": 93107
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g041.tsv",
+    "sha256": "269f49c4eec29964f2a8aa6e2c041efafb712f279948df58d60c6087afc8194c"
+   }
+  },
+  {
+   "id": "rwc-g045",
+   "source_id": "RWC_G045",
+   "collection": "RWC-G",
+   "title": "Where Are You?",
+   "artist": "On Band",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-g045",
+   "audio": {
+    "path": "rwc/audio/RWC_G045.wav",
+    "sha256": "c685896ad895d84448620bfbda04b9108bf4bfa9e7654926deb59b88cfffae12",
+    "bytes": 40502676,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 229.606757,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G045.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G045.mid",
+     "sha256": "6bbf721cfd60bffd5bc0ce59f23eae07b0c64e043aaf37bbc41151b99efcaaf5",
+     "bytes": 32541
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g045.tsv",
+    "sha256": "1c2f302f4b5b34a2382d0bfcc2a3f04aea494ed62645972682d4beeb352cccfd"
+   }
+  },
+  {
+   "id": "rwc-g066",
+   "source_id": "RWC_G066",
+   "collection": "RWC-G",
+   "title": "Dear John's Letter",
+   "artist": "22 Project Band",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-g066",
+   "audio": {
+    "path": "rwc/audio/RWC_G066.wav",
+    "sha256": "76f09a99da866100c95186e999936c64c695b7c34d66d1041fd1b81c00074ba7",
+    "bytes": 41534772,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 235.457642,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G066.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G066.mid",
+     "sha256": "fe8df4171367a4328c8a422a26d23f372f1273d6521dfb194aaa9697eccec1f4",
+     "bytes": 46791
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g066.tsv",
+    "sha256": "b33721845cef432193cb85162e82143b7846743fa2815d994811ce925689ab2f"
+   }
+  },
+  {
+   "id": "rwc-g067",
+   "source_id": "RWC_G067",
+   "collection": "RWC-G",
+   "title": "Dream Angel",
+   "artist": "Donna Burke",
+   "language": "English",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-g067",
+   "audio": {
+    "path": "rwc/audio/RWC_G067.wav",
+    "sha256": "aff0461b783e9adfa4313ddcd8701d10d97e171be81c9ffcf063ead9c64ced57",
+    "bytes": 42940740,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 243.427982,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G067.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G067.mid",
+     "sha256": "7ec2a09e319fcd47e4dd85b3f835bdc90f870fa0482f3a7a1d9e242c53b16cfe",
+     "bytes": 38308
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g067.tsv",
+    "sha256": "6773fc5233264828cea3513827f55f3bc147346a21f0fdc4ada3508bf491771d"
+   }
+  },
+  {
+   "id": "rwc-g069",
+   "source_id": "RWC_G069",
+   "collection": "RWC-G",
+   "title": "What Should I Tell Them?",
+   "artist": "Greg Irwin",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-g069",
+   "audio": {
+    "path": "rwc/audio/RWC_G069.wav",
+    "sha256": "75534a70e51c86846197d2d4d6cc372306e2c2969edf51d0d85f28a5ee4bea77",
+    "bytes": 45294800,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 256.772993,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G069.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G069.mid",
+     "sha256": "dfa99726a038a042d66b39dc4a63f46ee958088f296d10db504c1855c5573060",
+     "bytes": 12708
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g069.tsv",
+    "sha256": "d8401dee7dc1cfdda7e3a4eb2b688436c5b0ac226ce0ddfd445e2b02060f64d3"
+   }
+  },
+  {
+   "id": "rwc-g071",
+   "source_id": "RWC_G071",
+   "collection": "RWC-G",
+   "title": "Desperate Little Man",
+   "artist": "Banjo Club",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-g071",
+   "audio": {
+    "path": "rwc/audio/RWC_G071.wav",
+    "sha256": "979045db056a5f0769635c83451c0d78692d4bb95f02bc98bdff56f1d0543a21",
+    "bytes": 39461764,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 223.705896,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G071.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G071.mid",
+     "sha256": "524c0179506d6b6ff5f0ce448691a57fcf2d4fc617b39bc3c29e26b3a4100c54",
+     "bytes": 73669
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g071.tsv",
+    "sha256": "c333e0aa00149a2f486b8937bdc116156a70efd656b6d57a47dd4bbbb68552aa"
+   }
+  },
+  {
+   "id": "rwc-g073",
+   "source_id": "RWC_G073",
+   "collection": "RWC-G",
+   "title": "Not Enough Words",
+   "artist": "22 Project Band",
+   "language": "English",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-g073",
+   "audio": {
+    "path": "rwc/audio/RWC_G073.wav",
+    "sha256": "bc112c4e6185ce3f11bf0b378292e2db4413e8180142fd7296dbdef7cb8e8d14",
+    "bytes": 45476092,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 257.800726,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G073.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G073.mid",
+     "sha256": "ddfa2dc59fd7f9800f18caaac21d38f27cc148e9bce7f0dc2975eb929d4c5700",
+     "bytes": 31524
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g073.tsv",
+    "sha256": "b7112f085959c3518855314cc5221f81313bb4d236be86e3d4c862a93883dfa2"
+   }
+  },
+  {
+   "id": "rwc-g074",
+   "source_id": "RWC_G074",
+   "collection": "RWC-G",
+   "title": "With My Jalopy",
+   "artist": "22 Project Band",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-g074",
+   "audio": {
+    "path": "rwc/audio/RWC_G074.wav",
+    "sha256": "8864bfda9aa8b2f7ed1ffd68cf3a269b9a8b783312f3ea45ffc58f5e8f48c39c",
+    "bytes": 47761764,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 270.75805,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G074.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G074.mid",
+     "sha256": "662b3d2fe73209fe08e3d37144d74a3b674d685104c049d1ad50c22f501539d3",
+     "bytes": 77542
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g074.tsv",
+    "sha256": "3281c91e11b81848058f3a76f1919976ae916b648c674c5ca0963cbd886c711d"
+   }
+  },
+  {
+   "id": "rwc-g076",
+   "source_id": "RWC_G076",
+   "collection": "RWC-G",
+   "title": "Havini Tishi Tishi",
+   "artist": "Fresh Jumbe",
+   "language": null,
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-g076",
+   "audio": {
+    "path": "rwc/audio/RWC_G076.wav",
+    "sha256": "d98bd00aa9ecc07d2b9712ff337b4548c72bd45d6fb3a3c00b1896e315646bf2",
+    "bytes": 34463836,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 195.372971,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G076.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G076.mid",
+     "sha256": "e05a7a435a8e343693f73683f576a7b4ba2aab0e70598ee59c5e9f18e123b804",
+     "bytes": 38725
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g076.tsv",
+    "sha256": "8ebc7e517c0e397cc8237fd8298b0f1e2c22fcdd182bc760ab50f4c8d3be4937"
+   }
+  },
+  {
+   "id": "rwc-g077",
+   "source_id": "RWC_G077",
+   "collection": "RWC-G",
+   "title": "Kasheki",
+   "artist": "Fresh Jumbe",
+   "language": null,
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-g077",
+   "audio": {
+    "path": "rwc/audio/RWC_G077.wav",
+    "sha256": "e584c4bbb6d23794d627e061f47f09ce1e65047d52a1a67752ca5fdc18421ff7",
+    "bytes": 42788296,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 242.563787,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G077.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G077.mid",
+     "sha256": "2ce0bf54087521f7b12a7de426910b8486ba8537639acc2af4ce1158586013c0",
+     "bytes": 11054
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g077.tsv",
+    "sha256": "4df9a10032a4c86247612638315598b110075372a7a31a24f5cc66473d21fa5c"
+   }
+  },
+  {
+   "id": "rwc-g078",
+   "source_id": "RWC_G078",
+   "collection": "RWC-G",
+   "title": "Mwanambuzi",
+   "artist": "Fresh Jumbe",
+   "language": null,
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-g078",
+   "audio": {
+    "path": "rwc/audio/RWC_G078.wav",
+    "sha256": "2bbf8510bfaf2846656fd1f8dd00ab1acb861f03f671d6dd6aa1d81b35e5768d",
+    "bytes": 46574612,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 264.028163,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G078.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G078.mid",
+     "sha256": "3811ca6652daa25227a4d66d42263c9eb09bbdf6ea473a87cd2476b61193a8bc",
+     "bytes": 49775
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g078.tsv",
+    "sha256": "1bf7c8eeb22d9de13cde4a4584794dc866682e71d4c60acd90ad0789a5ce0961"
+   }
+  },
+  {
+   "id": "rwc-g083",
+   "source_id": "RWC_G083",
+   "collection": "RWC-G",
+   "title": "Tangos",
+   "artist": "Miguel de Badajoz",
+   "language": "Spanish",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-g083",
+   "audio": {
+    "path": "rwc/audio/RWC_G083.wav",
+    "sha256": "5fe4d44922fcc876fc3055b54945086111097d346eb1bb693f908142263ea42e",
+    "bytes": 55717924,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 315.860998,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G083.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G083.mid",
+     "sha256": "278a23c119dc4654ea3db3b5afd200038e28042757fcbab2c9fa07cc46f88511",
+     "bytes": 39395
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g083.tsv",
+    "sha256": "c9b390711682bc353d82c08b437e7836530419cce67528db5f2782574026c733"
+   }
+  },
+  {
+   "id": "rwc-g085",
+   "source_id": "RWC_G085",
+   "collection": "RWC-G",
+   "title": "Rue Saint-Vincent \"Rose Blanche\"",
+   "artist": "Monden Momo",
+   "language": "French",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-g085",
+   "audio": {
+    "path": "rwc/audio/RWC_G085.wav",
+    "sha256": "b9015cecf81f4a8aa39aca394c78477c127c8ed9c3855c53e53a0b0329d8b249",
+    "bytes": 42406444,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 240.399093,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G085.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G085.mid",
+     "sha256": "16504cf095e91fd0edd727d0434deea48aff10a0058fcf6a36575882ad759bf1",
+     "bytes": 7420
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g085.tsv",
+    "sha256": "405a0ecefd48f9d17180b141093933bbdf496187deb0e2f960393e6f4e66c67c"
+   }
+  },
+  {
+   "id": "rwc-g086",
+   "source_id": "RWC_G086",
+   "collection": "RWC-G",
+   "title": "Le Temps Des Cerises",
+   "artist": "Monden Momo",
+   "language": "French",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-g086",
+   "audio": {
+    "path": "rwc/audio/RWC_G086.wav",
+    "sha256": "c6c4bb7009138842d030d4e24c9165ac8fadbd2b9fef483fd24cbf043d2d8103",
+    "bytes": 40966868,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 232.238231,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G086.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G086.mid",
+     "sha256": "42903f5e3048115df5184fc4237c4e97aac454594c86f1ccfb48dde082bc7c8f",
+     "bytes": 9282
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g086.tsv",
+    "sha256": "60a1c994200a70919e288f452555823aa9897178f05269e75d6fc81530feb5ce"
+   }
+  },
+  {
+   "id": "rwc-g087",
+   "source_id": "RWC_G087",
+   "collection": "RWC-G",
+   "title": "Je Te Veux",
+   "artist": "Monden Momo",
+   "language": "French",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-g087",
+   "audio": {
+    "path": "rwc/audio/RWC_G087.wav",
+    "sha256": "086ba7cfbc9492bec6bcd6f06dadd53af54c52de4a67bd85943a395287a8cf32",
+    "bytes": 38349292,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 217.399365,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G087.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G087.mid",
+     "sha256": "d534d9a6a176652b62a85e8602767029fd94ea00811b3927d35157b393eeaa91",
+     "bytes": 13767
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g087.tsv",
+    "sha256": "d6deda905d1eff8587e80d94041c215f563ee9ccc66e45b31ebb07ba832f1df8"
+   }
+  },
+  {
+   "id": "rwc-g088",
+   "source_id": "RWC_G088",
+   "collection": "RWC-G",
+   "title": "Santa Lucia",
+   "artist": "Jun Aoki",
+   "language": "Italian",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-g088",
+   "audio": {
+    "path": "rwc/audio/RWC_G088.wav",
+    "sha256": "58c116cfcdfdcdd7e78afd2cb49786d3ee8337a3f2fd86423b32bbc3a7f929ea",
+    "bytes": 36399796,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 206.3478,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G088.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G088.mid",
+     "sha256": "a1c44849495844edafafc01ad793fa1180bffb8331094628ba188b8d60a8c9c3",
+     "bytes": 8093
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g088.tsv",
+    "sha256": "618397bf3cee29472670dd18e27a522e0c339109430252ee2161f53f042a7a51"
+   }
+  },
+  {
+   "id": "rwc-g089",
+   "source_id": "RWC_G089",
+   "collection": "RWC-G",
+   "title": "O Sole Mio",
+   "artist": "Jun Aoki",
+   "language": "Italian",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-g089",
+   "audio": {
+    "path": "rwc/audio/RWC_G089.wav",
+    "sha256": "bae96f22ff55eeaf553abc9f694db2ecbb5181cca783b064329052a1c10eae60",
+    "bytes": 40226700,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 228.042268,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G089.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G089.mid",
+     "sha256": "47c62dc415ff081d9e5a6841335355ca4684155e1b05cc85c3bebd4ea9480156",
+     "bytes": 7491
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g089.tsv",
+    "sha256": "1b1b79f493c2f617ba6a090d8004d0f781bd1246e417e04a9e8ecd09fccfcd70"
+   }
+  },
+  {
+   "id": "rwc-g090",
+   "source_id": "RWC_G090",
+   "collection": "RWC-G",
+   "title": "Turna A Surriento",
+   "artist": "Jun Aoki",
+   "language": "Italian",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-g090",
+   "audio": {
+    "path": "rwc/audio/RWC_G090.wav",
+    "sha256": "efe06be0207d859701b702481036a5c5d1b7535dea299201afb31ade7710d73f",
+    "bytes": 49212592,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 278.982698,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G090.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G090.mid",
+     "sha256": "1149294ec6d5332039a84b8e4491fb643b48e561614d1e68661debeefdcfdd94",
+     "bytes": 9564
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g090.tsv",
+    "sha256": "128f3c78daee9d5d3e2040fcdb40cb227c1176beb71541e68deabcc46fbbfe1f"
+   }
+  },
+  {
+   "id": "rwc-g091",
+   "source_id": "RWC_G091",
+   "collection": "RWC-G",
+   "title": "Tairyo Bune",
+   "artist": "Kazuo Nishi",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-g091",
+   "audio": {
+    "path": "rwc/audio/RWC_G091.wav",
+    "sha256": "a3a6e0caee61435538b71fdcb60ee051926484c876af72d2f8288e94106b968b",
+    "bytes": 47283360,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 268.046009,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G091.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G091.mid",
+     "sha256": "e4e303d0dda9d5bc8a15cd0a25a51bbd4e417a748d85da4dcfb89264436b6ab0",
+     "bytes": 69186
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g091.tsv",
+    "sha256": "a44299b48464828602978b3dbfe19ba728985693150c88a184fe493e46e4342e"
+   }
+  },
+  {
+   "id": "rwc-g092",
+   "source_id": "RWC_G092",
+   "collection": "RWC-G",
+   "title": "Kita no Komoriuta",
+   "artist": "Kazuo Nishi",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-g092",
+   "audio": {
+    "path": "rwc/audio/RWC_G092.wav",
+    "sha256": "30a29158ed315478018fb4673438ac546314b4354e32cc308b279af4e5639e08",
+    "bytes": 44771952,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 253.809002,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G092.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G092.mid",
+     "sha256": "9d34a97bc2557a148237809ce900f7bffe4f443e77e59e5feb566e8fd69ee7d6",
+     "bytes": 76598
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g092.tsv",
+    "sha256": "382d5952bf96e6ee49a6c74c9b9049f2025112978fc9bc5508beecda865ca3c4"
+   }
+  },
+  {
+   "id": "rwc-g093",
+   "source_id": "RWC_G093",
+   "collection": "RWC-G",
+   "title": "Ai Hitohira",
+   "artist": "Hiromi Yoshii",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-g093",
+   "audio": {
+    "path": "rwc/audio/RWC_G093.wav",
+    "sha256": "38ca3ca4a4d293bf07a9e8aa933acec664c0750c454511dffa52560cb6ca4b88",
+    "bytes": 44608076,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 252.88,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G093.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G093.mid",
+     "sha256": "f74c0bb4fea16a94adf03ca81119455caadb4968e69824666b0e03af27b9a2c5",
+     "bytes": 75390
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g093.tsv",
+    "sha256": "df0cfcbae51bc1065597f890d71049d682bfcfc5cb3c6f6e829296e84691c4ed"
+   }
+  },
+  {
+   "id": "rwc-g094",
+   "source_id": "RWC_G094",
+   "collection": "RWC-G",
+   "title": "Sado Okesa",
+   "artist": "Machi Watanabe",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-g094",
+   "audio": {
+    "path": "rwc/audio/RWC_G094.wav",
+    "sha256": "25faa242cd38d6c43468e228e5fc20c0f1f8e9f318ec87e455ec3ef00692ce4c",
+    "bytes": 33037468,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 187.286984,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G094.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G094.mid",
+     "sha256": "fdf3c5b7b204239d340345381958ae6625b7196cbbbdcdd6ce69e9811aa83c83",
+     "bytes": 9115
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g094.tsv",
+    "sha256": "ab6634430a9199b557fac3853a7f3c9c1f523c1b3fa574af31df7d62c5e5c355"
+   }
+  },
+  {
+   "id": "rwc-g095",
+   "source_id": "RWC_G095",
+   "collection": "RWC-G",
+   "title": "Nambu Ushioiuta",
+   "artist": "Machi Watanabe",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-g095",
+   "audio": {
+    "path": "rwc/audio/RWC_G095.wav",
+    "sha256": "f4198b8a0d110ff5a5c718a35980e2cd9a70b60f5c43780bfc7dc89819fed86d",
+    "bytes": 35453852,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 200.985306,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G095.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G095.mid",
+     "sha256": "a6e350ef118eb8f829bfcba6ae7d04830fe71fb052b15861ed777229e6a10299",
+     "bytes": 2609
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g095.tsv",
+    "sha256": "a0a184b74cc3042094af71d499905e7fa38c923117e0298201c53c75b9a78f54"
+   }
+  },
+  {
+   "id": "rwc-g096",
+   "source_id": "RWC_G096",
+   "collection": "RWC-G",
+   "title": "Soran Bushi",
+   "artist": "Machi Watanabe",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-g096",
+   "audio": {
+    "path": "rwc/audio/RWC_G096.wav",
+    "sha256": "f74088794bd767b5dbb1bddbbea126a3a90547c29405de1688a7c144ac16537c",
+    "bytes": 22903064,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 129.835714,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G096.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G096.mid",
+     "sha256": "d898d30499345df7098edbe0be36e6db03d52566e5bbee3dcfd05987fecd2746",
+     "bytes": 13879
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g096.tsv",
+    "sha256": "2aa070386ace23782096fdff1f3947256620b9d30fba22ab37d848a54b19bf5d"
+   }
+  },
+  {
+   "id": "rwc-g100",
+   "source_id": "RWC_G100",
+   "collection": "RWC-G",
+   "title": "Precious Love",
+   "artist": "Dik",
+   "language": "English",
+   "singers": "Vocal group ( 2 male + 2 female)",
+   "status": "scored",
+   "cluster": "rwc-g100",
+   "audio": {
+    "path": "rwc/audio/RWC_G100.wav",
+    "sha256": "6c05939d751c7777dcbf67d59e7e5521216a5ea134838c79305f4adccd0e348a",
+    "bytes": 34588028,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 196.077007,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-G/RWC_G100.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-G/RWC_G100.mid",
+     "sha256": "7e25320adb58c14f84905fa3edf7cf3980932e4dbcba0ae5bc2dc47b7d7bebd0",
+     "bytes": 11034
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-g100.tsv",
+    "sha256": "4b30d3d16556bbd3fec0008513d8f2c998a7e801df432bda70d79c4230d93b78"
+   }
+  },
+  {
+   "id": "rwc-j036",
+   "source_id": "RWC_J036",
+   "collection": "RWC-J",
+   "title": "Dance Together",
+   "artist": "Nathan Ingram III",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-j036",
+   "audio": {
+    "path": "rwc/audio/RWC_J036.wav",
+    "sha256": "86f77ff8d73384de52e00864de193749a243b446573a2a721407366e08d60630",
+    "bytes": 38900476,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 220.523991,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-J/RWC_J036.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-J/RWC_J036.mid",
+     "sha256": "9d247b83aa2a2be4067b8478a8b1a998b9df4c7bfd41c4c0b603936bfcc71fcd",
+     "bytes": 19501
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-j036.tsv",
+    "sha256": "0d28adf65a9c7af2764e51dc55ba08de5344315e7b0d172e97f2db30a8a528de"
+   }
+  },
+  {
+   "id": "rwc-j037",
+   "source_id": "RWC_J037",
+   "collection": "RWC-J",
+   "title": "Aura Lee",
+   "artist": "Aoi Kato",
+   "language": "English",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-j037",
+   "audio": {
+    "path": "rwc/audio/RWC_J037.wav",
+    "sha256": "89b262d4224de7a17abda9ea2dfee054cdf4defb35b7f1ed584e143429a150a2",
+    "bytes": 25245176,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 143.112993,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-J/RWC_J037.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-J/RWC_J037.mid",
+     "sha256": "447ce54c4d028657c64b3634f7ff53e2c40b7810dc21193f0654c6c2bcceea4f",
+     "bytes": 17914
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-j037.tsv",
+    "sha256": "6c4ae2fd5c7f61b00cff36759c6160d92848dcbe3c20928ac6e6699233bccf5c"
+   }
+  },
+  {
+   "id": "rwc-r001",
+   "source_id": "RWC_R001",
+   "collection": "RWC-R",
+   "title": "Chou chou",
+   "artist": "Hiromi Asakawa",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-r001",
+   "audio": {
+    "path": "rwc/audio/RWC_R001.wav",
+    "sha256": "f915ba5dfc7bc597d034d84fd362bc4a991df082862f44cabf7f487df2266685",
+    "bytes": 22076344,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 125.149093,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-R/RWC_R001.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-R/RWC_R001.mid",
+     "sha256": "57676e2f619048c1c5fb82339b2db719fcb51fd4eb7fcdf13fb57df553c62b46",
+     "bytes": 31842
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-r001.tsv",
+    "sha256": "4ab7b3899d31c0ceed59d7b1839cbeaaa8da6e99e97dc02f62fddc19b69ce59e"
+   }
+  },
+  {
+   "id": "rwc-r002",
+   "source_id": "RWC_R002",
+   "collection": "RWC-R",
+   "title": "Musunde hiraite",
+   "artist": "Hiromi Asakawa",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-r002",
+   "audio": {
+    "path": "rwc/audio/RWC_R002.wav",
+    "sha256": "d39d24655233f7939689835e0113c7fd9f4d108ff9ff851eaa259650ad3e268e",
+    "bytes": 22584996,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 128.032608,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-R/RWC_R002.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-R/RWC_R002.mid",
+     "sha256": "bbea8c741af6af4c324cddf6b590d8ff650feb3cb95d5cca0ce9c432944c24e3",
+     "bytes": 24142
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-r002.tsv",
+    "sha256": "7b8b53d28b41fd9f568e745ef66c7b3979c265678160f03f93088725170cc04d"
+   }
+  },
+  {
+   "id": "rwc-r003",
+   "source_id": "RWC_R003",
+   "collection": "RWC-R",
+   "title": "Akai kutsu",
+   "artist": "Hiromi Asakawa",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-r003",
+   "audio": {
+    "path": "rwc/audio/RWC_R003.wav",
+    "sha256": "eeb54224339de9b4caa45461a4b171a5bb25c048aa8c2678a8bd169a74db0834",
+    "bytes": 31163908,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 176.665896,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-R/RWC_R003.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-R/RWC_R003.mid",
+     "sha256": "4887bc6aed62d8813082d953602a19b4ec50d018099dc7b89654e011524be17f",
+     "bytes": 15314
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-r003.tsv",
+    "sha256": "b395e5aabdb1634666a04e349ec362b4feae5a1fa17573b8aebf2fc9ccc64377"
+   }
+  },
+  {
+   "id": "rwc-r004",
+   "source_id": "RWC_R004",
+   "collection": "RWC-R",
+   "title": "Nanatsu no ko",
+   "artist": "Hiromi Asakawa",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-r004",
+   "audio": {
+    "path": "rwc/audio/RWC_R004.wav",
+    "sha256": "1764bb0425ea5ee89bee827fa1c65918ad13888f9b88a097f92104229aaf7e2c",
+    "bytes": 22308784,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 126.46678,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-R/RWC_R004.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-R/RWC_R004.mid",
+     "sha256": "a210850f10181d7711b217df45e2883f9c37901bc69c1e95fdced23db1cf0898",
+     "bytes": 10241
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-r004.tsv",
+    "sha256": "861737f8c8a8ff6ed7e43eb122fcdffe4a155b5ea6d3c005b673b4be59134895"
+   }
+  },
+  {
+   "id": "rwc-r005",
+   "source_id": "RWC_R005",
+   "collection": "RWC-R",
+   "title": "Momotaro",
+   "artist": "Hiromi Asakawa",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-r005",
+   "audio": {
+    "path": "rwc/audio/RWC_R005.wav",
+    "sha256": "ce0cbf61101bcc3137f15557b142ecc7bd2fb2609b48954d9cbce39c0b8eb0fb",
+    "bytes": 22641628,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 128.353651,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-R/RWC_R005.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-R/RWC_R005.mid",
+     "sha256": "3e2b88e8b9c5421888b17c5d6c301608e13084ab0092cf0f4fab84d1b97fef31",
+     "bytes": 35768
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-r005.tsv",
+    "sha256": "a90918234600868c801d31cd87a1f17011519f38966fdf053b3d35caa9f57704"
+   }
+  },
+  {
+   "id": "rwc-r006",
+   "source_id": "RWC_R006",
+   "collection": "RWC-R",
+   "title": "Jingle Bells",
+   "artist": "Donna Burke",
+   "language": "English",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-r006",
+   "audio": {
+    "path": "rwc/audio/RWC_R006.wav",
+    "sha256": "9275b0bf855b59112d015b5bd05d6008f845f93e651e24fb152d4b56a1b565ff",
+    "bytes": 20876248,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 118.345828,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-R/RWC_R006.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-R/RWC_R006.mid",
+     "sha256": "76a0a8fc4c577ae97da5158670457292025a03e5f1eba094de336ce629f15c5b",
+     "bytes": 29194
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-r006.tsv",
+    "sha256": "b0a657d81964ac5c0a381ed2e1c6c1ec5908e556be0fbb4a8fedbc07f0b093d1"
+   }
+  },
+  {
+   "id": "rwc-r007",
+   "source_id": "RWC_R007",
+   "collection": "RWC-R",
+   "title": "Mary Had A Little Lamb",
+   "artist": "Donna Burke",
+   "language": "English",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-r007",
+   "audio": {
+    "path": "rwc/audio/RWC_R007.wav",
+    "sha256": "f311a4d22c5d28787a336ae05d4c192d36b6d4ad76fdf5f7472c8ab26646f0e6",
+    "bytes": 21650748,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 122.736417,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-R/RWC_R007.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-R/RWC_R007.mid",
+     "sha256": "d23e9136ca9bff60cad7460a67a59cd926e12228b9096bbdae8c63cc6662d036",
+     "bytes": 21991
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-r007.tsv",
+    "sha256": "d847152fa390f44722ddd777d572742b2cccf4c5c188e4bb6ba25279eb51ca80"
+   }
+  },
+  {
+   "id": "rwc-r008",
+   "source_id": "RWC_R008",
+   "collection": "RWC-R",
+   "title": "I've Been Workin' On The Railroad",
+   "artist": "Jeff Manning",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-r008",
+   "audio": {
+    "path": "rwc/audio/RWC_R008.wav",
+    "sha256": "ca9c3c7458556a0e5e17069d567745b0842fb4006f38737bd482d7c691ff905a",
+    "bytes": 21887656,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 124.079433,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-R/RWC_R008.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-R/RWC_R008.mid",
+     "sha256": "8ca96bddc5f6e5cc10bf3f6b2a9c7e383d85ef1c4903f767a9e705910ebcef39",
+     "bytes": 38549
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-r008.tsv",
+    "sha256": "baa3c36780c1308c108cddbd2330ef31fb4ffc92dc91a4e967635fe0d72a1b53"
+   }
+  },
+  {
+   "id": "rwc-r009",
+   "source_id": "RWC_R009",
+   "collection": "RWC-R",
+   "title": "Home on the Range",
+   "artist": "Jeff Manning",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-r009",
+   "audio": {
+    "path": "rwc/audio/RWC_R009.wav",
+    "sha256": "059c343eab709f21e6e397abfa1ace0f3f027611176b0cbbe6c04183a82fc496",
+    "bytes": 26931344,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 152.671769,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-R/RWC_R009.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-R/RWC_R009.mid",
+     "sha256": "3e481121f29ec7dbf5dc7f2463ef584af9737ab9e48ed2e45d77655128564476",
+     "bytes": 29301
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-r009.tsv",
+    "sha256": "6aa92dd67f28d2986577226a8929fad5a07f8c6db064e7f849affc7796c0a345"
+   }
+  },
+  {
+   "id": "rwc-r010",
+   "source_id": "RWC_R010",
+   "collection": "RWC-R",
+   "title": "Yankee Doodle",
+   "artist": "Jeff Manning",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-r010",
+   "audio": {
+    "path": "rwc/audio/RWC_R010.wav",
+    "sha256": "9e1e60ff6312afa03bf2de66fc02906b3b56bca88ba452b8a25ea27820a27782",
+    "bytes": 25390764,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 143.938322,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-R/RWC_R010.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-R/RWC_R010.mid",
+     "sha256": "10e1264bf0f6ace63c80e080a759b9aa85b917996d2e7fd7ab35f1ebce2e1901",
+     "bytes": 31400
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-r010.tsv",
+    "sha256": "6a12c71f78337af90d7d7df5d1e27cb2721c4c03fdcc729979f260da219b9465"
+   }
+  },
+  {
+   "id": "rwc-r011",
+   "source_id": "RWC_R011",
+   "collection": "RWC-R",
+   "title": "John Brown Had A Little Indian",
+   "artist": "Donna Burke",
+   "language": "English",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-r011",
+   "audio": {
+    "path": "rwc/audio/RWC_R011.wav",
+    "sha256": "c32e97f1a30f8c316444c1697e4d5a7e838b6ae8af83c1600dbfd2f8a4e1e0a3",
+    "bytes": 22671732,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 128.524308,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-R/RWC_R011.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-R/RWC_R011.mid",
+     "sha256": "a9d79c7c86ee3f1e9c2fa2e08f7b270eba38876fc908125c1afa2600ff91b23e",
+     "bytes": 24147
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-r011.tsv",
+    "sha256": "624fdf19a21e8f3607359917520e4f9740c87404cab1bdd6fffac6b46216a758"
+   }
+  },
+  {
+   "id": "rwc-r012",
+   "source_id": "RWC_R012",
+   "collection": "RWC-R",
+   "title": "When the Saints Go Marching in",
+   "artist": "Jeff Manning",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-r012",
+   "audio": {
+    "path": "rwc/audio/RWC_R012.wav",
+    "sha256": "0d06e0ffbd3ebbd1ea05f71882a46363092857eacd7395f459a0cac762adcef6",
+    "bytes": 21679748,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 122.900816,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-R/RWC_R012.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-R/RWC_R012.mid",
+     "sha256": "330b06c51fa06970267159636517175e9f04207159ce1c83a503dbb0a7a994c4",
+     "bytes": 40369
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-r012.tsv",
+    "sha256": "1fb0f485d688f9c0f2ebc7a276eb4d05ce0fd5e8bf6407f8a10045baef3f1cf8"
+   }
+  },
+  {
+   "id": "rwc-r013",
+   "source_id": "RWC_R013",
+   "collection": "RWC-R",
+   "title": "Silent Night",
+   "artist": "Donna Burke",
+   "language": "English",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-r013",
+   "audio": {
+    "path": "rwc/audio/RWC_R013.wav",
+    "sha256": "eaa323637bb3cb68887fc2f54b22563949903006848347143f93d0b71ccd352c",
+    "bytes": 20555080,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 116.525147,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-R/RWC_R013.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-R/RWC_R013.mid",
+     "sha256": "d49a6a536534318eb3ab4c30c4143e723416d032b7a351d28c0e5e7708dee9fa",
+     "bytes": 8730
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-r013.tsv",
+    "sha256": "fde8f863c1f8993d948f0fc6c6ec49d8fadd83d9f16f42943424ea177f2101e6"
+   }
+  },
+  {
+   "id": "rwc-r014",
+   "source_id": "RWC_R014",
+   "collection": "RWC-R",
+   "title": "Turkey In The Straw",
+   "artist": "Donna Burke",
+   "language": "English",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-r014",
+   "audio": {
+    "path": "rwc/audio/RWC_R014.wav",
+    "sha256": "ec3bf391cf2fdb9cc9b0d2cc04366958416e6d6e67c164663b060d3896ec367e",
+    "bytes": 21647636,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 122.718776,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-R/RWC_R014.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-R/RWC_R014.mid",
+     "sha256": "a101628803214ec32ac04d1d987a089dff66ee8ed29ecc4c3bae6fe31ebcaf31",
+     "bytes": 40637
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-r014.tsv",
+    "sha256": "79ffd8ace2bc99dd6357061275359e6758656e931100997202f5c1aaf22a3916"
+   }
+  },
+  {
+   "id": "rwc-r015",
+   "source_id": "RWC_R015",
+   "collection": "RWC-R",
+   "title": "My Bonny",
+   "artist": "Jeff Manning",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-r015",
+   "audio": {
+    "path": "rwc/audio/RWC_R015.wav",
+    "sha256": "70ef7d297a146982e943bb7085a140231b11f33297e26a34810bebff7d414dfc",
+    "bytes": 18736224,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 106.214172,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-R/RWC_R015.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-R/RWC_R015.mid",
+     "sha256": "8155bdb129556d6b2cd94792d2435bfece2b1ffb800209c5177b063bbf00e972",
+     "bytes": 15721
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-other-vocal/rwc-r015.tsv",
+    "sha256": "52fe5aa80cf6ea0a731ca5adc4b04cbed322098be18b8ad5cb6fa33d9240eccb"
+   }
+  }
+ ]
+}

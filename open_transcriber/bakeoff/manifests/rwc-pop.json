@@ -1,0 +1,5247 @@
+{
+ "format": "copyist-judge-manifest/1",
+ "source": {
+  "audio": {
+   "record": "https://zenodo.org/records/17177919",
+   "doi": "10.5281/zenodo.17177919",
+   "download": "https://zenodo.org/api/records/17177919/files/RWC-CGJPR.zip/content",
+   "file": "RWC-CGJPR.zip",
+   "bytes": 13418904710,
+   "md5": "272309ed06121e6ed2ac5c8f55664baa",
+   "sha256": "0a064310a3d233e0a8b0819bbb1a718c11bafa51cf28cfa97b96dd5614f7e48c"
+  },
+  "annotations": {
+   "url": "https://github.com/rwc-music/rwc-annotations",
+   "commit": "0a1a6c31dbe73a7f5d44f7caef8cd0999402a4c2"
+  },
+  "archive": {
+   "url": "https://github.com/rwc-music/rwc-annotations-archive",
+   "commit": "994499597853664890b517711f97df9f47c0358a"
+  }
+ },
+ "licence": "CC BY-NC 4.0 (RWC 2.0 audio, rwc-annotations and the AIST archive)",
+ "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+ "credit": "RWC Music Database (Goto et al., 2002-2003), re-released as RWC 2.0 under CC BY-NC 4.0 (Zenodo 10.5281/zenodo.17177919); annotations from rwc-music/rwc-annotations",
+ "shared_annotations": [
+  {
+   "path": "rwc/annotations/metadata.csv",
+   "sha256": "eba3fe129f835db58a9c23dad554547201ab02ef3af90c10857ef5b50b8b99da",
+   "bytes": 48516
+  },
+  {
+   "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/metadata_mapping_vocals.csv",
+   "sha256": "3b720432af1c9a5168908cf94aa46e184f7e7771904818f6b6848e64a4727dc1",
+   "bytes": 4491
+  },
+  {
+   "path": "rwc/annotations/01_annotations_preprocessed/melody/metadata_mapping_melody_annotations.csv",
+   "sha256": "de2bf3507befa55e8e86ab13b580c4944fefd83a0cca276fb9590b8ad624fec0",
+   "bytes": 2602
+  }
+ ],
+ "set": "rwc-pop",
+ "title": "RWC 2.0 Popular Music (RWC-P): all 100 songs",
+ "notes": "SheetSage2's own test (RWC-Pop vocal and full melody). 80 Japanese, 20 English.",
+ "items": [
+  {
+   "id": "rwc-p001",
+   "source_id": "RWC_P001",
+   "collection": "RWC-P",
+   "title": "Eien no replica",
+   "artist": "Kazuo Nishi",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p001",
+   "audio": {
+    "path": "rwc/audio/RWC_P001.wav",
+    "sha256": "59d9deb0eb2cc1b79dc78ea93ea385225a29779cba7fce5bcae369bff4c3ad99",
+    "bytes": 36544532,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 207.168299,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P001.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P001.mid",
+     "sha256": "cbc172b52c751035277c640a8640f915d7074c056aeac5b62d14bd799d38c1ee",
+     "bytes": 62693
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P001.csv",
+     "sha256": "5f17bc0ba71580ca98db31d97379a57b2dd9a77416aed3182adabf39a1467e58",
+     "bytes": 428275
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P001.VOCA_INST.TXT",
+     "sha256": "d2d6bfd883aa7a514c6344fa2a4a218af2ff67cdd43fc59776b7062300338aaa",
+     "bytes": 2090
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P001.SMF_SYNC.MID",
+     "sha256": "236df5eb357dd6aca0e97d48ca1b196113c3a7d4d53cb69319ccc333b574df65",
+     "bytes": 82586
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p001.tsv",
+    "sha256": "63e96cfd673e399c5c716f3e10a255f3f5e5a4599be1bd1698961b98f8c612e7"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p001.tsv",
+    "sha256": "e2a1cb441d345d2828cc019369f35192999de3dc452ef128e8ff67f7635a69d9"
+   }
+  },
+  {
+   "id": "rwc-p002",
+   "source_id": "RWC_P002",
+   "collection": "RWC-P",
+   "title": "Magic in your eyes",
+   "artist": "Hiromi Yoshii",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p002",
+   "audio": {
+    "path": "rwc/audio/RWC_P002.wav",
+    "sha256": "fe852b1b33c7f619ed80a32a47f1a28ce0fc8b54d00f3dcbcef852c715862f0f",
+    "bytes": 38926080,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 220.669138,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P002.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P002.mid",
+     "sha256": "3ed796b72dd9723299f920500dd1938e30fdc1f779e7e22831e1e142ba6bf54c",
+     "bytes": 44735
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P002.csv",
+     "sha256": "2b25c271f5f67a50415e33678fb7c2d3a1f701df743f90587655212c9d041fef",
+     "bytes": 448277
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P002.VOCA_INST.TXT",
+     "sha256": "7932479705548f6c37a2532654b14f37e63405969b2a21c86e190b47c03d3a5c",
+     "bytes": 2321
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P002.SMF_SYNC.MID",
+     "sha256": "7a2c843dd4f3e9780053ad42bfbc64064f47a6cb81b2a487a602026b189ea47c",
+     "bytes": 58674
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p002.tsv",
+    "sha256": "0003012983b7f1292850bdd61b9c410cc7b1242ef4016c61ba111fe33d1af7bb"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p002.tsv",
+    "sha256": "8730c9d06e26edf304c973568999e3d887b4ed7a84a4e36505b15c4cbe229d97"
+   }
+  },
+  {
+   "id": "rwc-p003",
+   "source_id": "RWC_P003",
+   "collection": "RWC-P",
+   "title": "HORO",
+   "artist": "MIT",
+   "language": "Japanese",
+   "singers": "Vocal group (1 male + 1 female)",
+   "status": "scored",
+   "cluster": "rwc-p003",
+   "audio": {
+    "path": "rwc/audio/RWC_P003.wav",
+    "sha256": "616975c69a27b48f6777d17c9528efb1995a7d15a488326460b290e8e3ae12b6",
+    "bytes": 34102660,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 193.325488,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P003.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P003.mid",
+     "sha256": "9c0c333ef48e89a667e675e756ee58954c81c7455c1bad7eb4d5504279ef2a95",
+     "bytes": 42891
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P003.csv",
+     "sha256": "6c06da4331407c6a03d734921e65dac674d9733590b5a63b06168098707a1e57",
+     "bytes": 401823
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P003.VOCA_INST.TXT",
+     "sha256": "a103610f555dd6363de0677bb43ff1c71a668ad487c267a2ed2e341783796c81",
+     "bytes": 1986
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P003.SMF_SYNC.MID",
+     "sha256": "45a9567de3bc11fd14298319f88cc73555b8d51c553ef5ba6f0a43d546ec0d46",
+     "bytes": 58829
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p003.tsv",
+    "sha256": "eb5d0e2471a84bbeff97d14d2dea90b042b5fd2ca4a87b199da6bf17e2aad66e"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p003.tsv",
+    "sha256": "eb5d0e2471a84bbeff97d14d2dea90b042b5fd2ca4a87b199da6bf17e2aad66e"
+   }
+  },
+  {
+   "id": "rwc-p004",
+   "source_id": "RWC_P004",
+   "collection": "RWC-P",
+   "title": "Spice of Life",
+   "artist": "Hisayoshi Kazato",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p004",
+   "audio": {
+    "path": "rwc/audio/RWC_P004.wav",
+    "sha256": "d320a5216652a7e8936f24512da8ed1f1e342e4c3288dd475b611a24906ab250",
+    "bytes": 42418492,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 240.467392,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P004.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P004.mid",
+     "sha256": "f4d2ad72d76debfc56a00b0033ce260955a9b4e3f387a5ee1f4f9d383f01a3a4",
+     "bytes": 70509
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P004.csv",
+     "sha256": "af7d1d823ac69e9b61dc8c740c683e3dde57ab27c651d3e8e13098a5be26adfc",
+     "bytes": 485779
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P004.VOCA_INST.TXT",
+     "sha256": "1248f78c85c58fbf404b4478192a92a6cdd84c4a8b0279f141613f5014e84bd6",
+     "bytes": 1609
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P004.SMF_SYNC.MID",
+     "sha256": "b744ccf6dd1e3ea1676ab3654308e9dbca7d2090d2eebc22c9da03c8be51ca13",
+     "bytes": 91389
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p004.tsv",
+    "sha256": "66d2de2db89ca0efcab412829040ef9c237ba282dac8e98faad87a13733970fd"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p004.tsv",
+    "sha256": "66d2de2db89ca0efcab412829040ef9c237ba282dac8e98faad87a13733970fd"
+   }
+  },
+  {
+   "id": "rwc-p005",
+   "source_id": "RWC_P005",
+   "collection": "RWC-P",
+   "title": "Koino Ver.2.4",
+   "artist": "Eves",
+   "language": "Japanese",
+   "singers": "Vocal group (4 female)",
+   "status": "scored",
+   "cluster": "rwc-p005",
+   "audio": {
+    "path": "rwc/audio/RWC_P005.wav",
+    "sha256": "1be39e29afd7e213d00d009c561dd24edef7b450f819f8fd3438acbc3c2bc179",
+    "bytes": 39880356,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 226.078866,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P005.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P005.mid",
+     "sha256": "25d1657c9ea8774613b97df7f4c1377df46db2aad0f427d0f1ed633e6aa3d75a",
+     "bytes": 90640
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P005.csv",
+     "sha256": "11359d134b56f39ceafb36160498b7b77cfca24eccf732cf5d9e0f97a2bf7aef",
+     "bytes": 469131
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P005.VOCA_INST.TXT",
+     "sha256": "4bd67d5bb8d7fdc8cbc9673709ce2a23b07defa55f05e386e941b9d850a4e66c",
+     "bytes": 1924
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P005.SMF_SYNC.MID",
+     "sha256": "14c67d8d5af7136b6b0c0adf8f455bf6552e95c2918110b126692ff712d5416f",
+     "bytes": 120495
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p005.tsv",
+    "sha256": "f319470c504dc068c533769f2162bed50a11005bf2d68b82fe0bbb7c961daa92"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p005.tsv",
+    "sha256": "9302561613d90514797b334b541c18fc68a5bc60036712db84f09a21b3971353"
+   }
+  },
+  {
+   "id": "rwc-p006",
+   "source_id": "RWC_P006",
+   "collection": "RWC-P",
+   "title": "Funky Life",
+   "artist": "Oriken",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p006",
+   "audio": {
+    "path": "rwc/audio/RWC_P006.wav",
+    "sha256": "30e2272326dbdd8b82bce30db2ac507a7844d6e0a6adb48c37f936bd01d84118",
+    "bytes": 36080556,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 204.53805,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P006.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P006.mid",
+     "sha256": "482be527fe68814e6a32f7c4673de7cfccf2428950582433b6229508394f5752",
+     "bytes": 122886
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P006.csv",
+     "sha256": "3f0e03a8db9b439cce6a6038e04beb373c713cbbbbf9c3d48a110fcff9bc0c19",
+     "bytes": 417491
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P006.VOCA_INST.TXT",
+     "sha256": "b1f3a7270611b43aa9617f87ab855ca9d3507e02215e0910193b0b6520d5ee35",
+     "bytes": 2425
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P006.SMF_SYNC.MID",
+     "sha256": "f1c2d441db9e01dd822dbaf76ee2e87addd13d61415a86714ad70c6275ba2267",
+     "bytes": 139150
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p006.tsv",
+    "sha256": "a1776c67c67015adb0a31201f7581da5d8d0f2e1932cc4e1c9a7fd46a96f4632"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p006.tsv",
+    "sha256": "a1776c67c67015adb0a31201f7581da5d8d0f2e1932cc4e1c9a7fd46a96f4632"
+   }
+  },
+  {
+   "id": "rwc-p007",
+   "source_id": "RWC_P007",
+   "collection": "RWC-P",
+   "title": "PROLOGUE",
+   "artist": "Tomomi Ogata",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p007",
+   "audio": {
+    "path": "rwc/audio/RWC_P007.wav",
+    "sha256": "acfbe3c5ae85cc7db9f139c03bd59d403d03bc07348fb3cada99575897eb70f4",
+    "bytes": 52328284,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 296.645351,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P007.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P007.mid",
+     "sha256": "737acc657421a6f11c3b20cef1452eab56d672de2c56e295d89e46750a1d3808",
+     "bytes": 100042
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P007.csv",
+     "sha256": "d527f60efe448d779a9ca1a5f84563c5dbb36dcff599fee5c4804d4762f920da",
+     "bytes": 613687
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P007.VOCA_INST.TXT",
+     "sha256": "35c609220387620c66ef83782e5510afdb0764515deb3d7092efafe02d2b0dc3",
+     "bytes": 2037
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P007.SMF_SYNC.MID",
+     "sha256": "7dba5fbc0e66e0a3ce5d434d69c8c0eff35980775fba70c5b00275d3c16c2d30",
+     "bytes": 126376
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p007.tsv",
+    "sha256": "f5694666c34afc5527320470792016639c8b68f5ad4ac95e8f8dc9131dc94b6f"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p007.tsv",
+    "sha256": "18b76b4f9a0eea2ec9128df912f90aa11a2626dcc1f48d0ec02cd20726126923"
+   }
+  },
+  {
+   "id": "rwc-p008",
+   "source_id": "RWC_P008",
+   "collection": "RWC-P",
+   "title": "Jinsei konnamono",
+   "artist": "fevers",
+   "language": "Japanese",
+   "singers": "Vocal group (2 female)",
+   "status": "scored",
+   "cluster": "rwc-p008",
+   "audio": {
+    "path": "rwc/audio/RWC_P008.wav",
+    "sha256": "ee047fedb8b5a746d520ea5184991c96b3485c8e8367c9e7e9625e7faee6ad1a",
+    "bytes": 33543844,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 190.157596,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P008.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P008.mid",
+     "sha256": "0d1345868342c77ac7430a5835148da5eaa643529c1c738f8fdafb63059ae321",
+     "bytes": 60193
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P008.csv",
+     "sha256": "64ff524479950af5bb116b9a6140b73a459c74392617785ec2a45c17e43adbf2",
+     "bytes": 389687
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P008.VOCA_INST.TXT",
+     "sha256": "ca335049c8d0813ebc7bf9efcf0f5475844463b1907c71dc1b27d756e78a5a52",
+     "bytes": 1077
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P008.SMF_SYNC.MID",
+     "sha256": "f48a70362fbb13f10ee8bdb5dfc3f73660423418dbf00ef5228ebc53f1e0e5f0",
+     "bytes": 80928
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p008.tsv",
+    "sha256": "4b0eab5475d0cb9cfef23a4c1bf81c09663d46a256366ace9b2d8614df0e8e2e"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p008.tsv",
+    "sha256": "46b4a3c4f686691b9a748151882dd912e87db6946a9348ed93c23604598216c7"
+   }
+  },
+  {
+   "id": "rwc-p009",
+   "source_id": "RWC_P009",
+   "collection": "RWC-P",
+   "title": "Doukoku",
+   "artist": "Kazuo Nishi",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p009",
+   "audio": {
+    "path": "rwc/audio/RWC_P009.wav",
+    "sha256": "5d9cce0c2041da7beffe0f04fc6b85636502d86cd49aaef7236469810aaca25b",
+    "bytes": 48510068,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 275.000136,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P009.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P009.mid",
+     "sha256": "8b75bb481a46137539a870d0e79de80e77a8b3fd205f35c2b95d438824ea67ae",
+     "bytes": 77296
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P009.csv",
+     "sha256": "0cf1b6a0b41cd56f5d7b6750e327c21fc54d1e6cb1611af95b94319acce46f95",
+     "bytes": 568684
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P009.VOCA_INST.TXT",
+     "sha256": "72e1014e387697f62392cc715d96cfe7a4a1479e7999438de63aed450a12a73c",
+     "bytes": 2229
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P009.SMF_SYNC.MID",
+     "sha256": "160935762aa2f62f82c25695ea74499373d4d8c4b90ebafb15738cc48ab1157e",
+     "bytes": 101877
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p009.tsv",
+    "sha256": "aab9594d2cdcbe07c0e0d9c22daf10282761795832296d7cba84012abade9d25"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p009.tsv",
+    "sha256": "678929cc7e5a6fa84b9daeda41c586fe1f3c6757a79b836ff848bb938f9ee1de"
+   }
+  },
+  {
+   "id": "rwc-p010",
+   "source_id": "RWC_P010",
+   "collection": "RWC-P",
+   "title": "Getting Over",
+   "artist": "Brakes",
+   "language": "Japanese",
+   "singers": "Vocal group (3 female)",
+   "status": "scored",
+   "cluster": "rwc-p010",
+   "audio": {
+    "path": "rwc/audio/RWC_P010.wav",
+    "sha256": "e8f2d2b545a89451f101695963db51443c206eeb55ec079491ce00983e1a675b",
+    "bytes": 37690052,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 213.662177,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P010.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P010.mid",
+     "sha256": "acd266d41cc9a6e20774b4138f33c085d7bcf36f8f333e7f959486ba40d69752",
+     "bytes": 64028
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P010.csv",
+     "sha256": "12c0f128905e55a8af3eb5459cd306bc283df629fc4643f21557dd81cdf996ac",
+     "bytes": 437945
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P010.VOCA_INST.TXT",
+     "sha256": "68fd547274844949827f87b24ee60f1699ad70f740bb900a452e5a8baa4e3411",
+     "bytes": 934
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P010.SMF_SYNC.MID",
+     "sha256": "bcb8888c05cba76114c5f6b47843a4af52f14a67f3a46d113e1a6db6e385000a",
+     "bytes": 79248
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p010.tsv",
+    "sha256": "2313324843543b5bc9b62508d75c2f0b6480494ba1d33fe30435ccde30cb70fe"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p010.tsv",
+    "sha256": "82dc902285ed5932fd1d7c7386e5d4b8d1ad79692da284f6a8882ea5aa52cc89"
+   }
+  },
+  {
+   "id": "rwc-p011",
+   "source_id": "RWC_P011",
+   "collection": "RWC-P",
+   "title": "Ienai",
+   "artist": "Hisayoshi Kazato",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p011",
+   "audio": {
+    "path": "rwc/audio/RWC_P011.wav",
+    "sha256": "64c3041f138e4cdc7f0e6dcb37cdb0d3324e35425c37739b5abd98a87c062ba2",
+    "bytes": 46903460,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 265.892381,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P011.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P011.mid",
+     "sha256": "76e97d90090162123b2b231af4b23d14fe2a305caf9e02598acb5904893ad350",
+     "bytes": 56508
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P011.csv",
+     "sha256": "8386c14d08191ff1ec6bb8b6141b4b0ea81c7c841e98d045447061e63e446920",
+     "bytes": 541441
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P011.VOCA_INST.TXT",
+     "sha256": "5f02cf677b63902d6a3a4c6bc58f424303862957f3627a2f8123e8daa6656949",
+     "bytes": 2349
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P011.SMF_SYNC.MID",
+     "sha256": "d99c6ffba1dabb752d240dfebeb854a60dbb9cc25e4952d850a6a88a43f4ebc0",
+     "bytes": 73779
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p011.tsv",
+    "sha256": "89e7db368cf5881562081628ca02b55ab6233450cea278400b488f76cda5b296"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p011.tsv",
+    "sha256": "89e7db368cf5881562081628ca02b55ab6233450cea278400b488f76cda5b296"
+   }
+  },
+  {
+   "id": "rwc-p012",
+   "source_id": "RWC_P012",
+   "collection": "RWC-P",
+   "title": "KAGE-ROU",
+   "artist": "Kazuo Nishi",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p012",
+   "audio": {
+    "path": "rwc/audio/RWC_P012.wav",
+    "sha256": "0de530f501ffc02a61f0876b745ed51fb92efffbde210349194a5c2b1b263980",
+    "bytes": 35779840,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 202.833311,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P012.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P012.mid",
+     "sha256": "ef0ed4088752b3b59183911f591a3045a569e0776b5a04ca5ad9c484b7b21192",
+     "bytes": 67852
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P012.csv",
+     "sha256": "f7feaac51c8d605ee6a1560baa08e0ff8a1fc624baeffe7411fb80b3d67da0f7",
+     "bytes": 413513
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P012.VOCA_INST.TXT",
+     "sha256": "05816a8188bd340a093710e0d464ad9ab76abc71246ced1bdd18f68633b5f2de",
+     "bytes": 2050
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P012.SMF_SYNC.MID",
+     "sha256": "1e4352cd480df91530792ea5be0d41a91a6de6229b7879ceee618d25bccb03ad",
+     "bytes": 89127
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p012.tsv",
+    "sha256": "2fdb662d5a245287507715f5136e320350c708ecfee1ba25e65ea90b6f2a5497"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p012.tsv",
+    "sha256": "2b70a5829feebdef933bd70e532029672a8d9fea174e02e7a67d74a68f32ff39"
+   }
+  },
+  {
+   "id": "rwc-p013",
+   "source_id": "RWC_P013",
+   "collection": "RWC-P",
+   "title": "Catch ball",
+   "artist": "Konbu",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p013",
+   "audio": {
+    "path": "rwc/audio/RWC_P013.wav",
+    "sha256": "cab3e78f03679dc25ef4df66837e8ced7f5b5cd51122a3d905d19040f890eaf6",
+    "bytes": 38289472,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 217.060249,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P013.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P013.mid",
+     "sha256": "4a98c35e0f735b7e90a081ce2722f27a2fb325fa58a741b6d062a592b3b2715f",
+     "bytes": 56488
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P013.csv",
+     "sha256": "ffa775a0650d274a5ca48402a556df869cb87812c4ed90f1036b65d23ade38e5",
+     "bytes": 449437
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P013.VOCA_INST.TXT",
+     "sha256": "0036fddbdc8fda18b449a061fb3d51d588ffedd6f17488e134898eb99b168036",
+     "bytes": 1972
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P013.SMF_SYNC.MID",
+     "sha256": "9b96b907e9d305eb6cac81af65ee4f251c94e8f7c36fae597c69d76634f8f077",
+     "bytes": 74410
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p013.tsv",
+    "sha256": "11a08bcf4fadbb0aa8a6d62ebfb54d6a06e7c13929409beaec61cdbc516f155c"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p013.tsv",
+    "sha256": "ddd7c2cc17c8db2b86763c630badcc60cf8c31383c3c7cc02174df9a2d2e26a1"
+   }
+  },
+  {
+   "id": "rwc-p014",
+   "source_id": "RWC_P014",
+   "collection": "RWC-P",
+   "title": "Karehairo no Twilight",
+   "artist": "Rin",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p014",
+   "audio": {
+    "path": "rwc/audio/RWC_P014.wav",
+    "sha256": "ed0e0cc2eba75517315d9855097893f986cdbe032570ebbdb9054a22268c4f8d",
+    "bytes": 41087004,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 232.919274,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P014.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P014.mid",
+     "sha256": "06265cdc178a020e2086d82ecfbc5bbcf1cf64451fb812d2a607f3f2c48cdd6d",
+     "bytes": 44005
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P014.csv",
+     "sha256": "cd1107cf7a898462f03e33378eda24f1c32b83f15952be21950d1a1e2a45a20d",
+     "bytes": 474237
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P014.VOCA_INST.TXT",
+     "sha256": "07f395c2992400a73b1de8590427e4ea18d4edb96cac292ffbeab884fcebe809",
+     "bytes": 1855
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P014.SMF_SYNC.MID",
+     "sha256": "03185983ea0be90dc32a52fc5f13f3748e6baf84f6c14ea9853cfd91a242b28e",
+     "bytes": 59296
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p014.tsv",
+    "sha256": "c609fadad703d2e26fb9ce2f135b4fb822d95b20cc216314f3f91aeef0fda6aa"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p014.tsv",
+    "sha256": "a5b6cd658fef16875b30300269b8b1782cf4ea0334e9b63e8899e1e38a1466ca"
+   }
+  },
+  {
+   "id": "rwc-p015",
+   "source_id": "RWC_P015",
+   "collection": "RWC-P",
+   "title": "old fashioned",
+   "artist": "Katsuyuki Ozawa",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p015",
+   "audio": {
+    "path": "rwc/audio/RWC_P015.wav",
+    "sha256": "abd84376bb5a01cb3f14b856bb685fd59083123e4a818d5703247efbc07e5b39",
+    "bytes": 28376800,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 160.865964,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P015.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P015.mid",
+     "sha256": "6d494cfec4682fc5d58008d186916ccf8c04f5e5ef1a4cad187c457c70bedc92",
+     "bytes": 48803
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P015.csv",
+     "sha256": "e50b45c523c12003f8e8cbce0c549c9553cc3be415d971ec5731bf2832b8a380",
+     "bytes": 327313
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P015.VOCA_INST.TXT",
+     "sha256": "d7e1acc7c3b420940fcc00054d0c9ab392a80b9f96857d636836ba63318ca4f6",
+     "bytes": 451
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P015.SMF_SYNC.MID",
+     "sha256": "353315735e6de88be1c592e51d17f3f5f6f92de469fbf1a96b06fdaf4ffd5d08",
+     "bytes": 67157
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p015.tsv",
+    "sha256": "7678d88caa68a30bf9378713e06bf781c233a28cbd35acf3ed32c6f4043fad1e"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p015.tsv",
+    "sha256": "7678d88caa68a30bf9378713e06bf781c233a28cbd35acf3ed32c6f4043fad1e"
+   }
+  },
+  {
+   "id": "rwc-p016",
+   "source_id": "RWC_P016",
+   "collection": "RWC-P",
+   "title": "Game of Love",
+   "artist": "Hiromi Yoshii",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p016",
+   "audio": {
+    "path": "rwc/audio/RWC_P016.wav",
+    "sha256": "4ed4ddaf74de148e76e211201dcb34fe5d0937ba2328bfb2cb6d73010824171e",
+    "bytes": 46236072,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 262.109002,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P016.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P016.mid",
+     "sha256": "7fb828611d8a1ed560008ca1fb28146b00b5b1c056af68869df2700c6b857718",
+     "bytes": 121776
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P016.csv",
+     "sha256": "6dc6ee8e5c2c60488a892a3d3b36787ca5812c5a9e7e7efa4e3830b5aec32f70",
+     "bytes": 533051
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P016.VOCA_INST.TXT",
+     "sha256": "17af324bc0626ab9eda8221b4589279ab8dacc7a164aab7d6fbe37340057df94",
+     "bytes": 1526
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P016.SMF_SYNC.MID",
+     "sha256": "b7271ea1f93b5dac2e6217d5df810bb811059246a5b75adc018935392fbc4f4b",
+     "bytes": 158439
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p016.tsv",
+    "sha256": "aa46becf36a8fa04f97bae15611873df8fd6b78339466ad36ec5c06553c857fc"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p016.tsv",
+    "sha256": "490c8fed0d86d2dd4b735d2f4b160102a38f881cb539d0001f3dbdf6af3568ca"
+   }
+  },
+  {
+   "id": "rwc-p017",
+   "source_id": "RWC_P017",
+   "collection": "RWC-P",
+   "title": "Anata to aete",
+   "artist": "Hiromi Yoshii",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p017",
+   "audio": {
+    "path": "rwc/audio/RWC_P017.wav",
+    "sha256": "720ede02ce180bee8abef09e3e76f2553fa935e181bbc9387f75a5c5104ffd82",
+    "bytes": 42231924,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 239.409751,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P017.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P017.mid",
+     "sha256": "2cbbec8b451203ff79de75ccba7111d669f37f017f641731f114a97f07bd2466",
+     "bytes": 86923
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P017.csv",
+     "sha256": "681cf6dfc92de7aaf9833d2ce51abba410cbd7fee7ef83ac63e877ad1fea3c51",
+     "bytes": 492545
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P017.VOCA_INST.TXT",
+     "sha256": "aec33b578e24f4dac945496108f16799219a9c9e7cc18b840b71b11d05f3eb6e",
+     "bytes": 1933
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P017.SMF_SYNC.MID",
+     "sha256": "5540cb6b79c990a2773f023b16c2e7654b44cf029bbbf25c3a8e2d9357c56c13",
+     "bytes": 115576
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p017.tsv",
+    "sha256": "f2cb2d04fb62e09a1f5177925c2d339b9091658235bfe49366b645900ff20dc1"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p017.tsv",
+    "sha256": "4abc51d511424ada8976008de7268f648097f2d18b5325c0dc6c8f584d872ed0"
+   }
+  },
+  {
+   "id": "rwc-p018",
+   "source_id": "RWC_P018",
+   "collection": "RWC-P",
+   "title": "True Heart",
+   "artist": "Tomomi Ogata",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p018",
+   "audio": {
+    "path": "rwc/audio/RWC_P018.wav",
+    "sha256": "2240a53f3bedefa65fca3b0c4bd5402a0dda31e06c567dd6b1714dfecb790063",
+    "bytes": 44465628,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 252.072472,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P018.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P018.mid",
+     "sha256": "52b90a9976fad4d9aefa6b213263a181a07e7d1d5b69eee20b5e1650c49c11ff",
+     "bytes": 78097
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P018.csv",
+     "sha256": "cf5f738abab641a33f897f8217c06881f6ca3dafd42a3dc9706bf831297aa7a4",
+     "bytes": 522385
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P018.VOCA_INST.TXT",
+     "sha256": "5ec38e41a93ac8e3e4288959786eecdbec58f5323447d6c898b328ddc2baa94f",
+     "bytes": 1917
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P018.SMF_SYNC.MID",
+     "sha256": "90718b4bd4202eab1b107834c23258156adde5f2330682fef174b5f414086f05",
+     "bytes": 105094
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p018.tsv",
+    "sha256": "aad030536dd2be58a229e5e2eb250b995ec30b54967f160b974484bf4c3f47e6"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p018.tsv",
+    "sha256": "ddedb259b3f2cdb3ff7ae73912278c065ac41578681ad4cb250c571927db5057"
+   }
+  },
+  {
+   "id": "rwc-p019",
+   "source_id": "RWC_P019",
+   "collection": "RWC-P",
+   "title": "COOL Motion",
+   "artist": "Hisayoshi Kazato",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p019",
+   "audio": {
+    "path": "rwc/audio/RWC_P019.wav",
+    "sha256": "8df8187549ef0ed90b3d84672f5b204f0793a25e49f468b3f12b4305c52a7512",
+    "bytes": 50628336,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 287.008458,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P019.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P019.mid",
+     "sha256": "765c9119ae697270b158c4d0a407b5dece6996c27848e29a5b8e0a54d6d3c721",
+     "bytes": 151462
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P019.csv",
+     "sha256": "c549026d107336f2a73833219f5dfa20422e670a01f6b7ee0593bc749e0ada3a",
+     "bytes": 586211
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P019.VOCA_INST.TXT",
+     "sha256": "246daeb8fcfc01bbb0e5af4cfca11cea54c46d43ca26ef55129d5d9b99dbe88d",
+     "bytes": 1739
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P019.SMF_SYNC.MID",
+     "sha256": "9de1d779843dd2e387b5b89f8475b4b2d30a04815393c2b0c21eaf912309c5ab",
+     "bytes": 187246
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p019.tsv",
+    "sha256": "62c4ff4377cb3c393cf917c1962a27327dba0c186f014832790e60badde52213"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p019.tsv",
+    "sha256": "0749e667a6ab8294bfc8a93105033db13359801a02f8ad6299e473230332c577"
+   }
+  },
+  {
+   "id": "rwc-p020",
+   "source_id": "RWC_P020",
+   "collection": "RWC-P",
+   "title": "Tokimeki no syunkan",
+   "artist": "Eri Ichikawa",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p020",
+   "audio": {
+    "path": "rwc/audio/RWC_P020.wav",
+    "sha256": "73384534ba357f645efb2cdc1cf6119b089e610dd93ab04d9a6ad96fdd92a1fe",
+    "bytes": 43768192,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 248.118753,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P020.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P020.mid",
+     "sha256": "24a402771d9f2ef5ce366f8fb293990e983597bf5eade898e39f203b39638dc5",
+     "bytes": 43593
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P020.csv",
+     "sha256": "f661cf080e7f3523a6a75bb931ef3a7847293d5b42a5169be9645738e2d42e99",
+     "bytes": 509615
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P020.VOCA_INST.TXT",
+     "sha256": "8e3b6ddb200bd4e9ba4874fbdf6bbabaa0ea5f967de6a838ecd385246a54aa1d",
+     "bytes": 1155
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P020.SMF_SYNC.MID",
+     "sha256": "12f34743272443aa66f73b71abdf18768b34201bfaab41b6117ff38360a610d4",
+     "bytes": 60220
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p020.tsv",
+    "sha256": "1a4751066826992342c75d3419606b0b3f3b3923c58f2aa828e04bc7c06a0e5a"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p020.tsv",
+    "sha256": "d58da35f1938f58beddfac83c9e83fad88f9d769ea8909fee50c8bb769c27d9f"
+   }
+  },
+  {
+   "id": "rwc-p021",
+   "source_id": "RWC_P021",
+   "collection": "RWC-P",
+   "title": "Feeling In My Heart",
+   "artist": "Rin",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p021",
+   "audio": {
+    "path": "rwc/audio/RWC_P021.wav",
+    "sha256": "98830540ce9d6a76ac88e2d8b31acd32e47d34b1c81d93958032fa725889bd66",
+    "bytes": 47085092,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 266.922041,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P021.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P021.mid",
+     "sha256": "deb5a6e644f2bf0d8772121dde9fe7c397b4db559abd49485cadd0480796951f",
+     "bytes": 71380
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P021.csv",
+     "sha256": "2e9368a48f287928f434fc6060102170f83046f6f0f972f4444d69ee0b1c3975",
+     "bytes": 546321
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P021.VOCA_INST.TXT",
+     "sha256": "553dbc9f3c13b399f5cb7da349ab23abbe1a1b1ddad98894098332ede98cc4f2",
+     "bytes": 2490
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P021.SMF_SYNC.MID",
+     "sha256": "09bf1adc9435a9073b6e3b49b07b7e3a60ffee105150ecf41ac3cebe406b72d8",
+     "bytes": 96232
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p021.tsv",
+    "sha256": "0c71dd078c8353074103a692c39b9b49840f58eb65c2838d170100a97e97d429"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p021.tsv",
+    "sha256": "b83b3184a01d0b60e195e196fbf98cd4c6688386ae12dba2ac672cffec5ce8de"
+   }
+  },
+  {
+   "id": "rwc-p022",
+   "source_id": "RWC_P022",
+   "collection": "RWC-P",
+   "title": "Koi ni ochiru jikan ni kansuru kousatsu",
+   "artist": "Kazuo Nishi",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p022",
+   "audio": {
+    "path": "rwc/audio/RWC_P022.wav",
+    "sha256": "07fd63355c58657de377664113d8e64f58052e756f5e631e0b734f9b07dffd0e",
+    "bytes": 36601184,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 207.489456,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P022.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P022.mid",
+     "sha256": "8d00105a99755a4207bc0f41cf5dc32094d6797bc66e3ff00bbb5b81fcb266a9",
+     "bytes": 58738
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P022.csv",
+     "sha256": "866e53518dbac14d5ba4c994a85c528b668c117ec320586d19a5969acbaecdca",
+     "bytes": 421887
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P022.VOCA_INST.TXT",
+     "sha256": "33ff2177de9dc29d367223200e97fe5c8fc7924e0c9fb5f3a4a1784b70f466f5",
+     "bytes": 1925
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P022.SMF_SYNC.MID",
+     "sha256": "aa0214fe7d8e52595e2fa0a30300f16658e4aae0b24e7ff4f12b58ce3c17b9df",
+     "bytes": 78431
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p022.tsv",
+    "sha256": "07e18d0c5c1aa3d6591232d5f7432476e8321303626a4d1d268b32a2cf6809c8"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p022.tsv",
+    "sha256": "4814f6028f9ac23495a4491a6ea78d46fbab886b10074f127ba2ce1df96c9ed9"
+   }
+  },
+  {
+   "id": "rwc-p023",
+   "source_id": "RWC_P023",
+   "collection": "RWC-P",
+   "title": "SHAKE",
+   "artist": "MAPS",
+   "language": "Japanese",
+   "singers": "Vocal group (2 male)",
+   "status": "scored",
+   "cluster": "rwc-p023",
+   "audio": {
+    "path": "rwc/audio/RWC_P023.wav",
+    "sha256": "727be8ab58b3d270f3e15de1f9c89049e7dbac546dea3e6b4135050cd03cd58c",
+    "bytes": 35130016,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 199.149501,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P023.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P023.mid",
+     "sha256": "d99ec2869ad96babb6a79f8f1d7316c72a6849862958a226ef5187355a2d525a",
+     "bytes": 86001
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P023.csv",
+     "sha256": "2d544893f6f3a6c377d86259c3b109dc4c3c05eb674ffc46e19c99d298b4db4c",
+     "bytes": 408851
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P023.VOCA_INST.TXT",
+     "sha256": "e7da7b362e85d92eed9f6bebc2784209aed00c5af4081d9a1f86158e725b0cb1",
+     "bytes": 2008
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P023.SMF_SYNC.MID",
+     "sha256": "d5097cced5c0d37fe3ca1179124c604c5ab400fdc4f5637c6c4211fde7b1ac3a",
+     "bytes": 114368
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p023.tsv",
+    "sha256": "c1570a1acc7b8e9c12b40cf376f673b5a6a9536bc19405b8037f4d51cf19f014"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p023.tsv",
+    "sha256": "d08e67541e1b2a81a3a2289f4f6417c27cd5baa26f7f075eef2aa93d1c60ffff"
+   }
+  },
+  {
+   "id": "rwc-p024",
+   "source_id": "RWC_P024",
+   "collection": "RWC-P",
+   "title": "it's all right",
+   "artist": "Hisayoshi Kazato",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p024",
+   "audio": {
+    "path": "rwc/audio/RWC_P024.wav",
+    "sha256": "44d0ca5d43c4b88bf4a115366fd30bc60f6e1319a55543efb1bd8ef981ecaee7",
+    "bytes": 42022324,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 238.221542,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P024.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P024.mid",
+     "sha256": "d69a95fb6801085b42eaa7b92aca1fbff3bc90ef462e9aa2db74decc9d6ef03f",
+     "bytes": 68498
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P024.csv",
+     "sha256": "356c41d8d549c88ad2683fc69497293e8e060f2a11b4caa54b7de9da64c9a2ab",
+     "bytes": 490349
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P024.VOCA_INST.TXT",
+     "sha256": "776563df5c943e90e198a083871711b2b0749563d8c0bf73f000d8d5fa683f57",
+     "bytes": 1125
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P024.SMF_SYNC.MID",
+     "sha256": "5aee08e357855b613fb3be212d9d1ba2a988237c827790230bededbe8abffb06",
+     "bytes": 90761
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p024.tsv",
+    "sha256": "f3e5285212c3a0f457927805b6f46794cf4ffbe586ba820e31fbff6c783caf2a"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p024.tsv",
+    "sha256": "f3e5285212c3a0f457927805b6f46794cf4ffbe586ba820e31fbff6c783caf2a"
+   }
+  },
+  {
+   "id": "rwc-p025",
+   "source_id": "RWC_P025",
+   "collection": "RWC-P",
+   "title": "tell me",
+   "artist": "Tomomi Ogata",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p025",
+   "audio": {
+    "path": "rwc/audio/RWC_P025.wav",
+    "sha256": "17746487f2aa56c0fd4d6e7c15461e2a79127dd9db4cceb1d69787bc50488287",
+    "bytes": 44881780,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 254.43161,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P025.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P025.mid",
+     "sha256": "358bcfc8f8e0dfd75eda71b21a7467620ada35f2b79a65ead11a6502dc69836d",
+     "bytes": 63710
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P025.csv",
+     "sha256": "32eade7b51e61351eb8dccc79785f83ddad6cf8e8518f430b86ffa306e26e476",
+     "bytes": 520251
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P025.VOCA_INST.TXT",
+     "sha256": "f7795a7e3eaf412fb25c15c02ae4dabb735a09fcdd73e1f5f2f40b04719f5834",
+     "bytes": 1931
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P025.SMF_SYNC.MID",
+     "sha256": "b2005c386f21358b7b47b9a1f78ced620dd93b7ede4b8ba26d77c196c979ab64",
+     "bytes": 83054
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p025.tsv",
+    "sha256": "ae2a612dc76eae3d940c0228dff1741eaed02b4afa6399d1ff0ebe7a90645984"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p025.tsv",
+    "sha256": "91208efe7e7984bd158e53c59d2ceba8fa3ed19f04fbc96d37c3793fe0cb01e9"
+   }
+  },
+  {
+   "id": "rwc-p026",
+   "source_id": "RWC_P026",
+   "collection": "RWC-P",
+   "title": "aozora sanpo michi",
+   "artist": "Tomoko Nitta",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p026",
+   "audio": {
+    "path": "rwc/audio/RWC_P026.wav",
+    "sha256": "d65d164dffe25d87910293ef4f3926f079581547b58791dadcdba40a5a50f8fc",
+    "bytes": 36165384,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 205.018934,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P026.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P026.mid",
+     "sha256": "ba35d6395931386ccfe64573942c926d7839f2c153d955ee468d9fbfcaf6fd46",
+     "bytes": 77030
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P026.csv",
+     "sha256": "2e20ed61aa5ff6e6c87bbfd2a027eee63e457d1eca153e79685524939ed60762",
+     "bytes": 421064
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P026.VOCA_INST.TXT",
+     "sha256": "0abeb2d582116fa6beffb65c9099b93a264976b00ca300338862760a3cd856b9",
+     "bytes": 2158
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P026.SMF_SYNC.MID",
+     "sha256": "d3a4be343d11c1273f5a8c8a4423a4b8e7f03e22c33c0986685886b2795076b3",
+     "bytes": 100787
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p026.tsv",
+    "sha256": "e108fcc53a5c89bfbf0bd37bf659c74b0c93cff6761c4628834e16c99f10497e"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p026.tsv",
+    "sha256": "2b19f21c93de9674c555ba7d59a3d36e8cb443285de81dadb9d41648812fa4ae"
+   }
+  },
+  {
+   "id": "rwc-p027",
+   "source_id": "RWC_P027",
+   "collection": "RWC-P",
+   "title": "stay",
+   "artist": "Shingo Katsuta",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p027",
+   "audio": {
+    "path": "rwc/audio/RWC_P027.wav",
+    "sha256": "f0ace3ddd924539944bf04a161fa90f19c728e7875753d5bf118f5bd214f8480",
+    "bytes": 55814912,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 316.410816,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P027.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P027.mid",
+     "sha256": "9d74becf37ee9576af1cc7b6129ce1b7d3042955670ba58a94b6ee59ac90ef4d",
+     "bytes": 39652
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P027.csv",
+     "sha256": "7d7a4a9758b4708b775458aa46189bf2aeaf446e6bb7f9f324c7887a2fb2836c",
+     "bytes": 653681
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P027.VOCA_INST.TXT",
+     "sha256": "dc2d94db7de7791e5ed1770be1ced6ddd9e8523f13676e705a3565d55c772402",
+     "bytes": 1577
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P027.SMF_SYNC.MID",
+     "sha256": "05ca9fe7182fbeb2bb6a6610e7e9a48d7cda4ef6803a6530303076e467c52879",
+     "bytes": 56481
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p027.tsv",
+    "sha256": "b546ac0dadc991053cacb87099c4804228ce08912a96e4d6e70556c067efd8bb"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p027.tsv",
+    "sha256": "b39010ff0eeb801a6657408bc6469e7d312f619171c1c840879673482129be70"
+   }
+  },
+  {
+   "id": "rwc-p028",
+   "source_id": "RWC_P028",
+   "collection": "RWC-P",
+   "title": "Fly away",
+   "artist": "Tomomi Ogata",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p028",
+   "audio": {
+    "path": "rwc/audio/RWC_P028.wav",
+    "sha256": "bcf4fade86e188721c9cbc37727ab1c42c833ed7120fc2c7a0c6c9ccf2f46fab",
+    "bytes": 43915092,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 248.951519,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P028.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P028.mid",
+     "sha256": "6bf3c17e9bbd31dc57e5a0021fa912b0378007edd813dfb76e2783692da32da0",
+     "bytes": 84900
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P028.csv",
+     "sha256": "0eed5f0f9c4216c9d872b7e4364463f270d89fb0863f97790f2852e573cb04f2",
+     "bytes": 509491
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P028.VOCA_INST.TXT",
+     "sha256": "4918346b6ec90820b8b85cc7e2c37c0f7e849a9784f6718d640a150477cf7bd4",
+     "bytes": 2342
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P028.SMF_SYNC.MID",
+     "sha256": "d6a7e7e0daab8ed218030c8be90eff7062f559a2ee3368d41b04d50592f4922f",
+     "bytes": 112487
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p028.tsv",
+    "sha256": "9632a15ffd91b1c89a85d1776c980879bfc2f8ee6dcda0a2631743daa8dd95a4"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p028.tsv",
+    "sha256": "746d049fc3250d4aa7f71082b4fc3ba8a8dadbf244f13d524688e0dd984ae7db"
+   }
+  },
+  {
+   "id": "rwc-p029",
+   "source_id": "RWC_P029",
+   "collection": "RWC-P",
+   "title": "One Two STEP",
+   "artist": "Kazuo Nishi",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p029",
+   "audio": {
+    "path": "rwc/audio/RWC_P029.wav",
+    "sha256": "727c9bd60767634d6a18db969c382e00383d88049fc953484548d94a24ad4427",
+    "bytes": 37584136,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 213.061746,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P029.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P029.mid",
+     "sha256": "6e8612faf1780ff0d34e3fee618ad17bf2bdf8c5ea90c9387207f1a204b6b875",
+     "bytes": 72474
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P029.csv",
+     "sha256": "4c63274f7655f15e8dfed52ca51502a4486a18223cc213e050273b9aed8cb1aa",
+     "bytes": 432347
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P029.VOCA_INST.TXT",
+     "sha256": "4813f3a6cbff9dde3953b11f6c6f3b932d4efde4a8eb2b3dffd68aa022b862b3",
+     "bytes": 1610
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P029.SMF_SYNC.MID",
+     "sha256": "88ab546016227e5a7f1d07197c38a863ef2579e1e1db52b5b8e2124dd1a58204",
+     "bytes": 95138
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p029.tsv",
+    "sha256": "0d06a99d1b1f5802a0ce7323559dffd2d1a24754f69838bb7c2256c7f14372ce"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p029.tsv",
+    "sha256": "c2bc817a8be2377893a83bb31a21809f16bf4882a6b517ec4b4775606d82590a"
+   }
+  },
+  {
+   "id": "rwc-p030",
+   "source_id": "RWC_P030",
+   "collection": "RWC-P",
+   "title": "syounen no omoi",
+   "artist": "Mitsuru Tanimoto",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p030",
+   "audio": {
+    "path": "rwc/audio/RWC_P030.wav",
+    "sha256": "d7c3de473294e02a174c3e829e38c137fc65385501d516dda6aa8e6bda159ff4",
+    "bytes": 34232680,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 194.062562,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P030.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P030.mid",
+     "sha256": "31c81c1b9b263e5513c5aa55b0826fe570934e05ae250d3904b28026a8d3473e",
+     "bytes": 51826
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P030.csv",
+     "sha256": "9e0172a11b8188320269969afd214963e5c09b089ab6c2e16c3aa1fe6ff403d8",
+     "bytes": 395266
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P030.VOCA_INST.TXT",
+     "sha256": "770d3584e92cb0d6dd89a05d911d4efe9f233a125a54370274467e4ab92ec5bd",
+     "bytes": 3770
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P030.SMF_SYNC.MID",
+     "sha256": "b1f21502c44d2f9914c9e793edda3e7e690f84b2cc56cabd42b5bd9a778a96e6",
+     "bytes": 66844
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p030.tsv",
+    "sha256": "037097152d9c87846f94859fef4236451e3477f5067e6b3557f3b502e4ab65bd"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p030.tsv",
+    "sha256": "037097152d9c87846f94859fef4236451e3477f5067e6b3557f3b502e4ab65bd"
+   }
+  },
+  {
+   "id": "rwc-p031",
+   "source_id": "RWC_P031",
+   "collection": "RWC-P",
+   "title": "Moving Round and Round",
+   "artist": "Yuuichi Nagayama",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p031",
+   "audio": {
+    "path": "rwc/audio/RWC_P031.wav",
+    "sha256": "17f0617c9763e207a7eceaeeef5246ce6ac6c8cf3a54157779714a63ef6e4491",
+    "bytes": 43779204,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 248.181179,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P031.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P031.mid",
+     "sha256": "d5f5b798ed4f327c901f4dbd41a36dba0be5af3b53e7d4681ed626839fb38678",
+     "bytes": 79199
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P031.csv",
+     "sha256": "0352a7213a47b7756e18e5b34da2dc6fe989ea3de3418ecf11441c7a0f4bda77",
+     "bytes": 500655
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P031.VOCA_INST.TXT",
+     "sha256": "9bb5a3035cad32be379752c9035183707bd8d7860aee63bf793a4a350e0e97f5",
+     "bytes": 1922
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P031.SMF_SYNC.MID",
+     "sha256": "3faba485d4f1f3241b02c9afc3d0ea361ed17d137effd3b9f8b9d76867a46304",
+     "bytes": 106048
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p031.tsv",
+    "sha256": "29401f889a7c725e2da628f12fcbb9e08c2d36db8da6e6253996779bb539bf89"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p031.tsv",
+    "sha256": "973930853693dcdc3f85402e33ed4004572672f3e4903ff6de065987ceca7db1"
+   }
+  },
+  {
+   "id": "rwc-p032",
+   "source_id": "RWC_P032",
+   "collection": "RWC-P",
+   "title": "what could I do for you",
+   "artist": "Masaki Kuehara",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p032",
+   "audio": {
+    "path": "rwc/audio/RWC_P032.wav",
+    "sha256": "10c018cc456c73a7414c53767b3f35eabb5f300e31b041e1b432cf138f352412",
+    "bytes": 44460700,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 252.044535,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P032.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P032.mid",
+     "sha256": "b304e256cbe27630076a02311cd8efc9c4ce15c8a42b9308c842d5e88e3efa33",
+     "bytes": 60944
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P032.csv",
+     "sha256": "2f8a56b30f5b6de9033e609cc0957493f155e73bd47c01f800a7829d1342dcb9",
+     "bytes": 515047
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P032.VOCA_INST.TXT",
+     "sha256": "3f0aaf349df83b0b522b92fb84ecfc8ff444ff4df9becf6642fb034f1f837bbd",
+     "bytes": 1992
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P032.SMF_SYNC.MID",
+     "sha256": "83225adbbe7d67a9e39be6734110abd2e83ce8cbf7bbc339fead8ed19a6c5af3",
+     "bytes": 76802
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p032.tsv",
+    "sha256": "34653cb52bfd26b33c5a04456bac5c24f33ade4d5f4c484381934eb9d0b0029a"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p032.tsv",
+    "sha256": "735d20ca808764d79af9ebbdfa20eb8adef7a92ab5277caea89bf92d4c98660e"
+   }
+  },
+  {
+   "id": "rwc-p033",
+   "source_id": "RWC_P033",
+   "collection": "RWC-P",
+   "title": "DREAM MAGIC",
+   "artist": "Hiromi Yoshii",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p033",
+   "audio": {
+    "path": "rwc/audio/RWC_P033.wav",
+    "sha256": "ea8d14c12a3ba5bf91a48c0c29ae666a24bcc8218083b83608ed73ee3d492f44",
+    "bytes": 50269648,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 284.975079,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P033.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P033.mid",
+     "sha256": "342653721a6296581d78767f5c806dd282bbf9a112cb434863608206155d3a45",
+     "bytes": 58466
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P033.csv",
+     "sha256": "9bcf8eb490e52d4b786b6d740718fe84d8ae6a4d6d78f11c6790f504d9065e56",
+     "bytes": 583837
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P033.VOCA_INST.TXT",
+     "sha256": "53ec56fad32b4a0c2ede6cd1e4432eef8849469b001bae5a05de97101d8b6696",
+     "bytes": 2404
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P033.SMF_SYNC.MID",
+     "sha256": "a08e4b9b126490af31b5ab78a35de2ab48874bff4da26994cee3e58513dea8ee",
+     "bytes": 74644
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p033.tsv",
+    "sha256": "c8bf2e4f1c7b44381a5d591bf9c56e1e6578786222ce05f3c394301e83dc10bf"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p033.tsv",
+    "sha256": "fcb53759f20c7ffd6d2e0f9b9ca8635878f5ab000e69067801bc436cb0ffa193"
+   }
+  },
+  {
+   "id": "rwc-p034",
+   "source_id": "RWC_P034",
+   "collection": "RWC-P",
+   "title": "Hitoyo no yume",
+   "artist": "Hiromi Yoshii",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p034",
+   "audio": {
+    "path": "rwc/audio/RWC_P034.wav",
+    "sha256": "aead4732caf8e9557fc1368c8907262d48f3c7d22e4f9ecc4c8b50848d4426c7",
+    "bytes": 36267940,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 205.600317,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P034.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P034.mid",
+     "sha256": "2e45bbdf54208ba958ec7a4a41df0949a45811d43a414d003df34f3f5dc886fa",
+     "bytes": 31391
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P034.csv",
+     "sha256": "347005e417425a95f93b1035db12a89328e5f2d6b06b951d54fcd7a905241c01",
+     "bytes": 418889
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P034.VOCA_INST.TXT",
+     "sha256": "603aaa08bd31b114047c4faa563034b3cbdb022a23538c1491edfc4869f05bdd",
+     "bytes": 1184
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P034.SMF_SYNC.MID",
+     "sha256": "38dd47a94ab2e9d16e4dda0fddc4292ec85ce0ee2abfba68b3c6d9bbbc7c25ea",
+     "bytes": 39528
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p034.tsv",
+    "sha256": "382faf1b9db1419e687107819ce02bc47aa0c7135ffb4566f0bebc79e97949cd"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p034.tsv",
+    "sha256": "dc8ae4b8093bbeec043750df820a8f923df2e20056a45ad927ff711b72289f76"
+   }
+  },
+  {
+   "id": "rwc-p035",
+   "source_id": "RWC_P035",
+   "collection": "RWC-P",
+   "title": "Midarana kami no moushigo",
+   "artist": "Hiromi Yoshii",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p035",
+   "audio": {
+    "path": "rwc/audio/RWC_P035.wav",
+    "sha256": "7e66777cb08d3cb228fd979b4503e1523ed6775e3463474b8c2f159464fbff69",
+    "bytes": 33690320,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 190.987959,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P035.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P035.mid",
+     "sha256": "e4c6bf5d44ef65d3fd03af349e763d89f8210151d24cfff1396f08e8a138799e",
+     "bytes": 43038
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P035.csv",
+     "sha256": "b5894bc83bdb4de5bb10cb19fbd77ee752aacd393e18348a055d3ff6681569c9",
+     "bytes": 388015
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P035.VOCA_INST.TXT",
+     "sha256": "6bdfaf72f9a2c8b6903b3df0b9f5b36e7547a7c651164c99357561b9a091fe5e",
+     "bytes": 1310
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P035.SMF_SYNC.MID",
+     "sha256": "9c6a5973409430d9b2cc29364e22922d6c730e1f7368f97f2aecfa17c7fcae30",
+     "bytes": 54137
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p035.tsv",
+    "sha256": "c26fb4f1deddded5c93f188302f77b54dbc3fcbc92b19604419c2812064f9f94"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p035.tsv",
+    "sha256": "484a0989a25d50d22fbee6d6d2d038e81c0148d8f2b8b369a0767d343c96672d"
+   }
+  },
+  {
+   "id": "rwc-p036",
+   "source_id": "RWC_P036",
+   "collection": "RWC-P",
+   "title": "over and over",
+   "artist": "Kazuo Nishi",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p036",
+   "audio": {
+    "path": "rwc/audio/RWC_P036.wav",
+    "sha256": "28dae7ef0a9b93f120b2e22d4d20954da4dd399b63698776b6fd769632424d82",
+    "bytes": 55428640,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 314.221066,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P036.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P036.mid",
+     "sha256": "00fbad2a7afbff36baf503386adad0a7aa0d5cc4f3fd4651451fa8ca06da6f85",
+     "bytes": 100404
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P036.csv",
+     "sha256": "bd4f502bb7955ae239c224f6ddb890b0ceb51afd1163c764bc4fc6a99e45f452",
+     "bytes": 646704
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P036.VOCA_INST.TXT",
+     "sha256": "d95454c9185f73ed926fd1fdb963e0c1a16cc67d128ea998983db5ca79916e7f",
+     "bytes": 2219
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P036.SMF_SYNC.MID",
+     "sha256": "ec33eb60fa505ac63b16ebc20400fdba789505e64709a2f3267ea6ed8424d4b3",
+     "bytes": 120854
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p036.tsv",
+    "sha256": "9746acf7241f99538886a4bafe8661aa157f25e9356e0bac4a4e445e7862c348"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p036.tsv",
+    "sha256": "771a8ca1b678ad57a112d612c63be66784cde14a53699881937c65256b99d759"
+   }
+  },
+  {
+   "id": "rwc-p037",
+   "source_id": "RWC_P037",
+   "collection": "RWC-P",
+   "title": "Replica",
+   "artist": "Yoshinori Hatae",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p037",
+   "audio": {
+    "path": "rwc/audio/RWC_P037.wav",
+    "sha256": "a24a9ff59c6ae3b1e7e6d82bce19a57d3c9a2109b7672d1a61e79742a4922ace",
+    "bytes": 41818744,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 237.06746,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P037.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P037.mid",
+     "sha256": "b9dfef2d70d585b5e4b9b8ee8faee56010f579e06dccc36682b116b975833321",
+     "bytes": 83188
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P037.csv",
+     "sha256": "4105391c39d1b6b458f2eea4ef079783e4cdb020e6a8b6a7da6644d43895bd77",
+     "bytes": 486525
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P037.VOCA_INST.TXT",
+     "sha256": "db9e5cc9191b8b33d2b79d427158efc7711f375f94401d27d398465b096428c4",
+     "bytes": 2316
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P037.SMF_SYNC.MID",
+     "sha256": "ea23933e77bdbb022c8377d95ca14be5e54982b42e348a1ca008280af65a42d7",
+     "bytes": 92865
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p037.tsv",
+    "sha256": "49f20adfab1c3a5f438243086356792f550a9a3cb3a31eeeed8a599265884d06"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p037.tsv",
+    "sha256": "5576a174f5369fb4985979197ddfccad360ddc724b668bbc927762dd669f0ac4"
+   }
+  },
+  {
+   "id": "rwc-p038",
+   "source_id": "RWC_P038",
+   "collection": "RWC-P",
+   "title": "1999",
+   "artist": "Kousuke Morimoto",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p038",
+   "audio": {
+    "path": "rwc/audio/RWC_P038.wav",
+    "sha256": "64e4a54ae2064749f85a1295785ff8bdb4a7f00c21518f0f8cff2f8624b2338b",
+    "bytes": 48210464,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 273.301701,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P038.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P038.mid",
+     "sha256": "98550d007c5e4ca1a7c8c3edb5e8e9145119b538bf16c1bda6a6fa0c4ede31bc",
+     "bytes": 74877
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P038.csv",
+     "sha256": "acdb480b02a353305365dba140deb6b2790dd1dad1526efcad20e4d034fc5f7d",
+     "bytes": 559229
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P038.VOCA_INST.TXT",
+     "sha256": "265328f990acb8dcf2a98931588e4b74a77dae395b4749fd073559ed6216a625",
+     "bytes": 1742
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P038.SMF_SYNC.MID",
+     "sha256": "f2a1c6ee364603b15e9f0877e256910a9b27cf461e2b63b2c3d6e47d61aa8f05",
+     "bytes": 90020
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p038.tsv",
+    "sha256": "f8afffd6c8ad45813f4f778d50679e7a8f9119a0b6e48bc80004e2d2464162da"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p038.tsv",
+    "sha256": "3d2582e5ae48417db95fcbf2c41b67a87c7b6181c4fff991c70b50320b5943c8"
+   }
+  },
+  {
+   "id": "rwc-p039",
+   "source_id": "RWC_P039",
+   "collection": "RWC-P",
+   "title": "SPUL",
+   "artist": "Kousuke Morimoto",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p039",
+   "audio": {
+    "path": "rwc/audio/RWC_P039.wav",
+    "sha256": "49609ac93fba5b90ddfc225e4f05d08c179eed29b4b62177909904d0f3b66746",
+    "bytes": 50594268,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 286.815329,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P039.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P039.mid",
+     "sha256": "f73b91a8649ec238cb65365194ab0ae1220343aa5f9d020bf29d46cae45c1889",
+     "bytes": 74251
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P039.csv",
+     "sha256": "de9792987f9ecd44fe458f32b9daad5562b4fafadbc6e242b9e5aec4625e7259",
+     "bytes": 599065
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P039.VOCA_INST.TXT",
+     "sha256": "9597a4203a28b6c88ec84c2ee98e7746b2a3960e05b5ee2db960385bcd7274ad",
+     "bytes": 1747
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P039.SMF_SYNC.MID",
+     "sha256": "f5e18690e18fc5e9e89381df56fcb4154b2970135f192971cad1722da9bea4a4",
+     "bytes": 84980
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p039.tsv",
+    "sha256": "52ba82eb72b39947dfc0d7054339be41b54b0e232e3086a2c97ba70d19c5f46a"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p039.tsv",
+    "sha256": "e13898c4e50d2a5e1aa11c12b139661c5dbe6460a6714bd84fbe639c9b621b45"
+   }
+  },
+  {
+   "id": "rwc-p040",
+   "source_id": "RWC_P040",
+   "collection": "RWC-P",
+   "title": "promise",
+   "artist": "Kazuo Nishi",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p040",
+   "audio": {
+    "path": "rwc/audio/RWC_P040.wav",
+    "sha256": "0684df082a1187d5012b365314f7e594d51be89c99fa293d88617d51ff8d0fd1",
+    "bytes": 39551792,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 224.216259,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P040.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P040.mid",
+     "sha256": "c4ab5cd783ae845425f394fafb8a9ee6aa2ae30301df4f9cab32d22de5c0712c",
+     "bytes": 66679
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P040.csv",
+     "sha256": "ebfe9c6bfb2c4ac168f0bdd6af3d173d0d55e9893e007acd87cc5f8a2a73442d",
+     "bytes": 457790
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P040.VOCA_INST.TXT",
+     "sha256": "0ab2dcc9ed8788b478daa7c72d578ba60db88e0bb5ccd8cb71c466aa0b26f551",
+     "bytes": 1195
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P040.SMF_SYNC.MID",
+     "sha256": "6670a399c318b0364df2d3eb50d74781ba0dbf4bc4fe456e77b9473eaa4219fb",
+     "bytes": 88994
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p040.tsv",
+    "sha256": "670349ffb537de6b7623d9121b4fb1f092ad1956cd48d97f5b9be5c09ad18db4"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p040.tsv",
+    "sha256": "b389e71e7b9afe7d5090f4c152f4782eb003c65ed03f2262c4bda25e817402ec"
+   }
+  },
+  {
+   "id": "rwc-p041",
+   "source_id": "RWC_P041",
+   "collection": "RWC-P",
+   "title": "Non Stop Driving",
+   "artist": "Katsuyuki Ozawa",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p041",
+   "audio": {
+    "path": "rwc/audio/RWC_P041.wav",
+    "sha256": "7a2db96a69c8d7e9550af986be92feb3952b79d51d4752496fa45ec909df95f3",
+    "bytes": 29653328,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 168.102517,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P041.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P041.mid",
+     "sha256": "6eb8ee39e826fe8352f873cc4ede79f0a8bd6e3ec9730b89a5bbec9ec56e570c",
+     "bytes": 43430
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P041.csv",
+     "sha256": "f2ff491af773988959fb4c745b8f970f777201e5a6c57dad7601220952e33788",
+     "bytes": 342093
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P041.VOCA_INST.TXT",
+     "sha256": "e03c41dce00c5bfa7953dc55324f1756b5cc7c38c2a6be9838fd738f681e4262",
+     "bytes": 861
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P041.SMF_SYNC.MID",
+     "sha256": "251466b16792d036d7dd46e44485241aff062b4ac3f518636274e3ae76ec5a18",
+     "bytes": 56822
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p041.tsv",
+    "sha256": "cf30989251e1ddf238acbe9fa8f8e9550cd18a402d941dd68176295d54f593e1"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p041.tsv",
+    "sha256": "4048d8ef5abaae9e5e2b66f8d71c7aa397724d5b5c3b5bf3e6ad268fa6cec026"
+   }
+  },
+  {
+   "id": "rwc-p042",
+   "source_id": "RWC_P042",
+   "collection": "RWC-P",
+   "title": "Fly to the moon",
+   "artist": "Kousuke Morimoto",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p042",
+   "audio": {
+    "path": "rwc/audio/RWC_P042.wav",
+    "sha256": "c2217bc7c8c33c1d5cb28f4938b7fb604dea8ecb22953082626914684185c6cc",
+    "bytes": 43522400,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 246.725374,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P042.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P042.mid",
+     "sha256": "fc062d4d28fa7a8ac2055a97e40997f726645e853d941188f2a84d37a0b2c827",
+     "bytes": 105205
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P042.csv",
+     "sha256": "bb044e64d52eabbf94cc724e4904d93b8556afa261c8a892a01253c5820261cf",
+     "bytes": 504363
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P042.VOCA_INST.TXT",
+     "sha256": "09c678c8048785b692da0efd56ae2b4843cac83dc7e677a08c0c71ba785844e0",
+     "bytes": 1103
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P042.SMF_SYNC.MID",
+     "sha256": "770338b5c441454f94486c8759e8154766a80b29157d31e70c05361b4de46912",
+     "bytes": 135160
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p042.tsv",
+    "sha256": "b096c096790439b51fe732622e91745db1e5b6af391a627968176e3cce438df5"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p042.tsv",
+    "sha256": "e3b0d8840a5d58609d736ef27bd82c2cc64b5d059612e8cccc4524cb2a6307f4"
+   }
+  },
+  {
+   "id": "rwc-p043",
+   "source_id": "RWC_P043",
+   "collection": "RWC-P",
+   "title": "Centimeter no kodoku",
+   "artist": "Kazuo Nishi",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p043",
+   "audio": {
+    "path": "rwc/audio/RWC_P043.wav",
+    "sha256": "20551c271b68de4de4b4e7d4d72f8adc3f7896f4f6c9b6c17fa064eb46b5deb3",
+    "bytes": 35681640,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 202.276621,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P043.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P043.mid",
+     "sha256": "731b2b61d5c1f361f5395b5ba61b51d9c66d4f3ff5338b4601cbc230d69d2fd3",
+     "bytes": 59347
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P043.csv",
+     "sha256": "d0afbb9a72c543d460b8973a692c191cbbf60229352123f81e039130427bce97",
+     "bytes": 417311
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P043.VOCA_INST.TXT",
+     "sha256": "327bc8fb2a187864a291f85e9af8a6f1ecdb5b738bd81bfa736b945426fce47e",
+     "bytes": 1440
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P043.SMF_SYNC.MID",
+     "sha256": "6335af600608f291486d83905bddd574c896226f29898a244440191e5e6c8fa2",
+     "bytes": 77751
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p043.tsv",
+    "sha256": "96f85541d4f362730801058ba91c82e43b6135ac80ff2ef2567e67c748860591"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p043.tsv",
+    "sha256": "67186c2085396fbd4831e76fcf395215bad34cb9538df7827831af79e66af95a"
+   }
+  },
+  {
+   "id": "rwc-p044",
+   "source_id": "RWC_P044",
+   "collection": "RWC-P",
+   "title": "REAL na 5 hun",
+   "artist": "Kousuke Morimoto",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p044",
+   "audio": {
+    "path": "rwc/audio/RWC_P044.wav",
+    "sha256": "7b0569989199a2c340a611f2b4aad5e9b2420f0983edce5ddf07c0a2a2f8a68a",
+    "bytes": 43050504,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 244.050227,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P044.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P044.mid",
+     "sha256": "c3d6fe97d9dda16cfacfe9bf72ae3e33273e3ad61a653687aa586c6b3c086db8",
+     "bytes": 80223
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P044.csv",
+     "sha256": "139cb555a4f61386abad36e9214f59d46d1b96827901024bfb6fdc3451b9960d",
+     "bytes": 503077
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P044.VOCA_INST.TXT",
+     "sha256": "1264d2876910f05c2c8bd5d04f0866c1f2174dc489d3fa67cbabb79d56c9513e",
+     "bytes": 2335
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P044.SMF_SYNC.MID",
+     "sha256": "71e91e935a5e8553dc05516d982c51e0a06d69959ce90266aed18600eea4a946",
+     "bytes": 109154
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p044.tsv",
+    "sha256": "2d931037a1cf3047dbaca6de3e50f02806a42ac69b24b7ff0a3329b25c06ac1b"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p044.tsv",
+    "sha256": "22c717b8d8eabc5d217277dde01a2a7a7ab101c2a9b58d9e749ca89d854fa3cd"
+   }
+  },
+  {
+   "id": "rwc-p045",
+   "source_id": "RWC_P045",
+   "collection": "RWC-P",
+   "title": "Hajimari",
+   "artist": "Kousuke Morimoto",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p045",
+   "audio": {
+    "path": "rwc/audio/RWC_P045.wav",
+    "sha256": "a2f76fc5d1fda7bd08303c4d248b1659e55756458f3872416304ee1d3c4c05d4",
+    "bytes": 38895732,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 220.497098,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P045.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P045.mid",
+     "sha256": "4cf6f80be9ba752edfe77941ab83663ce6282aac8204828226445034b6550619",
+     "bytes": 50954
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P045.csv",
+     "sha256": "ebf125624d51cd19a03bc55d5160ef9a2f38a30d747f96528d169aaa08451418",
+     "bytes": 454073
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P045.VOCA_INST.TXT",
+     "sha256": "dcc2bbe986ec7adcff6bcd330fd0829dfac782c61ccf1826d88fa8cf493102de",
+     "bytes": 1494
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P045.SMF_SYNC.MID",
+     "sha256": "d8546fc7d0dfb83219dc260379901ff175083d7951dce29f21d46ea1f31f1183",
+     "bytes": 68072
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p045.tsv",
+    "sha256": "a795f9adea1d9612b5a53711de70932fc6a66b34f39f6918732db58852d1ad47"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p045.tsv",
+    "sha256": "d2a0a17e59776b8f75fdff278fe3757362d438a07ad1ca5ed150c5984641b009"
+   }
+  },
+  {
+   "id": "rwc-p046",
+   "source_id": "RWC_P046",
+   "collection": "RWC-P",
+   "title": "Senro wa tsuzukuyo",
+   "artist": "Kousuke Morimoto",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p046",
+   "audio": {
+    "path": "rwc/audio/RWC_P046.wav",
+    "sha256": "e902e41d462237e309b125e4dbd3475de189db39dacf356c1373375c7913edf0",
+    "bytes": 34747588,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 196.981542,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P046.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P046.mid",
+     "sha256": "c8d48c20439ab43523b3fbfd68b65e445fdb6916f76c46d219e159322949564f",
+     "bytes": 96458
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P046.csv",
+     "sha256": "54524e4b2fe0b265ad7f73af8029adbefc76ef7e8cce396fe46520ec420c6d61",
+     "bytes": 405361
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P046.VOCA_INST.TXT",
+     "sha256": "3956d43e3245d1e5c9fc6fffa81eb8b5bc37f2af17ee8266f9f3e66d7fae438b",
+     "bytes": 1722
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P046.SMF_SYNC.MID",
+     "sha256": "5b5e16e5cc1416394cebf69abdf14b49c660dffe7e235deb2e9ac13f224b3c86",
+     "bytes": 128133
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p046.tsv",
+    "sha256": "4fe3c95d5783a4ff5cdc3b2acbaecfc69074eb2f15e8717a6273d236408e1d20"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p046.tsv",
+    "sha256": "d4f4854af196eb1109f4435943eef820fad26b517df133dd11c032dd66eb3b0a"
+   }
+  },
+  {
+   "id": "rwc-p047",
+   "source_id": "RWC_P047",
+   "collection": "RWC-P",
+   "title": "Deaetakara",
+   "artist": "Satoshi Kumasaka",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p047",
+   "audio": {
+    "path": "rwc/audio/RWC_P047.wav",
+    "sha256": "9215e49df02a1d7d157b7ff24ed120f89a0b4b8891147bd6e23043003c393f6f",
+    "bytes": 36816304,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 208.708957,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P047.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P047.mid",
+     "sha256": "731a3525ec1884213ee689c512b5c93856964a8c76230c53eef883360ad37a11",
+     "bytes": 49597
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P047.csv",
+     "sha256": "20e695adb1705f6d2a48f0ade4163a2785b40607a847398def7c08fe484cd768",
+     "bytes": 434425
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P047.VOCA_INST.TXT",
+     "sha256": "78913b4541af12eeba1d319ab4998518b647d630badff3c5da6af834e4828193",
+     "bytes": 1318
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P047.SMF_SYNC.MID",
+     "sha256": "0cb27aaf42c49e555c664087aecb7d01d69f9e051ff141c9ff67d83612b2fd4a",
+     "bytes": 65937
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p047.tsv",
+    "sha256": "1957fe7cbd98dfe27d5831528770053f09d34a44664dc1e995d99cc45d525fd3"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p047.tsv",
+    "sha256": "1d355fdb7e3b1a244e9b893e0bd733361a79592711bc1c1fa01f02e7c059c389"
+   }
+  },
+  {
+   "id": "rwc-p048",
+   "source_id": "RWC_P048",
+   "collection": "RWC-P",
+   "title": "Syodoubutsu",
+   "artist": "Hiroshi Sekiya",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p048",
+   "audio": {
+    "path": "rwc/audio/RWC_P048.wav",
+    "sha256": "2486039839cade7b7db57c1e6e83385d5cf13abc365c7185c78e4d6ea0aa6850",
+    "bytes": 47549000,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 269.551905,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P048.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P048.mid",
+     "sha256": "d1551ae509d1f2bf85a13ca5e33a5387d7577b5e152ed070c5237c584be13262",
+     "bytes": 78866
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P048.csv",
+     "sha256": "018fa5c801e0e1cfd5314e3b55067042afe6dbcfbae97ad49ee47647d0c9ae78",
+     "bytes": 556393
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P048.VOCA_INST.TXT",
+     "sha256": "08bce1f16975b369d82db4e9c0d5f1bd059a4f7028c81d938cb3054dda6b70dd",
+     "bytes": 1987
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P048.SMF_SYNC.MID",
+     "sha256": "929c589c51e1d79065882d41b515508001903c21af386acb3215782626766fc1",
+     "bytes": 104747
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p048.tsv",
+    "sha256": "4aba80162a564969788eb89392321e16f52ec1c0fb8a39115da838b5e05b6b19"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p048.tsv",
+    "sha256": "dbfa8c1dfb81b81f98e22a4a02a13dff062480dfd45017848c54b67d3707b3c8"
+   }
+  },
+  {
+   "id": "rwc-p049",
+   "source_id": "RWC_P049",
+   "collection": "RWC-P",
+   "title": "Sekai no mikata",
+   "artist": "Hiroshi Sekiya",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p049",
+   "audio": {
+    "path": "rwc/audio/RWC_P049.wav",
+    "sha256": "975d02f2723628804e91178bc9bdf08dfe51a9509394b8e0c460e5689905ce96",
+    "bytes": 48161560,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 273.024467,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P049.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P049.mid",
+     "sha256": "0c3ec6235a96aba13034bb0f6d9c1bd86a7fd4cf1fa1b9ff2b992f06f35f4bbc",
+     "bytes": 123258
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P049.csv",
+     "sha256": "268394339f03c07b853542469a43ec647bea524e83822816664903c5278e81e0",
+     "bytes": 563255
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P049.VOCA_INST.TXT",
+     "sha256": "3b116005f1e73f257d9620cbe46e0e51a2512dd3609cc1a09710fc5420e0897d",
+     "bytes": 2781
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P049.SMF_SYNC.MID",
+     "sha256": "4827285871dee1431a112ecf8ce24e544e94bc82d0518d49b0ad9ce23dcf2187",
+     "bytes": 163658
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p049.tsv",
+    "sha256": "824dc55eb0088e4010850422e2ce4ae1ada753af1a68102f1124bc0e402bfe68"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p049.tsv",
+    "sha256": "5ddb5e62a6ca3e105f73384eb5a538e2001c2c9ff629a0a3e06b7e3a4a8a0d23"
+   }
+  },
+  {
+   "id": "rwc-p050",
+   "source_id": "RWC_P050",
+   "collection": "RWC-P",
+   "title": "Mrs. Maril",
+   "artist": "Rin",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p050",
+   "audio": {
+    "path": "rwc/audio/RWC_P050.wav",
+    "sha256": "f3c2112520a30e8f0a1c927caca4b8f9d80e525ad49565f342f513dc25f4f075",
+    "bytes": 34110852,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 193.371927,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P050.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P050.mid",
+     "sha256": "465d91075b09669b1d27697b1eddc7e02abcf1502605bd5a409cb49e22b48e4d",
+     "bytes": 55349
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P050.csv",
+     "sha256": "d5ed2abb7a753ef8becec44f54a227a8bfa368e4a9c5196bcacd373788840046",
+     "bytes": 391789
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P050.VOCA_INST.TXT",
+     "sha256": "9c066533d4f64a273207efe78d8b5c2630fb322e696c93cb0e87dd548b8ca852",
+     "bytes": 1637
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P050.SMF_SYNC.MID",
+     "sha256": "916990f5428b92e9457ae67b9fe7a8682809f09c548b35e98cb51f5baad322d4",
+     "bytes": 75177
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p050.tsv",
+    "sha256": "05c444826f665aeb941993272a8bc7d99c4b55f4cce60543aa2722e3820985dd"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p050.tsv",
+    "sha256": "c10c2445c47451f405e5cb537bf1dd10c557472704f246d4a0fa1d31eb644f73"
+   }
+  },
+  {
+   "id": "rwc-p051",
+   "source_id": "RWC_P051",
+   "collection": "RWC-P",
+   "title": "Modoranai natsu",
+   "artist": "Hiroshi Sekiya",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p051",
+   "audio": {
+    "path": "rwc/audio/RWC_P051.wav",
+    "sha256": "5ea1c64435e8640895f78c34bcd6f33d4f17e8d542d20ee54feec57da320a8f2",
+    "bytes": 64443588,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 365.326213,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P051.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P051.mid",
+     "sha256": "cb2fe8edab297bce8bc69abb87228d63b607802ee1342e4f83c7d0337ff62791",
+     "bytes": 72201
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P051.csv",
+     "sha256": "519b381706ecc66c36a21d24679dae1b2d94849773a140ac5c88e4d3229a2d5c",
+     "bytes": 761615
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P051.VOCA_INST.TXT",
+     "sha256": "7b2f2f0f7126badd0d5f3b5c8b60b723d9a88eb17c15cc4aed53923cb3f55d00",
+     "bytes": 2409
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P051.SMF_SYNC.MID",
+     "sha256": "64d0e1157f8abf3ec59a8b490b82052030a2e4dc5d4a5ba0ee94521685f6188d",
+     "bytes": 95779
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p051.tsv",
+    "sha256": "0e8b1ebd241b96cc94d249ddd322b07a0dc1ad28ace8ff04c2952d34c189ea49"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p051.tsv",
+    "sha256": "7afc2acbad377b68c3b42b31edd77fb1399af36b90454f9fd9dc90698ec8847e"
+   }
+  },
+  {
+   "id": "rwc-p052",
+   "source_id": "RWC_P052",
+   "collection": "RWC-P",
+   "title": "Haru ga kurukara",
+   "artist": "Tomomi Ogata",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p052",
+   "audio": {
+    "path": "rwc/audio/RWC_P052.wav",
+    "sha256": "d4c3a7678248b96f478434a8edc2b1ed2bd0b59a4c1aab4f92e5ca5689bb5f8e",
+    "bytes": 39412412,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 223.426122,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P052.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P052.mid",
+     "sha256": "27e3fc2d9151d0c4cc90fb8b1a42676f5896b0e1619129e6a13a8638f3bae627",
+     "bytes": 92509
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P052.csv",
+     "sha256": "4ab647d8e47935a847dac11bcc8bff95101d4fa63014b3b6841bbe56ab9b3d00",
+     "bytes": 457351
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P052.VOCA_INST.TXT",
+     "sha256": "13be65105af6bf7757c056abf781b78c914e1224402e02e29193204538f5bfdf",
+     "bytes": 1616
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P052.SMF_SYNC.MID",
+     "sha256": "412ffa7434e4c4a40e6d874d4db1cac02ddcf7b1f3fbb067801325bb63032fdc",
+     "bytes": 117920
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p052.tsv",
+    "sha256": "6720a26b6320b6ca5187075c7ef7ada024868c3b9756c6e6c6658af4ba38f2c6"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p052.tsv",
+    "sha256": "916f588fe5267d54cb5d3ac93845f49fed6792f1a6ca264d574bda6b69ec6449"
+   }
+  },
+  {
+   "id": "rwc-p053",
+   "source_id": "RWC_P053",
+   "collection": "RWC-P",
+   "title": "Ashita wa",
+   "artist": "Rin",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p053",
+   "audio": {
+    "path": "rwc/audio/RWC_P053.wav",
+    "sha256": "c3c62f616cab1c3d1504a6a3f22973534bf4f7ac9581b8836bee42d5e9f3f66b",
+    "bytes": 38408740,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 217.736372,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P053.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P053.mid",
+     "sha256": "691662a6506b313dd6752a26e097fd30a8652f606badc39ce71700aa03cc3b3a",
+     "bytes": 59764
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P053.csv",
+     "sha256": "2e83938dd1f547b3fe8718b64816d23c6aa16656be2a68f1a9afa47e90e07d28",
+     "bytes": 445145
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P053.VOCA_INST.TXT",
+     "sha256": "d7098b241d952aabcf1418d64c226c7eadf762843a72ddbb1093d133417e652e",
+     "bytes": 1639
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P053.SMF_SYNC.MID",
+     "sha256": "8a781b25e09da42d19c7865b25668d265c9cf5c69300b16c6fb1b3d635582889",
+     "bytes": 82088
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p053.tsv",
+    "sha256": "e875c5fc1306bf82fc52a3de9014a16a037826cb0581b16cbc968b7b8a3cbfe3"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p053.tsv",
+    "sha256": "0522b69a8d50ffecace2c793b1bbf373d4632704ba9d896af4d4e3396bcc8dcd"
+   }
+  },
+  {
+   "id": "rwc-p054",
+   "source_id": "RWC_P054",
+   "collection": "RWC-P",
+   "title": "Harukana omoi",
+   "artist": "Rin",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p054",
+   "audio": {
+    "path": "rwc/audio/RWC_P054.wav",
+    "sha256": "df692c0cdf7998a308bd0176f8f13baf7a0d5c29a8bc6af80904118c0410177b",
+    "bytes": 38964012,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 220.884172,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P054.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P054.mid",
+     "sha256": "db2be58ab269740ece5790f12bea64ec1e64e85cc16d2baa7d9fea33b5e93de0",
+     "bytes": 56310
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P054.csv",
+     "sha256": "2dcacc300c151e5ee63327855c5e0ccadda80015342506fccc8530200e2c50da",
+     "bytes": 457475
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P054.VOCA_INST.TXT",
+     "sha256": "48257ef396be1c5f7d3bbd56f7c8fd71a8a5ad7a64399be93f7746576b0209b5",
+     "bytes": 1650
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P054.SMF_SYNC.MID",
+     "sha256": "d09e56ec92b2ca99bc5490c80f1e5ed4b4f57565948111f1f0c7f8e54e78dc42",
+     "bytes": 75029
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p054.tsv",
+    "sha256": "c7f0a9a5d84b01e9ded9a7dd65ea1464628096608bbbebe4545fc0bdb6763e18"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p054.tsv",
+    "sha256": "c7f0a9a5d84b01e9ded9a7dd65ea1464628096608bbbebe4545fc0bdb6763e18"
+   }
+  },
+  {
+   "id": "rwc-p055",
+   "source_id": "RWC_P055",
+   "collection": "RWC-P",
+   "title": "First Love",
+   "artist": "Akiko Kaburagi",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p055",
+   "audio": {
+    "path": "rwc/audio/RWC_P055.wav",
+    "sha256": "f82953db07a2691c7b6840bc2ae5a28c08acca1770eeb11e66560b274e9a2e9e",
+    "bytes": 43596476,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 247.145306,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P055.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P055.mid",
+     "sha256": "289889a593dc5750050bbf5d17dc02e8d6511806b4eeeaa880b8f319478df7ee",
+     "bytes": 61440
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P055.csv",
+     "sha256": "3e0833e0d315e4632fbe71f541e32adea5e6f28394744be88b38d93f4860b4a4",
+     "bytes": 512871
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P055.VOCA_INST.TXT",
+     "sha256": "753b1b59a489eccc07eccfcbed3c02e5e4835746764a3fa0f9eb3a911204b8d2",
+     "bytes": 864
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P055.SMF_SYNC.MID",
+     "sha256": "8a4116875fc38f85bafc4322f2ea00707d5e3adf84d3dbe035c64a71f0af810c",
+     "bytes": 80055
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p055.tsv",
+    "sha256": "e8ac342051606ac8098c69be3176d095443de0260cd42ed96faa5fe19938c638"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p055.tsv",
+    "sha256": "e8ac342051606ac8098c69be3176d095443de0260cd42ed96faa5fe19938c638"
+   }
+  },
+  {
+   "id": "rwc-p056",
+   "source_id": "RWC_P056",
+   "collection": "RWC-P",
+   "title": "I've got a mail",
+   "artist": "Masashi Hashimoto",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p056",
+   "audio": {
+    "path": "rwc/audio/RWC_P056.wav",
+    "sha256": "f6b3325ee34d89180724e6584eb9dd928f27f5ea81a77caab4cd0a481f7296a4",
+    "bytes": 56611904,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 320.928912,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P056.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P056.mid",
+     "sha256": "ea6232a6d99b81e39bbbd6a79eb77d85c4d0d794b3bb967e04ab5497983e05d9",
+     "bytes": 117117
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P056.csv",
+     "sha256": "c9b8168efeb2ed68ed83eea79e37ccf05f32b4df4e411b551ff5ea2880c84e77",
+     "bytes": 655701
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P056.VOCA_INST.TXT",
+     "sha256": "7947818545a0c16fff4c94be045a5a43518004396d387c59a3b801bed89c437f",
+     "bytes": 1985
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P056.SMF_SYNC.MID",
+     "sha256": "7800fd9065f0efde13f6faccfc3b536ea77eed3f99ee865d50c09d879acace49",
+     "bytes": 156291
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p056.tsv",
+    "sha256": "cfd3f0f63de75dec660d503fa48c632b017659640c78594749c14e87f449c62d"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p056.tsv",
+    "sha256": "cfd3f0f63de75dec660d503fa48c632b017659640c78594749c14e87f449c62d"
+   }
+  },
+  {
+   "id": "rwc-p057",
+   "source_id": "RWC_P057",
+   "collection": "RWC-P",
+   "title": "Stay with me",
+   "artist": "Masashi Hashimoto",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p057",
+   "audio": {
+    "path": "rwc/audio/RWC_P057.wav",
+    "sha256": "f7f37a0df287ae5b72f53aaa40aeb06c38c5741561a801e0ff8660e92a40c104",
+    "bytes": 46770168,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 265.136757,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P057.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P057.mid",
+     "sha256": "8ff1f6ee82a8620f429e4f26d8353a0f4b4e4965dc1f90abd02e3f92bff09647",
+     "bytes": 34791
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P057.csv",
+     "sha256": "1d42605304a0d31cb995d84ff9d8b5791706d2fc34271d6f71b888c1be17883b",
+     "bytes": 544700
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P057.VOCA_INST.TXT",
+     "sha256": "4f51efc6107ba178867248be8a3f2efec03e2949b24bf8b53ede54e5927b5469",
+     "bytes": 2076
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P057.SMF_SYNC.MID",
+     "sha256": "e46a5836789c945a1be632f3f42cbe57032aabf1263cf2fe3250758b7d0afb6f",
+     "bytes": 46362
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p057.tsv",
+    "sha256": "be06905d49fa65feb4db3475e3295d2ad32ecef6c9d2d6e8022fbe1baf74c798"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p057.tsv",
+    "sha256": "be06905d49fa65feb4db3475e3295d2ad32ecef6c9d2d6e8022fbe1baf74c798"
+   }
+  },
+  {
+   "id": "rwc-p058",
+   "source_id": "RWC_P058",
+   "collection": "RWC-P",
+   "title": "Silver shoes",
+   "artist": "Rin",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p058",
+   "audio": {
+    "path": "rwc/audio/RWC_P058.wav",
+    "sha256": "3e803119b08ce49eb587fe19fff3787b62781e9e33027f5926efb942c9976240",
+    "bytes": 39501828,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 223.933016,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P058.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P058.mid",
+     "sha256": "61f4e6b284386379de03faf8858a3b9f765b42bdee26ecae27156897ca8638ac",
+     "bytes": 79899
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P058.csv",
+     "sha256": "0d05608cede9d210fca73bedb4b67d2f2e16acdb792f6bfcdf0bebcd2b784502",
+     "bytes": 456703
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P058.VOCA_INST.TXT",
+     "sha256": "02fc36e765471293f87788992c1689542f33b5acfb8207b9a89051f7817685f4",
+     "bytes": 1751
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P058.SMF_SYNC.MID",
+     "sha256": "d2bcaab743d8e69672ec83dc291c1304d4d0b8037d7935cd6987549dd9d3f694",
+     "bytes": 106550
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p058.tsv",
+    "sha256": "12393449f04950b2e0d4bbe19fe209bca69a2d518f952dc30771804ce736a358"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p058.tsv",
+    "sha256": "12393449f04950b2e0d4bbe19fe209bca69a2d518f952dc30771804ce736a358"
+   }
+  },
+  {
+   "id": "rwc-p059",
+   "source_id": "RWC_P059",
+   "collection": "RWC-P",
+   "title": "Tenshi no utatane",
+   "artist": "Rin",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p059",
+   "audio": {
+    "path": "rwc/audio/RWC_P059.wav",
+    "sha256": "c5f4025293b827b631da09ad5f50bb9037d58e1f1733b7acc8aef661de56bac6",
+    "bytes": 35806100,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 202.982177,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P059.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P059.mid",
+     "sha256": "f6c548934b8d0204e07b888e1480aad075729cfe1b940a2cd96eda1128407b58",
+     "bytes": 50612
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P059.csv",
+     "sha256": "2c60b6c7c726602c623e7b105146947122364d367484c70401d4b7c6da3765a0",
+     "bytes": 407711
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P059.VOCA_INST.TXT",
+     "sha256": "5780fdda6e27050046c2d19cc5300ddd0daf9cc66b9117f72924f4714544ac6e",
+     "bytes": 1364
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P059.SMF_SYNC.MID",
+     "sha256": "78f1e73d81a12faacd46cac628630ea1640f56c58e12790b174108e0bfa26ccd",
+     "bytes": 67368
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p059.tsv",
+    "sha256": "4ed6f9d6befd4ae85849a31c2158f0c029d7ab67915e65a8fd28cc41931bc9f9"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p059.tsv",
+    "sha256": "9c9463fcc945e1f9c6cc4a27ac2ddd521a831240efd5ba0008fdde2dbce8a484"
+   }
+  },
+  {
+   "id": "rwc-p060",
+   "source_id": "RWC_P060",
+   "collection": "RWC-P",
+   "title": "Kumorizora",
+   "artist": "Yuzu Iijima",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p060",
+   "audio": {
+    "path": "rwc/audio/RWC_P060.wav",
+    "sha256": "bf8fcc7b14bfc7f29da550da94ffba0ea63254968b1584b4a0f5ba1e4d5fd87f",
+    "bytes": 42596852,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 241.478503,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P060.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P060.mid",
+     "sha256": "22c01d16ec844515e802ced9f1bf3c412b08bd315593f7740f393348749fe35a",
+     "bytes": 70427
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P060.csv",
+     "sha256": "25867c35f5564f77cba3950b649f2fe99475212822ae76d78b518405e309c0f0",
+     "bytes": 493497
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P060.VOCA_INST.TXT",
+     "sha256": "6153081a060cf1410be8ae4560bae9f8f8f625185b18ed9b7efb1795e78d791f",
+     "bytes": 1836
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P060.SMF_SYNC.MID",
+     "sha256": "914138115ae391d43ee5798b009ce98d6e7be1456d44b61ea6e9759092e76709",
+     "bytes": 94450
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p060.tsv",
+    "sha256": "42bf094bd5329cf1b671b7226c76bac4d9bfbf124798d549deda81b19d7ecaf8"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p060.tsv",
+    "sha256": "42bf094bd5329cf1b671b7226c76bac4d9bfbf124798d549deda81b19d7ecaf8"
+   }
+  },
+  {
+   "id": "rwc-p061",
+   "source_id": "RWC_P061",
+   "collection": "RWC-P",
+   "title": "FOR YOU",
+   "artist": "Kazuo Nishi",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p061",
+   "audio": {
+    "path": "rwc/audio/RWC_P061.wav",
+    "sha256": "589988a58c4eca62bc486cee580989f1626ec3f3bddb4f655ced5a6137632545",
+    "bytes": 49591936,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 281.133175,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P061.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P061.mid",
+     "sha256": "cb374113a3083b9428f19000f4e42da5a046e0c61e52d1e8030bd850d7a60b22",
+     "bytes": 55640
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P061.csv",
+     "sha256": "f00f909acaed5b2535212c6d622e4bf8779bd101b28f1ca4132787c0ebf0c3fa",
+     "bytes": 577997
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P061.VOCA_INST.TXT",
+     "sha256": "25d14a1f0899f789a1135b7a048df3139d0d50b509d2932311015048092d7d86",
+     "bytes": 3517
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P061.SMF_SYNC.MID",
+     "sha256": "e833ed659039752326b7d6c64791b74b3d047cb5790e354d458a0c840f9d1285",
+     "bytes": 76924
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p061.tsv",
+    "sha256": "5067f99cc893575a247e969016aa8677e7f027f904b159638d7a837837167c2b"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p061.tsv",
+    "sha256": "c93826f97b21013fd7581d86d9b9ab0389090225eef050d92ff0043caf9d7cbc"
+   }
+  },
+  {
+   "id": "rwc-p062",
+   "source_id": "RWC_P062",
+   "collection": "RWC-P",
+   "title": "Be with me Now",
+   "artist": "Rin",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p062",
+   "audio": {
+    "path": "rwc/audio/RWC_P062.wav",
+    "sha256": "f462323fd16a18200c0367a56e4cfca029b0fa60be23ea817cc601aa9afbdfc5",
+    "bytes": 33352392,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 189.072268,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P062.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P062.mid",
+     "sha256": "ea0764ebd99bdf6ca2766f1e129c5492298792c3efcf9b11a83c0339963262c7",
+     "bytes": 33671
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P062.csv",
+     "sha256": "ca12d1156022aaeac643bee26e0ac3a4437892b6471599749d03bdea56ce7e85",
+     "bytes": 393471
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P062.VOCA_INST.TXT",
+     "sha256": "68c295c9621eaa834266335da76ff18250ba80005165c5138c8e55367a8fd7d7",
+     "bytes": 1024
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P062.SMF_SYNC.MID",
+     "sha256": "118a192d641dd86915fe208479b1abfbbc6839ad14b85250b0a5f4ea93cddaf9",
+     "bytes": 44180
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p062.tsv",
+    "sha256": "fa34b0eed40cedf7fb642b1838004c200a2d4e8759ba202cb08b70fb9e1c7a79"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p062.tsv",
+    "sha256": "fa34b0eed40cedf7fb642b1838004c200a2d4e8759ba202cb08b70fb9e1c7a79"
+   }
+  },
+  {
+   "id": "rwc-p063",
+   "source_id": "RWC_P063",
+   "collection": "RWC-P",
+   "title": "Power of mind",
+   "artist": "Reiko Sato",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p063",
+   "audio": {
+    "path": "rwc/audio/RWC_P063.wav",
+    "sha256": "8937773d255cf50655849e3906764b915dc23db150982c298ef9e08ef9d2645d",
+    "bytes": 43918748,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 248.972245,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P063.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P063.mid",
+     "sha256": "60ec67136a1699fb0b90f6a65af2326bd64420378cd59d40bd6878d68907e2a8",
+     "bytes": 47991
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P063.csv",
+     "sha256": "661af74cd692b84bf320c8efe944e1e56d2bd96dd3fa0aa1287579f4080563fa",
+     "bytes": 506735
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P063.VOCA_INST.TXT",
+     "sha256": "bc47f57853768845840fdfca6c8dd8606423b534aa6527b2097ce583ea73044a",
+     "bytes": 1432
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P063.SMF_SYNC.MID",
+     "sha256": "9244e5f1248cf661cdbdfc5fa6051e17e0756ca8144250bccc1d054c82737d45",
+     "bytes": 65197
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p063.tsv",
+    "sha256": "16172f77a95870ba745b11e3f188a0943f95d4c218e7a9adb1bf196a40acb6fc"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p063.tsv",
+    "sha256": "16172f77a95870ba745b11e3f188a0943f95d4c218e7a9adb1bf196a40acb6fc"
+   }
+  },
+  {
+   "id": "rwc-p064",
+   "source_id": "RWC_P064",
+   "collection": "RWC-P",
+   "title": "So Long",
+   "artist": "Kousuke Morimoto",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p064",
+   "audio": {
+    "path": "rwc/audio/RWC_P064.wav",
+    "sha256": "70d85007a23b097e6e668c1b7734d804947ead801e695487c1b78177ef8dd04d",
+    "bytes": 51586376,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 292.439524,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P064.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P064.mid",
+     "sha256": "adc626dbdd2792ec56ce3e7691caa07de19c23225ef0942117cdaba85e2ba52a",
+     "bytes": 66119
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P064.csv",
+     "sha256": "1d40a4e6189cf40d61047fa158e250f152a2c2b986b78bd2c82a98a300069e75",
+     "bytes": 610504
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P064.VOCA_INST.TXT",
+     "sha256": "36140792c8812f66215d33a148d473b4b9f9aeb301c6b92605ba478a4f87560b",
+     "bytes": 2301
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P064.SMF_SYNC.MID",
+     "sha256": "1b306a3cd4451b4b15478c2ff9dca9b8d8fe0c978ac23efc8f5094e9c18f18c9",
+     "bytes": 86917
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p064.tsv",
+    "sha256": "0115d7c8577e504d947125db344e78d53018440ed394338a9e9a02b7e25354a5"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p064.tsv",
+    "sha256": "4cab820c700de6218d14de4af5753c9fc1bcf961767628f8d3165aa1b8984b9d"
+   }
+  },
+  {
+   "id": "rwc-p065",
+   "source_id": "RWC_P065",
+   "collection": "RWC-P",
+   "title": "Tanabata",
+   "artist": "Makiko Hattori",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p065",
+   "audio": {
+    "path": "rwc/audio/RWC_P065.wav",
+    "sha256": "22fb3bb928ee36ecc3ae293f58299ae404eea056fcd8da15c325c6b4a172166d",
+    "bytes": 40575900,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 230.021859,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P065.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P065.mid",
+     "sha256": "fe81b0b3dc752fbaaad68076d6f2c6516eeffed50c20cd5bf8fad35d9791fe7c",
+     "bytes": 28332
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P065.csv",
+     "sha256": "6329ca381ea7954af2599d91193944eb14038882131c241bbcb181d9b52bb65a",
+     "bytes": 474025
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P065.VOCA_INST.TXT",
+     "sha256": "1d78f9bae42e517facff18ae04d995d6817188a69c18bcd0abfc484e2ff9803b",
+     "bytes": 1076
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P065.SMF_SYNC.MID",
+     "sha256": "a6663bd327b860beffd886fdac5a4d383972e2aa6edb803a00e5c75d241eb865",
+     "bytes": 36471
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p065.tsv",
+    "sha256": "532c8f7433ec89bda5005163c5344fc13d2e234eb20651011d7616984dd06d91"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p065.tsv",
+    "sha256": "f1b87e5f6299309e53d507e7395f727a697bf6d19acd9b3268cfc10034311917"
+   }
+  },
+  {
+   "id": "rwc-p066",
+   "source_id": "RWC_P066",
+   "collection": "RWC-P",
+   "title": "Mousugu natsu ga kuru",
+   "artist": "M & Y",
+   "language": "Japanese",
+   "singers": "Vocal group (2 female)",
+   "status": "scored",
+   "cluster": "rwc-p066",
+   "audio": {
+    "path": "rwc/audio/RWC_P066.wav",
+    "sha256": "c95ecefc0e171eb161464a1d78629b4b663da040817f8ad47b647e0d25707677",
+    "bytes": 56194340,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 318.561769,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P066.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P066.mid",
+     "sha256": "c128a2ec6e2d96344dba70c44223fedfccdffe61c52f464137155f2421e604fb",
+     "bytes": 33013
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P066.csv",
+     "sha256": "f9d3b31c8cc98a6300fdd1f59512e3ad0983a8c7f4f8f750d68e3c53da7e6c6d",
+     "bytes": 655839
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P066.VOCA_INST.TXT",
+     "sha256": "247eb25d803f9914c20d1b1dd5b7de9733e372691f60c194ac59a828c856a50a",
+     "bytes": 1921
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P066.SMF_SYNC.MID",
+     "sha256": "9c0e60896ef5b8eec886fddb8c42e3ec6840798770212defb9114251c0bae575",
+     "bytes": 44586
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p066.tsv",
+    "sha256": "50c142a9bbdc76e74bf64fc3e5175fe1a9b9a83b54e11ea48bc88b773c702b68"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p066.tsv",
+    "sha256": "50c142a9bbdc76e74bf64fc3e5175fe1a9b9a83b54e11ea48bc88b773c702b68"
+   }
+  },
+  {
+   "id": "rwc-p067",
+   "source_id": "RWC_P067",
+   "collection": "RWC-P",
+   "title": "Tokei no hayasa wa",
+   "artist": "Makiko Hattori",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p067",
+   "audio": {
+    "path": "rwc/audio/RWC_P067.wav",
+    "sha256": "6d7ed65e91df7c9b3fd4e971783c81210aa8e1d9488e49ec974790fdd95419f0",
+    "bytes": 43862892,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 248.655601,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P067.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P067.mid",
+     "sha256": "d3f4f38ef96ff5650c823a0ad82111186a05cf3a5f51c087a8c6b648792830a2",
+     "bytes": 28191
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P067.csv",
+     "sha256": "6e784be732ad90ac76a4f10e70ab6f1db6f9086248ef9ef7cacb9edc5e2f8726",
+     "bytes": 513123
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P067.VOCA_INST.TXT",
+     "sha256": "f8ac4ed62c72f5af305e549081657fad1afd42bbb7bf7884193d194b2c99263c",
+     "bytes": 1305
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P067.SMF_SYNC.MID",
+     "sha256": "2efa1e3a10ae8c609541a417aa8f529f19354c1bbd753e902c42d1e6601b41ea",
+     "bytes": 38821
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p067.tsv",
+    "sha256": "d1a9c1c8e22fca992287861521f961d90459de093dfd7abad44700e597f71128"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p067.tsv",
+    "sha256": "d1a9c1c8e22fca992287861521f961d90459de093dfd7abad44700e597f71128"
+   }
+  },
+  {
+   "id": "rwc-p068",
+   "source_id": "RWC_P068",
+   "collection": "RWC-P",
+   "title": "Nichiyoubi",
+   "artist": "Makiko Hattori",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p068",
+   "audio": {
+    "path": "rwc/audio/RWC_P068.wav",
+    "sha256": "695f6e2089eeaf05bd60f449a6fc030b4a5d19b3bf47c4c3dadfc4ee553df4b3",
+    "bytes": 51547960,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 292.221746,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P068.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P068.mid",
+     "sha256": "0b3c8a2fe4f60c4599e38a0adfab54c2d88bdf1cf6fe4963bb86b0c2fba780ef",
+     "bytes": 62777
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P068.csv",
+     "sha256": "f09eadac9beff5f892808a6f079815e2c7805052525dc70e815cab0398c85036",
+     "bytes": 608591
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P068.VOCA_INST.TXT",
+     "sha256": "1fc58656ce77bc3bfcbc244e736bde12e612785f34f1354c1f96b3f4bafef2c7",
+     "bytes": 1778
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P068.SMF_SYNC.MID",
+     "sha256": "3d2dc0928367d4d70a41c9d82e552d46544cca5eee9cf8eda5a5d11673d2d068",
+     "bytes": 83068
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p068.tsv",
+    "sha256": "522bd10999f10c51222f0e718416c9ceb5031ddae85662443a9d89abada9901c"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p068.tsv",
+    "sha256": "cfb1984baee713f31386e036706d63ee90325fb48363f14f40f04177ce8b72db"
+   }
+  },
+  {
+   "id": "rwc-p069",
+   "source_id": "RWC_P069",
+   "collection": "RWC-P",
+   "title": "Gin no sora",
+   "artist": "Hiromi Yoshii",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p069",
+   "audio": {
+    "path": "rwc/audio/RWC_P069.wav",
+    "sha256": "e794a0d06e9bdac5d96a600536891dd13360cf6cd4c24d593676e6add4e5da4d",
+    "bytes": 63209536,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 358.330454,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P069.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P069.mid",
+     "sha256": "9ed5496172bf77826d8cc772988341a93cdc46d08cf473768091e4a3fd2348ec",
+     "bytes": 90701
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P069.csv",
+     "sha256": "4d4c9f9d81608907cad7c480b6b485cd806453319dfa20022aab6cfa5a406b3e",
+     "bytes": 747475
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P069.VOCA_INST.TXT",
+     "sha256": "fc49a7174b2bf18ab8a8ab3f10a30b0af19aeedb65190ce42ed8222114185ae4",
+     "bytes": 1892
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P069.SMF_SYNC.MID",
+     "sha256": "540e985371e52a28cd8e938f9178abb80a65fa13800776a26d69537ee5ae4c25",
+     "bytes": 120854
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p069.tsv",
+    "sha256": "f334811aac810a8174d4a6d51cb3682ee95d579e38420d1085a60c456c521844"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p069.tsv",
+    "sha256": "e1be5bb07445da55ac21b22b74349a29469f8e0dbd017b19a1424191af648950"
+   }
+  },
+  {
+   "id": "rwc-p070",
+   "source_id": "RWC_P070",
+   "collection": "RWC-P",
+   "title": "Miageta sora wa",
+   "artist": "Tamako Matsuzaka",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p070",
+   "audio": {
+    "path": "rwc/audio/RWC_P070.wav",
+    "sha256": "a1b910751798cbeb049776efc40a3395c7c49266a9c5c1a48671af1b44b14cde",
+    "bytes": 43163364,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 244.690023,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P070.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P070.mid",
+     "sha256": "f9b6924e1d07425ca1c85e105cef9e52a358195c1ac21364ad7a36560e1d5383",
+     "bytes": 48067
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P070.csv",
+     "sha256": "d8b27dcf630a99e0d4b8a67dd13dcf82cf296d4e97e2332bf3e7d63f6232d098",
+     "bytes": 505035
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P070.VOCA_INST.TXT",
+     "sha256": "c747c9b74ec951d2101be205bf0fe1a27409d7ef6f83965e00325af2612703e1",
+     "bytes": 1756
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P070.SMF_SYNC.MID",
+     "sha256": "2dec3032cd136d9132deb06905cee7f54de7fac43b64460f7ffed69aa3fe79c9",
+     "bytes": 64196
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p070.tsv",
+    "sha256": "3400048b5e1e240a8148ff012e33f1ede99d3cbb436280ac24a12947e43f9750"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p070.tsv",
+    "sha256": "ea944ef2f1b0d5b38b8deac00264c01ca501e48569c3b9e4f8e769b403def5b2"
+   }
+  },
+  {
+   "id": "rwc-p071",
+   "source_id": "RWC_P071",
+   "collection": "RWC-P",
+   "title": "Tsuki no youni",
+   "artist": "Hiromi Yoshii",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p071",
+   "audio": {
+    "path": "rwc/audio/RWC_P071.wav",
+    "sha256": "b24b67ba8401fbc34ec54bb25e073dbc2638807ea6d3d3fd245fdf6d5fd5ed88",
+    "bytes": 50170460,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 284.412789,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P071.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P071.mid",
+     "sha256": "94a780684434539d91b0544649e362c6da2c622ae30f3abfefe1163ca8b9097d",
+     "bytes": 54061
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P071.csv",
+     "sha256": "6a2b6ccd9d92511573f85cf44f6500d238b4fedc9b0a95306c5bc41d60e56b9c",
+     "bytes": 583631
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P071.VOCA_INST.TXT",
+     "sha256": "fa97d727dfedd27687d0a52d1364c3101a887c91c3c54e75e389477a6776e752",
+     "bytes": 1588
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P071.SMF_SYNC.MID",
+     "sha256": "e2afb63315db318a02bd02d2916aab7e4ac5ede2bdbcd8cf103371c8dce8a9c0",
+     "bytes": 70788
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p071.tsv",
+    "sha256": "c26c9fc659013ab061a397d70c6bbe12672abed969bf9265b99cf59730edc7a6"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p071.tsv",
+    "sha256": "c26c9fc659013ab061a397d70c6bbe12672abed969bf9265b99cf59730edc7a6"
+   }
+  },
+  {
+   "id": "rwc-p072",
+   "source_id": "RWC_P072",
+   "collection": "RWC-P",
+   "title": "Heart to Hurt",
+   "artist": "Kousuke Morimoto",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p072",
+   "audio": {
+    "path": "rwc/audio/RWC_P072.wav",
+    "sha256": "86b15822bda094cf45e6079d9c75338ce6d8edeaabe4798c5cb44d8537662a3c",
+    "bytes": 35164196,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 199.343265,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P072.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P072.mid",
+     "sha256": "184a2e7c90dbe0fe604528822e96152868ebe5117439e60f2e6a361b9ed425e4",
+     "bytes": 12008
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P072.csv",
+     "sha256": "4ccce91ce3c06958c64ac27af8eb51b577a46f1d3c37f6241ef6e3ffb7d96854",
+     "bytes": 412471
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P072.VOCA_INST.TXT",
+     "sha256": "1d8089a4c45ef36a743ebb6fca28d23b25202fae177fc9be61ad4e8272741c5b",
+     "bytes": 1337
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P072.SMF_SYNC.MID",
+     "sha256": "218aeff3beaf49eb969f9023b9cce85a125b4c737c1170051995b8e2b0bc52b9",
+     "bytes": 16327
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p072.tsv",
+    "sha256": "a400119f8a9072fb743bbfa56fc3197efedf0541eab75c53668d8e34940f1a39"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p072.tsv",
+    "sha256": "8756aacc8227bc77331d1aeeb250ded8e004d1dd8fae3585986871c6a5c9f953"
+   }
+  },
+  {
+   "id": "rwc-p073",
+   "source_id": "RWC_P073",
+   "collection": "RWC-P",
+   "title": "Miss Maria",
+   "artist": "Kazuo Nishi",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p073",
+   "audio": {
+    "path": "rwc/audio/RWC_P073.wav",
+    "sha256": "c215f125c3df51603118ac431f5a6b4718d556ab3a68ae69a3c16b6f0c29cee4",
+    "bytes": 23715472,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 134.441202,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P073.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P073.mid",
+     "sha256": "d797cf8aa2e74d08e78e47179792472ad1c307cacb45320f3fbed86dab968b63",
+     "bytes": 11663
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P073.csv",
+     "sha256": "b35360d7da6cf002dffd07adddff517096c8152ddf8ddf2103bbee3ea57ea6c5",
+     "bytes": 269092
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P073.VOCA_INST.TXT",
+     "sha256": "7f1231360eb45928d7724b5d4ac2f747da9ebb01b22695bd3fc9107abca0127d",
+     "bytes": 935
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P073.SMF_SYNC.MID",
+     "sha256": "cad29d68d9e64f12cb7fdf5e5fbbc7550519db0f8ec926508468e6159a2ac305",
+     "bytes": 17114
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p073.tsv",
+    "sha256": "b438aef673fa1efc8ce95f591256975c9aa5b98f30b25e80c7ddaa8256029b10"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p073.tsv",
+    "sha256": "0e825287b30fe320a822013eeeaa5ff9a438c8fa46c522880f56575eb006a88f"
+   }
+  },
+  {
+   "id": "rwc-p074",
+   "source_id": "RWC_P074",
+   "collection": "RWC-P",
+   "title": "Kimi no iro",
+   "artist": "Kousuke Morimoto",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p074",
+   "audio": {
+    "path": "rwc/audio/RWC_P074.wav",
+    "sha256": "15cf86bac0f295567d977c4adccf36a2fd8750a7bfcb42f830d80883f56ab80c",
+    "bytes": 33916412,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 192.26966,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P074.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P074.mid",
+     "sha256": "1b74db10b08edcefed27199b847b4cc8ce0b106e1346f2af3fe38b80a1cada35",
+     "bytes": 26358
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P074.csv",
+     "sha256": "99ad220b6a6a4ccfd3e3f5e8dd37f6834f29b137521ba6c0e7ca58ad0c125b1f",
+     "bytes": 396671
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P074.VOCA_INST.TXT",
+     "sha256": "606d954352fc6f1997b614b51c1fa07a7ba3ee8ef8d019596b3b7187712c4c9b",
+     "bytes": 1075
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P074.SMF_SYNC.MID",
+     "sha256": "d7d298908ac205225fc21687b36ef1b43107bc8b6cb3e8e842c65f0db0200095",
+     "bytes": 35967
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p074.tsv",
+    "sha256": "1d7fe16d0b09d8ccd8824df2ae38f566bb0932f2c24075a8d630e7b65597f49c"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p074.tsv",
+    "sha256": "1d7fe16d0b09d8ccd8824df2ae38f566bb0932f2c24075a8d630e7b65597f49c"
+   }
+  },
+  {
+   "id": "rwc-p075",
+   "source_id": "RWC_P075",
+   "collection": "RWC-P",
+   "title": "Toui machi e",
+   "artist": "Hiromi Yoshii",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p075",
+   "audio": {
+    "path": "rwc/audio/RWC_P075.wav",
+    "sha256": "126d78630b45583c753e30fb064f72c434836077b65340087d190f47867e161e",
+    "bytes": 35269308,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 199.939138,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P075.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P075.mid",
+     "sha256": "5153172ab0c0d066fb3e65cbb0751c73c07a169c9bf33f340960a65bd877f9ac",
+     "bytes": 14191
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P075.csv",
+     "sha256": "3122c21ec9fa52c25d8544cf1358309c226bc9b794233d219bc18788fa2ea67c",
+     "bytes": 409283
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P075.VOCA_INST.TXT",
+     "sha256": "fd02a500e40e82135d0756e39626a0727848c3f3452b18deed232d55c7dca0cc",
+     "bytes": 1360
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P075.SMF_SYNC.MID",
+     "sha256": "61c067770d1857d2a1fc95a8eb21232afafa093e6df62eb9593427095354b341",
+     "bytes": 20477
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p075.tsv",
+    "sha256": "0fd91363c943d7bb0b10acc843e1034eac1c65a6792110a8c5b28fcc75957b74"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p075.tsv",
+    "sha256": "228a10cf407f9e2e7b9b9814ff4a8c8bfae3a7aeab83a91369560862723c1310"
+   }
+  },
+  {
+   "id": "rwc-p076",
+   "source_id": "RWC_P076",
+   "collection": "RWC-P",
+   "title": "Chikai",
+   "artist": "Kousuke Morimoto",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p076",
+   "audio": {
+    "path": "rwc/audio/RWC_P076.wav",
+    "sha256": "fbefba121e53cbb9f670c9b691f6526bd3a9e0f7e74ca31cd8c4c27ed043af9a",
+    "bytes": 40371000,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 228.860295,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P076.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P076.mid",
+     "sha256": "7b122ce2669ac44d10abac04c717c599528e3d0da80da4d162289896a0ef7eff",
+     "bytes": 12327
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P076.csv",
+     "sha256": "a600f54a54d0e673dc07befec256008f8eb96172220c95fe7590667c66850805",
+     "bytes": 469064
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P076.VOCA_INST.TXT",
+     "sha256": "f62155a1a980dbf9984332c2ec05895d747be749941a4a05e82b85a97d29ea8c",
+     "bytes": 1064
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P076.SMF_SYNC.MID",
+     "sha256": "f134ea777d7735398ab154834f64915ec5f98df7425957aeef52ab88a085517f",
+     "bytes": 17655
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p076.tsv",
+    "sha256": "a2195e68c00bf03c2e83632c7f3a15daccbede930f0e351ec961bab9f65905dd"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p076.tsv",
+    "sha256": "a2195e68c00bf03c2e83632c7f3a15daccbede930f0e351ec961bab9f65905dd"
+   }
+  },
+  {
+   "id": "rwc-p077",
+   "source_id": "RWC_P077",
+   "collection": "RWC-P",
+   "title": "Aishiteru",
+   "artist": "Makiko Hattori",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p077",
+   "audio": {
+    "path": "rwc/audio/RWC_P077.wav",
+    "sha256": "73e37daed4200667ef338db6f8cf7a0d74bcf8c0ef640042ce07b47622e86aac",
+    "bytes": 41301212,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 234.133605,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P077.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P077.mid",
+     "sha256": "57b4be0cad198c3061b540a573fc75711aa9f67a4c815709dda09a4bf338b933",
+     "bytes": 16345
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P077.csv",
+     "sha256": "6b7c631162e02b58cee9a70abf20dd5c3a0f591faa3dcc3cc9040cac3bd1255e",
+     "bytes": 484689
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P077.VOCA_INST.TXT",
+     "sha256": "8b2c4a4efa5f8f7ef2b0fb5aadc289f447571a68fc2f965cefe0def2cd5965bc",
+     "bytes": 1941
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P077.SMF_SYNC.MID",
+     "sha256": "32d7e2a16034a1137541b9bb73a552b1028c898912bc0af685567a890a5fe4ae",
+     "bytes": 20718
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p077.tsv",
+    "sha256": "bed0810751fabab346d48132c0d1bc7721cac40b2008c9433a03a79daaa22907"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p077.tsv",
+    "sha256": "0772f09d6402a85c4fac2f12bddb2780efa1838dd52747c5d18e17f6107aae1f"
+   }
+  },
+  {
+   "id": "rwc-p078",
+   "source_id": "RWC_P078",
+   "collection": "RWC-P",
+   "title": "Kumo",
+   "artist": "Masaki Kuehara",
+   "language": "Japanese",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p078",
+   "audio": {
+    "path": "rwc/audio/RWC_P078.wav",
+    "sha256": "6aa99d1d5222d12dd36469121bb654a1d6bea29044be0053be35beb1c1ea3859",
+    "bytes": 45724296,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 259.207778,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P078.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P078.mid",
+     "sha256": "1712d8d76908d9e599b54115e2f376e9a0af014176ce193aaae6ae5675900dc4",
+     "bytes": 12332
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P078.csv",
+     "sha256": "be4b89a1f94788b1d39adc7ad6277ebc5a1f2837d7c7cb4b4e9b6f1a63ed207a",
+     "bytes": 535641
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P078.VOCA_INST.TXT",
+     "sha256": "284b3669f83ce74b126fde91d90655fe09847cc5eef7488734660cb232519a5f",
+     "bytes": 1808
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P078.SMF_SYNC.MID",
+     "sha256": "df2226d855275fc2948e189d357ba88d07f38055182b72cc7b5a63091e2a4439",
+     "bytes": 16136
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p078.tsv",
+    "sha256": "caebc2cb9848854d23ea0aa9773424bada5758b03f8c0d15aaa5fede57db68d6"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p078.tsv",
+    "sha256": "53f48c49f708b18840dc7007f8c036289c70de87689a43a7df6fe13551c3b4fd"
+   }
+  },
+  {
+   "id": "rwc-p079",
+   "source_id": "RWC_P079",
+   "collection": "RWC-P",
+   "title": "Together",
+   "artist": "Tomomi Ogata",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p079",
+   "audio": {
+    "path": "rwc/audio/RWC_P079.wav",
+    "sha256": "a6d68bde3e5f75074b1d2d793c127c618421e986b51cdc75ec6b00c8e81a45bc",
+    "bytes": 46983592,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 266.346644,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P079.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P079.mid",
+     "sha256": "54e91fb9b05c350938541fb9768bca4088c6a97edec60e85e5e90cf034a1599e",
+     "bytes": 11829
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P079.csv",
+     "sha256": "973d16019877200e02da65c6be51ce4db19a7ef5709348fec9569dd88c8bb39a",
+     "bytes": 554279
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P079.VOCA_INST.TXT",
+     "sha256": "9b25e438c72e173727326bacce0673e2342b6532bb984986236baaed6589f06d",
+     "bytes": 1483
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P079.SMF_SYNC.MID",
+     "sha256": "56463dfaa1274855f3fabddef921f76ab46d43c57e70f45600c227363decdb1b",
+     "bytes": 15864
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p079.tsv",
+    "sha256": "a38f6cbdc1c715f682f309b7d62ec15f7da58044130c76be0c0f6254ada06639"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p079.tsv",
+    "sha256": "a38f6cbdc1c715f682f309b7d62ec15f7da58044130c76be0c0f6254ada06639"
+   }
+  },
+  {
+   "id": "rwc-p080",
+   "source_id": "RWC_P080",
+   "collection": "RWC-P",
+   "title": "Sagashimono",
+   "artist": "Tomomi Ogata",
+   "language": "Japanese",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p080",
+   "audio": {
+    "path": "rwc/audio/RWC_P080.wav",
+    "sha256": "da95a908cee0a6298cfa6a847b85cebbc000f155b17902ccec1602aec07fa3e0",
+    "bytes": 38643152,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 219.065238,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P080.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P080.mid",
+     "sha256": "917e4e6d7e42a3eeee497a0bd4dc77b94dcab4e854009cd86b780dcb64bcf7c3",
+     "bytes": 10852
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P080.csv",
+     "sha256": "0ce8fe4d6ec8703abc62b0fef65ab77ac7aeb7efed83ac1c0ca11c594ef576d5",
+     "bytes": 457915
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P080.VOCA_INST.TXT",
+     "sha256": "301f3d69a2bf1cf749536b250c833717b034826243732ca7170dc1f2b52d6046",
+     "bytes": 1444
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P080.SMF_SYNC.MID",
+     "sha256": "b7f9e58b5a369a759cb2d7eeb6741a6328bbd62de52b776fe9c2cf898131e072",
+     "bytes": 14699
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p080.tsv",
+    "sha256": "69e64fcf383a606c2751df3066ca72832903113ff2ddc0a0eb37f50c37af7ec0"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p080.tsv",
+    "sha256": "69e64fcf383a606c2751df3066ca72832903113ff2ddc0a0eb37f50c37af7ec0"
+   }
+  },
+  {
+   "id": "rwc-p081",
+   "source_id": "RWC_P081",
+   "collection": "RWC-P",
+   "title": "How Deep Is Your Love?",
+   "artist": "Donna Burke",
+   "language": "English",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p081",
+   "audio": {
+    "path": "rwc/audio/RWC_P081.wav",
+    "sha256": "1e3a421b3491006c37ffe205e5354129e9def540a91d94925e1a703f06269df7",
+    "bytes": 40357148,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 228.781769,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P081.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P081.mid",
+     "sha256": "dd23588f1cbec0b2b53774144aa05578870c1a9c6ad5f2b70991d4952b015f58",
+     "bytes": 50767
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P081.csv",
+     "sha256": "9a666bcd3d1a46665959f798aeb05f728ed5c003f8b19a11db7cf946d4873340",
+     "bytes": 474557
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P081.VOCA_INST.TXT",
+     "sha256": "ca612c6ca4e0f61b46c4b117d6484f20ff07100cdc96b75dd86005a1fc95b172",
+     "bytes": 1696
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P081.SMF_SYNC.MID",
+     "sha256": "fb7b95f600194f673431774954e525aff92fee9d853d14324c0a99faa4834725",
+     "bytes": 69420
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p081.tsv",
+    "sha256": "ef057c1e5e015def8e3a449405658d01286718152b7619b45d63a8a43b99cb7e"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p081.tsv",
+    "sha256": "03eed760fc5bced3f33705a336fc0c7a865772ac7d94ac503571963dbd39048d"
+   }
+  },
+  {
+   "id": "rwc-p082",
+   "source_id": "RWC_P082",
+   "collection": "RWC-P",
+   "title": "Once in a life time",
+   "artist": "Shinya Iguchi",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p082",
+   "audio": {
+    "path": "rwc/audio/RWC_P082.wav",
+    "sha256": "72d44c7663ceea2f3f7ce711a2435f7840aa44a05e2648f385d11ca6170684fb",
+    "bytes": 59102016,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 335.045193,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P082.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P082.mid",
+     "sha256": "086ed81449f83b3ea84443ba9a00d9d3e887dd55336eabfa22f385f92d80e150",
+     "bytes": 69802
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P082.csv",
+     "sha256": "2bb48a4ad29ad7032c71f115edd7bb6a35d1c67c4f6d172b00328ddd1936758e",
+     "bytes": 686102
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P082.VOCA_INST.TXT",
+     "sha256": "a2f0bc8852c9ba04051ee5d3b678b6b7dfac471aea21fa06b5895fa0a47ef1c6",
+     "bytes": 2016
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P082.SMF_SYNC.MID",
+     "sha256": "d235556ec79e1956f23eebd7121a01f55b120ba9e31e7817c672bd458eb308dd",
+     "bytes": 91371
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p082.tsv",
+    "sha256": "e67eea5205382d566b6468752246e44e7dc778fb34efec61e39900f116210ece"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p082.tsv",
+    "sha256": "e5db5f33e3517a6bd0daa749ab5154d2a3c37b625e0cfeb3ecaf04d53454003d"
+   }
+  },
+  {
+   "id": "rwc-p083",
+   "source_id": "RWC_P083",
+   "collection": "RWC-P",
+   "title": "Doing That Thing",
+   "artist": "Jeff Manning",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p083",
+   "audio": {
+    "path": "rwc/audio/RWC_P083.wav",
+    "sha256": "259295fd6f43e2dbb28cc22d2a9f1d26b5c04fce3edcaa140608c3fd3a821cb5",
+    "bytes": 37992100,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 215.374467,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P083.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P083.mid",
+     "sha256": "7dc5d7aff874337797afb0d48b9b0dc8583eeed15ff6be73cca9bdd28a123f10",
+     "bytes": 52475
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P083.csv",
+     "sha256": "4919f9c608a45de4516dc3941560dc2c450931abde88743a44f27e38ad38b74e",
+     "bytes": 436349
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P083.VOCA_INST.TXT",
+     "sha256": "0f9c47eb0e0409a1563150e77ad61bc4b6546b18a923376b64be7e7a76559693",
+     "bytes": 1119
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P083.SMF_SYNC.MID",
+     "sha256": "58dd08eeaddcd6a792ef21bb2bab7672e3e2be0eb619218b73661a886b0abcd4",
+     "bytes": 68875
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p083.tsv",
+    "sha256": "cc231efcf0905b3880569d3f9d96e833e0c7b7e172ccbed993b34526ffc22367"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p083.tsv",
+    "sha256": "cc231efcf0905b3880569d3f9d96e833e0c7b7e172ccbed993b34526ffc22367"
+   }
+  },
+  {
+   "id": "rwc-p084",
+   "source_id": "RWC_P084",
+   "collection": "RWC-P",
+   "title": "Someday",
+   "artist": "Shinya Iguchi",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p084",
+   "audio": {
+    "path": "rwc/audio/RWC_P084.wav",
+    "sha256": "ee6d4a454f0ae372cf496c4409bc0800ee577fe5b836138bd17d72efc98b05ce",
+    "bytes": 49108540,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 278.392834,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P084.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P084.mid",
+     "sha256": "581555db9d6d8b5da7547133baaede5f6fb16b1c35af540c3367350b535601d3",
+     "bytes": 50712
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P084.csv",
+     "sha256": "c45d914b0314cbe1726758397fbcf4a5da89f9a9a953f90f1d1816d35826f54e",
+     "bytes": 567622
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P084.VOCA_INST.TXT",
+     "sha256": "544ef71133df2d782cb2ff63738c8c05513b1716a91476fce294cdbaa33f4afc",
+     "bytes": 60
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P084.SMF_SYNC.MID",
+     "sha256": "130fd3c3e4e3696a996968c9cb1b37d42416c5b3353f81e460389b1222990412",
+     "bytes": 67894
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p084.tsv",
+    "sha256": "81f748781b58cd4de0eaab8b8103ed38509db1f8176ea721cd76bb142c7c2cf9"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p084.tsv",
+    "sha256": "81f748781b58cd4de0eaab8b8103ed38509db1f8176ea721cd76bb142c7c2cf9"
+   }
+  },
+  {
+   "id": "rwc-p085",
+   "source_id": "RWC_P085",
+   "collection": "RWC-P",
+   "title": "Waiting for the moment",
+   "artist": "Jeff Manning",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p085",
+   "audio": {
+    "path": "rwc/audio/RWC_P085.wav",
+    "sha256": "4050be12fd7e05992b7824588d1e6c76a4b3b4bb1648aa843a2c497d4bcbd0fe",
+    "bytes": 36773404,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 208.46576,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P085.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P085.mid",
+     "sha256": "c8ada440b7e9c3fd707bb5cf25387a27f63c7fe790b6e71d56debdd12e8e3802",
+     "bytes": 60785
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P085.csv",
+     "sha256": "83a003e27d81cc763336f53e30eeb8a11065cf673534e5c11dedb622844e9b0e",
+     "bytes": 425389
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P085.VOCA_INST.TXT",
+     "sha256": "32ac0ef24755e6b63241b72f8ea0f5eed9888ed41eccc70eae389970e324f85a",
+     "bytes": 1883
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P085.SMF_SYNC.MID",
+     "sha256": "a45edb3bf85c5d3d2900c7bbff4ea6220e91a5dafa25c51f93cb33924b9a89ad",
+     "bytes": 81201
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p085.tsv",
+    "sha256": "85b2f60a874ba69d386d4c57483278c9b0592636b82b5268a3bfc709c5876372"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p085.tsv",
+    "sha256": "73627b222a4dc8bcb11a31394f4a310fd865650812d86ee8f678a617a0319950"
+   }
+  },
+  {
+   "id": "rwc-p086",
+   "source_id": "RWC_P086",
+   "collection": "RWC-P",
+   "title": "Angel Baby",
+   "artist": "Betty",
+   "language": "English",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p086",
+   "audio": {
+    "path": "rwc/audio/RWC_P086.wav",
+    "sha256": "f0c90bfee834cbce56507e5fb98084189e8c237bcaf9118cc905498e5566232e",
+    "bytes": 45126180,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 255.817098,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P086.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P086.mid",
+     "sha256": "ecf2ead53c028ea2287fad31e233df1e4e90bf4706611f7521ef42b0ee105330",
+     "bytes": 81224
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P086.csv",
+     "sha256": "6b0a8cc809d4e354f47093eb122f0cf20f59c17cb6fca7c1d9a13a00ff0e1677",
+     "bytes": 531727
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P086.VOCA_INST.TXT",
+     "sha256": "c2b086be888230bc70539cb92e082b86312bd478e70c031d665d71870f05303a",
+     "bytes": 1519
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P086.SMF_SYNC.MID",
+     "sha256": "85e2963cfce513caf2300b412a476462c5826322d69f26ff05db1213280ae51f",
+     "bytes": 106105
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p086.tsv",
+    "sha256": "54ede6fd3bde3b9eba5c9a6933bb2e1e50d32fae84feca40df1e97d2fa3aacef"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p086.tsv",
+    "sha256": "dfb90fd02464f4a45427f3a56bd415c03b410e067639619d380ed4c998e1764f"
+   }
+  },
+  {
+   "id": "rwc-p087",
+   "source_id": "RWC_P087",
+   "collection": "RWC-P",
+   "title": "I think of you",
+   "artist": "Jeff Manning",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p087",
+   "audio": {
+    "path": "rwc/audio/RWC_P087.wav",
+    "sha256": "d028c67f248f323a816825796741fbb7e30cab3b455b86753eb5c57044b2c857",
+    "bytes": 51020552,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 289.231905,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P087.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P087.mid",
+     "sha256": "284469e349c1677ddff0d133af49c6a010618ef6d6ecf0b88c97df8fb5f74f49",
+     "bytes": 41927
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P087.csv",
+     "sha256": "1394303f001c2b50abc9093aa84f0f55c4ad21125d4e65914fe8d79e2d1439ff",
+     "bytes": 600102
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P087.VOCA_INST.TXT",
+     "sha256": "422477a90134251c180c57a68965bff0e938ee32fdd788e6a9849c6149b0223f",
+     "bytes": 1792
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P087.SMF_SYNC.MID",
+     "sha256": "3cc6a1302b91ecfe27182ad305dd85487e1d103f2e541f9e70bed7de2c996640",
+     "bytes": 57492
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p087.tsv",
+    "sha256": "b7ec717d33d0e3c3bb0f8320ba3ae3392040b4f2b5782bf3d9cb92a552ed5236"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p087.tsv",
+    "sha256": "c2422ded05f15f544831e4a6da4e313d0a04019cfdfc132199573cf87f76be65"
+   }
+  },
+  {
+   "id": "rwc-p088",
+   "source_id": "RWC_P088",
+   "collection": "RWC-P",
+   "title": "Woman Like You",
+   "artist": "Shinya Iguchi",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p088",
+   "audio": {
+    "path": "rwc/audio/RWC_P088.wav",
+    "sha256": "09c8267567b1fce3a1cf1cd8d458c3b81e86d00256722a8ea67b61b0d9293ffd",
+    "bytes": 43663176,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 247.523424,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P088.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P088.mid",
+     "sha256": "88d94ec464eec75ff4183c5f7fcbf752e01698c99525c14adecaa8583e840e31",
+     "bytes": 50857
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P088.csv",
+     "sha256": "e8163c45da79cc79662839c08c5bdc30de7808a1a5e6eaff1a2c381d5510be26",
+     "bytes": 506387
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P088.VOCA_INST.TXT",
+     "sha256": "79b631c4bc3dc7509a06d8a68448f235e717312cf95e2b03b6256da1ebed87e8",
+     "bytes": 2496
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P088.SMF_SYNC.MID",
+     "sha256": "02ec0a38d6eb06f5b6fc8531d885e75deb321cb49c2f31224f854183cb7216ba",
+     "bytes": 68857
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p088.tsv",
+    "sha256": "866aa639d4dbee2516b1347e0fba4ba010d8e3c3976f5bea44421353fefaefa5"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p088.tsv",
+    "sha256": "06a0f93e176f694ac012abedd9ed1349fffe50353dc07eea951abb2d5bf19786"
+   }
+  },
+  {
+   "id": "rwc-p089",
+   "source_id": "RWC_P089",
+   "collection": "RWC-P",
+   "title": "Life Is What You Make It To Be",
+   "artist": "Donna Burke",
+   "language": "English",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p089",
+   "audio": {
+    "path": "rwc/audio/RWC_P089.wav",
+    "sha256": "e585145aefed94a757d0af7527962f0c9662bd2ebaa2b8d057d3672b8c66c89e",
+    "bytes": 39048412,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 221.36263,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P089.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P089.mid",
+     "sha256": "4ebb2420f73fe59d338d5d7b9cf467e25d2ed7ee9565a97aed745cff5bb04031",
+     "bytes": 73252
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P089.csv",
+     "sha256": "463aada0aea4c1c6d3065588500c845bf800a83d987ad9fdc0892e558cfb5c04",
+     "bytes": 454887
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P089.VOCA_INST.TXT",
+     "sha256": "930fccddc48b6c8d51a0f0770e61748a441830b243e2c7a287f65f772f1b9284",
+     "bytes": 2908
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P089.SMF_SYNC.MID",
+     "sha256": "5e50e66524b58ca20442fd29e6e43d2c6e53cf440bebd5e4ed64d95a4c838f76",
+     "bytes": 97819
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p089.tsv",
+    "sha256": "95f6da8125402fc87050483415a5bcd83969481a77190735fbe16e07429ecb18"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p089.tsv",
+    "sha256": "64afc870ad3f6bb00885fd75524595ae49be10a01d8517fcd22d4f3720e617c7"
+   }
+  },
+  {
+   "id": "rwc-p090",
+   "source_id": "RWC_P090",
+   "collection": "RWC-P",
+   "title": "Don't Say Good bye",
+   "artist": "Shinya Iguchi",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p090",
+   "audio": {
+    "path": "rwc/audio/RWC_P090.wav",
+    "sha256": "86bec4e7e34486a63886dcf8de13a76932710ea2d5238ceccaa963cf3773806a",
+    "bytes": 48986572,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 277.701406,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P090.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P090.mid",
+     "sha256": "1a7b42fa89734c5e30ecca989de7b311373d8738c10d72cfc3fa7be3a4285f67",
+     "bytes": 83874
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P090.csv",
+     "sha256": "86dd18d442277f0537acbf76709e846137544a7862577d9cdf837b5fbb6cd651",
+     "bytes": 571305
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P090.VOCA_INST.TXT",
+     "sha256": "1c1dea6290ab1e11872ad3a2ad004d59205a4fb03f155ee560a1fbb287a6e773",
+     "bytes": 1897
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P090.SMF_SYNC.MID",
+     "sha256": "a1b14d05c17fb792da3dc7078dd71e9c99f40036f7862363413e5e1835857447",
+     "bytes": 111454
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p090.tsv",
+    "sha256": "eef06b632a040db767f90828df1c2bd0c05ad0d9b18870242032df5fe4c50f7a"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p090.tsv",
+    "sha256": "71dc5e64851c2743e6d807fa2b96abca86c1701923a951285bc9208509ea6f8f"
+   }
+  },
+  {
+   "id": "rwc-p091",
+   "source_id": "RWC_P091",
+   "collection": "RWC-P",
+   "title": "Change Of Heart",
+   "artist": "Donna Burke",
+   "language": "English",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p091",
+   "audio": {
+    "path": "rwc/audio/RWC_P091.wav",
+    "sha256": "42472045b8970c63476b0496046db938d9426d86b059df169eb90a84183d9286",
+    "bytes": 39128084,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 221.814286,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P091.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P091.mid",
+     "sha256": "6972f5579412534140d4b47737eab1a6e9657df13cfc206c51d5376f3269ff23",
+     "bytes": 64290
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P091.csv",
+     "sha256": "95e4a1827d95e019ba17537e6afa87b17bff01aef6bd92324b878a023585cefe",
+     "bytes": 458617
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P091.VOCA_INST.TXT",
+     "sha256": "df850c8a9307895bfa2f2e46848f57268d0eb563b634f6aa49317a3921b8c34c",
+     "bytes": 1493
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P091.SMF_SYNC.MID",
+     "sha256": "ab2565a76a1be43ed1e7ff10c215d30d3c5483861b5fafd28929b066949c4009",
+     "bytes": 87361
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p091.tsv",
+    "sha256": "62179169940c8a8e2a9cb5721f770d4148b457b77bbe78fa0481aef412ff4deb"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p091.tsv",
+    "sha256": "62179169940c8a8e2a9cb5721f770d4148b457b77bbe78fa0481aef412ff4deb"
+   }
+  },
+  {
+   "id": "rwc-p092",
+   "source_id": "RWC_P092",
+   "collection": "RWC-P",
+   "title": "I'll be there for you",
+   "artist": "Betty",
+   "language": "English",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p092",
+   "audio": {
+    "path": "rwc/audio/RWC_P092.wav",
+    "sha256": "5b1066ee5bc4854bc7ba66ba3988e4a1abd377f5e7bcbee877fdee43fc702a0d",
+    "bytes": 38520092,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 218.367619,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P092.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P092.mid",
+     "sha256": "938cb2d6c9e00a2f2f35d3f76c8b248010b24c3f2ca161dc16e041a19274b149",
+     "bytes": 57510
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P092.csv",
+     "sha256": "484f623b473ce82e8645e9881d3de0331b8520f4ffd0395a1740b98b92c35d11",
+     "bytes": 445327
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P092.VOCA_INST.TXT",
+     "sha256": "26cb903fb8daa80358439d2ee244a29a9ae8415150905ffbefa52645fc4ece74",
+     "bytes": 1129
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P092.SMF_SYNC.MID",
+     "sha256": "9fa0825c30c77331f974f0ed48a31d42afafa052ef87722fdbc20bc5428cde3b",
+     "bytes": 78678
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p092.tsv",
+    "sha256": "ed12d5876bd3291e2c664cf887d1dcc06d18b9635e943b2337096c9d074a8f3c"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p092.tsv",
+    "sha256": "ed12d5876bd3291e2c664cf887d1dcc06d18b9635e943b2337096c9d074a8f3c"
+   }
+  },
+  {
+   "id": "rwc-p093",
+   "source_id": "RWC_P093",
+   "collection": "RWC-P",
+   "title": "Sweet Dreams",
+   "artist": "Donna Burke",
+   "language": "English",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p093",
+   "audio": {
+    "path": "rwc/audio/RWC_P093.wav",
+    "sha256": "a8123ce599be659eb881e1d9371644a9f001b8fa8758fa3ec7921607e42b03d1",
+    "bytes": 45300320,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 256.804286,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P093.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P093.mid",
+     "sha256": "67f220e3098c11b08fc0dfd575a76abdd8ec1037ee3c9abb1ca11d82590e87de",
+     "bytes": 39531
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P093.csv",
+     "sha256": "e1f35223885bfb7f783973d3d3aee1e3d4b2d15933897ca9d1fbd95183b755ff",
+     "bytes": 531019
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P093.VOCA_INST.TXT",
+     "sha256": "c3a530e01f1f705c762ea9d15925e94a6a065f1cdb5ff6f9afa5c8f67b0e1223",
+     "bytes": 1319
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P093.SMF_SYNC.MID",
+     "sha256": "8a56ec2ca9d26cf2bd6afe9e74e272711b3299d3738bbb70befbad4c49a2334f",
+     "bytes": 54153
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p093.tsv",
+    "sha256": "160fd2be786dacd2e8ed625ce821928bc0785769646506d47ffb4bbc99279abf"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p093.tsv",
+    "sha256": "819c5231f7d324f24b4cdcdb0eea4f19ff62c250f5b8ec79c90db0df3f3d467c"
+   }
+  },
+  {
+   "id": "rwc-p094",
+   "source_id": "RWC_P094",
+   "collection": "RWC-P",
+   "title": "Life",
+   "artist": "Betty",
+   "language": "English",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p094",
+   "audio": {
+    "path": "rwc/audio/RWC_P094.wav",
+    "sha256": "7e3dc1aced7e2d918733eedcc71b6b0de27239ee52726519ceefd6a67c2ddc1c",
+    "bytes": 39141284,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 221.889116,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P094.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P094.mid",
+     "sha256": "9c6aec3f4fd7eb2b8486d18498d48ab90e47ec51f6abb48390274dd72abc1574",
+     "bytes": 45882
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P094.csv",
+     "sha256": "4d39a6fe0a5b245ed07d1588639e59e7072ed9d9a595e63f32a42b02ec21a2dd",
+     "bytes": 460251
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P094.VOCA_INST.TXT",
+     "sha256": "c186b8ea517b5c9a5820bc627b90523d295b71c1cdde3999cc0fbecfb4bfc4ac",
+     "bytes": 1697
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P094.SMF_SYNC.MID",
+     "sha256": "838e7fd3a1c1b3f55022e639ba72fe0cfd4bcfdcb0289ddc9d412e4be9635a43",
+     "bytes": 61029
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p094.tsv",
+    "sha256": "91044bcfb9d9dfc327d98b5e5ee578b0102f711eede2174997a08bac3ecce5c3"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p094.tsv",
+    "sha256": "c632e967db4b1b86f6146f47aa76424ca56948ba281199c17529f8182caaaa01"
+   }
+  },
+  {
+   "id": "rwc-p095",
+   "source_id": "RWC_P095",
+   "collection": "RWC-P",
+   "title": "Feel",
+   "artist": "Jeff Manning",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p095",
+   "audio": {
+    "path": "rwc/audio/RWC_P095.wav",
+    "sha256": "b1c745b718ccfb10eacf343e7c56e37ffe4e51c748a0cfab787c029dced219df",
+    "bytes": 40712168,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 230.794354,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P095.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P095.mid",
+     "sha256": "97ff08b3d363b76ed222cb6af316ea6fe1f81b4f67cd25e56e1519452512cab9",
+     "bytes": 47563
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P095.csv",
+     "sha256": "5dd5ed579b34388acfa4858a62caa9626448ddc43a2ce51c2678c36e834e82cd",
+     "bytes": 472339
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P095.VOCA_INST.TXT",
+     "sha256": "494e7c9db07f23d8436ebbbca0f861b9902ad4c77b3b9bdfa9046096b0f0d186",
+     "bytes": 1413
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P095.SMF_SYNC.MID",
+     "sha256": "6733fac912ba94570c716278cecc78d87d0576436b7ccd3dad9f6b59190f5a0b",
+     "bytes": 61652
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p095.tsv",
+    "sha256": "4b8d4532c681fab3ad1829ea983f4d3711002c3bf84201c3e3961fb9c62be10c"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p095.tsv",
+    "sha256": "edcd9fd0e1f57b10eb869b8ae2c1cfc1f12b3707a948924be8e2a8bd77f61f08"
+   }
+  },
+  {
+   "id": "rwc-p096",
+   "source_id": "RWC_P096",
+   "collection": "RWC-P",
+   "title": "Weekend",
+   "artist": "Betty",
+   "language": "English",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p096",
+   "audio": {
+    "path": "rwc/audio/RWC_P096.wav",
+    "sha256": "4f950dfeabdbfc173b2183143688742c01b19e378c615fb3a1f87db1a1eb53f9",
+    "bytes": 49034180,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 277.971293,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P096.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P096.mid",
+     "sha256": "fa8e705ea632b2d55c61f7aab4346425704d9597748e470b016f6da11295d7aa",
+     "bytes": 108966
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P096.csv",
+     "sha256": "5050e50bd920bebf9c05cae0a5aeceaa4da1eebd2a9db44f73dd9482def9637b",
+     "bytes": 571927
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P096.VOCA_INST.TXT",
+     "sha256": "97329226ea5377952e8ff3fa36e7a94d7436ca280ea8052fc62c406aae7b525a",
+     "bytes": 1896
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P096.SMF_SYNC.MID",
+     "sha256": "290f049d0dded352bc215ec61310cffced1e2720b1ca11d9135c0679e0d27c0c",
+     "bytes": 144559
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p096.tsv",
+    "sha256": "c9b5e29791739678906cf014e065d9e30ee5db91220ebfb81d9870a713694a29"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p096.tsv",
+    "sha256": "c9b5e29791739678906cf014e065d9e30ee5db91220ebfb81d9870a713694a29"
+   }
+  },
+  {
+   "id": "rwc-p097",
+   "source_id": "RWC_P097",
+   "collection": "RWC-P",
+   "title": "Don't Lie To Me",
+   "artist": "Donna Burke",
+   "language": "English",
+   "singers": "Female",
+   "status": "scored",
+   "cluster": "rwc-p097",
+   "audio": {
+    "path": "rwc/audio/RWC_P097.wav",
+    "sha256": "66fcc6b98ba431a7a52e55b8999309a4ded8f59dcf0a41c3a9b947a1d8972777",
+    "bytes": 42529560,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 241.097029,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P097.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P097.mid",
+     "sha256": "1841cf2fd4a3bff64f5175ab42d6ecd69dcedcc3df14b0aae7ff2b4297cc1a07",
+     "bytes": 86449
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P097.csv",
+     "sha256": "9238c96b71b3d002a6bc1a88c4a1828824d07bc57196eb514c9c8432c8a7e490",
+     "bytes": 501553
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P097.VOCA_INST.TXT",
+     "sha256": "2eb2a442bafa26820c0aa9b4abe623eda34eb3b9cc4322c1fa099406af36b1b3",
+     "bytes": 2038
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P097.SMF_SYNC.MID",
+     "sha256": "22d587bc3753b9b79338e5c9d68d63c30096145a53ee6f13a74a98877d007d37",
+     "bytes": 109121
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p097.tsv",
+    "sha256": "530a6dd61cd386aa555a0ba95d4268ccfba19d73bd9c8e27c46cd7cc44a6c8d7"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p097.tsv",
+    "sha256": "530a6dd61cd386aa555a0ba95d4268ccfba19d73bd9c8e27c46cd7cc44a6c8d7"
+   }
+  },
+  {
+   "id": "rwc-p098",
+   "source_id": "RWC_P098",
+   "collection": "RWC-P",
+   "title": "31 BLUES",
+   "artist": "Jeff Manning",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p098",
+   "audio": {
+    "path": "rwc/audio/RWC_P098.wav",
+    "sha256": "208f7c59e5ad0285ad33e6bb0c6b48e8cb403a360525e9d6aca9cf0f45dd4ae4",
+    "bytes": 37021652,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 209.873061,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P098.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P098.mid",
+     "sha256": "3904a116ebe956d7c593125dd03f3604beb890b3912d65c5afaa59a7b73e498e",
+     "bytes": 44642
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P098.csv",
+     "sha256": "14456e182cf3eeb91f90f7610e0dd826f214bcae2bd80960a265092aa8ded09a",
+     "bytes": 423260
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P098.VOCA_INST.TXT",
+     "sha256": "c49f968bd3c9c7289af51db2581ab5214a1c52b6898e0398f5ecff2ff1a2647b",
+     "bytes": 1517
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P098.SMF_SYNC.MID",
+     "sha256": "3eb1e329d7100a7253dd4c244a89775ee16850cda55c6818b2e98a0ff0cd8e63",
+     "bytes": 61027
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p098.tsv",
+    "sha256": "8ee33e27c1e984d3c24826d5ea324599a0dc067ee6c6d281ed07ca37fdd9f2cf"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p098.tsv",
+    "sha256": "dc0b9509a4f3f4158bc4418db85ee11d8ce23c434ca0d2b6bea25e3351fc80eb"
+   }
+  },
+  {
+   "id": "rwc-p099",
+   "source_id": "RWC_P099",
+   "collection": "RWC-P",
+   "title": "Once and For All",
+   "artist": "Shinya Iguchi",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p099",
+   "audio": {
+    "path": "rwc/audio/RWC_P099.wav",
+    "sha256": "12a3438252a67782af8e8f402d04713c1611b8aeb1d0c72ebccc24fe779ce991",
+    "bytes": 55605380,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 315.222993,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P099.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P099.mid",
+     "sha256": "dc7ff7720efd4dfa54bc9aa2bf735f02c3aac54d1c5562f2db5744170b45a9e5",
+     "bytes": 32445
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P099.csv",
+     "sha256": "90df522ec8eab06d7a1d427dda49ec44b510bbf09198dd57dfff2910eae784b3",
+     "bytes": 643767
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P099.VOCA_INST.TXT",
+     "sha256": "82bf91bb7e7b3b7245ab577aed2f3c7380078b2388e36a5677f05ca179a2e0ec",
+     "bytes": 1595
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P099.SMF_SYNC.MID",
+     "sha256": "5bd674a106b77152cb7712254448981c841f3baeeaff54263abc457e6e451051",
+     "bytes": 42152
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p099.tsv",
+    "sha256": "21fd912ad9460f7634881114ce3faadeecf503b86dce8e98363f5096ad3c0f1b"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p099.tsv",
+    "sha256": "21fd912ad9460f7634881114ce3faadeecf503b86dce8e98363f5096ad3c0f1b"
+   }
+  },
+  {
+   "id": "rwc-p100",
+   "source_id": "RWC_P100",
+   "collection": "RWC-P",
+   "title": "No Regrets",
+   "artist": "Shinya Iguchi",
+   "language": "English",
+   "singers": "Male",
+   "status": "scored",
+   "cluster": "rwc-p100",
+   "audio": {
+    "path": "rwc/audio/RWC_P100.wav",
+    "sha256": "b68a178819bf11e23a5fd1f2c53eb307ea5ff70af0e8064883b090269eb203a3",
+    "bytes": 51749664,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 16,
+    "sample_format": "pcm",
+    "seconds": 293.365193,
+    "zip_member": "RWC_OpenAccess_WAV/RWC-P/RWC_P100.wav"
+   },
+   "annotations": [
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/MIDI_aligned/RWC-P/RWC_P100.mid",
+     "sha256": "d322a5291a138e482639fde4c22ad21d104d222f2912b50652be81ae38e36062",
+     "bytes": 50159
+    },
+    {
+     "path": "rwc/annotations/01_annotations_preprocessed/melody/RWC-P/RWC_P100.csv",
+     "sha256": "a17f5a1e5bdbe2da2c53b71a9158279dad2448d6de16c89b95fea28c14790af9",
+     "bytes": 603929
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_VOCA_INST/RM-P100.VOCA_INST.TXT",
+     "sha256": "d4ec6f1828d914bc48f7312d175b6e6be0737881ad2c734f1272904715afd368",
+     "bytes": 1219
+    },
+    {
+     "path": "rwc/archive/AIST_RWC-MDB-P-2001_MIDI_SYNC/RM-P100.SMF_SYNC.MID",
+     "sha256": "8cc31d0a3299d50b21af5385939e202badf0ef896a446f19bf1c2ed3272de7bb",
+     "bytes": 66452
+    }
+   ],
+   "reference": {
+    "path": "refs/rwc-pop-vocal/rwc-p100.tsv",
+    "sha256": "3695e6058d39f04ea3dd20889dd59fcb442ff26658e56af88bfb6e85957cf244"
+   },
+   "reference_full": {
+    "path": "refs/rwc-pop-full/rwc-p100.tsv",
+    "sha256": "3695e6058d39f04ea3dd20889dd59fcb442ff26658e56af88bfb6e85957cf244"
+   }
+  }
+ ]
+}

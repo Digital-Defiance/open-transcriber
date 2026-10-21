@@ -1,0 +1,2431 @@
+{
+ "format": "copyist-judge-manifest/1",
+ "set": "usdx",
+ "title": "UltraStar Deluxe's Creative Commons karaoke songs (39; 32 scored, 4 scored apart)",
+ "source": {
+  "songs": {
+   "url": "https://github.com/UltraStar-Deluxe/songs",
+   "commit": "c9246c799050acec96a03183df4b85493d283d51",
+   "download": "https://codeload.github.com/UltraStar-Deluxe/songs/tar.gz/c9246c799050acec96a03183df4b85493d283d51",
+   "file": "songs-c9246c7.tar.gz",
+   "bytes": 295694336,
+   "sha256": "70249539a76e6cd2d9eb9316b987e28535d0186eb0a3aa823af5cee2146eb956"
+  }
+ },
+ "licence": "per song (see each item): 2 CC BY 4.0, 1 CC0, 1 CC BY-SA 2.5, 35 non-commercial",
+ "allowed_use": "per song; non-commercial songs: testing only: never train on, ship or share; publish scores and credits only",
+ "credit": "UltraStar Deluxe song repository (github.com/UltraStar-Deluxe/songs), each song's artist and chart author per its license.txt",
+ "notes": "Octaves in the charts are unreliable: scored by pitch class at 50 ms and 100 ms. Freestyle notes have no pitch and are masked. Every chart is QA-checked before any system is scored.",
+ "items": [
+  {
+   "id": "usdx-dead-smiling-pirates-i",
+   "source_id": "Dead Smiling Pirates - I",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "I 18",
+   "artist": "Dead Smiling Pirates",
+   "language": "English",
+   "singers": null,
+   "status": "excluded",
+   "cluster": "usdx-dead-smiling-pirates-i",
+   "licence": {
+    "audio": "CC BY-NC-ND 2.5",
+    "chart": "not stated separately"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 180.0,
+    "gap_ms": 750.0,
+    "notes": 256,
+    "pitched": 256,
+    "freestyle": 0,
+    "distinct_pitches": 7,
+    "lines": 55
+   },
+   "audio": null,
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Dead Smiling Pirates - I/audio.ogg",
+    "sha256": "6770d2cbf64c9500b222001f02a5c745a252615e9009ec0b35035bb2e54cc178",
+    "bytes": 2717577
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Dead Smiling Pirates - I/song.txt",
+     "sha256": "b7598ef7356a90bf3b7f497e72cff0ee9f5cae00f5a64173b234c953fbeed63a",
+     "bytes": 4675
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Dead Smiling Pirates - I/license.txt",
+     "sha256": "b68c1d50567c91734ec160aaa812402a1a20c28d43ba0af6cd9303880bd6e523",
+     "bytes": 1504
+    }
+   ],
+   "reference": null,
+   "reason": "no-derivatives licence: no right to make adaptations, and a transcription may count as one"
+  },
+  {
+   "id": "usdx-fairy-bot-orchestra-heaven-can-t-wait",
+   "source_id": "Fairy Bot Orchestra - Heaven can't wait",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "Heaven can't wait",
+   "artist": "Fairy Bot Orchestra",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-fairy-bot-orchestra-heaven-can-t-wait",
+   "licence": {
+    "audio": "CC BY-NC-SA 3.0",
+    "chart": "not stated separately"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 520.0,
+    "gap_ms": 0.0,
+    "notes": 218,
+    "pitched": 210,
+    "freestyle": 8,
+    "distinct_pitches": 10,
+    "lines": 36
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-fairy-bot-orchestra-heaven-can-t-wait.wav",
+    "sha256": "69ee69a69c0f16605bc108a4d36f1616e8669bffa12b759a4d89b88cfe57ca86",
+    "bytes": 66662652,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 188.952834,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Fairy Bot Orchestra - Heaven can't wait/audio.ogg",
+    "sha256": "ef5a50da1b0caafc6d93072814ba07b6eeacde7559ce64feab28375f82d92ac2",
+    "bytes": 4166565
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Fairy Bot Orchestra - Heaven can't wait/song.txt",
+     "sha256": "bb141f02d084bf9cab6199962d0b68a446d567e4480ddaf3d11b4ad322b534c6",
+     "bytes": 4273
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Fairy Bot Orchestra - Heaven can't wait/license.txt",
+     "sha256": "8b2217b3c36f97b553ac9d8d8b3a90d666cddf27d6116cab1fb3848ac9f0a98c",
+     "bytes": 873
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-fairy-bot-orchestra-heaven-can-t-wait.tsv",
+    "sha256": "5a01de3ee5c792cde3b28565f68bb080044d87a95f8cd398d024fb49b6d40247"
+   },
+   "qa": {
+    "path": "qa/usdx-fairy-bot-orchestra-heaven-can-t-wait.json",
+    "sha256": "41e3ae758434858c12f5e3cbb3a17177434e385cc6aa1e0a573498ca1b939919"
+   }
+  },
+  {
+   "id": "usdx-jonathan-coulton-a-talk-with-george",
+   "source_id": "Jonathan Coulton - A Talk with George",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "A Talk with George",
+   "artist": "Jonathan Coulton",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-jonathan-coulton-a-talk-with-george",
+   "licence": {
+    "audio": "CC BY-NC 3.0",
+    "chart": "CC BY-NC 3.0"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 380.0,
+    "gap_ms": 40.0,
+    "notes": 376,
+    "pitched": 376,
+    "freestyle": 0,
+    "distinct_pitches": 10,
+    "lines": 60
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-jonathan-coulton-a-talk-with-george.wav",
+    "sha256": "9a0bcef51091bb172b131ab8c900ba76680444a5234751cef024602ca5705ce6",
+    "bytes": 64982362,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 184.189388,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - A Talk with George/audio.mp3",
+    "sha256": "f22207d5173d90ac25a8c46d3c90c11daa3e6381a8babb5c6513045bb647ca3b",
+    "bytes": 3684182
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - A Talk with George/song.txt",
+     "sha256": "ed6358dbc64f1a6c93efef34e6ae975cc55b00e69f98838469874c96432c5b97",
+     "bytes": 6574
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - A Talk with George/license.txt",
+     "sha256": "a2cde0a4f1eccae069a1218cab27b9a271d8843c946937274378ca6de869c224",
+     "bytes": 1587
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-jonathan-coulton-a-talk-with-george.tsv",
+    "sha256": "56deeba5bc12aab4d5f582510a7820542b5c1649c3627a86727237168baf8485"
+   },
+   "qa": {
+    "path": "qa/usdx-jonathan-coulton-a-talk-with-george.json",
+    "sha256": "c967e0b52c8d5d7e388f1fa1be589862716e70f5a27d11b10f3c22afb22e7c40"
+   }
+  },
+  {
+   "id": "usdx-jonathan-coulton-better",
+   "source_id": "Jonathan Coulton - Better",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "Better",
+   "artist": "Jonathan Coulton",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-jonathan-coulton-better",
+   "licence": {
+    "audio": "CC BY-NC 3.0",
+    "chart": "CC BY-NC 3.0"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 266.6,
+    "gap_ms": 8260.0,
+    "notes": 408,
+    "pitched": 408,
+    "freestyle": 0,
+    "distinct_pitches": 11,
+    "lines": 67
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-jonathan-coulton-better.wav",
+    "sha256": "d04bf5de428ec37089c124c5b36106f9f07a6a61c71d387b6480efc20a83af1b",
+    "bytes": 68659664,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 194.612245,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Better/audio.mp3",
+    "sha256": "e6a217a505354f4e15d2cdcb5415c28541e2b78bc5969bdcf6238acedf3767b7",
+    "bytes": 3894514
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Better/song.txt",
+     "sha256": "314d5cda35d371fcf95d7ca5c87b76e705358b02d92758d1083071b08b066aee",
+     "bytes": 6988
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Better/license.txt",
+     "sha256": "6a4ea6cec5bc2faa16fceffc54c840939d1e9b00b6ae75a367a34bb3fb4a898c",
+     "bytes": 1678
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-jonathan-coulton-better.tsv",
+    "sha256": "96b3485bad4686c49588bee45adfa9a08f9a387b2bcbc0147213f44ce3649d34"
+   },
+   "qa": {
+    "path": "qa/usdx-jonathan-coulton-better.json",
+    "sha256": "1ce3635aa689f46f488a73653f30b16e4ead9a2d63e1f6a6126cf77fecd22732"
+   }
+  },
+  {
+   "id": "usdx-jonathan-coulton-big-bad-world-one",
+   "source_id": "Jonathan Coulton - Big Bad World One",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "Big Bad World One",
+   "artist": "Jonathan Coulton",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-jonathan-coulton-big-bad-world-one",
+   "licence": {
+    "audio": "CC BY-NC 3.0",
+    "chart": "CC BY-NC 3.0"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 300.0,
+    "gap_ms": 7250.0,
+    "notes": 340,
+    "pitched": 340,
+    "freestyle": 0,
+    "distinct_pitches": 10,
+    "lines": 52
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-jonathan-coulton-big-bad-world-one.wav",
+    "sha256": "3fe75702fa917b6227fc83b7efe29265f41bd3b88b607435ebe7e4d4c8349bc6",
+    "bytes": 60143860,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 170.475102,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Big Bad World One/audio.mp3",
+    "sha256": "cc6b2a526962cf421dedb0d5e35aaf8753e3fece74a7f84f12c449f5bc82cbb2",
+    "bytes": 4093635
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Big Bad World One/song.txt",
+     "sha256": "2fb380fb5e17343159e6f6893679b300da20bc8ef03e960dbaaabf90a526864e",
+     "bytes": 5946
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Big Bad World One/license.txt",
+     "sha256": "3dd8187fc974bd1b1cd2b2888ea932996564d8d181a48f3cf81d02a9b051ba0f",
+     "bytes": 1585
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-jonathan-coulton-big-bad-world-one.tsv",
+    "sha256": "b2bd91af8cce4044cc00c22c52c74951ba6a5b6a59853199826bb90c2f35fbd6"
+   },
+   "qa": {
+    "path": "qa/usdx-jonathan-coulton-big-bad-world-one.json",
+    "sha256": "a09e9f690b6cba6e3b43902dab16598288f0fc8c979d0696e576d4f2243f0007"
+   }
+  },
+  {
+   "id": "usdx-jonathan-coulton-chiron-beta-prime",
+   "source_id": "Jonathan Coulton - Chiron Beta Prime",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "Chiron Beta Prime",
+   "artist": "Jonathan Coulton",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-jonathan-coulton-chiron-beta-prime",
+   "licence": {
+    "audio": "CC BY-NC 3.0",
+    "chart": "CC BY-NC 3.0"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 280.0,
+    "gap_ms": 14395.0,
+    "notes": 385,
+    "pitched": 380,
+    "freestyle": 5,
+    "distinct_pitches": 11,
+    "lines": 55
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-jonathan-coulton-chiron-beta-prime.wav",
+    "sha256": "3d580de8d28b76a3ed7eebe82130cb8b290d1fd0c6364228158a5fa4b684ecc3",
+    "bytes": 60217564,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 170.684082,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Chiron Beta Prime/audio.mp3",
+    "sha256": "a2bfd1c1e8fafa0c75f6da6b7e34265a328600b55910bd20472e6194fadf2d51",
+    "bytes": 4098651
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Chiron Beta Prime/song.txt",
+     "sha256": "29bf09852801f2b94b5052eb57c230fa0032dfc26cf41be840bc30652d4ed236",
+     "bytes": 6575
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Chiron Beta Prime/license.txt",
+     "sha256": "982aad7077bf60fb73724e62d48f46ef1ad006cc644a8f52038bbfd83acf69eb",
+     "bytes": 1786
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-jonathan-coulton-chiron-beta-prime.tsv",
+    "sha256": "c7327778fdc6804d31de246937299bc4f098c10b78ab8088598394d1120f6d46"
+   },
+   "qa": {
+    "path": "qa/usdx-jonathan-coulton-chiron-beta-prime.json",
+    "sha256": "45848d56434e41a3c508a811711c40e544aa16e0b2443f02f45ae0c927668009"
+   }
+  },
+  {
+   "id": "usdx-jonathan-coulton-code-monkey",
+   "source_id": "Jonathan Coulton - Code Monkey",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "Code Monkey",
+   "artist": "Jonathan Coulton",
+   "language": "English",
+   "singers": null,
+   "status": "scored-apart",
+   "cluster": "usdx-jonathan-coulton-code-monkey",
+   "licence": {
+    "audio": "CC BY-NC 3.0",
+    "chart": "CC BY-NC 3.0"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": true,
+   "chart": {
+    "bpm": 320.0,
+    "gap_ms": 675.0,
+    "notes": 436,
+    "pitched": 436,
+    "freestyle": 0,
+    "distinct_pitches": 9,
+    "lines": 64
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-jonathan-coulton-code-monkey.wav",
+    "sha256": "13987f224c3c2648aa35e885ca06875b277fa014cc7dc575821d82d6d30799ce",
+    "bytes": 66797798,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 189.33551,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Code Monkey/audio.mp3",
+    "sha256": "621732e2478f612ba4d15024d275e5cab7e127e347b41054d995cc66f0a1b36e",
+    "bytes": 4546294
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Code Monkey/song.txt",
+     "sha256": "87a3bfb1d3a77eee3f1ec0de3e309b373f8286d783139e782121ea161210371a",
+     "bytes": 7850
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Code Monkey/license.txt",
+     "sha256": "dce7d72dc27bf0a2b7229b85b9a08fcecbec112bc26a40ca4dda34b7fdae10b5",
+     "bytes": 1778
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-jonathan-coulton-code-monkey.tsv",
+    "sha256": "1f0acbcf5e7b651592af67cbb088bbe230c258b77d18208cf1dae6eb57419427"
+   },
+   "reason": "in HookTheory's training split, which SheetSage2 trained on",
+   "qa": {
+    "path": "qa/usdx-jonathan-coulton-code-monkey.json",
+    "sha256": "2649f5a81b04c93ed1456348e0f8949ae785c0c8ce838e53280e8897e8c3768f"
+   }
+  },
+  {
+   "id": "usdx-jonathan-coulton-creepy-doll",
+   "source_id": "Jonathan Coulton - Creepy Doll",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "Creepy Doll",
+   "artist": "Jonathan Coulton",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-jonathan-coulton-creepy-doll",
+   "licence": {
+    "audio": "CC BY-NC 3.0",
+    "chart": "CC BY-NC 3.0"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 280.0,
+    "gap_ms": 4080.0,
+    "notes": 508,
+    "pitched": 508,
+    "freestyle": 0,
+    "distinct_pitches": 11,
+    "lines": 74
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-jonathan-coulton-creepy-doll.wav",
+    "sha256": "714d9123475bdecc07f0c2fa29cfba83e475ecb7e675b86ee3f6f1bca47713e5",
+    "bytes": 84722926,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 240.143673,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Creepy Doll/audio.mp3",
+    "sha256": "86d632959d827108726d54633770cc922af5e1f254e07575a9dbb1079562d480",
+    "bytes": 5765675
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Creepy Doll/song.txt",
+     "sha256": "2d381eb6fa31ec7480cf48bd2da9bc97914bcec42bebb8934d3cf876eaea5277",
+     "bytes": 8945
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Creepy Doll/license.txt",
+     "sha256": "c8656864688b8f28593a25cc1379e380d96d9f2c247f485a88a7a1d74e0ed659",
+     "bytes": 1774
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-jonathan-coulton-creepy-doll.tsv",
+    "sha256": "e21d7eab8be506ada44da5e3ab168eeff42cc1d06b4ee6ef73001b2804ebd2c2"
+   },
+   "qa": {
+    "path": "qa/usdx-jonathan-coulton-creepy-doll.json",
+    "sha256": "b233dd22c3b0b7eb83c8a33ae00936e87d7e218bdefbbeed1fac7094c49ca84f"
+   }
+  },
+  {
+   "id": "usdx-jonathan-coulton-dance-soterios-johnson-dance",
+   "source_id": "Jonathan Coulton - Dance, Soterios Johnson, Dance",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "Dance, Soterios Johnson, Dance",
+   "artist": "Jonathan Coulton",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-jonathan-coulton-dance-soterios-johnson-dance",
+   "licence": {
+    "audio": "CC BY-NC 3.0",
+    "chart": "CC BY-NC 3.0"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 300.0,
+    "gap_ms": 9610.0,
+    "notes": 528,
+    "pitched": 528,
+    "freestyle": 0,
+    "distinct_pitches": 18,
+    "lines": 83
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-jonathan-coulton-dance-soterios-johnson-dance.wav",
+    "sha256": "8b7cf38b4fc68cfe088f5d1e13ea97606696d2c990771fe4572062245e54f76f",
+    "bytes": 81626346,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 231.366531,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Dance, Soterios Johnson, Dance/audio.mp3",
+    "sha256": "b4e458b15a96aeeae0624d91a27893ae5833c35e6c127c0cb38af4b190c4c73a",
+    "bytes": 5555043
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Dance, Soterios Johnson, Dance/song.txt",
+     "sha256": "1bcb6975ef2f6116c74cb404dcfab8983929dc6d4007a483e496c26efa35e25e",
+     "bytes": 9072
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Dance, Soterios Johnson, Dance/license.txt",
+     "sha256": "581bfce0d12641e8e383af5740717082abaa57ad4e3b6935b57a0ec3fbf6125c",
+     "bytes": 1887
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-jonathan-coulton-dance-soterios-johnson-dance.tsv",
+    "sha256": "8b4591240e99eae544420640b197be6a3de53460d41dc077128d822bf32bc6cd"
+   },
+   "qa": {
+    "path": "qa/usdx-jonathan-coulton-dance-soterios-johnson-dance.json",
+    "sha256": "46df28469f4948bdcc2f4bd2ced0e4ebab838a2e624c41c9980600b36e72a414"
+   }
+  },
+  {
+   "id": "usdx-jonathan-coulton-first-of-may",
+   "source_id": "Jonathan Coulton - First of May",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "First of May",
+   "artist": "Jonathan Coulton",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-jonathan-coulton-first-of-may",
+   "licence": {
+    "audio": "CC BY-NC 3.0",
+    "chart": "CC BY-NC 3.0"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 328.0,
+    "gap_ms": 11730.0,
+    "notes": 587,
+    "pitched": 587,
+    "freestyle": 0,
+    "distinct_pitches": 15,
+    "lines": 87
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-jonathan-coulton-first-of-may.wav",
+    "sha256": "a83e67ca88ba4a0a24f7b52b94127dda1c9246106306fcace5dec1af6011cccb",
+    "bytes": 88372492,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 250.488163,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - First of May/audio.mp3",
+    "sha256": "c582405b3705d6c517ee79b420251ec25b67d9394b6aba8d7c759f015f16674b",
+    "bytes": 6013996
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - First of May/song.txt",
+     "sha256": "a64bc6b019b764d5074f48f23e67c1751c96ad66a09961e5434168c3b1bd50af",
+     "bytes": 10288
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - First of May/license.txt",
+     "sha256": "1a6f960475c0069f6ffb5457699b7be0466965532be7c1cdf6590d277847246d",
+     "bytes": 1569
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-jonathan-coulton-first-of-may.tsv",
+    "sha256": "5a2817254b145842b40328216ab4030e70bc5e141b88a8e7ad9d712258f103af"
+   },
+   "qa": {
+    "path": "qa/usdx-jonathan-coulton-first-of-may.json",
+    "sha256": "d6c92dc810f4081ed4d80b83f626e7d5ae648cafd9787d22ef11136a388970bb"
+   }
+  },
+  {
+   "id": "usdx-jonathan-coulton-flickr",
+   "source_id": "Jonathan Coulton - Flickr",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "Flickr",
+   "artist": "Jonathan Coulton",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-jonathan-coulton-flickr",
+   "licence": {
+    "audio": "CC BY-NC 3.0",
+    "chart": "CC BY-NC 3.0"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 319.95,
+    "gap_ms": 12650.0,
+    "notes": 276,
+    "pitched": 276,
+    "freestyle": 0,
+    "distinct_pitches": 12,
+    "lines": 39
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-jonathan-coulton-flickr.wav",
+    "sha256": "200951847a11f7989391d842e7478089d99b3b1ddcba6285360743c4a765b334",
+    "bytes": 59259090,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 167.967347,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Flickr/audio.mp3",
+    "sha256": "32f1484bf4161060213480eb44f04151f17290368fbebfb991a2f340e879bf74",
+    "bytes": 4033439
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Flickr/song.txt",
+     "sha256": "6a907996cca64db610de4c2e62504a91efacb08e9c950210e148a4c5ae7fd577",
+     "bytes": 4844
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Flickr/license.txt",
+     "sha256": "a50804b8bef100c2cf140051e4d5c49d099dba1194c42ac84add4305caf768d2",
+     "bytes": 1548
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-jonathan-coulton-flickr.tsv",
+    "sha256": "c74d08329fbc89cc8b90a9d6d655b745c5f7247da9a220d08e72f22540b6c2ed"
+   },
+   "qa": {
+    "path": "qa/usdx-jonathan-coulton-flickr.json",
+    "sha256": "c11cd06dd5048dab167417c69f43ef4bf8b818065a24697da6f17821320bf543"
+   }
+  },
+  {
+   "id": "usdx-jonathan-coulton-furry-old-lobster",
+   "source_id": "Jonathan Coulton - Furry Old Lobster",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "Furry Old Lobster",
+   "artist": "Jonathan Coulton",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-jonathan-coulton-furry-old-lobster",
+   "licence": {
+    "audio": "CC BY-NC 3.0",
+    "chart": "CC BY-NC 3.0"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 300.0,
+    "gap_ms": 10660.0,
+    "notes": 255,
+    "pitched": 255,
+    "freestyle": 0,
+    "distinct_pitches": 16,
+    "lines": 37
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-jonathan-coulton-furry-old-lobster.wav",
+    "sha256": "de4d69a6640375b4c9781378af0f7f794d336ce42324a1e5407afd972b13f111",
+    "bytes": 43085034,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 122.122449,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Furry Old Lobster/audio.mp3",
+    "sha256": "5eeaced9e828c555eb65187bfed67978dec2d7e0292b4f199c529a15af45b3ad",
+    "bytes": 2933185
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Furry Old Lobster/song.txt",
+     "sha256": "04b712d2041d7a499806c21ec4af7ecc74e2a32a8dc56cfadaaf2fac18a3e9a1",
+     "bytes": 4634
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Furry Old Lobster/license.txt",
+     "sha256": "480ef0182d9e7d1c4f1a89f84fd00d3d5a0a1d7ca871802956a103f0d4a88792",
+     "bytes": 1585
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-jonathan-coulton-furry-old-lobster.tsv",
+    "sha256": "7e12f5704e5c32c3b1f630cbe064767d6ac0ca1246e849ef9b9d87c155138c15"
+   },
+   "qa": {
+    "path": "qa/usdx-jonathan-coulton-furry-old-lobster.json",
+    "sha256": "6b68f2b341eb2381faf421703b715b6d76c8e58b33ee067ffba9cba9dd6ee80b"
+   }
+  },
+  {
+   "id": "usdx-jonathan-coulton-i-crush-everything",
+   "source_id": "Jonathan Coulton - I Crush Everything",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "I Crush Everything",
+   "artist": "Jonathan Coulton",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-jonathan-coulton-i-crush-everything",
+   "licence": {
+    "audio": "CC BY-NC 3.0",
+    "chart": "CC BY-NC 3.0"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 300.0,
+    "gap_ms": 16450.0,
+    "notes": 394,
+    "pitched": 394,
+    "freestyle": 0,
+    "distinct_pitches": 13,
+    "lines": 59
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-jonathan-coulton-i-crush-everything.wav",
+    "sha256": "43926d8753649da80c012f15b06ccb908d4a9bcbf36661625cc636f5819f1e4a",
+    "bytes": 99800312,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 282.88,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - I Crush Everything/audio.mp3",
+    "sha256": "69e36807a1cb9f07d99f3eb0a698531b429869379a04765cd3345b03a3f4d2a6",
+    "bytes": 6791370
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - I Crush Everything/song.txt",
+     "sha256": "cdc49b2abd86e7586ff3c8a712a8f116050efb239a5e397d24c4d5e63938059f",
+     "bytes": 6864
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - I Crush Everything/license.txt",
+     "sha256": "99c11f85ddecffceafcbd9a48ea3b466c4b4f1d3f40a55d52c765135d9006486",
+     "bytes": 1888
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-jonathan-coulton-i-crush-everything.tsv",
+    "sha256": "5cc3af84c93caea1c771d678d57b22dcdc6b31b44441d616f8335345d4a420bb"
+   },
+   "qa": {
+    "path": "qa/usdx-jonathan-coulton-i-crush-everything.json",
+    "sha256": "a436e457cdc704580b6094bdf681f4561494f06bd187ed50fcee8c83402bbb61"
+   }
+  },
+  {
+   "id": "usdx-jonathan-coulton-i-feel-fantastic",
+   "source_id": "Jonathan Coulton - I Feel Fantastic",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "I Feel Fantastic",
+   "artist": "Jonathan Coulton",
+   "language": "English",
+   "singers": null,
+   "status": "scored-apart",
+   "cluster": "usdx-jonathan-coulton-i-feel-fantastic",
+   "licence": {
+    "audio": "CC BY-NC 3.0",
+    "chart": "CC BY-NC 3.0"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": true,
+   "chart": {
+    "bpm": 375.0,
+    "gap_ms": 4960.0,
+    "notes": 669,
+    "pitched": 666,
+    "freestyle": 3,
+    "distinct_pitches": 15,
+    "lines": 80
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-jonathan-coulton-i-feel-fantastic.wav",
+    "sha256": "e93bbc77cf043fa6d659fe13644fb9a6545e8561d9730860b9d170b33ff356ca",
+    "bytes": 64586202,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 183.066122,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - I Feel Fantastic/audio.mp3",
+    "sha256": "0dcabdde9907ae45e91ee3f03652c1f2d49902706104c5da019f0042b9a3370c",
+    "bytes": 3663601
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - I Feel Fantastic/song.txt",
+     "sha256": "b0e705e3a59628069e9cc75d4d930dce20a62c4faf1d0899e1565f381810ca7a",
+     "bytes": 11406
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - I Feel Fantastic/license.txt",
+     "sha256": "87729bf7700dbb5b5bc9f72f431e48ad4a61b58a7057530220dbf3bc5aac523f",
+     "bytes": 1616
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-jonathan-coulton-i-feel-fantastic.tsv",
+    "sha256": "c37b615564a51306a48ef3ea00d09442dcfca8f74ab9b6cefc41839aaa165e28"
+   },
+   "reason": "in HookTheory's training split, which SheetSage2 trained on",
+   "qa": {
+    "path": "qa/usdx-jonathan-coulton-i-feel-fantastic.json",
+    "sha256": "9624f3aed6c634836c230730fbadbeb62f2190499819ece8566fc1740e0e1815"
+   }
+  },
+  {
+   "id": "usdx-jonathan-coulton-i-m-your-moon",
+   "source_id": "Jonathan Coulton - I'm Your Moon",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "I'm Your Moon",
+   "artist": "Jonathan Coulton",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-jonathan-coulton-i-m-your-moon",
+   "licence": {
+    "audio": "CC BY-NC 3.0",
+    "chart": "CC BY-NC 3.0"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 240.0,
+    "gap_ms": 8800.0,
+    "notes": 289,
+    "pitched": 289,
+    "freestyle": 0,
+    "distinct_pitches": 12,
+    "lines": 50
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-jonathan-coulton-i-m-your-moon.wav",
+    "sha256": "b11579d4881a43c4669debd8314ca88bf3b4af1895a6d37f7ce3495bd109d7a3",
+    "bytes": 67968240,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 192.653061,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - I'm Your Moon/audio.mp3",
+    "sha256": "bbe035e2a0a04924f4086c35e7d2de24adc7f2bbcb7579145a380d766e3e54c6",
+    "bytes": 4625902
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - I'm Your Moon/song.txt",
+     "sha256": "25407973ad36192dedbc11756f16b6f7fec9276a37c54af9d3601e22614d79b3",
+     "bytes": 5157
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - I'm Your Moon/license.txt",
+     "sha256": "1bea3f5d8562e00cd0d2cda8487765adf08cd8a39c6d310b95dc03cf55ed70f4",
+     "bytes": 1573
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-jonathan-coulton-i-m-your-moon.tsv",
+    "sha256": "1d3a435fec413edaa8de9629365d85e08d3a0c707b4601f76834f227594d53cf"
+   },
+   "qa": {
+    "path": "qa/usdx-jonathan-coulton-i-m-your-moon.json",
+    "sha256": "ba6346f90204e56b079da56146c075f7aa18fc7c86e9c69476ddc032e9a97302"
+   }
+  },
+  {
+   "id": "usdx-jonathan-coulton-ikea",
+   "source_id": "Jonathan Coulton - Ikea",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "Ikea",
+   "artist": "Jonathan Coulton",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-jonathan-coulton-ikea",
+   "licence": {
+    "audio": "CC BY-NC 3.0",
+    "chart": "CC BY-NC 3.0"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 320.0,
+    "gap_ms": 3010.0,
+    "notes": 390,
+    "pitched": 390,
+    "freestyle": 0,
+    "distinct_pitches": 9,
+    "lines": 60
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-jonathan-coulton-ikea.wav",
+    "sha256": "b725dff06e9ee405f25eed0504f760f83fb6edcc149d66c0771b3a61a75d76d7",
+    "bytes": 64770308,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 183.588571,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Ikea/audio.mp3",
+    "sha256": "172721077e08212f69539d83bb9965140dfde17fc82501a310c94f9ef7204394",
+    "bytes": 4408398
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Ikea/song.txt",
+     "sha256": "05681acd1e9f3df8864c4a7b74ae66240bad13bb33010a417a0910f5b2f5ffa3",
+     "bytes": 6734
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Ikea/license.txt",
+     "sha256": "d7daf8f7b8f6d3d170df42d9fb0024f11b10e47cd91f7d09c41df3ba72eaa583",
+     "bytes": 1412
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-jonathan-coulton-ikea.tsv",
+    "sha256": "fdc30f6eeda77688bdedf7aa6e384cac4f1e41355d92acbd3c9a7184b6dc690c"
+   },
+   "qa": {
+    "path": "qa/usdx-jonathan-coulton-ikea.json",
+    "sha256": "0972ddb1da9cdbc1e4e5439fa021f89eef4c905e6daa6e64c7bc2fc5329d55f8"
+   }
+  },
+  {
+   "id": "usdx-jonathan-coulton-monkey-shines",
+   "source_id": "Jonathan Coulton - Monkey Shines",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "Monkey Shines",
+   "artist": "Jonathan Coulton",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-jonathan-coulton-monkey-shines",
+   "licence": {
+    "audio": "CC BY-NC 3.0",
+    "chart": "CC BY-NC 3.0"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 320.0,
+    "gap_ms": 810.0,
+    "notes": 101,
+    "pitched": 101,
+    "freestyle": 0,
+    "distinct_pitches": 13,
+    "lines": 14
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-jonathan-coulton-monkey-shines.wav",
+    "sha256": "b702fafff93078fcaa63740d654165e3c1c21a5d82146e41af0cfd1594908cf9",
+    "bytes": 18017456,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 51.069388,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Monkey Shines/audio.mp3",
+    "sha256": "f485cff6768dc4bf95f713bf20e672016477bbca57cb3e40873cd76cdb877771",
+    "bytes": 1227839
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Monkey Shines/song.txt",
+     "sha256": "d3bbc96916f15daa6e122ca71fe66f98831f7932ae14429931d2dbb045c36598",
+     "bytes": 1747
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Monkey Shines/license.txt",
+     "sha256": "97361bd1a636619142cd02f48ef4331f1c8bdb923824d5abb0df2324199fac34",
+     "bytes": 1602
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-jonathan-coulton-monkey-shines.tsv",
+    "sha256": "0653479d09bf827082914bf334ca1a7ee4f268fa9ded12c0e5f72cfc44d0ce89"
+   },
+   "qa": {
+    "path": "qa/usdx-jonathan-coulton-monkey-shines.json",
+    "sha256": "4bb5261be76081817a97cb434de54313e1cd17f371150ba3f6633020a68252de"
+   }
+  },
+  {
+   "id": "usdx-jonathan-coulton-mr-fancy-pants",
+   "source_id": "Jonathan Coulton - Mr. Fancy Pants",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "Mr. Fancy Pants",
+   "artist": "Jonathan Coulton",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-jonathan-coulton-mr-fancy-pants",
+   "licence": {
+    "audio": "CC BY-NC 3.0",
+    "chart": "CC BY-NC 3.0"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 380.4,
+    "gap_ms": 4160.0,
+    "notes": 256,
+    "pitched": 244,
+    "freestyle": 12,
+    "distinct_pitches": 14,
+    "lines": 41
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-jonathan-coulton-mr-fancy-pants.wav",
+    "sha256": "3e69b2f0e23c8577371c090d4238855648d08c77062e6f82246599d111dd51ce",
+    "bytes": 28053746,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 79.516735,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Mr. Fancy Pants/audio.mp3",
+    "sha256": "92b093a17f15538eeff3cc4abd7da224db4011ff88389882b121770ae32948b5",
+    "bytes": 1910632
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Mr. Fancy Pants/song.txt",
+     "sha256": "89d0d771278aa618676773f76d0840ead725e74e714131e2c24c666db5ed81c9",
+     "bytes": 4571
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Mr. Fancy Pants/license.txt",
+     "sha256": "58286f841ae7854370923979f3936cf1f1c368ef3815b29feb90868050a76c68",
+     "bytes": 1562
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-jonathan-coulton-mr-fancy-pants.tsv",
+    "sha256": "0d4fdcb6d01f7372fd5284b64071dc5892afd47d1d22a98485b0d7320c92f4f9"
+   },
+   "qa": {
+    "path": "qa/usdx-jonathan-coulton-mr-fancy-pants.json",
+    "sha256": "ad2ac5d5bd44fc7bbd5caf4d647bca86717c480730c287244a4c52c4ad4dd10f"
+   }
+  },
+  {
+   "id": "usdx-jonathan-coulton-my-beige-bear",
+   "source_id": "Jonathan Coulton - My Beige Bear",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "My Beige Bear",
+   "artist": "Jonathan Coulton",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-jonathan-coulton-my-beige-bear",
+   "licence": {
+    "audio": "CC BY-NC 3.0",
+    "chart": "CC BY-NC 3.0"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 300.0,
+    "gap_ms": 6830.0,
+    "notes": 309,
+    "pitched": 309,
+    "freestyle": 0,
+    "distinct_pitches": 10,
+    "lines": 49
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-jonathan-coulton-my-beige-bear.wav",
+    "sha256": "42376a3812632a2a0e94af1b5d4b9d4f4b7ef7b74c027664abbe56a6c4564f82",
+    "bytes": 69774512,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 197.773061,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - My Beige Bear/audio.mp3",
+    "sha256": "2ad87ea8e89a9f654a82bf1a3e579755f0145fb3abce20bafd1d67d6c00954bf",
+    "bytes": 4748736
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - My Beige Bear/song.txt",
+     "sha256": "68520a2701b4c8b3cce8e14be48313faba1c3bac168608b21c8be5c9bc27ad98",
+     "bytes": 5427
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - My Beige Bear/license.txt",
+     "sha256": "62db34159b27b0f10adb8a3c84277a6ad3bab68d5f10dee4e0cab47ccf8ab2b5",
+     "bytes": 1722
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-jonathan-coulton-my-beige-bear.tsv",
+    "sha256": "f53700020dd80b0a148511d574b7ee63f8b3101cff2aab161a4ac16ab156daa0"
+   },
+   "qa": {
+    "path": "qa/usdx-jonathan-coulton-my-beige-bear.json",
+    "sha256": "4ac310319276ee8330a8ac96f62ebc7e191a909e17fc064b6cad271a2b4afa45"
+   }
+  },
+  {
+   "id": "usdx-jonathan-coulton-not-about-you",
+   "source_id": "Jonathan Coulton - Not About You",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "Not About You",
+   "artist": "Jonathan Coulton",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-jonathan-coulton-not-about-you",
+   "licence": {
+    "audio": "CC BY-NC 3.0",
+    "chart": "CC BY-NC 3.0"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 300.0,
+    "gap_ms": 4490.0,
+    "notes": 320,
+    "pitched": 320,
+    "freestyle": 0,
+    "distinct_pitches": 11,
+    "lines": 39
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-jonathan-coulton-not-about-you.wav",
+    "sha256": "5124133e1cf761302cdd43ce141207d011b08c8d4c16f36f6709e0de7aa2d5fb",
+    "bytes": 46734568,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 132.466939,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Not About You/audio.mp3",
+    "sha256": "4e3154ed1f4ccc9a7d33142c6da21652912817c010176164e56311cfbb7c12be",
+    "bytes": 3181451
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Not About You/song.txt",
+     "sha256": "bebd3d7471ef4ce5ed95d828185d5c09a661563d498ba059c8e60ad336008fae",
+     "bytes": 5492
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Not About You/license.txt",
+     "sha256": "3252792ac52fad913692167b243e5f09442916ce38a792e0ee933d4e8b47e5f1",
+     "bytes": 1557
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-jonathan-coulton-not-about-you.tsv",
+    "sha256": "c31e7bb2db9d150ad3f3194eab3396dd24fdf6bd2eada2060145a55879c25d89"
+   },
+   "qa": {
+    "path": "qa/usdx-jonathan-coulton-not-about-you.json",
+    "sha256": "4ef5256eb988bb81a3161a8a782b6238614845bec69956cc9c8b0adedb263c72"
+   }
+  },
+  {
+   "id": "usdx-jonathan-coulton-re-your-brains",
+   "source_id": "Jonathan Coulton - Re- Your Brains",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "Re: Your Brains",
+   "artist": "Jonathan Coulton",
+   "language": "English",
+   "singers": null,
+   "status": "scored-apart",
+   "cluster": "usdx-jonathan-coulton-re-your-brains",
+   "licence": {
+    "audio": "CC BY-NC 3.0",
+    "chart": "CC BY-NC 3.0"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": true,
+   "chart": {
+    "bpm": 320.0,
+    "gap_ms": 610.0,
+    "notes": 525,
+    "pitched": 525,
+    "freestyle": 0,
+    "distinct_pitches": 16,
+    "lines": 81
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-jonathan-coulton-re-your-brains.wav",
+    "sha256": "95422ea11436b91267ff62b189254e30afbe59850b98c36e466377ad597665fb",
+    "bytes": 96252122,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 272.822857,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Re- Your Brains/audio.mp3",
+    "sha256": "4dfb47499fe76ba682fe894c462a9facbde025ed6dd0848b4ff15e1bebc51ce7",
+    "bytes": 6549981
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Re- Your Brains/song.txt",
+     "sha256": "6264d309a1428346d8cc3ce8555e4d72b119dfcfb6e87086b92ad0285e28e17f",
+     "bytes": 9032
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Re- Your Brains/license.txt",
+     "sha256": "00274ba666e1a8d70dc2a6c8acd62cdbe62e5facd9b8ae13e57923ffe50d14fd",
+     "bytes": 1569
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-jonathan-coulton-re-your-brains.tsv",
+    "sha256": "c9a6dfdd91f572927cc93c95576a50f2de5ec49f257d52bda958b65dfd290f55"
+   },
+   "reason": "in HookTheory's training split, which SheetSage2 trained on",
+   "qa": {
+    "path": "qa/usdx-jonathan-coulton-re-your-brains.json",
+    "sha256": "cb475e2968a95643bd89b97dfa2a501b59ede0adedf736589bb9124e8f861525"
+   }
+  },
+  {
+   "id": "usdx-jonathan-coulton-shop-vac",
+   "source_id": "Jonathan Coulton - Shop Vac",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "Shop Vac",
+   "artist": "Jonathan Coulton",
+   "language": "English",
+   "singers": null,
+   "status": "scored-apart",
+   "cluster": "usdx-jonathan-coulton-shop-vac",
+   "licence": {
+    "audio": "CC BY-NC 3.0",
+    "chart": "CC BY-NC 3.0"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": true,
+   "chart": {
+    "bpm": 300.0,
+    "gap_ms": 4290.0,
+    "notes": 509,
+    "pitched": 509,
+    "freestyle": 0,
+    "distinct_pitches": 14,
+    "lines": 74
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-jonathan-coulton-shop-vac.wav",
+    "sha256": "b0363ec0a39fe15a794723fe4ca3e6efd619689ce84325524e46759c75788037",
+    "bytes": 74585314,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 211.40898,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Shop Vac/audio.mp3",
+    "sha256": "6b85110adc7a3f22a9f13016861057aab21f28283f9d81d95baa56ad2da63199",
+    "bytes": 5076052
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Shop Vac/song.txt",
+     "sha256": "1e82fe16af5d7e498bed813d34de5dc4dda810c2e6d34b007fff56df25ccd14e",
+     "bytes": 8715
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Shop Vac/license.txt",
+     "sha256": "f8a4115e798cc46eea739363f382cc0daf0388eb612e622b699c99c981fafa3f",
+     "bytes": 1568
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-jonathan-coulton-shop-vac.tsv",
+    "sha256": "dd138a45dadba5e9ac3c4876c3f2ac50095b8f0ccc35b2ef45e87ca5cc0db991"
+   },
+   "reason": "in HookTheory's training split, which SheetSage2 trained on",
+   "qa": {
+    "path": "qa/usdx-jonathan-coulton-shop-vac.json",
+    "sha256": "02c1dab4521b65a17ad0bf4387af942bbf5d0a43da64f435998aa14f8376ad6e"
+   }
+  },
+  {
+   "id": "usdx-jonathan-coulton-skullcrusher-mountain",
+   "source_id": "Jonathan Coulton - Skullcrusher Mountain",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "Skullcrusher Mountain",
+   "artist": "Jonathan Coulton",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-jonathan-coulton-skullcrusher-mountain",
+   "licence": {
+    "audio": "CC BY-NC 3.0",
+    "chart": "CC BY-NC 3.0"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 280.0,
+    "gap_ms": 17450.0,
+    "notes": 570,
+    "pitched": 567,
+    "freestyle": 3,
+    "distinct_pitches": 14,
+    "lines": 70
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-jonathan-coulton-skullcrusher-mountain.wav",
+    "sha256": "4cab7cce5b64e112c5f3001b6dc177fad73c200f77e094804c35c881de1e61f1",
+    "bytes": 90473722,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 256.444082,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Skullcrusher Mountain/audio.mp3",
+    "sha256": "ea65ea12b9361e6fcf146d0a95b6e60d4a46a6689796188e971b6e04706486d4",
+    "bytes": 6156910
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Skullcrusher Mountain/song.txt",
+     "sha256": "e410475582b4a3ed3c8b1aef1256acde3fd763c2c13bbc80d71ffd6fc5608d7d",
+     "bytes": 9510
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - Skullcrusher Mountain/license.txt",
+     "sha256": "0ee417ea9508cdf5b991c055fc002aebb488ee544781f22cfefe3d863a587dde",
+     "bytes": 1497
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-jonathan-coulton-skullcrusher-mountain.tsv",
+    "sha256": "6a1a0612e7763fbebc9df15d5c94e97256ea11171fcbb61907269cbb4b6f0749"
+   },
+   "qa": {
+    "path": "qa/usdx-jonathan-coulton-skullcrusher-mountain.json",
+    "sha256": "f4c26d0a89b96a29b4f83428da8ea49492d3eb0839815cf43fc3267c43db13e5"
+   }
+  },
+  {
+   "id": "usdx-jonathan-coulton-that-spells-dna",
+   "source_id": "Jonathan Coulton - That Spells DNA",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "That Spells DNA",
+   "artist": "Jonathan Coulton",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-jonathan-coulton-that-spells-dna",
+   "licence": {
+    "audio": "CC BY-NC 3.0",
+    "chart": "CC BY-NC 3.0"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 280.0,
+    "gap_ms": 7510.0,
+    "notes": 500,
+    "pitched": 500,
+    "freestyle": 0,
+    "distinct_pitches": 11,
+    "lines": 67
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-jonathan-coulton-that-spells-dna.wav",
+    "sha256": "3abde5f2bf56b190393195240cb444e46d7bc36bf8abc0382a48d1bac65d4df7",
+    "bytes": 67406296,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 191.059592,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - That Spells DNA/audio.mp3",
+    "sha256": "1a2e1c244a620bb203f9cad6a5bad61ec05f2fcf569cfe4a768ee45faaabe2ea",
+    "bytes": 3823657
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - That Spells DNA/song.txt",
+     "sha256": "ad5cc907f2a099c51babb643e36ddcd4122898767ab148cebf3883b540982ea2",
+     "bytes": 8124
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - That Spells DNA/license.txt",
+     "sha256": "df525e9ac173bccc8d761923a0dddb30f41bb456b073c7efe5f951974e77665e",
+     "bytes": 2044
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-jonathan-coulton-that-spells-dna.tsv",
+    "sha256": "a0d02bd517587df7a570af2007b70d929360a02b07ba6d11ab6f943a7d7985c7"
+   },
+   "qa": {
+    "path": "qa/usdx-jonathan-coulton-that-spells-dna.json",
+    "sha256": "25d4360f4e57900f811af80e5c2c9109ff3342a5abbeaee601517e50e07c4c52"
+   }
+  },
+  {
+   "id": "usdx-jonathan-coulton-the-future-soon",
+   "source_id": "Jonathan Coulton - The Future Soon",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "The Future Soon",
+   "artist": "Jonathan Coulton",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-jonathan-coulton-the-future-soon",
+   "licence": {
+    "audio": "CC BY-NC 3.0",
+    "chart": "CC BY-NC 3.0"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 300.0,
+    "gap_ms": 11180.0,
+    "notes": 519,
+    "pitched": 519,
+    "freestyle": 0,
+    "distinct_pitches": 13,
+    "lines": 85
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-jonathan-coulton-the-future-soon.wav",
+    "sha256": "13a5ab9b576a96c9e41926fe69e1ed7d106a4b600760bdda4e3573f13d51ebe4",
+    "bytes": 80750836,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 228.884898,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - The Future Soon/audio.mp3",
+    "sha256": "c860d6c41624273626873b6ff460ce64e0711f8289db248f0cf00a128f0e8912",
+    "bytes": 5495484
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - The Future Soon/song.txt",
+     "sha256": "3acb61474b60cb8a24b7ee7832d66cb9a9f676691e8c65c3386b351e9589e192",
+     "bytes": 9129
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - The Future Soon/license.txt",
+     "sha256": "8a74a1cb8e583b01ec0e69af698e0b2f32d9cce02452f1af291592dc5a9e8592",
+     "bytes": 1517
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-jonathan-coulton-the-future-soon.tsv",
+    "sha256": "7443e8d16da1ff4184524dd7ffcc9bb08770045bba90404403d52628ac537617"
+   },
+   "qa": {
+    "path": "qa/usdx-jonathan-coulton-the-future-soon.json",
+    "sha256": "1a0c0f02c6c8dc3da3be20211055ff369be20b75ad2e88ec506163eb0aa0fe29"
+   }
+  },
+  {
+   "id": "usdx-jonathan-coulton-when-you-go",
+   "source_id": "Jonathan Coulton - When You Go",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "When You Go",
+   "artist": "Jonathan Coulton",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-jonathan-coulton-when-you-go",
+   "licence": {
+    "audio": "CC BY-NC 3.0",
+    "chart": "CC BY-NC 3.0"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 300.0,
+    "gap_ms": 9890.0,
+    "notes": 261,
+    "pitched": 261,
+    "freestyle": 0,
+    "distinct_pitches": 9,
+    "lines": 45
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-jonathan-coulton-when-you-go.wav",
+    "sha256": "3d7749b4c89b685030f13a9b416d3c6f402c879363c21f79c0a5b76d1a85f2d8",
+    "bytes": 82289894,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 233.247347,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - When You Go/audio.mp3",
+    "sha256": "02eb9f853dffbfe067e33b99300cb8226bb60a5259a965c7a54b50494c35df20",
+    "bytes": 5600178
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - When You Go/song.txt",
+     "sha256": "dd7f847a1f5e74ea08194e2d119e2b6ceb55e399be502e9214fd797b8f352ed2",
+     "bytes": 4540
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Jonathan Coulton - When You Go/license.txt",
+     "sha256": "d168c94e228fd30437e4e99e92748306d12c24bb0801bf5078f133cdcbbb3614",
+     "bytes": 1581
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-jonathan-coulton-when-you-go.tsv",
+    "sha256": "5238dcb9e86f399a4febc40ea1a033e9b7ba3bae553af2b6dd7f7924e869b7bb"
+   },
+   "qa": {
+    "path": "qa/usdx-jonathan-coulton-when-you-go.json",
+    "sha256": "82eb91e376f7b1af0a5d9a3027c29ab494bfc30aeb69946bb8e1d6da8433733e"
+   }
+  },
+  {
+   "id": "usdx-joshua-morin-on-the-run",
+   "source_id": "Joshua Morin - On the run",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "On the run",
+   "artist": "Joshua Morin",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-joshua-morin-on-the-run",
+   "licence": {
+    "audio": "CC BY-SA 2.5",
+    "chart": "not stated separately"
+   },
+   "allowed_use": "testing only (held out from training); the audio's licence would allow publishing our transcriptions, which stage 0a doesn't do",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 297.5,
+    "gap_ms": 11250.0,
+    "notes": 333,
+    "pitched": 333,
+    "freestyle": 0,
+    "distinct_pitches": 12,
+    "lines": 53
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-joshua-morin-on-the-run.wav",
+    "sha256": "a03d63093f62b803e979fc7366386a36889eb9a8c190248f4c32b7037b689078",
+    "bytes": 101708332,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 288.288662,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Joshua Morin - On the run/audio.ogg",
+    "sha256": "5ba89ddf982ee0144b6977c813b86e0f69d773e6593bf0e444ed2349f517a2a8",
+    "bytes": 3769247
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Joshua Morin - On the run/song.txt",
+     "sha256": "4d05f5070b8755e2bbae267db1eda9cc94bddc429f0a7ee4ab479e3d55a316fb",
+     "bytes": 6068
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Joshua Morin - On the run/license.txt",
+     "sha256": "c46831d76c79fc917a40e940d5b20fb29f59d733a2fa74c94b051888dd376630",
+     "bytes": 1794
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-joshua-morin-on-the-run.tsv",
+    "sha256": "81bd6577adb60bb24ed526996558c5b50239c51d32216b4ec29d4fed26ad1268"
+   },
+   "qa": {
+    "path": "qa/usdx-joshua-morin-on-the-run.json",
+    "sha256": "48ca6d53108798eb341b73524053728493cee432bfeb748fffabb58e57684f90"
+   }
+  },
+  {
+   "id": "usdx-pornophonique-space-invaders",
+   "source_id": "Pornophonique - Space Invaders",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "Space Invaders",
+   "artist": "Pornophonique",
+   "language": "English",
+   "singers": null,
+   "status": "excluded",
+   "cluster": "usdx-pornophonique-space-invaders",
+   "licence": {
+    "audio": "CC BY-NC-ND 2.0",
+    "chart": "not stated separately"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 315.08,
+    "gap_ms": 2720.0,
+    "notes": 394,
+    "pitched": 394,
+    "freestyle": 0,
+    "distinct_pitches": 10,
+    "lines": 63
+   },
+   "audio": null,
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Pornophonique - Space Invaders/audio.mp3",
+    "sha256": "de567daa4f3d114ec1e098721c44cdcf11cfbf572998cff45293336433ab39a9",
+    "bytes": 3434279
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Pornophonique - Space Invaders/song.txt",
+     "sha256": "cd9333183fed2ea581ca881fb722795d7a069b8747c5b1a4472736b40df8b638",
+     "bytes": 7084
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Pornophonique - Space Invaders/license.txt",
+     "sha256": "7ef3dd9970b832ed198345f2bc411471e0132d3cb32c50ed1d089a1ffdda6f0d",
+     "bytes": 1437
+    }
+   ],
+   "reference": null,
+   "reason": "no-derivatives licence: no right to make adaptations, and a transcription may count as one"
+  },
+  {
+   "id": "usdx-shearer-69",
+   "source_id": "Shearer - 69",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "69",
+   "artist": "Shearer",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-shearer-69",
+   "licence": {
+    "audio": "CC BY-NC-SA 2.0",
+    "chart": "not stated separately"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 268.0,
+    "gap_ms": 29290.0,
+    "notes": 206,
+    "pitched": 151,
+    "freestyle": 55,
+    "distinct_pitches": 6,
+    "lines": 45
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-shearer-69.wav",
+    "sha256": "937977a5914115a0f7fb77ca92510ca7b7f3af0b64379d6a7a5b9b68a6716af7",
+    "bytes": 65525910,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 185.730612,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Shearer - 69/audio.mp3",
+    "sha256": "626ce7d56abb6a9d67a4269967f3281267fa954f3c9f6ed89c8598d8cf410dd3",
+    "bytes": 4458686
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Shearer - 69/song.txt",
+     "sha256": "880c234fae7de471cedfb06c6f00b761f198a1e2a757d08959f69004f06e9c73",
+     "bytes": 3554
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Shearer - 69/license.txt",
+     "sha256": "48e5fdccc79cc2814ada77d23043e0b7ea48d3461ba9cd98ba0d7484326ce799",
+     "bytes": 1508
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-shearer-69.tsv",
+    "sha256": "08ecf2d5c9019de548591c7d1b8b0106add9fd302e9a522ee87c689ea89a36dd"
+   },
+   "qa": {
+    "path": "qa/usdx-shearer-69.json",
+    "sha256": "75d6748c73a207ff7c4c2201be66bd1ecf7a3b5b535db47c447283f3b2af3478"
+   }
+  },
+  {
+   "id": "usdx-shearer-can-t-stop-it",
+   "source_id": "Shearer - Can't stop it",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "Can't stop it",
+   "artist": "Shearer",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-shearer-can-t-stop-it",
+   "licence": {
+    "audio": "CC BY-NC-SA 2.0",
+    "chart": "not stated separately"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 260.0,
+    "gap_ms": 15810.0,
+    "notes": 243,
+    "pitched": 237,
+    "freestyle": 6,
+    "distinct_pitches": 12,
+    "lines": 42
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-shearer-can-t-stop-it.wav",
+    "sha256": "9f74e28a0ccf4bd5f2411be4d2f9c27363f4be2326f5a9ec80e1c75cb5a4447d",
+    "bytes": 59802794,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 169.508571,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Shearer - Can't stop it/audio.mp3",
+    "sha256": "c68e3d6be628b17538f48a1129acc1bb77d118bea85e7a6cbba9f136e88469dd",
+    "bytes": 5424607
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Shearer - Can't stop it/song.txt",
+     "sha256": "cef36ceaa63f2d35a8cfc4d73c60cfb85fa3b2c1d2c001d566aefb27f2fbbf4f",
+     "bytes": 4369
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Shearer - Can't stop it/license.txt",
+     "sha256": "63ce9f855bcf3c1bb470e5225a5dab966e4b2f4aa4914e53171f5a4c90213794",
+     "bytes": 1484
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-shearer-can-t-stop-it.tsv",
+    "sha256": "df74d9d339a511f515ffe7e1e3547d66c04e88562f5f9fc81f17747595b0a17a"
+   },
+   "qa": {
+    "path": "qa/usdx-shearer-can-t-stop-it.json",
+    "sha256": "cb3d85c2666a3f9fb9713931794ff8dd9404e5fec91d645f1168a07b8601a9a4"
+   }
+  },
+  {
+   "id": "usdx-shearer-consequence-of-dawn",
+   "source_id": "Shearer - Consequence of Dawn",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "Consequence Of Dawn",
+   "artist": "Shearer",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-shearer-consequence-of-dawn",
+   "licence": {
+    "audio": "CC BY-NC-SA 2.0",
+    "chart": "not stated separately"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 236.0,
+    "gap_ms": 44540.0,
+    "notes": 193,
+    "pitched": 193,
+    "freestyle": 0,
+    "distinct_pitches": 7,
+    "lines": 31
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-shearer-consequence-of-dawn.wav",
+    "sha256": "48134a726f91e96db3a489b91fe3231bbb10179c0c28929be219c7c3b36930b2",
+    "bytes": 87701798,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 248.586667,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Shearer - Consequence of Dawn/audio.mp3",
+    "sha256": "c581890163ccf318c34608a13e3f97cda5be25ae9a0db6dd5e5fd1b9dfc0bc45",
+    "bytes": 6458869
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Shearer - Consequence of Dawn/song.txt",
+     "sha256": "e97a5fffd98ad38472074c3d971b45bff76b3b5599b1059d2ab89173b49e83f2",
+     "bytes": 3281
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Shearer - Consequence of Dawn/license.txt",
+     "sha256": "3bb2aa0775c585ab98254bb70276ec301ca981796c36c2f41517e0bb5a57b027",
+     "bytes": 1490
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-shearer-consequence-of-dawn.tsv",
+    "sha256": "5e1dfa222ea30283c82cdc35146335f16a20256edf2f0ee7a6510f336d8efdae"
+   },
+   "qa": {
+    "path": "qa/usdx-shearer-consequence-of-dawn.json",
+    "sha256": "e809cb59ad465e9ba6034b9cc892a88a4bcc29995912e7ea2676b63374c8b8b6"
+   }
+  },
+  {
+   "id": "usdx-shearer-in-my-hand",
+   "source_id": "Shearer - In My Hand",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "In My Hand",
+   "artist": "Shearer",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-shearer-in-my-hand",
+   "licence": {
+    "audio": "CC BY-NC-SA 3.0",
+    "chart": "not stated separately"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 282.0,
+    "gap_ms": 21090.0,
+    "notes": 371,
+    "pitched": 371,
+    "freestyle": 0,
+    "distinct_pitches": 10,
+    "lines": 70
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-shearer-in-my-hand.wav",
+    "sha256": "3696d156b8e61ae30182384015537566775cea429fbaf0e94c5369295b4bcc0d",
+    "bytes": 84086876,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 238.341224,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Shearer - In My Hand/audio.mp3",
+    "sha256": "944757966ec262e942e19d8a23dcd512eb32ff7b682fbb9222022c35b00e2439",
+    "bytes": 5711830
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Shearer - In My Hand/song.txt",
+     "sha256": "0a377ac66246e38485e21973cf980e44a61df0ba0c105cd6b49dd2766471fda7",
+     "bytes": 6567
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Shearer - In My Hand/license.txt",
+     "sha256": "5db0bdbfe469833726379090f21233d03a9a6c6d43dca768dc9d4dc5799095e8",
+     "bytes": 1236
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-shearer-in-my-hand.tsv",
+    "sha256": "62dd7bce519e01fa2de4acb64312cfae40b8a72166aca83f165fa2973248df8a"
+   },
+   "qa": {
+    "path": "qa/usdx-shearer-in-my-hand.json",
+    "sha256": "43dac053578e71c27ad1a3741d9e15e22af503f9bb3fdad9ebac6ac76e7177ba"
+   }
+  },
+  {
+   "id": "usdx-shearer-man-song",
+   "source_id": "Shearer - Man Song",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "Man Song",
+   "artist": "Shearer",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-shearer-man-song",
+   "licence": {
+    "audio": "CC BY-NC-SA 2.0",
+    "chart": "not stated separately"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 303.0,
+    "gap_ms": 11210.0,
+    "notes": 255,
+    "pitched": 255,
+    "freestyle": 0,
+    "distinct_pitches": 14,
+    "lines": 54
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-shearer-man-song.wav",
+    "sha256": "1e68e6dd361eafb4e6d0bc2f4b1542be995000ffedbdd538bcf5e5ff85729b24",
+    "bytes": 79718566,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 225.959184,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Shearer - Man Song/audio.mp3",
+    "sha256": "0e7756b638396d0857b59cb3d565d4ee1c185ce408f3cd73039fea84756f41fb",
+    "bytes": 7230821
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Shearer - Man Song/song.txt",
+     "sha256": "946ff0129359b24fcf7bece735087b1994122ed9e98fe68de774e435579e8b6d",
+     "bytes": 4552
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Shearer - Man Song/license.txt",
+     "sha256": "63ce9f855bcf3c1bb470e5225a5dab966e4b2f4aa4914e53171f5a4c90213794",
+     "bytes": 1484
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-shearer-man-song.tsv",
+    "sha256": "72ad47f2878c55c92b3447eab75cfd03b15a4fb88a3e6f5118a3d8d315a95129"
+   },
+   "qa": {
+    "path": "qa/usdx-shearer-man-song.json",
+    "sha256": "f5ac597305ca301a5ca073057849a5dd44c5e704e274ceaef4ea812bc2a30c93"
+   }
+  },
+  {
+   "id": "usdx-shearer-stay-with-me",
+   "source_id": "Shearer - Stay with me",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "Stay with me",
+   "artist": "Shearer",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-shearer-stay-with-me",
+   "licence": {
+    "audio": "CC BY-NC-SA 2.0",
+    "chart": "not stated separately"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 294.06,
+    "gap_ms": 1880.0,
+    "notes": 373,
+    "pitched": 364,
+    "freestyle": 9,
+    "distinct_pitches": 14,
+    "lines": 66
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-shearer-stay-with-me.wav",
+    "sha256": "b4f2076b57a79308911e8f03b0480e5e9d3cfdab22f606d767c0789a06c6de2a",
+    "bytes": 74426780,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 210.96,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Shearer - Stay with me/audio.ogg",
+    "sha256": "f65c439e9efaf6e4d9450904a8d4f2613d90948973ef01297be282a9ba9846f0",
+    "bytes": 6346083
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Shearer - Stay with me/song.txt",
+     "sha256": "6e5cfef4b6f4f3098776e50e194630c9e4faad6a85ab64fc7c4174a35750ce6c",
+     "bytes": 6501
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Shearer - Stay with me/license.txt",
+     "sha256": "98e1dc6a63a652a61eabf715d1c7ef5116269225e161fc3adaa52b198054cec4",
+     "bytes": 1224
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-shearer-stay-with-me.tsv",
+    "sha256": "4e7aee3d7a34ff9176dfceded8e864f8eb5876783e029aece178c223b168f5f2"
+   },
+   "qa": {
+    "path": "qa/usdx-shearer-stay-with-me.json",
+    "sha256": "46dfa79d6b5d7ea0a8254d035e835cfab8acb050b9ce4831f7e417b9e5d5c7c3"
+   }
+  },
+  {
+   "id": "usdx-silver-note-chasing-marks",
+   "source_id": "Silver Note - Chasing Marks",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "Chasing Marks",
+   "artist": "Silver Note",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-silver-note-chasing-marks",
+   "licence": {
+    "audio": "CC BY 4.0",
+    "chart": "not stated separately"
+   },
+   "allowed_use": "testing only (held out from training); the audio's licence would allow publishing our transcriptions, which stage 0a doesn't do",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 260.0,
+    "gap_ms": 7664.0,
+    "notes": 241,
+    "pitched": 241,
+    "freestyle": 0,
+    "distinct_pitches": 17,
+    "lines": 32
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-silver-note-chasing-marks.wav",
+    "sha256": "60e8a305b75c51205d588268966eb33a7d07b00c3acbb1a14f43f93854973676",
+    "bytes": 68769986,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 194.925714,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Silver Note - Chasing Marks/song.mp3",
+    "sha256": "a092fe52ce64c5e1dc0abf18b22e9fda2a184a685a4a363c56573c90270a7ead",
+    "bytes": 4679658
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Silver Note - Chasing Marks/song.txt",
+     "sha256": "5140342e69d89f8f8da5e146ded4eaa78f5584ace35271b9b09b79e6e483b000",
+     "bytes": 4308
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Silver Note - Chasing Marks/license.txt",
+     "sha256": "188d226f1c06cf5430b09ad05061eb497ab06ed0477f16141c1177a4aecb5c1b",
+     "bytes": 2942
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-silver-note-chasing-marks.tsv",
+    "sha256": "81f01be25b5955eca88e482b4f4e4ede4f99e4bfe40643666e767f9178e4efab"
+   },
+   "qa": {
+    "path": "qa/usdx-silver-note-chasing-marks.json",
+    "sha256": "a194b79d968f79c5678a7ea224c6913830605a78af0722fc105b1b78ede08d79"
+   }
+  },
+  {
+   "id": "usdx-silver-note-sonic-rainboom-vip",
+   "source_id": "Silver Note - Sonic Rainboom VIP",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "Sonic Rainboom VIP",
+   "artist": "Silver Note",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-silver-note-sonic-rainboom-vip",
+   "licence": {
+    "audio": "CC BY 4.0",
+    "chart": "not stated separately"
+   },
+   "allowed_use": "testing only (held out from training); the audio's licence would allow publishing our transcriptions, which stage 0a doesn't do",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 480.94,
+    "gap_ms": 8507.0,
+    "notes": 274,
+    "pitched": 273,
+    "freestyle": 1,
+    "distinct_pitches": 11,
+    "lines": 38
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-silver-note-sonic-rainboom-vip.wav",
+    "sha256": "690eb351099d4bceaf156205ad0c48e1defabb274b7d99603c8becbdb497ddc5",
+    "bytes": 74142886,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 210.155102,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Silver Note - Sonic Rainboom VIP/song.mp3",
+    "sha256": "a5c3bee89b455c9284903a6409e2d522e4c4142d71f24fc145919a49500e0e24",
+    "bytes": 5044874
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Silver Note - Sonic Rainboom VIP/song.txt",
+     "sha256": "065d4d302170a4b14c8179b1b67856dbe2ddbb3ef519434153b0732ae7c10053",
+     "bytes": 5053
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Silver Note - Sonic Rainboom VIP/license.txt",
+     "sha256": "b542f18e69a4fa421c468a810e87c70c9b3d229cbbc5144942eb6575b5a60dd6",
+     "bytes": 2223
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-silver-note-sonic-rainboom-vip.tsv",
+    "sha256": "d4cd53e51fdd7d5395715b390ceae1c381666479d95f03ce427b08b4a8bbfe84"
+   },
+   "qa": {
+    "path": "qa/usdx-silver-note-sonic-rainboom-vip.json",
+    "sha256": "a85f54f5d1fa58919313eac7c2ebaba737305e72e6318cb16693f01948491a51"
+   }
+  },
+  {
+   "id": "usdx-steven-dunston-northern-star",
+   "source_id": "Steven Dunston - Northern Star",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "Northern Star",
+   "artist": "Steven Dunston",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-steven-dunston-northern-star",
+   "licence": {
+    "audio": "CC BY-NC-SA 2.5",
+    "chart": "not stated separately"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 360.0,
+    "gap_ms": 4700.0,
+    "notes": 238,
+    "pitched": 238,
+    "freestyle": 0,
+    "distinct_pitches": 11,
+    "lines": 30
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-steven-dunston-northern-star.wav",
+    "sha256": "4742d868e6fb64ea138f098de5bde72f7685710b3156c69bdb0ce85970ad885b",
+    "bytes": 67093036,
+    "rate": 44100,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 190.172744,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Steven Dunston - Northern Star/audio.ogg",
+    "sha256": "6b0556b54099ee33a7977aeef2b7a90cea116f1780668fedfab6bc78149a0afe",
+    "bytes": 2241910
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Steven Dunston - Northern Star/song.txt",
+     "sha256": "a875a0e8d895f15201271c88e351a1eee6118907589d071362dd90dbb9588d4f",
+     "bytes": 4280
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Steven Dunston - Northern Star/license.txt",
+     "sha256": "4c472b28ae06676b622ba6ae5e4278efdd32b202e6dc0ea9ca4806d535d0e2d1",
+     "bytes": 1159
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-steven-dunston-northern-star.tsv",
+    "sha256": "6019d0fe38ebccc5efbfb32be222584f81c8fca953aeb70b15689eb746fca783"
+   },
+   "qa": {
+    "path": "qa/usdx-steven-dunston-northern-star.json",
+    "sha256": "235f4388ee7bddead6b613710bd00f04212acfd0208a8e48892b044ee0a7705d"
+   }
+  },
+  {
+   "id": "usdx-systemabsturz-verdachtig",
+   "source_id": "Systemabsturz - Verdächtig",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "Verdächtig",
+   "artist": "Systemabsturz",
+   "language": "German",
+   "singers": null,
+   "status": "excluded-0a",
+   "cluster": "usdx-systemabsturz-verdachtig",
+   "licence": {
+    "audio": "CC0 1.0",
+    "chart": "not stated separately"
+   },
+   "allowed_use": "testing only (held out from training); the audio's licence would allow publishing our transcriptions, which stage 0a doesn't do",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 317.71,
+    "gap_ms": 24489.38,
+    "notes": 564,
+    "pitched": 550,
+    "freestyle": 14,
+    "distinct_pitches": 1,
+    "lines": 102
+   },
+   "audio": null,
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Systemabsturz - Verdächtig/audio.ogg",
+    "sha256": "7c53e784824ae6cda28d39110da4900c0ad35beb6727b24859b7b7f2b9ed9ad1",
+    "bytes": 4533856
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Systemabsturz - Verdächtig/song.txt",
+     "sha256": "b0e43c44af3c481abe7a41b75e7b7cd9918389636129244e22b93506ec9d87ca",
+     "bytes": 9788
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/Systemabsturz - Verdächtig/license.txt",
+     "sha256": "96fe18b723691db1898ebaaaacf82a6b1690f45565f1e49e57a56fb5ee98bfb6",
+     "bytes": 520
+    }
+   ],
+   "reference": null,
+   "reason": "its chart has no pitches; lyric timing only, in stage 0b"
+  },
+  {
+   "id": "usdx-the-wasteland-wailers-dare-master",
+   "source_id": "The Wasteland Wailers - Dare Master",
+   "collection": "UltraStar Deluxe songs: Creative Commons",
+   "title": "Dare Master",
+   "artist": "Wasteland Wailers",
+   "language": "English",
+   "singers": null,
+   "status": "scored",
+   "cluster": "usdx-the-wasteland-wailers-dare-master",
+   "licence": {
+    "audio": "CC BY-NC 3.0",
+    "chart": "CC BY-NC 3.0"
+   },
+   "allowed_use": "testing only: never train on, ship or share; publish scores and credits only",
+   "hooktheory": false,
+   "chart": {
+    "bpm": 283.95,
+    "gap_ms": 2314.0,
+    "notes": 555,
+    "pitched": 501,
+    "freestyle": 54,
+    "distinct_pitches": 16,
+    "lines": 55
+   },
+   "audio": {
+    "path": "usdx/audio/usdx-the-wasteland-wailers-dare-master.wav",
+    "sha256": "e7125a5a725b90ceab0fa2dd1af0e22e96e0336d0dbb28405e3cafc3f6347ab0",
+    "bytes": 114432156,
+    "rate": 48000,
+    "channels": 2,
+    "bits": 32,
+    "sample_format": "float",
+    "seconds": 298.0,
+    "decoder": "ffmpeg version 9.0.2",
+    "decode": "ffmpeg -nostdin -v error -i SRC -map 0:a:0 -c:a pcm_f32le DST.wav"
+   },
+   "source_audio": {
+    "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/The Wasteland Wailers - Dare Master/audio.mp3",
+    "sha256": "7a332c60f7b726c5cab010ef8580902ccb8fe77c75b0d36ab9722a518e8b3a18",
+    "bytes": 7153504
+   },
+   "annotations": [
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/The Wasteland Wailers - Dare Master/song.txt",
+     "sha256": "42ce28679257ace46dc51c212ffe48d271052d0b8b8beb2251be0365ad26098b",
+     "bytes": 9629
+    },
+    {
+     "path": "usdx/src/songs-c9246c799050acec96a03183df4b85493d283d51/Creative Commons/The Wasteland Wailers - Dare Master/license.txt",
+     "sha256": "f9e138ccb8fcb1d62ac3ad8f556ed5c73c1d20af9cc79004ecaf2e7a7ffd3bdb",
+     "bytes": 455
+    }
+   ],
+   "reference": {
+    "path": "refs/usdx/usdx-the-wasteland-wailers-dare-master.tsv",
+    "sha256": "d1edfac8e22c2b5f561f9056c23d05a6b8677b51ba81df298d0ef29f247e9a2f"
+   },
+   "qa": {
+    "path": "qa/usdx-the-wasteland-wailers-dare-master.json",
+    "sha256": "841d76c6e5cf4944f5bd1005c2655afd626a88e8ea69a2cc93da91589cf93e95"
+   }
+  }
+ ]
+}
