@@ -1,9 +1,10 @@
-"""Unit tests for the SoulX mini-slice planner: gating accepts/rejects, resumes, and refuses without SoulX.
+"""Unit tests for the SoulX mini-slice planner against the REAL SoulX API (no model loaded).
 
-No model is loaded: a fake SoulX and a fake pitch.check drive the gating and resume logic.
+A fake SoulX exposing ``sing(segments, voice_wav, voice_meta, out_dir, device)`` and a fake ``pitch.check``
+drive the gating and resume logic. The segments are built from a real sampler ``Song`` through
+``copyist.sing.sung_notes``/``soulx_segments``, so the wiring is exercised end to end without a GPU.
 """
 
-import os
 import tempfile
 import unittest
 from collections import namedtuple
@@ -17,19 +18,50 @@ Check = namedtuple("Check", "ok")
 
 
 class FakeSoulX:
-    """A stand-in for SoulX-Singer: writes a placeholder wav and reports notes; counts sing calls."""
+    """A stand-in for SoulX-Singer: ``sing`` writes a placeholder vocal.wav and counts calls."""
 
-    def __init__(self, fail_first=0):
+    def __init__(self):
         self.sing_calls = 0
-        self.fail_first = fail_first  # how many sing attempts "sing out of tune" before passing
+        self.last_segments = None
 
-    def sing_phrase(self, song_path, prompt, wav, attempt=0):
+    def sing(self, segments, voice_wav, voice_meta, out_dir, device="mps"):
         self.sing_calls += 1
-        Path(wav).parent.mkdir(parents=True, exist_ok=True)
-        Path(wav).write_bytes(b"RIFF\x00\x00\x00\x00WAVEfake")
+        self.last_segments = segments
+        out_dir = Path(out_dir)
+        out_dir.mkdir(parents=True, exist_ok=True)
+        wav = out_dir / "vocal.wav"
+        wav.write_bytes(b"RIFF\x00\x00\x00\x00WAVEfake")
+        return wav
 
-    def sung_notes(self, song_path):
-        return [object()]  # opaque; the fake check decides pass/fail
+
+def fake_assets(prompt):
+    return Path(f"/tmp/{prompt}/prompt.wav"), Path(f"/tmp/{prompt}/prompt.json")
+
+
+#: A tiny singable fixture (real CMU-pronounceable words) so sung_notes/soulx_segments run on a real Song.
+FIXTURE_SONG = """title: Test Tune
+composer: test
+key: C
+meter: 4/4
+tempo: 120
+unit: 1/4
+melody: |
+  C D E F | G A G F | E D C2 |
+lyrics:
+  - la la la la love you so my dear friend now
+"""
+
+
+def write_fixture_scores(out_dir, n=1, start_seed=91_000_000, **kwargs):
+    """Stand in for scores.write_batch: write a real, singable fixture song for each seed."""
+    out_dir = Path(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    written = []
+    for i in range(n):
+        path = out_dir / f"song-{start_seed + i}.yaml"
+        path.write_text(FIXTURE_SONG, encoding="utf-8")
+        written.append(path)
+    return written
 
 
 class SoulXSliceTests(unittest.TestCase):
@@ -60,7 +92,11 @@ class SoulXSliceTests(unittest.TestCase):
         self.assertFalse(mss.gate_clip(failing, Path("x"), [1, 2]))
         self.assertFalse(mss.gate_clip(lambda *a, **k: [], Path("x"), []))  # no notes -> reject
 
-    def test_make_gates_rerolls_and_resumes(self):
+    def test_prompt_assets_refuses_when_absent(self):
+        with self.assertRaises(FileNotFoundError):
+            mss.prompt_assets("vocalset-male1", root=self.tmp / "nope")
+
+    def test_make_builds_segments_from_sung_notes_gates_rerolls_and_resumes(self):
         out = self.tmp / "ear-soulx"
         # The fake check fails the first two sing attempts, then passes.
         state = {"n": 0}
@@ -68,17 +104,28 @@ class SoulXSliceTests(unittest.TestCase):
         def check(wav, notes, any_octave=True):
             state["n"] += 1
             ok = state["n"] >= 3  # first two attempts fail the gate
-            return [Check(ok)]
+            return [Check(ok) for _ in range(max(1, len(notes)))]
 
         soulx = FakeSoulX()
-        with mock.patch.object(mss.jobs, "GpuLock"):  # no real GPU lock in the sandbox
-            counts = mss.make(n=1, out=out, base_seed=91_000_000, soulx=soulx, check_fn=check)
+        with mock.patch.object(mss.jobs, "GpuLock"), \
+             mock.patch.object(mss.scores, "write_batch", side_effect=write_fixture_scores):
+            counts = mss.make(n=1, out=out, base_seed=91_000_000, soulx=soulx, check_fn=check,
+                              assets_fn=fake_assets)
         self.assertEqual(counts["ok"], 1)
         self.assertEqual(soulx.sing_calls, 3)  # two re-rolls then an accept
-        self.assertTrue((out / "clips" / "91000000-vocalset-male1" / "labels.json").exists())
-        # Re-run skips the finished clip.
-        with mock.patch.object(mss.jobs, "GpuLock"):
-            counts2 = mss.make(n=1, out=out, base_seed=91_000_000, soulx=FakeSoulX(), check_fn=check)
+        # segments were built from the real score (sung_notes -> soulx_segments), with SoulX fields present.
+        self.assertTrue(soulx.last_segments)
+        self.assertIn("index", soulx.last_segments[0])
+        self.assertIn("note_pitch", soulx.last_segments[0])
+        self.assertIn("note_type", soulx.last_segments[0])
+        clip = out / "clips" / "91000000-vocalset-male1"
+        self.assertTrue((clip / "labels.json").exists())
+        self.assertTrue((clip / "vocal.wav").exists())
+        # Re-run skips the finished clip (resumability).
+        with mock.patch.object(mss.jobs, "GpuLock"), \
+             mock.patch.object(mss.scores, "write_batch", side_effect=write_fixture_scores):
+            counts2 = mss.make(n=1, out=out, base_seed=91_000_000, soulx=FakeSoulX(), check_fn=check,
+                               assets_fn=fake_assets)
         self.assertEqual(counts2["skipped"], 1)
 
     def test_dry_run_exits_without_model(self):

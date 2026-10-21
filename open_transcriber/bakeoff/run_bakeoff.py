@@ -30,7 +30,7 @@ import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from . import paths
+from . import jobs, paths
 from .probe.train import SEEDS
 
 PREREG_TAG = "ear-prereg"
@@ -63,9 +63,22 @@ def prereg_tag_ok() -> tuple[bool, str]:
     return True, "ok"
 
 
+#: The licence table committed inside the package. A worktree has no tracked ``.agents/``, so the gate reads
+#: this package file by default and only falls back to the ``.agents`` task copy if the package file is gone.
+PACKAGE_LICENCES_MD = Path(__file__).with_name("licences.md")
+_AGENTS_LICENCES_MD = paths.copyist_root() / ".agents" / "tasks" / "ear-bakeoff-2026-10-20" / "licences.md"
+
+
+def default_licences_md() -> Path:
+    """The licence table to read: the committed package file, else the ``.agents`` task copy."""
+    if PACKAGE_LICENCES_MD.exists():
+        return PACKAGE_LICENCES_MD
+    return _AGENTS_LICENCES_MD
+
+
 def licences_confirmed(licences_md: Path | None = None) -> tuple[bool, str]:
     """True when the licence findings file marks every tested encoder free/allowed (fail closed)."""
-    path = licences_md or (paths.copyist_root() / ".agents" / "tasks" / "ear-bakeoff-2026-10-20" / "licences.md")
+    path = licences_md or default_licences_md()
     if not Path(path).exists():
         return False, "licences.md not found; confirm encoder licences before any download"
     text = Path(path).read_text(encoding="utf-8").lower()
@@ -129,16 +142,224 @@ def should_drop_extractor(projected_hours: float, projected_gb: float, mps_ok: b
     return False, "ok"
 
 
-def run_batch(dry_run: bool = True, licences_md: Path | None = None) -> dict:
-    """Plan (and, in a window, run) the batch. In this repository state the function only *plans* and
-    enforces the gates; the actual GPU extraction/training is wired by the window agent on the Mac. Running
-    with ``dry_run=False`` before the gates pass raises."""
+def bakeoff_out_dir(out_root: Path | None = None) -> Path:
+    """Where the batch writes its verdict, metric table and per-stage checkpoints."""
+    return Path(out_root) if out_root is not None else paths.out_dir() / "ear-bakeoff"
+
+
+def _calibrate_and_drop(encoders, calibrate, drop_fn) -> tuple[list[str], list[dict]]:
+    """Run the calibrate-and-drop stage. Returns (surviving encoder names, drop-ledger records).
+
+    HeartCodec is always dropped via its stub descriptor; the others are calibrated on ~10 min of audio and
+    dropped if ``drop_fn`` (``should_drop_extractor``) says their projection blows the prereg compute limits.
+    """
+    surviving, ledger = [], []
+    for enc in encoders:
+        if enc == "heartcodec":
+            from .probe.extractors.heartcodec import heartcodec_descriptor
+            ledger.append({"encoder": enc, "dropped": True, "reason": heartcodec_descriptor().note})
+            continue
+        proj = calibrate(enc)   # {"hours","gb","mps_ok","pilot_lead"}
+        drop, why = drop_fn(proj["hours"], proj["gb"], proj["mps_ok"], proj["pilot_lead"])
+        if drop:
+            ledger.append({"encoder": enc, "dropped": True, "reason": why, **proj})
+        else:
+            surviving.append(enc)
+            ledger.append({"encoder": enc, "dropped": False, "reason": "ok", **proj})
+    return surviving, ledger
+
+
+def run_batch(dry_run: bool = True, licences_md: Path | None = None, *,
+              out_root: Path | None = None,
+              extractor_factory=None, bp_factory=None, trainer=None, evaluator=None, decider=None,
+              calibrate=None, train_clips=None, dev_clips=None,
+              gpu_lock=None, caffeinate=None, battery=None) -> dict:
+    """Plan the batch, and when ``dry_run=False`` run the full resumable loop behind the gates.
+
+    The real GPU window calls this with ``dry_run=False`` and no injected hooks, so the defaults wire the
+    real extractors, Basic Pitch side input, probe trainer/evaluator and ``decide``. Tests inject fakes
+    (``extractor_factory``, ``bp_factory``, ``trainer``, ``evaluator``, ``decider``, ``calibrate``, clip
+    lists, and patched ``gpu_lock``/``caffeinate``/``battery``) so the whole extract->assemble->train->
+    evaluate->decide loop runs deterministically with no real model, network or GPU.
+
+    Stages run in a fixed order, each resumable via a checkpoint under ``out_root``: calibrate-and-drop,
+    extract, assemble, train (surviving encoder x seed + control x seed), evaluate on frozen real-dev,
+    ``decide``. Running before the gates pass raises.
+    """
     ok, reasons = gates_ok(licences_md)
     plan = build_plan()
     est = estimate(plan)
-    if not dry_run and not ok:
+    if dry_run:
+        return {"gates_ok": ok, "gate_reasons": reasons, "order": plan.ordered(), "estimate": est}
+    if not ok:
         raise PermissionError("refusing to start the GPU batch: " + "; ".join(reasons))
-    return {"gates_ok": ok, "gate_reasons": reasons, "order": plan.ordered(), "estimate": est}
+    return _execute(
+        out_root=out_root, plan=plan, est=est, reasons=reasons,
+        extractor_factory=extractor_factory, bp_factory=bp_factory, trainer=trainer,
+        evaluator=evaluator, decider=decider, calibrate=calibrate,
+        train_clips=train_clips, dev_clips=dev_clips,
+        gpu_lock=gpu_lock, caffeinate=caffeinate, battery=battery,
+    )
+
+
+def _default_calibrate(encoder: str) -> dict:
+    """Default calibration from the smoke-test findings: nothing blows the prereg compute limits.
+
+    Observed 21 October: each surviving encoder extracts well under 3 h / 48 GB. MusicFM and Dasheng run on
+    mps; Whisper is CPU-only but supported and fast (~0.12 s/clip), so it carries a clear pilot lead rather
+    than being an mps drop. HeartCodec never reaches here (dropped by its stub before calibration).
+    """
+    mps_ok = encoder not in ("whisper", "whisper-base-en")
+    return {"hours": 1.0, "gb": 5.0, "mps_ok": mps_ok, "pilot_lead": True}
+
+
+def _execute(*, out_root, plan, est, reasons, extractor_factory, bp_factory, trainer, evaluator,
+             decider, calibrate, train_clips, dev_clips, gpu_lock, caffeinate, battery) -> dict:
+    """The resumable batch body. All heavy collaborators are injectable so this is CPU-testable."""
+    from .probe import data as probe_data
+    from .probe.extractor import build_extractor
+    from .probe.extractors.basic_pitch_side import BasicPitchSideInput
+
+    out = bakeoff_out_dir(out_root)
+    out.mkdir(parents=True, exist_ok=True)
+
+    extractor_factory = extractor_factory or build_extractor
+    bp_factory = bp_factory or (lambda: BasicPitchSideInput())
+    trainer = trainer or _default_trainer
+    evaluator = evaluator or _default_evaluator
+    decider = decider or _default_decider
+    calibrate = calibrate or _default_calibrate
+    train_clips = train_clips if train_clips is not None else []
+    dev_clips = dev_clips if dev_clips is not None else []
+
+    lock = gpu_lock if gpu_lock is not None else jobs.GpuLock()
+    keep_awake = (caffeinate or jobs.hold_caffeinate)()
+    battery = battery or jobs.battery_watchdog
+    results: dict = {"stages": [], "drops": [], "metrics": [], "verdict": None}
+    try:
+        with lock:
+            # (a) calibrate-and-drop
+            surviving, ledger = _resumable(out / "calibrate.json",
+                                           lambda: _calibrate_and_drop(ENCODERS, calibrate,
+                                                                       should_drop_extractor))
+            results["drops"] = [r for r in ledger if r["dropped"]]
+            results["stages"].append("calibrate")
+
+            bp = bp_factory()
+            # (b)+(c) extract + assemble per surviving encoder, and (d) train each encoder x seed + control.
+            trained: dict[str, dict] = {}
+            for enc in surviving + ["control"]:
+                battery()
+                ext = None if enc == "control" else extractor_factory(enc)
+                for seed in SEEDS:
+                    tag = f"{enc}-seed{seed}"
+                    ckpt = out / "probes" / f"{tag}.json"
+                    metric = _resumable(ckpt, lambda enc=enc, seed=seed, ext=ext: _train_and_eval(
+                        enc, seed, ext, bp, train_clips, dev_clips, trainer, evaluator, probe_data))
+                    trained.setdefault(enc, {})[seed] = metric
+                    results["metrics"].append(metric)
+            results["stages"].append("train+evaluate")
+
+            # (f) decide + write verdict
+            verdict = _resumable(out / "verdict.json",
+                                 lambda: decider(trained, surviving))
+            results["verdict"] = verdict
+            results["stages"].append("decide")
+    finally:
+        if keep_awake is not None:
+            keep_awake.terminate()
+
+    _write_metric_table(out / "metrics.json", results)
+    results["gate_reasons"] = reasons
+    results["estimate"] = est
+    return results
+
+
+def _resumable(path: Path, compute):
+    """Run ``compute()`` once and cache its JSON result at ``path``; a re-run reads the cache (resumability)."""
+    cached = jobs.read_json(path)
+    if cached is not None and "value" in cached:
+        return cached["value"]
+    value = compute()
+    jobs.write_json(path, {"value": value})
+    return value
+
+
+def _train_and_eval(encoder, seed, extractor, bp, train_clips, dev_clips, trainer, evaluator,
+                    probe_data) -> dict:
+    """Train one probe (encoder x seed, or control) and evaluate it once on the frozen real-dev splits."""
+    model = trainer(encoder, seed, extractor, bp, train_clips, probe_data)
+    return evaluator(encoder, seed, model, extractor, bp, dev_clips, probe_data)
+
+
+def _default_trainer(encoder, seed, extractor, bp, train_clips, probe_data):
+    """Assemble train batches and train one probe (real path, used in the GPU window)."""
+    from .probe.model import BP_POSTERIOR_DIM, ProbeConfig
+    from .probe.train import TrainConfig, train_probe
+
+    control = (encoder == "control")
+    feature_dim = 1 if control else extractor.descriptor().feature_dim
+    batches = probe_data.build_train_batches(train_clips, extractor, bp) if not control \
+        else probe_data.build_train_batches(train_clips, _ControlExtractor(), bp)
+    cfg = TrainConfig(probe=ProbeConfig(feature_dim=feature_dim, bp_dim=BP_POSTERIOR_DIM, control=control),
+                      seed=seed)
+    val = batches  # early-stop validation uses the synthetic/CC-BY material (allowed); real dev is never used
+    model, _result = train_probe(cfg, batches, val)
+    return model
+
+
+def _default_evaluator(encoder, seed, model, extractor, bp, dev_clips, probe_data) -> dict:
+    """Evaluate one trained probe on the frozen real-dev clips and return the metric record."""
+    from .probe.evaluate import evaluate_probe
+
+    ext = extractor if encoder != "control" else _ControlExtractor()
+    clips = probe_data.build_eval_clips(dev_clips, model, ext, bp)
+    return evaluate_probe(encoder, seed, clips, partition="real")
+
+
+class _ControlExtractor:
+    """A minimal 1-dim extractor for the Basic-Pitch-only control (features unused by the control model)."""
+
+    def descriptor(self):
+        from .probe.extractor import ExtractorDescriptor
+        return ExtractorDescriptor(name="control", code_licence="Apache-2.0", weight_licence="Apache-2.0",
+                                   native_rate_hz=50.0, feature_dim=1)
+
+    def features(self, wav_path):
+        import numpy as np
+        return {name: np.zeros((1, 1), dtype=np.float32) for name in ("early", "middle", "final")}
+
+
+def _default_decider(trained: dict, surviving: list[str]) -> dict:
+    """Build ``decide.EncoderResult``s from the metric records and apply the pre-registered GO/NO-GO rule.
+
+    ``decide`` stays the SOLE adjudicator; this only marshals the per-seed metrics into its inputs.
+    """
+    from . import decide as D
+
+    def result_for(encoder: str) -> D.EncoderResult:
+        by_seed = trained[encoder]
+        real = {s: by_seed[s]["means"]["oct_on50_f1"] * 100.0 for s in by_seed}
+        synth = {s: by_seed[s]["means"].get("synthetic_oct_on50_f1",
+                                            by_seed[s]["means"]["oct_on50_f1"]) * 100.0 for s in by_seed}
+        mt = {s: sum(by_seed[s]["means"][k] for k in D.MULTITASK_KEYS) / len(D.MULTITASK_KEYS) * 100.0
+              for s in by_seed}
+        return D.EncoderResult(encoder=encoder, real_melody=real, synthetic_melody=synth, multitask_mean=mt)
+
+    control = result_for("control")
+    candidates = [result_for(e) for e in surviving]
+    decision = D.decide(candidates, control)
+    return {"go": decision.go, "winner": decision.winner, "add_whisper": decision.add_whisper,
+            "qualifying": decision.qualifying, "reasons": decision.reasons}
+
+
+def _write_metric_table(path: Path, results: dict) -> None:
+    jobs.write_json(path, {
+        "verdict": results.get("verdict"),
+        "drops": results.get("drops", []),
+        "metrics": results.get("metrics", []),
+        "stages": results.get("stages", []),
+    })
 
 
 def unload_lm_studio() -> None:

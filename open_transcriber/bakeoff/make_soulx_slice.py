@@ -40,6 +40,27 @@ def soulx_dir() -> Path:
     return paths.copyist_root() / ".cache" / "ear" / "soulx"
 
 
+def vocalset_dir() -> Path:
+    """Where the CC BY 4.0 VocalSet prompt assets live (gitignored; never committed)."""
+    return paths.copyist_root() / ".cache" / "ear" / "vocalset"
+
+
+def prompt_assets(prompt: str, root: Path | None = None) -> tuple[Path, Path]:
+    """The ``(voice_wav, voice_meta)`` for a CC BY VocalSet prompt id; raise if the assets are absent.
+
+    The prompt audio is CC BY 4.0 and lives under ``.cache/ear/vocalset/<prompt>/`` (never committed). The
+    SoulX slice is a GPU-window job; without the prompt assets it refuses to run (tests inject a fake).
+    """
+    base = Path(root or vocalset_dir()) / prompt
+    voice_wav = base / "prompt.wav"
+    voice_meta = base / "prompt.json"
+    if not voice_wav.exists() or not voice_meta.exists():
+        raise FileNotFoundError(
+            f"VocalSet prompt {prompt!r} assets not found under {base} "
+            "(CC BY 4.0; download into .cache/ear/vocalset/ for the GPU window)")
+    return voice_wav, voice_meta
+
+
 @dataclass
 class ClipPlan:
     clip_id: str
@@ -80,13 +101,18 @@ def estimate_hours(n: int = TARGET_CLIPS) -> float:
 
 
 def make(n: int = TARGET_CLIPS, out: Path | None = None, base_seed: int = BASE_SEED,
-         soulx=None, check_fn: Callable | None = None, until: str | None = None) -> dict:
+         soulx=None, check_fn: Callable | None = None, until: str | None = None,
+         assets_fn: Callable | None = None, device: str = "mps") -> dict:
     """Generate the sung slice. Requires SoulX unless ``soulx``/``check_fn`` are injected (tests).
 
-    Each clip: sing the sampled phrase with the assigned prompt (SoulX loaded once), gate it with
-    ``pitch.check``, re-roll a failed clip up to ``MAX_REROLLS`` times, write the accepted clip's labels.
+    Each clip: load the sampled score, build sung notes with ``copyist.sing.sung_notes`` and SoulX phrase
+    segments with ``copyist.sing.soulx_segments``, render **all** the clip's phrases in one ``soulx.sing``
+    call (SoulX loads once per call), gate the returned ``vocal.wav`` note-by-note with ``pitch.check``,
+    re-roll a failed clip up to ``MAX_REROLLS`` times, and write the accepted clip's exact label JSON.
     """
     out = Path(out or soulx_dir())
+    from copyist.sing import soulx_segments, sung_notes
+    from copyist.song import load_song
     if soulx is None or check_fn is None:
         from copyist import pitch
         from copyist.sing import SoulX
@@ -94,6 +120,7 @@ def make(n: int = TARGET_CLIPS, out: Path | None = None, base_seed: int = BASE_S
             soulx = SoulX.find()
         if check_fn is None:
             check_fn = pitch.check
+    assets_fn = assets_fn or prompt_assets
 
     scores_dir = out / "scores"
     scores_dir.mkdir(parents=True, exist_ok=True)
@@ -104,22 +131,29 @@ def make(n: int = TARGET_CLIPS, out: Path | None = None, base_seed: int = BASE_S
         clip_dir = Path(out) / "clips" / item["clip_id"]
         clip_dir.mkdir(parents=True, exist_ok=True)
         song_path = scores_dir / f"song-{item['seed']}.yaml"
+        song = load_song(song_path)
+        notes = sung_notes(song)                       # SungNotes for the whole verse (from the score)
+        segments = soulx_segments(notes)               # SoulX phrase segments; sung in one call
+        voice_wav, voice_meta = assets_fn(item["prompt"])
         lab = labels.labels_for_song(song_path, seed=item["seed"])
-        wav = clip_dir / "vocal.wav"
         accepted = False
         for attempt in range(MAX_REROLLS):
-            soulx.sing_phrase(song_path, item["prompt"], wav, attempt=attempt)  # one phrase; model stays loaded
-            notes = soulx.sung_notes(song_path)
+            attempt_dir = clip_dir / f"attempt{attempt}"
+            # One sing() call renders every phrase for this clip; the ~8 s model load is paid once per call.
+            wav = soulx.sing(segments, voice_wav, voice_meta, out_dir=attempt_dir, device=device)
             if gate_clip(check_fn, wav, notes):
+                accepted_wav = clip_dir / "vocal.wav"
+                Path(wav).replace(accepted_wav)
+                wav = accepted_wav
                 accepted = True
                 break
         if not accepted:
             raise RuntimeError(f"{item['clip_id']}: failed the pitch gate after {MAX_REROLLS} tries")
         labels.write_labels(lab, clip_dir / "labels.json")
         return {"outputs": {"vocal": wav, "labels": clip_dir / "labels.json"},
-                "prompt": item["prompt"], "n_notes": len(lab.notes)}
+                "prompt": item["prompt"], "n_notes": len(lab.notes), "n_phrases": len(segments)}
 
-    job = jobs.Job(name="soulx-slice", system="ear-soulx", run=run, gpu=True, device="mps",
+    job = jobs.Job(name="soulx-slice", system="ear-soulx", run=run, gpu=True, device=device,
                    out=Path(out), until=until, versions=jobs.python_versions("copyist"))
     items = [{"id": p.clip_id, "clip_id": p.clip_id, "seed": p.seed, "prompt": p.prompt} for p in plans]
     return job.run_queue(items)
