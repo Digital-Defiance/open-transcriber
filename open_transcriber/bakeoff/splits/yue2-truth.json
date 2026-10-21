@@ -1,0 +1,15 @@
+{
+ "content_hash": "98896f7d4e274862ad378477b0e3f4de9fa0df3362ccf17471772ba21a959e96",
+ "count": 5,
+ "kind": "regression",
+ "members": [
+  "amazing-grace",
+  "major-general",
+  "silent-night",
+  "the-tyger",
+  "when-the-saints"
+ ],
+ "name": "yue2-truth",
+ "note": "5 YuE2 truth takes, REGRESSION ONLY (never a judge of quality)",
+ "seed_text": "copyist-ot2-20261020"
+}

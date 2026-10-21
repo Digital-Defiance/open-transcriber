@@ -1,0 +1,22 @@
+{
+ "content_hash": "4f771646956c9a4e4c8c25b9754d0a62b9d751cd2eea54ca1f17c7de590d95aa",
+ "count": 12,
+ "kind": "real-diagnostic",
+ "members": [
+  "usdx-jonathan-coulton-big-bad-world-one",
+  "usdx-jonathan-coulton-chiron-beta-prime",
+  "usdx-jonathan-coulton-flickr",
+  "usdx-jonathan-coulton-furry-old-lobster",
+  "usdx-jonathan-coulton-mr-fancy-pants",
+  "usdx-jonathan-coulton-my-beige-bear",
+  "usdx-jonathan-coulton-not-about-you",
+  "usdx-jonathan-coulton-that-spells-dna",
+  "usdx-jonathan-coulton-when-you-go",
+  "usdx-joshua-morin-on-the-run",
+  "usdx-shearer-stay-with-me",
+  "usdx-silver-note-sonic-rainboom-vip"
+ ],
+ "name": "karaoke-dev",
+ "note": "12 QA-surviving karaoke dev songs, DIAGNOSTIC ONLY (CC BY-NC, eval-only)",
+ "seed_text": "copyist-ot2-20261020"
+}

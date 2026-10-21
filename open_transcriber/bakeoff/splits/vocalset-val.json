@@ -1,0 +1,14 @@
+{
+ "content_hash": "cdd21373883c41715f154f71117fd52114612c96e41ca79fd9f9998f676f5572",
+ "count": 4,
+ "kind": "cc-by-val",
+ "members": [
+  "vocalset-male1",
+  "vocalset-male2",
+  "vocalset-male7",
+  "vocalset-male8"
+ ],
+ "name": "vocalset-val",
+ "note": "4 Annotated-VocalSet validation singers (CC BY 4.0)",
+ "seed_text": "copyist-ot2-20261020"
+}
