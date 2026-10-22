@@ -146,13 +146,17 @@ class EndToEndTests(unittest.TestCase):
             d = D.decide([result(e) for e in surviving], result("control"))
             return {"go": d.go, "winner": d.winner, "qualifying": d.qualifying}
 
-        return rb.run_batch(
-            dry_run=False, out_root=Path(tmp),
-            extractor_factory=extractor_factory, bp_factory=lambda: object(),
-            trainer=trainer, evaluator=evaluator, decider=decider, calibrate=calibrate,
-            train_clips=[{"wav": "a.wav", "labels": {}}], dev_clips=[{"id": "sampler-1", "wav": "a.wav", "labels": {}}],
-            gpu_lock=_NullLock(), caffeinate=lambda: None, battery=lambda *a, **k: 0.0,
-        ), order
+        # This exercises the execution body, not the gates (those are tested separately), so force the
+        # gates open regardless of where the submodule's ear-prereg tag lives.
+        with mock.patch.object(rb, "gates_ok", return_value=(True, [])):
+            return rb.run_batch(
+                dry_run=False, out_root=Path(tmp),
+                extractor_factory=extractor_factory, bp_factory=lambda: object(),
+                trainer=trainer, evaluator=evaluator, decider=decider, calibrate=calibrate,
+                train_clips=[{"wav": "a.wav", "labels": {}}],
+                dev_clips=[{"id": "sampler-1", "wav": "a.wav", "labels": {}}],
+                gpu_lock=_NullLock(), caffeinate=lambda: None, battery=lambda *a, **k: 0.0,
+            ), order
 
     def test_go_path_runs_all_stages_drops_heartcodec_and_persists_verdict(self):
         def metric(encoder):
@@ -200,16 +204,17 @@ class EndToEndTests(unittest.TestCase):
             def trainer(*a, **k):
                 calls["train"] += 1
                 return ("model",)
-            rb.run_batch(
-                dry_run=False, out_root=Path(tmp),
-                extractor_factory=lambda name: object(), bp_factory=lambda: object(),
-                trainer=trainer,
-                evaluator=lambda *a, **k: {"means": {}},
-                decider=lambda trained, surviving: {"go": False, "winner": None},
-                calibrate=lambda enc: {"hours": 1.0, "gb": 5.0, "mps_ok": True, "pilot_lead": True},
-                train_clips=[], dev_clips=[],
-                gpu_lock=_NullLock(), caffeinate=lambda: None, battery=lambda *a, **k: 0.0,
-            )
+            with mock.patch.object(rb, "gates_ok", return_value=(True, [])):
+                rb.run_batch(
+                    dry_run=False, out_root=Path(tmp),
+                    extractor_factory=lambda name: object(), bp_factory=lambda: object(),
+                    trainer=trainer,
+                    evaluator=lambda *a, **k: {"means": {}},
+                    decider=lambda trained, surviving: {"go": False, "winner": None},
+                    calibrate=lambda enc: {"hours": 1.0, "gb": 5.0, "mps_ok": True, "pilot_lead": True},
+                    train_clips=[], dev_clips=[],
+                    gpu_lock=_NullLock(), caffeinate=lambda: None, battery=lambda *a, **k: 0.0,
+                )
             self.assertEqual(calls["train"], 0)  # all probe checkpoints were reused
 
 
