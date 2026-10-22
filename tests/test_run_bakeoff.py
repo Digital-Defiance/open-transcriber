@@ -8,6 +8,7 @@ import unittest
 from pathlib import Path
 from unittest import mock
 
+from open_transcriber.bakeoff import dev_splits
 from open_transcriber.bakeoff import run_bakeoff as rb
 from open_transcriber.bakeoff.probe.train import SEEDS
 
@@ -294,6 +295,101 @@ class EndToEndTests(unittest.TestCase):
                     gpu_lock=_NullLock(), caffeinate=lambda: None, battery=lambda *a, **k: 0.0,
                 )
             self.assertEqual(calls["train"], 0)  # all probe checkpoints were reused
+
+
+class MelodyOnlyRealDevEndToEndTests(unittest.TestCase):
+    """Fake tiny extractors but the REAL label plumbing: prove decide() gets non-empty real-dev melody
+    metrics and that NOT-LABELLED (melody-only) heads are EXCLUDED from the means, not scored as all-wrong.
+
+    This is the check that would have caught the empty-NO-GO and the empty-data blocker: the evaluator here
+    is the real ``evaluate.evaluate_probe`` running the Option-1 masking path over melody-only real-dev
+    labels, and the decider is the real ``_default_decider`` + ``decide``.
+    """
+
+    def _melody_only_labels(self, control: bool):
+        """Real-dev-shaped melody-only labels: notes present (one freestyle), secondaries NOT-LABELLED."""
+        # A music encoder decodes more notes right than the Basic-Pitch-only control, so it clears the +3.0
+        # real-dev gate; both decode the two scored notes, but the control misses the second.
+        notes = [{"onset": 0.0, "offset": 0.5, "midi": 60, "mask": ""},
+                 {"onset": 0.5, "offset": 1.0, "midi": 62, "mask": ""},
+                 {"onset": 1.0, "offset": 2.0, "midi": 64, "mask": "freestyle"}]
+        return {"format": "ear-eval-labels/melody-only-1", "duration": 2.5, "notes": notes,
+                "beats": None, "downbeats": None, "chords": None, "key_class": None,
+                "meter": None, "tempo": None}
+
+    def _synthetic_labels(self):
+        return {"duration": 2.0,
+                "notes": [{"onset": 0.0, "offset": 0.5, "midi": 60}, {"onset": 0.5, "offset": 1.0, "midi": 62},
+                          {"onset": 1.0, "offset": 2.0, "midi": 64}],
+                "beats": [0.0, 0.5, 1.0, 1.5, 2.0], "downbeats": [0.0, 2.0],
+                "chords": [{"onset": 0.0, "offset": 2.0, "root_pc": 0, "quality": "maj"}], "key_class": 0}
+
+    def _run(self):
+        from open_transcriber.bakeoff.probe import evaluate
+        from test_probe_evaluate import perfect_outputs_for
+
+        rwc_ids = dev_splits.rwc_other_dev()[:2]
+        melody_labels = self._melody_only_labels(control=False)
+        dev_clips = [{"id": rwc_ids[0], "wav": "d0.wav", "labels": melody_labels},
+                     {"id": rwc_ids[1], "wav": "d1.wav", "labels": melody_labels}]
+        captured = {}
+
+        def evaluator(encoder, seed, model, extractor, bp, clips_in, probe_data):
+            # Fake tiny extractor path: decode each real-dev clip directly from its melody-only labels, then
+            # run the REAL evaluate_probe so the Option-1 masking path (not a stub) produces the means.
+            if encoder == "control":
+                # The control decodes only the first scored note right (misses the second) -> lower melody F1.
+                partial = {"duration": melody_labels["duration"], "notes": melody_labels["notes"][:1],
+                           "beats": [], "downbeats": [], "chords": [], "key_class": 0}
+                scored = [(perfect_outputs_for(partial), lab, cid) for (_o, lab, cid)
+                          in [(None, c["labels"], c["id"]) for c in clips_in]]
+            else:
+                full = {"duration": melody_labels["duration"], "notes": melody_labels["notes"][:2],
+                        "beats": [], "downbeats": [], "chords": [], "key_class": 0}
+                scored = [(perfect_outputs_for(full), lab, cid) for (_o, lab, cid)
+                          in [(None, c["labels"], c["id"]) for c in clips_in]]
+            rec = evaluate.evaluate_probe(encoder, seed, scored, partition="real")
+            captured.setdefault(encoder, rec)
+            return rec
+
+        def decider(trained, surviving):
+            captured["trained"] = trained
+            return rb._default_decider(trained, surviving)
+
+        with tempfile.TemporaryDirectory() as tmp, \
+                mock.patch.object(rb, "gates_ok", return_value=(True, [])):
+            result = rb.run_batch(
+                dry_run=False, out_root=Path(tmp),
+                extractor_factory=lambda name: object(), bp_factory=lambda: object(),
+                trainer=lambda *a, **k: ("model",), evaluator=evaluator, decider=decider,
+                calibrate=lambda enc: {"hours": 1.0, "gb": 5.0, "mps_ok": True, "pilot_lead": True},
+                train_clips=[{"wav": "t.wav", "labels": self._synthetic_labels()}],
+                dev_clips=dev_clips,
+                gpu_lock=_NullLock(), caffeinate=lambda: None, battery=lambda *a, **k: 0.0,
+            )
+        return result, captured
+
+    def test_decide_gets_nonempty_real_dev_melody_metrics_and_masked_heads_excluded(self):
+        result, captured = self._run()
+        # Every metric record scored two real-dev clips (non-empty, non-vacuous).
+        for rec in result["metrics"]:
+            self.assertEqual(rec["n"], 2)
+            self.assertGreater(rec["means"]["oct_on50_f1"], 0.0)   # real melody metric is real, not 0
+            # The NOT-LABELLED secondary heads are EXCLUDED: their means are 0.0 only because no clip labelled
+            # them (mean over zero rows), never because a labelled head scored all-wrong.
+            self.assertEqual(rec["means"]["beat_f1"], 0.0)
+            self.assertEqual(rec["means"]["chord"], 0.0)
+        # The per-clip rows for a melody-only clip omit the secondary keys entirely (excluded, not zeroed).
+        from open_transcriber.bakeoff.probe import evaluate
+        from test_probe_evaluate import perfect_outputs_for
+        row = evaluate.score_one_clip(perfect_outputs_for(self._synthetic_labels()),
+                                      self._melody_only_labels(control=False), item="rwc-test")
+        for key in ("beat_f1", "downbeat_f1", "chord", "key"):
+            self.assertNotIn(key, row)
+        # A verdict was produced (non-vacuous): the music encoder beats the control on real melody -> GO.
+        self.assertIsNotNone(result["verdict"])
+        self.assertTrue(result["verdict"]["go"])
+        self.assertIn(result["verdict"]["winner"], rb.ENCODERS)
 
 
 class MainDispatchTests(unittest.TestCase):

@@ -95,5 +95,67 @@ class EvaluateTests(unittest.TestCase):
         self.assertEqual(rec["n"], 1)
 
 
+# A real-dev-shaped melody-only labels dict (Option 1): notes present (one freestyle-masked), secondaries None.
+MELODY_ONLY_LABELS = {
+    "format": "ear-eval-labels/melody-only-1",
+    "duration": 2.5,
+    "notes": [{"onset": 0.0, "offset": 0.5, "midi": 60, "mask": ""},
+              {"onset": 0.5, "offset": 1.0, "midi": 62, "mask": ""},
+              {"onset": 1.0, "offset": 2.0, "midi": 64, "mask": "freestyle"}],  # don't-care
+    "beats": None,
+    "downbeats": None,
+    "chords": None,
+    "key_class": None,
+    "meter": None,
+    "tempo": None,
+}
+
+
+class MelodyOnlyMaskingTests(unittest.TestCase):
+    """Option 1: NOT-LABELLED secondary heads are EXCLUDED (not zeroed); freestyle notes are don't-cares."""
+
+    def test_melody_only_clip_omits_secondary_head_keys(self):
+        out = perfect_outputs_for(LABELS)   # decoded output shape is independent of the reference labels
+        row = evaluate.score_one_clip(out, MELODY_ONLY_LABELS, item="rwc-g001")
+        for key in ("oct_on50_f1", "oct_on100_f1", "pc_on50_f1"):
+            self.assertIn(key, row)                 # melody heads always scored
+        for key in ("beat_f1", "downbeat_f1", "chord", "key"):
+            self.assertNotIn(key, row)              # excluded, not scored as all-wrong
+
+    def test_freestyle_note_is_a_dontcare_not_a_miss(self):
+        # A decode that matches only the two scored notes (and not the freestyle one) still scores perfectly:
+        # the masked note is a don't-care, so recall is over the two unmasked references.
+        scored_only = {"duration": MELODY_ONLY_LABELS["duration"],
+                       "notes": MELODY_ONLY_LABELS["notes"][:2], "beats": [], "downbeats": [],
+                       "chords": [], "key_class": 0}
+        out = perfect_outputs_for(scored_only)
+        row = evaluate.score_one_clip(out, MELODY_ONLY_LABELS, item="rwc-g001")
+        self.assertGreaterEqual(row["oct_on50_f1"], 0.99)   # the freestyle note is not counted as a miss
+
+    def test_full_clip_still_scores_all_seven_heads(self):
+        out = perfect_outputs_for(LABELS)
+        row = evaluate.score_one_clip(out, LABELS, item="sampler-1")
+        for key in ("oct_on50_f1", "oct_on100_f1", "pc_on50_f1", "beat_f1", "downbeat_f1", "chord", "key"):
+            self.assertIn(key, row)
+
+    def test_evaluate_probe_excludes_melody_only_clip_from_secondary_means(self):
+        full_out = perfect_outputs_for(LABELS)
+        melody_out = perfect_outputs_for(LABELS)
+        rwc_id = dev_splits.rwc_other_dev()[0]
+        karaoke_like = dev_splits.rwc_other_dev()[1]
+        rec = evaluate.evaluate_probe(
+            "musicfm", 20261020,
+            [(full_out, LABELS, rwc_id), (melody_out, MELODY_ONLY_LABELS, karaoke_like)],
+            partition="real")
+        self.assertEqual(rec["n"], 2)
+        # Melody means average BOTH clips.
+        self.assertGreater(rec["means"]["oct_on50_f1"], 0.0)
+        # Beat mean reflects only the one fully-labelled clip (the melody-only clip is excluded, not a zero).
+        # With one perfect beat clip and the other excluded, the mean equals that single clip's beat F1 > 0.
+        full_row = evaluate.score_one_clip(full_out, LABELS, item=rwc_id)
+        self.assertAlmostEqual(rec["means"]["beat_f1"], round(full_row["beat_f1"], 6))
+        self.assertGreater(rec["means"]["beat_f1"], 0.0)
+
+
 if __name__ == "__main__":
     unittest.main()

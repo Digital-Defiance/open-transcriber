@@ -52,10 +52,47 @@ class SoulxResolverTests(unittest.TestCase):
             self.assertEqual(Path(found[0]["wav"]).name, "vocal.wav")
 
 
-class AdapterIsStubbedTests(unittest.TestCase):
-    def test_reference_adapter_raises_until_the_design_decision_is_made(self):
-        with self.assertRaises(NotImplementedError):
-            clips.reference_to_eval_labels(Path("ref.tsv"), {"id": "rwc-g001"})
+def _write_reference_tsv(path: Path, rows: list[tuple]) -> None:
+    """Write a note-only reference TSV (``note_id onset offset midi midi_sung mask source``)."""
+    header = "note_id\tonset\toffset\tmidi\tmidi_sung\tmask\tsource"
+    lines = [header]
+    for i, (onset, offset, midi, midi_sung, mask, source) in enumerate(rows):
+        lines.append(f"{i}\t{onset:.6f}\t{offset:.6f}\t{midi}\t{midi_sung}\t{mask}\t{source}")
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+class ReferenceToEvalLabelsTests(unittest.TestCase):
+    """Option 1: note-only reference TSV -> melody-only eval labels; freestyle mask honored; secondaries N/A."""
+
+    def test_melody_only_labels_with_mask_and_duration(self):
+        with TemporaryDirectory() as tmp:
+            ref = Path(tmp) / "rwc-g001.tsv"
+            _write_reference_tsv(ref, [
+                (0.0, 0.5, 60, 60, "", "track:1"),
+                (0.5, 1.2, 62, 62, "", "track:1"),
+                (1.2, 2.0, 64, 64, "freestyle", "chart"),   # masked -> don't-care
+            ])
+            labels = clips.reference_to_eval_labels(ref, {"id": "rwc-g001"})
+            # melody notes only, onset/offset/midi/mask preserved
+            self.assertEqual(len(labels["notes"]), 3)
+            self.assertEqual([n["midi"] for n in labels["notes"]], [60, 62, 64])
+            self.assertEqual(labels["notes"][0]["mask"], "")
+            self.assertEqual(labels["notes"][2]["mask"], "freestyle")   # freestyle row keeps its mask
+            self.assertTrue(all({"onset", "offset", "midi"} <= set(n) for n in labels["notes"]))
+            # duration = max offset + tail
+            self.assertAlmostEqual(labels["duration"], 2.0 + clips.TAIL)
+            # secondaries are the NOT-LABELLED sentinel None (not [], not 0)
+            for head in ("beats", "downbeats", "chords", "key_class", "meter", "tempo"):
+                self.assertIsNone(labels[head], head)
+
+    def test_empty_reference_duration_is_tail(self):
+        with TemporaryDirectory() as tmp:
+            ref = Path(tmp) / "empty.tsv"
+            _write_reference_tsv(ref, [])
+            labels = clips.reference_to_eval_labels(ref, {"id": "rwc-g002"})
+            self.assertEqual(labels["notes"], [])
+            self.assertAlmostEqual(labels["duration"], clips.TAIL)
+            self.assertIsNone(labels["beats"])
 
 
 class SealedGuardTests(unittest.TestCase):

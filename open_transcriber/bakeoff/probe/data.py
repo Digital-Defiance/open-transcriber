@@ -109,12 +109,15 @@ def build_targets(labels: dict, target_frames: int, rate: float = TARGET_RATE_HZ
         if 0 <= last < target_frames:
             offset[last] = 1.0
 
-    beat = _pulse_target(labels.get("beats", []), target_frames, rate)
-    downbeat = _pulse_target(labels.get("downbeats", []), target_frames, rate)
+    # A NOT-LABELLED head (melody-only real-dev labels, Option 1) is coerced to an empty target here; eval
+    # discards these targets (it scores decoded output against the labels directly) and train clips are
+    # always fully labelled, so this coercion only keeps a single target-building path for both.
+    beat = _pulse_target(labels.get("beats") or [], target_frames, rate)
+    downbeat = _pulse_target(labels.get("downbeats") or [], target_frames, rate)
 
     chord_root = np.full(target_frames, 12, dtype=np.int64)          # 12 = no-chord
     chord_quality = np.full(target_frames, _QUALITY_CLASS["no-chord"], dtype=np.int64)
-    for c in labels.get("chords", []):
+    for c in (labels.get("chords") or []):
         a = int(round(float(c["onset"]) * rate))
         b = int(round(float(c["offset"]) * rate))
         rpc = int(c["root_pc"])
@@ -124,7 +127,7 @@ def build_targets(labels: dict, target_frames: int, rate: float = TARGET_RATE_HZ
             chord_root[i] = root_class
             chord_quality[i] = q_class
 
-    key_class = int(labels.get("key_class", 0)) % N_KEY
+    key_class = int(labels.get("key_class") or 0) % N_KEY
     return {
         "pitch": torch.from_numpy(pitch),
         "silence": torch.from_numpy(silence),

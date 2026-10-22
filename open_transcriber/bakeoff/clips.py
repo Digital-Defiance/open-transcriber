@@ -11,10 +11,11 @@ Two sides, per the pre-registration:
   (``make_sampler_audio`` / ``make_soulx_slice``), which write exact ``labels.json`` by construction, so the
   train side needs no label adapter — only generation and resolution.
 - **REAL-DEV (eval)**: rwc-other-dev + karaoke-dev. These are CC BY-NC references (``refs.py``), note-only
-  TSVs with no beat/chord/key/duration. Turning a reference TSV into the eval-labels dict is the one open
-  design decision (see ``.agents/tasks/ear-bakeoff-2026-10-20/data-pipeline-design-2026-10-21.md``); it lives
-  behind ``reference_to_eval_labels`` and is **stubbed** here so the interface is pinned but the
-  metric-handling choice stays open. Nothing in this module trains on RWC/karaoke.
+  TSVs with no beat/chord/key/duration. ``reference_to_eval_labels`` turns a reference TSV into melody-only
+  eval labels under the owner's **Option 1** decision (melody-only real-dev eval; see
+  ``.agents/tasks/ear-bakeoff-2026-10-20/data-pipeline-design-2026-10-21.md``): notes only, the karaoke
+  freestyle mask honored, and beats/downbeats/chords/key explicitly NOT-LABELLED (``None``) so the scorer
+  excludes them rather than scoring them as all-wrong. Nothing in this module trains on RWC/karaoke.
 
 The sealed TEST partitions (RWC-Pop, rwc-other-test, USDX-test, COTB) are never resolved: ``assemble`` refuses
 any sealed id, mirroring the guard in ``probe/data.py``.
@@ -24,7 +25,10 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from . import dev_splits, paths
+from . import dev_splits, notes_io, paths
+
+#: Small tail (seconds) added past the last note offset to set a melody-only clip's duration.
+TAIL = 0.5
 
 
 def _sampler_dir() -> Path:
@@ -96,19 +100,39 @@ def train_clips(sampler_out: Path | None = None, soulx_out: Path | None = None) 
 
 
 def reference_to_eval_labels(reference_tsv: Path, item: dict) -> dict:
-    """Adapt a real-dev reference TSV into the eval-labels dict. **Open design decision — stubbed.**
+    """Adapt a real-dev reference TSV into **melody-only** eval labels (owner's Option 1 decision).
 
-    The RWC/karaoke references are note-only (no beat/downbeat/chord/key/duration), but the evaluator scores
-    seven head groups. What the unlabelled heads do on real-dev changes what ``decide()`` is handed, so it is
-    a product decision, not wiring. The options and a recommendation are in
-    ``.agents/tasks/ear-bakeoff-2026-10-20/data-pipeline-design-2026-10-21.md``. Until the owner picks one,
-    this raises so no run can silently invent real-dev labels.
+    The RWC/karaoke references are note-only TSVs (``note_id onset offset midi midi_sung mask source``,
+    ``refs.py``); they carry melody notes with a karaoke freestyle mask, but no beats, downbeats, chords, key
+    or duration. Under Option 1 (melody-only real-dev eval) the real recordings are scored on melody only:
+
+    - ``notes`` carries each reference note as ``{"onset","offset","midi","mask"}``. ``midi`` is the written
+      pitch; octave-exact scoring uses it directly (``score_one_clip``). A note's ``mask`` string is preserved
+      (``""`` scored, ``"freestyle"`` a don't-care) so the strict scorer's existing don't-care logic applies.
+    - ``duration`` = max note offset + ``TAIL`` (or ``TAIL`` when there are no notes).
+    - ``beats``, ``downbeats``, ``chords``, ``key_class``, ``meter`` and ``tempo`` are all set to the
+      NOT-LABELLED sentinel ``None`` (distinct from ``[]`` "labelled empty" and ``0`` "labelled zero"), so the
+      scorer excludes those heads from this clip's metrics and from ``decide()``'s means rather than scoring
+      them as all-wrong against invented truth.
+
+    ``item`` is the manifest item (unused here; kept so the resolver can pass per-item context). Import-light
+    (numpy-only ``notes_io``) so it runs in the torch-only probe-eval env.
     """
-    raise NotImplementedError(
-        "real-dev reference->eval-labels adapter is an open design decision; see "
-        ".agents/tasks/ear-bakeoff-2026-10-20/data-pipeline-design-2026-10-21.md (recommended: Option 1, "
-        "melody-only real-dev eval). The resolver and material wiring are design-neutral and ready; the "
-        "metric-handling choice is deliberately not implemented yet.")
+    ref = notes_io.load_reference(Path(reference_tsv))
+    notes = [{"onset": float(on), "offset": float(off), "midi": int(midi), "mask": str(mask)}
+             for on, off, midi, mask in zip(ref.onset, ref.offset, ref.midi, ref.mask)]
+    duration = (max(n["offset"] for n in notes) + TAIL) if notes else TAIL
+    return {
+        "format": "ear-eval-labels/melody-only-1",
+        "duration": duration,
+        "notes": notes,
+        "beats": None,
+        "downbeats": None,
+        "chords": None,
+        "key_class": None,
+        "meter": None,
+        "tempo": None,
+    }
 
 
 def _manifest_item(member_id: str) -> tuple[dict, dict]:
@@ -126,8 +150,8 @@ def real_dev_clips(data: Path | None = None, *, label_adapter=reference_to_eval_
     """REAL-DEV eval clips: rwc-other-dev + karaoke-dev, as ``{"id","wav","labels"}``.
 
     The wav is the manifest's decoded audio (under the data folder); the labels come from ``label_adapter``
-    applied to the item's reference. The default adapter is the stub, so this raises until the open design
-    decision is made; tests inject a fake adapter to exercise assembly without fixing the metric choice.
+    applied to the item's reference. The default adapter (``reference_to_eval_labels``) builds melody-only
+    eval labels (Option 1); tests inject a fake adapter to exercise assembly without touching the real files.
     """
     data = Path(data or paths.data_dir())
     members = dev_splits.rwc_other_dev() + dev_splits.karaoke_dev(data=data)

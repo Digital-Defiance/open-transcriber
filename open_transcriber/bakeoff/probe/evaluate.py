@@ -62,34 +62,51 @@ def duration_weighted_chord(pred_spans, ref_spans) -> float:
 def score_one_clip(out: dict, labels: dict, metrics=("oct_on50", "oct_on100", "pc_on50"),
                    item: str = "") -> dict:
     """Score one decoded clip against its reference labels. ``out`` holds numpy head arrays; ``labels`` the
-    exact label record (from ``labels.py`` JSON or an equivalent dict)."""
+    label record (from ``labels.py`` JSON for synthetic/exact material, or the melody-only eval labels the
+    Option-1 adapter builds for real-dev).
+
+    Melody heads (``oct_on50_f1``, ``oct_on100_f1``, ``pc_on50_f1``) are always scored; freestyle-masked
+    reference notes are carried into the reference ``Notes`` so the strict scorer waives them as don't-cares.
+    A secondary head (beat/downbeat/chord/key) whose label is the NOT-LABELLED sentinel ``None`` (melody-only
+    real-dev, Option 1) is **excluded**: its row key is omitted entirely, so ``aggregate`` drops it from the
+    means ``decide()`` reads rather than scoring it as all-wrong against invented truth. On exact-label
+    material (sampler-dev/soulx-dev, where these labels are present) all seven heads are scored.
+    """
     notes = decode.decode_notes(out["pitch"], out["silence"])
     est = notes_io.Notes([n[0] for n in notes], [n[1] for n in notes], [n[2] for n in notes]) if notes \
         else notes_io.empty()
     ref_notes = labels["notes"]
     ref = notes_io.Notes([n["onset"] for n in ref_notes], [n["offset"] for n in ref_notes],
-                         [n["midi"] for n in ref_notes]) if ref_notes else notes_io.empty()
+                         [n["midi"] for n in ref_notes],
+                         [n.get("mask", "") for n in ref_notes]) if ref_notes else notes_io.empty()
     # octave-exact uses the written MIDI directly as truth (sampler labels are exact)
     sung = ref.midi
     row = {"item": item}
     for name in metrics:
-        base = name.replace("oct_on100", "pc_on100")  # reuse pc_on100 matcher for the 100 ms grid
-        metric_key = {"oct_on100": "pc_on100"}.get(name, name)
+        metric_key = {"oct_on100": "pc_on100"}.get(name, name)  # reuse pc_on100 matcher for the 100 ms grid
         result = score.score_metric(ref, est, score.METRICS[metric_key], sung if name.startswith("oct") else None)
         row[f"{name}_f1"] = round(result["f1"], 6)
-    # beats / downbeats
-    row["beat_f1"] = round(pulse_f1(decode.decode_pulses(out["beat"]), labels.get("beats", [])), 6)
-    row["downbeat_f1"] = round(pulse_f1(decode.decode_pulses(out["downbeat"]), labels.get("downbeats", [])), 6)
-    # chords
-    pred_chords = decode.decode_chords(out["chord_root"], out["chord_quality"])
-    ref_chords = [(c["onset"], c["offset"], c["root_pc"], c["quality"]) for c in labels.get("chords", [])]
-    row["chord"] = round(duration_weighted_chord(pred_chords, ref_chords), 6)
-    # key
-    row["key"] = int(decode.decode_key(out["key"]) == labels.get("key_class", -1))
+    # beats / downbeats — scored only when labelled (NOT-LABELLED -> omit the key -> excluded from the means)
+    if labels.get("beats") is not None:
+        row["beat_f1"] = round(pulse_f1(decode.decode_pulses(out["beat"]), labels["beats"]), 6)
+    if labels.get("downbeats") is not None:
+        row["downbeat_f1"] = round(pulse_f1(decode.decode_pulses(out["downbeat"]), labels["downbeats"]), 6)
+    # chords — scored only when labelled
+    if labels.get("chords") is not None:
+        pred_chords = decode.decode_chords(out["chord_root"], out["chord_quality"])
+        ref_chords = [(c["onset"], c["offset"], c["root_pc"], c["quality"]) for c in labels["chords"]]
+        row["chord"] = round(duration_weighted_chord(pred_chords, ref_chords), 6)
+    # key — scored only when labelled
+    if labels.get("key_class") is not None:
+        row["key"] = int(decode.decode_key(out["key"]) == labels["key_class"])
     return row
 
 
 def aggregate(rows: list[dict], metric: str) -> float:
+    # Averages only rows that *contain* the key, so a NOT-LABELLED head (its key omitted by score_one_clip)
+    # is excluded from the mean rather than counted as a zero. A partition where no clip labelled a head
+    # yields 0.0 (mean over zero rows) — acceptable because decide() reads beat/chord/key only on the
+    # exact-label synthetic path, never on the melody-only real-dev means.
     vals = [r[metric] for r in rows if metric in r]
     return float(np.mean(vals)) if vals else 0.0
 
