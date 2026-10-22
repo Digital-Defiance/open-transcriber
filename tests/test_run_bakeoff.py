@@ -218,5 +218,81 @@ class EndToEndTests(unittest.TestCase):
             self.assertEqual(calls["train"], 0)  # all probe checkpoints were reused
 
 
+class MainDispatchTests(unittest.TestCase):
+    """The CLI entrypoint: --dry-run/default plan only; --run launches the real contest and reports it."""
+
+    def test_default_and_dry_run_do_not_launch_the_contest(self):
+        called = {"n": 0}
+
+        def runner(dry_run=True, **kwargs):
+            if not dry_run:
+                called["n"] += 1
+            return rb.run_batch(dry_run=True)
+
+        with mock.patch.object(rb, "unload_lm_studio") as unload:
+            self.assertEqual(rb.main([], batch_runner=runner), 0)
+            self.assertEqual(rb.main(["--dry-run"], batch_runner=runner), 0)
+        self.assertEqual(called["n"], 0)  # no contest launched
+        unload.assert_not_called()
+
+    def test_run_flag_launches_contest_and_reports_verdict(self):
+        seen = {"dry_run": None}
+
+        def runner(dry_run=True, **kwargs):
+            seen["dry_run"] = dry_run
+            return {"verdict": {"go": True, "winner": "musicfm"}}
+
+        with mock.patch.object(rb, "gates_ok", return_value=(True, [])), \
+             mock.patch.object(rb, "unload_lm_studio") as unload:
+            rc = rb.main(["--run"], batch_runner=runner)
+        self.assertEqual(rc, 0)
+        self.assertEqual(seen["dry_run"], False)  # the CLI reached run_batch(dry_run=False)
+        unload.assert_called_once()
+
+    def test_run_flag_returns_nonzero_when_gates_block(self):
+        called = {"n": 0}
+
+        def runner(dry_run=True, **kwargs):
+            if not dry_run:
+                called["n"] += 1
+            return {"verdict": {"go": False}}
+
+        with mock.patch.object(rb, "gates_ok", return_value=(False, ["prereg gate: no tag"])):
+            rc = rb.main(["--run"], batch_runner=runner)
+        self.assertEqual(rc, 1)
+        self.assertEqual(called["n"], 0)  # the real loop was never launched
+
+    def test_run_flag_persists_verdict_through_the_real_run_batch(self):
+        # End-to-end-ish: --run drives the real run_batch(dry_run=False) with injected fakes and the verdict
+        # JSON lands on disk (proving the CLI path writes the verdict, not just prints a plan).
+        with tempfile.TemporaryDirectory() as tmp:
+            from open_transcriber.bakeoff import decide as D
+
+            def runner(dry_run=True, **kwargs):
+                if dry_run:
+                    return rb.run_batch(dry_run=True)
+                return rb.run_batch(
+                    dry_run=False, out_root=Path(tmp),
+                    extractor_factory=lambda name: object(), bp_factory=lambda: object(),
+                    trainer=lambda *a, **k: ("model",),
+                    evaluator=lambda encoder, *a, **k: {
+                        "encoder": encoder,
+                        "means": {"oct_on50_f1": 0.55 if encoder != "control" else 0.50,
+                                  "synthetic_oct_on50_f1": 0.57 if encoder != "control" else 0.50,
+                                  "mt": 0.5}},
+                    decider=lambda trained, surviving: {"go": True, "winner": surviving[0]},
+                    calibrate=lambda enc: {"hours": 1.0, "gb": 5.0, "mps_ok": True, "pilot_lead": True},
+                    train_clips=[], dev_clips=[],
+                    gpu_lock=_NullLock(), caffeinate=lambda: None, battery=lambda *a, **k: 0.0,
+                )
+
+            with mock.patch.object(rb, "gates_ok", return_value=(True, [])), \
+                 mock.patch.object(rb, "bakeoff_out_dir", return_value=Path(tmp)), \
+                 mock.patch.object(rb, "unload_lm_studio"):
+                rc = rb.main(["--run"], batch_runner=runner)
+            self.assertEqual(rc, 0)
+            self.assertTrue((Path(tmp) / "verdict.json").exists())
+
+
 if __name__ == "__main__":
     unittest.main()

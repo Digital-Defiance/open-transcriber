@@ -20,6 +20,7 @@ licence-confirmed encoders. It writes per-job progress to ``runs.jsonl`` and a f
 ``decide.py`` to compute the GO/NO-GO verdict from the pre-registered rule.
 
     python -m open_transcriber.bakeoff.run_bakeoff --dry-run   # ordered jobs, hours, disk, gate status
+    python -m open_transcriber.bakeoff.run_bakeoff --run       # the real contest: run the batch, write the verdict
 """
 
 from __future__ import annotations
@@ -370,30 +371,59 @@ def unload_lm_studio() -> None:
         pass
 
 
-def main(argv: list[str] | None = None) -> int:
+def main(argv: list[str] | None = None, *, batch_runner=None) -> int:
+    """Print the plan, and with ``--run`` launch the real contest and emit the GO/NO-GO verdict.
+
+    Without a flag (or with ``--dry-run``) this prints the ordered plan, estimate and gate status and runs
+    nothing. With ``--run`` it frees the LM Studio models, then calls ``run_batch(dry_run=False)`` — the full
+    resumable calibrate->extract->assemble->train->evaluate->decide loop — and reports where the verdict was
+    written. It returns non-zero if the gates block (so an unattended window fails loudly rather than
+    silently). ``batch_runner`` is injectable so the CLI dispatch is testable with fakes (defaults to
+    ``run_batch``).
+    """
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--dry-run", action="store_true", help="print the plan and gate status, run nothing")
+    parser.add_argument("--run", action="store_true",
+                        help="run the real contest (calibrate->extract->train->evaluate->decide) and write "
+                             "the GO/NO-GO verdict")
     args = parser.parse_args(argv)
 
-    result = run_batch(dry_run=True)
-    est = result["estimate"]
+    runner = batch_runner or run_batch
+    plan = run_batch(dry_run=True)
+    est = plan["estimate"]
     print("ear bake-off GPU batch plan (one GPU job at a time, in order):")
-    for i, job in enumerate(result["order"], 1):
+    for i, job in enumerate(plan["order"], 1):
         print(f"  {i:2d}. {job}")
     print(f"estimate: extract ~{est['extract_hours']} h, soulx ~{est['soulx_hours']} h, "
           f"probes ~{est['probe_hours']} h = ~{est['total_hours']} h total "
           f"(batch cap {est['batch_cap_hours']} h)")
     print(f"temp disk: {est['temp_disk_gb'][0]:.0f}-{est['temp_disk_gb'][1]:.0f} GB; "
           f"stop below {paths.FREE_SPACE_FLOOR/1e9:.0f} GB free")
-    print(f"gates: {'PASS' if result['gates_ok'] else 'BLOCKED'}"
-          + ("" if result["gates_ok"] else " -> " + "; ".join(result["gate_reasons"])))
-    if args.dry_run:
+    print(f"gates: {'PASS' if plan['gates_ok'] else 'BLOCKED'}"
+          + ("" if plan["gates_ok"] else " -> " + "; ".join(plan["gate_reasons"])))
+
+    if not args.run:
+        # Default and --dry-run: plan only.
         return 0
-    if not result["gates_ok"]:
-        print("Refusing to run: gates not satisfied.", file=sys.stderr)
+
+    if not plan["gates_ok"]:
+        print("Refusing to run: gates not satisfied -> " + "; ".join(plan["gate_reasons"]),
+              file=sys.stderr)
         return 1
-    print("This script is run by the window agent on the Mac; GPU extraction/training is wired there.",
-          file=sys.stderr)
+
+    # The real contest: free LM Studio first, then run the full resumable loop to the verdict.
+    unload_lm_studio()
+    print("Running the ear bake-off contest (this is the GPU window job)...", file=sys.stderr)
+    result = runner(dry_run=False)
+    out = bakeoff_out_dir()
+    verdict = result.get("verdict")
+    if verdict is None:
+        print("The batch finished without a verdict (checkpointed at the window cap; re-run to continue).",
+              file=sys.stderr)
+        return 2
+    print(f"verdict: {'GO' if verdict.get('go') else 'NO-GO'}"
+          + (f" (winner: {verdict.get('winner')})" if verdict.get("winner") else ""))
+    print(f"verdict written to {out / 'verdict.json'}; metric table at {out / 'metrics.json'}")
     return 0
 
 
