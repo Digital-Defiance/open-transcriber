@@ -38,6 +38,18 @@ the set's lead F1; ties (a uniform offset smaller than the onset tolerance leave
 smaller mean absolute onset error of the matched notes, so a system offset by +40 ms recovers −40 ms. Each
 calibrated row is named `<system> (xfit <shift> ms)` and uses the shift fitted on the *other* set.
 
+## The measured timing correction (`corrections.py`)
+
+The cross-fit measures how far each system's onsets sit from the sung truth. For the heard-time outputs that
+correction is wired in as a first-class system under a **stable name** — `open (heard, corrected)`,
+`neural (heard, corrected)`, `basic-pitch one line (corrected)` — rather than only an `(xfit)` label, so the
+engine's own heard-time output and the board agree on one measured shift. The shift applied to a set is still
+the one fitted on the *other* dev set (the same cross-fit rule). `corrections.correct_heard(notes, shift)` is
+the applier the engine uses; `corrections.fit_dev_shifts(board)` reads the per-set shift off a calibrated
+board. Measured on the 2026-10-22 dev scoreboard: `open` heard about +20 ms, `neural` heard about +15 ms,
+`basic-pitch one line` about −40 ms (so Basic Pitch one line on karaoke rises 25.4 → 36.7, `open` heard on
+RWC 23.1 → 25.0). These are fitted on dev only, never on a test set.
+
 ## Output
 
 - `out/judge/scoreboard.md` and `out/judge/scoreboard.json` (the current table), and

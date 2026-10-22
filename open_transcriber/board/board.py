@@ -298,6 +298,26 @@ def build(calibrate: bool = False, data: Path | None = None, out: Path | None = 
             for item in items:
                 row = _score_item(split, kind, item, shift_notes(estimates[(split, sys.name, item)], shift), data)
                 board.rows.setdefault(board.key(split, name), []).append(row)
+
+    # The measured timing correction wired into the heard-time outputs, under stable ``… corrected`` names:
+    # the shift applied to a set is the one fitted on the OTHER set (``fitted`` above), the same cross-fit
+    # rule, so the engine's heard-time output and the board report one measured correction. Imported here to
+    # keep the shift applier (``correct_heard``) in one place without a module import cycle.
+    from open_transcriber.board.corrections import CORRECTED_SYSTEMS, correct_heard
+
+    for src, dst in CORRECTED_SYSTEMS.items():
+        for split in SETS:
+            other = next(s for s in SETS if s != split)
+            shift = fitted.get(src, {}).get(other, 0.0)
+            kind = SET_METRICS[split][0]
+            items = [i for i in set_members(split) if (split, src, i) in estimates]
+            if not items:
+                continue
+            board.shifts.setdefault(dst, {})[split] = shift
+            for item in items:
+                row = _score_item(split, kind, item,
+                                  correct_heard(estimates[(split, src, item)], shift), data)
+                board.rows.setdefault(board.key(split, dst), []).append(row)
     return board
 
 
