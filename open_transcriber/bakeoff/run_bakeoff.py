@@ -31,7 +31,7 @@ import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from . import jobs, paths
+from . import clips, dev_splits, jobs, paths
 from .probe.train import SEEDS
 
 PREREG_TAG = "ear-prereg"
@@ -173,7 +173,7 @@ def _calibrate_and_drop(encoders, calibrate, drop_fn) -> tuple[list[str], list[d
 def run_batch(dry_run: bool = True, licences_md: Path | None = None, *,
               out_root: Path | None = None,
               extractor_factory=None, bp_factory=None, trainer=None, evaluator=None, decider=None,
-              calibrate=None, train_clips=None, dev_clips=None,
+              calibrate=None, train_clips=None, dev_clips=None, assemble_clips=None, generate_material=None,
               gpu_lock=None, caffeinate=None, battery=None) -> dict:
     """Plan the batch, and when ``dry_run=False`` run the full resumable loop behind the gates.
 
@@ -199,8 +199,31 @@ def run_batch(dry_run: bool = True, licences_md: Path | None = None, *,
         extractor_factory=extractor_factory, bp_factory=bp_factory, trainer=trainer,
         evaluator=evaluator, decider=decider, calibrate=calibrate,
         train_clips=train_clips, dev_clips=dev_clips,
+        assemble_clips=assemble_clips, generate_material=generate_material,
         gpu_lock=gpu_lock, caffeinate=caffeinate, battery=battery,
     )
+
+
+def _default_generate_material() -> None:
+    """Generate the TRAIN material the frozen splits name: sampler-dev (CPU) then soulx-dev (GPU).
+
+    Both generators are resumable (``jobs.Job`` skips finished items), battery-aware and disk-floor aware, so
+    re-running a window continues where it stopped. The sampler pass is CPU; the SoulX slice is a GPU sub-job
+    that runs inside the window (it holds the lock itself). The counts are generated to cover every seed the
+    frozen sampler-dev / soulx-dev splits reference.
+    """
+    # Imported lazily: the material scripts pull in copyist/music21, which the torch-only probe-eval env
+    # doesn't have. They are only needed in the real window, where the copyist env is active.
+    from . import make_sampler_audio, make_soulx_slice
+    n_sampler = len(dev_splits.sampler_dev_seeds())
+    n_soulx = len(dev_splits.soulx_dev_seeds())
+    make_sampler_audio.make(n=n_sampler, variants=len(make_sampler_audio.VARIANTS))
+    make_soulx_slice.make(n=n_soulx)
+
+
+def _default_assemble_clips() -> tuple[list[dict], list[dict]]:
+    """Assemble (train, real-dev) clips from the frozen splits, refusing sealed ids (design-neutral)."""
+    return clips.assemble()
 
 
 def _default_calibrate(encoder: str) -> dict:
@@ -215,7 +238,8 @@ def _default_calibrate(encoder: str) -> dict:
 
 
 def _execute(*, out_root, plan, est, reasons, extractor_factory, bp_factory, trainer, evaluator,
-             decider, calibrate, train_clips, dev_clips, gpu_lock, caffeinate, battery) -> dict:
+             decider, calibrate, train_clips, dev_clips, assemble_clips, generate_material,
+             gpu_lock, caffeinate, battery) -> dict:
     """The resumable batch body. All heavy collaborators are injectable so this is CPU-testable."""
     from .probe import data as probe_data
     from .probe.extractor import build_extractor
@@ -230,8 +254,11 @@ def _execute(*, out_root, plan, est, reasons, extractor_factory, bp_factory, tra
     evaluator = evaluator or _default_evaluator
     decider = decider or _default_decider
     calibrate = calibrate or _default_calibrate
-    train_clips = train_clips if train_clips is not None else []
-    dev_clips = dev_clips if dev_clips is not None else []
+    # When clips are not injected (the real window), the batch generates the TRAIN material the frozen splits
+    # name and assembles both sides from those splits. Injected clip lists (tests) skip generation/assembly.
+    inject_clips = train_clips is not None or dev_clips is not None
+    generate_material = generate_material or _default_generate_material
+    assemble_clips = assemble_clips or _default_assemble_clips
 
     lock = gpu_lock if gpu_lock is not None else jobs.GpuLock()
     keep_awake = (caffeinate or jobs.hold_caffeinate)()
@@ -245,6 +272,21 @@ def _execute(*, out_root, plan, est, reasons, extractor_factory, bp_factory, tra
                                                                        should_drop_extractor))
             results["drops"] = [r for r in ledger if r["dropped"]]
             results["stages"].append("calibrate")
+
+            # (a.5) generate TRAIN material and assemble the clip sets (real window), or use injected clips.
+            if inject_clips:
+                train_clips = train_clips if train_clips is not None else []
+                dev_clips = dev_clips if dev_clips is not None else []
+            else:
+                battery()
+                generate_material()
+                results["stages"].append("generate-material")
+                train_clips, dev_clips = assemble_clips()
+                results["stages"].append("assemble-clips")
+            if not inject_clips and (not train_clips or not dev_clips):
+                raise RuntimeError(
+                    f"refusing to train on empty clip sets: {len(train_clips)} train, {len(dev_clips)} "
+                    "real-dev. Material generation or clip assembly produced nothing.")
 
             bp = bp_factory()
             # (b)+(c) extract + assemble per surviving encoder, and (d) train each encoder x seed + control.

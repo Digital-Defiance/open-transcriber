@@ -189,6 +189,84 @@ class EndToEndTests(unittest.TestCase):
             self.assertFalse(result["verdict"]["go"])
             self.assertIsNone(result["verdict"]["winner"])
 
+    def test_real_run_generates_material_and_assembles_nonempty_train_and_dev(self):
+        # The hole the first review missed: with no injected clips, --run must GENERATE material and ASSEMBLE
+        # a non-empty train set AND a non-empty real-dev set before any probe trains.
+        calls = {"generate": 0, "assemble": 0}
+        seen_clips = {}
+
+        def generate_material():
+            calls["generate"] += 1
+
+        def assemble_clips():
+            calls["assemble"] += 1
+            return ([{"wav": "t.wav", "labels": {}}],
+                    [{"id": "rwc-g001", "wav": "d.wav", "labels": {}}])
+
+        def trainer(encoder, seed, extractor, bp, train_clips, probe_data):
+            seen_clips["train"] = train_clips
+            return ("model",)
+
+        def evaluator(encoder, seed, model, extractor, bp, dev_clips, probe_data):
+            seen_clips["dev"] = dev_clips
+            return {"encoder": encoder, "seed": seed,
+                    "means": {"oct_on50_f1": 0.5, "synthetic_oct_on50_f1": 0.5, "beat_f1": 0.5,
+                              "downbeat_f1": 0.5, "chord": 0.5, "key": 0.5, "mt": 0.5}}
+
+        with tempfile.TemporaryDirectory() as tmp, \
+                mock.patch.object(rb, "gates_ok", return_value=(True, [])):
+            result = rb.run_batch(
+                dry_run=False, out_root=Path(tmp),
+                extractor_factory=lambda name: object(), bp_factory=lambda: object(),
+                trainer=trainer, evaluator=evaluator,
+                decider=lambda trained, surviving: {"go": False, "winner": None},
+                calibrate=lambda enc: {"hours": 1.0, "gb": 5.0, "mps_ok": True, "pilot_lead": True},
+                generate_material=generate_material, assemble_clips=assemble_clips,
+                gpu_lock=_NullLock(), caffeinate=lambda: None, battery=lambda *a, **k: 0.0,
+            )
+        self.assertEqual(calls["generate"], 1)
+        self.assertEqual(calls["assemble"], 1)
+        self.assertIn("generate-material", result["stages"])
+        self.assertIn("assemble-clips", result["stages"])
+        self.assertTrue(seen_clips["train"])   # non-empty train
+        self.assertTrue(seen_clips["dev"])     # non-empty real-dev
+
+    def test_real_run_refuses_empty_assembled_clip_sets(self):
+        # If generation/assembly yields nothing, the batch must fail loudly, never produce an n=0 verdict.
+        with tempfile.TemporaryDirectory() as tmp, \
+                mock.patch.object(rb, "gates_ok", return_value=(True, [])):
+            with self.assertRaises(RuntimeError):
+                rb.run_batch(
+                    dry_run=False, out_root=Path(tmp),
+                    extractor_factory=lambda name: object(), bp_factory=lambda: object(),
+                    trainer=lambda *a, **k: ("model",), evaluator=lambda *a, **k: {"means": {}},
+                    decider=lambda trained, surviving: {"go": False, "winner": None},
+                    calibrate=lambda enc: {"hours": 1.0, "gb": 5.0, "mps_ok": True, "pilot_lead": True},
+                    generate_material=lambda: None, assemble_clips=lambda: ([], []),
+                    gpu_lock=_NullLock(), caffeinate=lambda: None, battery=lambda *a, **k: 0.0,
+                )
+
+    def test_injected_clips_skip_generation_and_assembly(self):
+        # Backwards-compatible: injecting clip lists (the other end-to-end tests) must NOT generate material.
+        called = {"generate": 0}
+
+        with tempfile.TemporaryDirectory() as tmp, \
+                mock.patch.object(rb, "gates_ok", return_value=(True, [])):
+            result = rb.run_batch(
+                dry_run=False, out_root=Path(tmp),
+                extractor_factory=lambda name: object(), bp_factory=lambda: object(),
+                trainer=lambda *a, **k: ("model",),
+                evaluator=lambda encoder, *a, **k: {"means": {}},
+                decider=lambda trained, surviving: {"go": False, "winner": None},
+                calibrate=lambda enc: {"hours": 1.0, "gb": 5.0, "mps_ok": True, "pilot_lead": True},
+                generate_material=lambda: called.__setitem__("generate", called["generate"] + 1),
+                train_clips=[{"wav": "a.wav", "labels": {}}],
+                dev_clips=[{"id": "sampler-1", "wav": "a.wav", "labels": {}}],
+                gpu_lock=_NullLock(), caffeinate=lambda: None, battery=lambda *a, **k: 0.0,
+            )
+        self.assertEqual(called["generate"], 0)
+        self.assertNotIn("generate-material", result["stages"])
+
     def test_rerun_resumes_and_skips_finished_stages(self):
         calls = {"train": 0}
 
