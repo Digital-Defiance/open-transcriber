@@ -78,3 +78,33 @@ $0 budget, free downloads only, stop below 150 GB free. RWC and karaoke are CC B
 only, **never** used to train a probe or model. VocalSet and the sampler/SoulX material are train/val. The
 five YuE2 truth takes are regression only. SheetSage is never a label, teacher or tuning signal, and never
 touches owner songs. Never train on owner songs. Never quote song lyrics.
+
+---
+
+## Amendment — 2026-10-22 (env provisioning + dropped-encoder plan)
+
+Declared before the scored run, after the contest's first `--run` revealed two provisioning gaps that a
+dry-run could not surface. This amendment records them for provenance. **It does not change the question, the
+encoders tested, the identical probe, the metrics, the GO/NO-GO rule, its thresholds, the frozen splits/hashes,
+or the three seeds (20261020/20261021/20261022).** `decide.py` remains the sole adjudicator, unchanged.
+
+**1. Material/rendering libraries added to `.cache/ear/env`.** The pinned 2026-10-21 env was deliberately a
+torch-only probe/extraction stack and lacked the libraries the real `--run` material path needs (the sampler
+render pulls in `copyist`/`music21`; the SoulX slice and feature extraction use `librosa`/`nnAudio`). The first
+`--run` therefore died at import with `ModuleNotFoundError: No module named 'music21'`, before any GPU work.
+Fix: installed `music21>=9.1`, `verovio`, `PyYAML`, `pronouncing`, `pymupdf`, `mido`, `tinysoundfont`
+(`--no-deps`), `librosa>=0.10` and `nnAudio` into `.cache/ear/env` under a constraints file pinning
+`torch==2.5.1`, `torchaudio==2.5.1`, `numpy==2.1.3`, `transformers==4.46.3`, `scipy==1.18.1`,
+`soundfile==0.12.1`, and `copyist` itself as an editable `--no-deps` install of this checkout. Verified after
+install: all six protected pins unchanged, MPS available. The encoder/probe stack that produces the scored
+features is untouched; only the (CPU) rendering/material layer changed. Basic Pitch still runs in Copyist's
+`.venv` via subprocess (`bp_predict`), isolated from this env by design, so its TensorFlow/numpy are unaffected.
+Re-frozen lock: `.agents/tasks/ear-bakeoff-2026-10-20/ear-env.lock.txt`.
+
+**2. Dropped encoder excluded from the plan (not just at runtime).** HeartCodec was already dropped at runtime
+by calibrate-and-drop (unsupported on MPS: its 24k→16k resample exceeds the 65536-channel conv1d limit), so it
+was never trained and never a `decide()` candidate. The printed *plan*, however, still advertised
+`extract-heartcodec` and three HeartCodec probes. To keep the plan and candidate set honest (no empty/zero row
+from an encoder that never ran), `build_plan()` now excludes `DROPPED_ENCODERS = ("heartcodec",)` from the
+extract and probe lists. HeartCodec remains one of the four declared encoders and is still recorded as a drop
+in the calibrate ledger. No change to how any surviving encoder is extracted, trained, scored or adjudicated.

@@ -37,6 +37,14 @@ from .probe.train import SEEDS
 PREREG_TAG = "ear-prereg"
 #: The music encoders, in a fixed order; "control" (Basic Pitch only) is always included.
 ENCODERS = ("musicfm", "dasheng-base", "heartcodec", "whisper-base-en")
+#: Encoders dropped before the window by the prereg compute rule, so they neither extract, train, nor score.
+#: HeartCodec is unsupported on MPS (its 24k->16k resample exceeds the 65536-channel conv1d limit) and is
+#: recorded as a drop in the calibrate ledger; excluding it here keeps the planned job list and the decide()
+#: candidate set honest (no empty/zero row from an encoder that never ran). calibrate-and-drop still records
+#: the drop in the ledger; this constant only keeps the *plan* from advertising jobs that won't run.
+DROPPED_ENCODERS = ("heartcodec",)
+#: The encoders that actually run (extract + probe + decide candidate). The drop ledger still names the rest.
+ACTIVE_ENCODERS = tuple(e for e in ENCODERS if e not in DROPPED_ENCODERS)
 #: Per-extractor calibration limits (prereg compute rule).
 MAX_EXTRACT_HOURS = 3.0
 MAX_EXTRACT_GB = 48.0
@@ -113,8 +121,10 @@ class BatchPlan:
 
 
 def build_plan() -> BatchPlan:
-    extract = [f"extract-{e}" for e in ENCODERS] + ["extract-basic-pitch"]
-    probes = [f"probe-{e}-seed{s}" for e in (*ENCODERS, "control") for s in SEEDS]
+    # Dropped encoders (e.g. HeartCodec on MPS) are excluded from the plan so it never advertises an extract
+    # or probe job that won't run; they are still recorded as drops by calibrate-and-drop and in the ledger.
+    extract = [f"extract-{e}" for e in ACTIVE_ENCODERS] + ["extract-basic-pitch"]
+    probes = [f"probe-{e}-seed{s}" for e in (*ACTIVE_ENCODERS, "control") for s in SEEDS]
     return BatchPlan(extract_jobs=extract, probe_jobs=probes)
 
 

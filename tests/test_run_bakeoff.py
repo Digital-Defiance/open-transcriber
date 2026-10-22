@@ -21,11 +21,21 @@ class PlanTests(unittest.TestCase):
         self.assertTrue(all(o.startswith("extract-") for o in order[:soulx_idx]))
         self.assertTrue(all(o.startswith("probe-") for o in order[soulx_idx + 1:]))
 
-    def test_twelve_music_probes_plus_control(self):
+    def test_active_music_probes_plus_control(self):
         probes = rb.build_plan().probe_jobs
-        # 4 encoders x 3 seeds = 12, plus control x 3 = 15
-        self.assertEqual(len(probes), (len(rb.ENCODERS) + 1) * len(SEEDS))
-        self.assertEqual(len(rb.ENCODERS) * len(SEEDS), 12)
+        # The plan excludes dropped encoders (HeartCodec on MPS): active encoders x 3 seeds, plus control x 3.
+        self.assertEqual(len(probes), (len(rb.ACTIVE_ENCODERS) + 1) * len(SEEDS))
+        # 3 active music encoders x 3 seeds = 9 (HeartCodec dropped from the 4 declared encoders).
+        self.assertEqual(len(rb.ACTIVE_ENCODERS) * len(SEEDS), 9)
+
+    def test_dropped_encoder_absent_from_plan(self):
+        order = rb.build_plan().ordered()
+        for dropped in rb.DROPPED_ENCODERS:
+            self.assertNotIn(f"extract-{dropped}", order)
+            self.assertFalse(any(o.startswith(f"probe-{dropped}-") for o in order))
+        # HeartCodec is still one of the declared encoders (recorded as a drop in the ledger), just not run.
+        self.assertIn("heartcodec", rb.ENCODERS)
+        self.assertIn("heartcodec", rb.DROPPED_ENCODERS)
 
     def test_estimate_total_and_cap(self):
         est = rb.estimate(rb.build_plan())
