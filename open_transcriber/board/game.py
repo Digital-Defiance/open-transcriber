@@ -133,20 +133,23 @@ class Timing:
         return self.seconds / self.songs if self.songs else float("nan")
 
 
-def load_timings(out: Path | None = None) -> dict[str, Timing]:
-    """Read ``out/judge/systems/game-timings.json`` into {config: Timing} (empty if absent)."""
+def load_timings(out: Path | None = None, name: str = "game-timings.json") -> dict[str, Timing]:
+    """Read ``out/judge/systems/<name>`` into {config: Timing} (empty if absent).
+
+    ``name`` lets a sibling runner (e.g. MuScriptor) keep its own timings file in the same layout.
+    """
     out = out or paths.out_dir()
-    path = out / "systems" / "game-timings.json"
+    path = out / "systems" / name
     if not path.exists():
         return {}
     payload = json.loads(path.read_text(encoding="utf-8"))
     return {k: Timing(k, v["songs"], v["seconds"]) for k, v in payload.items()}
 
 
-def save_timings(timings: dict[str, Timing], out: Path | None = None) -> None:
-    """Write {config: Timing} to ``out/judge/systems/game-timings.json`` (seconds and seconds/song)."""
+def save_timings(timings: dict[str, Timing], out: Path | None = None, name: str = "game-timings.json") -> None:
+    """Write {config: Timing} to ``out/judge/systems/<name>`` (seconds and seconds/song)."""
     out = out or paths.out_dir()
-    path = out / "systems" / "game-timings.json"
+    path = out / "systems" / name
     path.parent.mkdir(parents=True, exist_ok=True)
     payload = {
         t.config: {"songs": t.songs, "seconds": round(t.seconds, 3),

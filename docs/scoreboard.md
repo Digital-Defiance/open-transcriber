@@ -30,6 +30,28 @@ column reports it.
 - Every drop-in `out/judge/systems/<name>/<id>.tsv` (header `onset offset midi`), so a new engine plugs in
   without touching the board's code. GAME and later engines land here.
 
+## Yardsticks (testing only)
+
+Yardsticks are outside systems we score to see how far the field gets; they are never shipped and never run on
+the owner's songs. Each has a runner under `scripts/` that lands its notes in `out/judge/systems/<name>/` and a
+converter under `open_transcriber/board/`, so it reaches the board the same drop-in way as everything else.
+Every runner has a `--smoke` CPU pre-run (resolve the inputs, round-trip the converter) that the GPU rules
+require before a model run.
+
+- **GAME** (`run_game.py`, `board/game.py`): six systems `game-<size>-<mix|stem>`. Code MIT; released weights
+  state no licence, trained on private singing with non-commercial augmentation.
+- **MuScriptor** (Kyutai and Mirelo; `run_muscriptor.py`, `board/muscriptor.py`): a general multi-instrument
+  transcriber whose MIDI is reduced to one melody line (velocity-plus-leap-cost skyline, like `basic-pitch one
+  line`) by a small standard-library SMF reader, giving six systems `muscriptor-<size>-<mix|stem>`. Code MIT;
+  weights **CC BY-NC 4.0** and **gated on Hugging Face**, so a run needs the owner to accept the licence and an
+  `HF_TOKEN`; the runner stops cleanly without one.
+- **YourMT3+** (mimbres): code is **GPL-3.0** and the checkpoints' terms are unclear. Usable as a yardstick in
+  a separate environment (testing only), but GPL-3.0 means it must never be linked into or derived from the
+  shipped MIT product. Not wired up until it is actually run.
+
+For the non-commercial test songs, only scores and credits are published — never their audio or our
+transcriptions.
+
 ## Calibration (`--calibrate`)
 
 A constant onset shift per system, searched over ±100 ms in 10 ms steps, **fitted on one set and reported on
