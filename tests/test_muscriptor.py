@@ -85,7 +85,7 @@ class MidiReaderTests(unittest.TestCase):
 
 
 class MelodyReductionTests(unittest.TestCase):
-    def test_overlap_resolved_by_velocity_and_short_notes_dropped(self):
+    def test_midi_overlap_resolved_by_velocity_and_short_notes_dropped(self):
         notes = [
             muscriptor.MidiNote(0.0, 0.5, 60, 100),   # kept
             muscriptor.MidiNote(0.1, 0.4, 72, 40),     # overlaps, quieter -> loses
@@ -98,14 +98,59 @@ class MelodyReductionTests(unittest.TestCase):
         self.assertIn(67, pitches)
         self.assertNotIn(64, pitches)  # the 20 ms note is gone
 
-    def test_out_of_range_notes_dropped(self):
-        notes = [
-            muscriptor.MidiNote(0.0, 0.5, 30, 100),    # below the singing range
-            muscriptor.MidiNote(0.6, 1.0, 60, 100),    # in range
-            muscriptor.MidiNote(1.1, 1.5, 100, 100),   # above the singing range
+    def test_rows_overlap_resolved_by_duration(self):
+        # The bench's notes-TSV carries no velocity, so the longer note wins an overlap.
+        rows_in = [
+            (0.0, 0.5, 60),    # long -> kept
+            (0.1, 0.18, 72),   # short accompaniment hit -> loses / dropped
+            (0.6, 1.2, 67),    # long -> kept
         ]
-        rows = muscriptor.melody_line(notes)
+        rows = muscriptor.melody_line_rows(rows_in)
+        self.assertEqual([p for _, _, p in rows], [60, 67])
+
+    def test_out_of_range_notes_dropped(self):
+        rows_in = [
+            (0.0, 0.5, 30),    # below the singing range
+            (0.6, 1.0, 60),    # in range
+            (1.1, 1.5, 100),   # above the singing range
+        ]
+        rows = muscriptor.melody_line_rows(rows_in)
         self.assertEqual([p for _, _, p in rows], [60])
+
+
+class NotesTsvTests(unittest.TestCase):
+    def setUp(self):
+        self._tmp = tempfile.TemporaryDirectory()
+        self.root = Path(self._tmp.name)
+
+    def tearDown(self):
+        self._tmp.cleanup()
+
+    def test_read_notes_tsv_sorts_and_reads(self):
+        path = self.root / "a.notes.tsv"
+        path.write_text("0.600\t1.200\t67\n0.000\t0.500\t60\n\n", encoding="utf-8")
+        rows = muscriptor.read_notes_tsv(path)
+        self.assertEqual(rows, [(0.0, 0.5, 60), (0.6, 1.2, 67)])
+
+    def test_non_integer_pitch_rejected(self):
+        path = self.root / "bad.notes.tsv"
+        path.write_text("0.000\t0.500\t60.5\n", encoding="utf-8")
+        with self.assertRaises(ValueError):
+            muscriptor.read_notes_tsv(path)
+
+    def test_wrong_column_count_rejected(self):
+        path = self.root / "cols.notes.tsv"
+        path.write_text("0.000\t0.500\n", encoding="utf-8")
+        with self.assertRaises(ValueError):
+            muscriptor.read_notes_tsv(path)
+
+    def test_convert_notes_tsv_loads_through_board(self):
+        path = self.root / "song.notes.tsv"
+        path.write_text("0.000\t0.500\t60\n0.100\t0.180\t72\n0.600\t1.200\t67\n", encoding="utf-8")
+        dest = self.root / "systems" / "muscriptor-small-stem" / "song.tsv"
+        muscriptor.convert_notes_tsv(path, dest)
+        notes = board._tsv_loader(dest)()
+        self.assertEqual(list(notes.midi), [60.0, 67.0])
 
 
 class ConvertTests(unittest.TestCase):
@@ -136,13 +181,16 @@ class ConvertTests(unittest.TestCase):
         self.assertEqual(list(notes.midi), [60.0, 67.0])
         self.assertAlmostEqual(float(notes.offset[1]), 1.0, places=3)
 
-    def test_convert_dir_skips_missing_and_accepts_both_extensions(self):
-        self._probe_midi("one.mid")
-        # a .midi (not .mid) for the second item
-        (self.root / "two.midi").write_bytes((self.root / "one.mid").read_bytes())
+    def test_convert_dir_prefers_notes_tsv_then_midi_and_skips_missing(self):
+        # item "one": the bench notes-TSV (the primary GGUF path)
+        (self.root / "one.notes.tsv").write_text("0.000\t0.500\t60\n0.600\t1.200\t67\n", encoding="utf-8")
+        # item "two": only a MIDI (the official --format midi fallback)
+        self._probe_midi("two.mid")
+        # item "three": nothing -> skipped
         done = muscriptor.convert_dir(self.root, self.root / "sys", ["one", "two", "three"])
         self.assertEqual(done, ["one", "two"])
         self.assertTrue((self.root / "sys" / "one.tsv").exists())
+        self.assertTrue((self.root / "sys" / "two.tsv").exists())
         self.assertFalse((self.root / "sys" / "three.tsv").exists())
 
     def test_config_name(self):

@@ -41,10 +41,25 @@ require before a model run.
 - **GAME** (`run_game.py`, `board/game.py`): six systems `game-<size>-<mix|stem>`. Code MIT; released weights
   state no licence, trained on private singing with non-commercial augmentation.
 - **MuScriptor** (Kyutai and Mirelo; `run_muscriptor.py`, `board/muscriptor.py`): a general multi-instrument
-  transcriber whose MIDI is reduced to one melody line (velocity-plus-leap-cost skyline, like `basic-pitch one
-  line`) by a small standard-library SMF reader, giving six systems `muscriptor-<size>-<mix|stem>`. Code MIT;
-  weights **CC BY-NC 4.0** and **gated on Hugging Face**, so a run needs the owner to accept the licence and an
-  `HF_TOKEN`; the runner stops cleanly without one.
+  transcriber. We run the **non-gated GGUF mirror** `DamRsn/muscriptor-gguf` (CC BY-NC 4.0, the owner's choice,
+  no Hugging Face account) through `muscriptor.cpp`'s benchmark. The bench carries a small `--notes-out <f.tsv>`
+  flag (added locally) that writes each non-drum note as `onset<TAB>offset<TAB>pitch`; `board/muscriptor.py`
+  reduces that polyphony to one melody line (a duration-weighted leap-cost skyline, like `basic-pitch one
+  line`, since the bench has no velocity), giving six systems `muscriptor-<size>-<mix|stem>`. A standard-library
+  SMF reader is also kept for the official `muscriptor transcribe --format midi` path. Code MIT; weights
+  **CC BY-NC 4.0** — a yardstick only, never shipped, never on owner songs.
+
+  Build `muscriptor.cpp` (in `.cache/muscriptor/muscriptor.cpp`, or set `$MUSCRIPTOR_CPP`):
+
+  ```
+  cmake -S cpp -B cpp/build -G Ninja -DMUSCRIPTOR_BUILD_TESTS=OFF -DMUSCRIPTOR_METAL_PRECOMPILED=OFF
+  cmake --build cpp/build          # builds bench/muscriptor_bench with the --notes-out flag
+  uv run msl-fetch --size small    # and medium, large -> testdata/weights/
+  ```
+
+  `--device gpu` runs on Metal; `--device cpu` for the pre-run. The runner resamples each song to 16 kHz mono
+  with `ffmpeg -nostdin` (nohup ffmpeg otherwise blocks on stdin), transcribes, converts, and is resumable at
+  the song level.
 - **YourMT3+** (mimbres): code is **GPL-3.0** and the checkpoints' terms are unclear. Usable as a yardstick in
   a separate environment (testing only), but GPL-3.0 means it must never be linked into or derived from the
   shipped MIT product. Not wired up until it is actually run.

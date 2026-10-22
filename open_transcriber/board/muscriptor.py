@@ -1,12 +1,18 @@
 """Run MuScriptor (Kyutai and Mirelo) over the dev sets and drop its melody line onto the scoreboard.
 
-MuScriptor is a general multi-instrument transcriber: its ``transcribe`` CLI writes one Standard MIDI File
-per input, with every instrument on its own track and a tempo map. The scoreboard scores the *vocal line*, so
-:func:`melody_line` reads the MIDI, turns ticks into seconds through the file's tempo map, and reduces the
-polyphony to a single monophonic line the same way the board's ``mono_bp`` reduces Basic Pitch: keep notes in
-the singing range, resolve overlaps by velocity with a small cost for large leaps, merge same-pitch
-fragments, and drop very short notes. The result is written as a board drop-in TSV (``onset offset midi``), so
-the board picks it up with no code change.
+MuScriptor is a general multi-instrument transcriber. The owner chose the non-gated GGUF mirror
+(``DamRsn/muscriptor-gguf``, CC BY-NC 4.0) run through ``muscriptor.cpp``'s benchmark: its
+``muscriptor_bench --transcribe --notes-out <f.tsv>`` writes every non-drum note as
+``onset<TAB>offset<TAB>pitch`` (seconds, MIDI number), the same header-less row shape GAME writes. That output
+is polyphonic and multi-instrument, so the scoreboard's *vocal line* is recovered by :func:`melody_line`: keep
+notes in the singing range, resolve overlaps by weight (note duration here, since the bench carries no
+velocity) with a small cost for large leaps, merge same-pitch fragments, and drop very short notes — the same
+reduction the board's ``mono_bp`` applies to Basic Pitch. The result is a board drop-in TSV
+(``onset offset midi``), so the board picks it up with no code change.
+
+A tiny standard-library SMF reader (:func:`read_midi_notes`, :func:`convert_midi`) is also kept, so the
+official ``muscriptor transcribe --format midi`` path can be scored the same way without a MIDI-library
+dependency; the GGUF/``muscriptor.cpp`` path uses the notes-TSV functions below.
 
 We score MuScriptor on both frozen dev sets, in all three model sizes, on the full mixture and on the Demucs
 vocal stem: six systems named ``muscriptor-<size>-<mix|stem>``, landing in
@@ -14,11 +20,7 @@ vocal stem: six systems named ``muscriptor-<size>-<mix|stem>``, landing in
 
 **Licence (testing only).** MuScriptor's code is MIT but its released weights are CC BY-NC 4.0
 (non-commercial). It is a yardstick only: never run on the owner's songs, never shipped, and for the
-non-commercial test songs only scores and credits are published, never audio or transcriptions. Downloading
-the official weights requires accepting the CC BY-NC 4.0 licence on Hugging Face (a genuine owner decision).
-
-A tiny standard-library SMF reader is used on purpose, so the converter has no MIDI-library dependency and can
-be tested against a MIDI file synthesised in the test.
+non-commercial test songs only scores and credits are published, never audio or transcriptions.
 
 Content was rephrased for compliance with licensing restrictions.
 """
@@ -47,8 +49,11 @@ __all__ = [
     "Timing",
     "config_name",
     "read_midi_notes",
+    "read_notes_tsv",
     "melody_line",
+    "melody_line_rows",
     "convert_midi",
+    "convert_notes_tsv",
     "convert_dir",
     "source_path",
     "write_system_tsv",
@@ -195,37 +200,79 @@ def read_midi_notes(path: Path) -> list[MidiNote]:
     return notes
 
 
-# --- melody reduction (mirrors the board's mono_bp, velocity in place of amplitude) -----------------------
+# --- melody reduction (mirrors the board's mono_bp, a per-note weight in place of amplitude) --------------
+
+def _reduce(notes: list[tuple[float, float, int, float]], *, min_dur: float, merge_gap: float,
+            jump: float, lo: int, hi: int) -> list[tuple[float, float, int]]:
+    """The shared mono skyline over ``(onset, offset, midi, weight)``; the louder/longer note wins overlaps.
+
+    This is the board's ``mono_bp`` reduction with the amplitude replaced by a caller-supplied weight
+    (velocity for MIDI, note duration for the bench's notes-TSV, which carries no velocity).
+    """
+    kept = [n for n in notes if lo <= n[2] <= hi and n[1] - n[0] >= min_dur]
+    kept.sort(key=lambda n: (n[0], -n[3]))
+    line: list[list[float]] = []  # [onset, offset, midi, weight]
+    for onset, offset, midi, weight in kept:
+        if line and onset < line[-1][1] - 0.02:
+            prev = line[-2][2] if len(line) > 1 else line[-1][2]
+            cur = line[-1]
+            score_new = weight - jump * abs(midi - prev)
+            score_cur = cur[3] - jump * abs(cur[2] - prev)
+            if score_new > score_cur and onset - cur[0] > 0.05:
+                line[-1] = [cur[0], onset, cur[2], cur[3]]
+                line.append([onset, offset, midi, weight])
+            elif score_new > score_cur:
+                line[-1] = [onset, offset, midi, weight]
+            continue
+        if line and midi == line[-1][2] and onset - line[-1][1] < merge_gap and weight <= line[-1][3] * 1.15:
+            line[-1][1] = max(line[-1][1], offset)
+            line[-1][3] = max(line[-1][3], weight)
+            continue
+        line.append([onset, offset, midi, weight])
+    return sorted((a, b, int(p)) for a, b, p, _ in line if b - a >= min_dur)
+
 
 def melody_line(notes: list[MidiNote], *, min_dur: float = 0.06, merge_gap: float = 0.03,
                 jump: float = 0.04, lo: int = MELODY_LO, hi: int = MELODY_HI) -> list[tuple[float, float, int]]:
-    """Reduce MuScriptor's polyphony to one melody line, as ``mono_bp`` does for Basic Pitch.
+    """Reduce MIDI polyphony to one melody line, as ``mono_bp`` does for Basic Pitch (velocity as weight)."""
+    weighted = [(n.onset, n.offset, n.midi, float(n.velocity)) for n in notes]
+    return _reduce(weighted, min_dur=min_dur, merge_gap=merge_gap, jump=jump, lo=lo, hi=hi)
 
-    Keep notes inside the singing range and above the minimum duration, prefer the louder note when two
-    overlap (with a cost for large leaps from the previous pitch), merge same-pitch fragments across small
-    gaps, and drop the very short leftovers. Velocity stands in for Basic Pitch's amplitude.
+
+def melody_line_rows(rows: list[tuple[float, float, int]], *, min_dur: float = 0.06, merge_gap: float = 0.03,
+                     jump: float = 0.04, lo: int = MELODY_LO, hi: int = MELODY_HI) -> list[tuple[float, float, int]]:
+    """Reduce the bench's ``(onset, offset, midi)`` notes to one melody line, note duration as the weight.
+
+    The ``muscriptor.cpp`` bench carries no velocity, so the longer note wins an overlap. Duration is a
+    reasonable loudness proxy for a sustained melody note against short accompaniment hits.
     """
-    kept = [n for n in notes if lo <= n.midi <= hi and n.offset - n.onset >= min_dur]
-    kept.sort(key=lambda n: (n.onset, -n.velocity))
-    line: list[list[float]] = []  # [onset, offset, midi, velocity]
-    for n in kept:
-        if line and n.onset < line[-1][1] - 0.02:
-            prev = line[-2][2] if len(line) > 1 else line[-1][2]
-            cur = line[-1]
-            score_new = n.velocity - jump * abs(n.midi - prev)
-            score_cur = cur[3] - jump * abs(cur[2] - prev)
-            if score_new > score_cur and n.onset - cur[0] > 0.05:
-                line[-1] = [cur[0], n.onset, cur[2], cur[3]]
-                line.append([n.onset, n.offset, n.midi, n.velocity])
-            elif score_new > score_cur:
-                line[-1] = [n.onset, n.offset, n.midi, n.velocity]
+    weighted = [(a, b, int(p), b - a) for a, b, p in rows]
+    return _reduce(weighted, min_dur=min_dur, merge_gap=merge_gap, jump=jump, lo=lo, hi=hi)
+
+
+def read_notes_tsv(path: Path) -> list[tuple[float, float, int]]:
+    """Read ``muscriptor_bench --notes-out`` output: lines of ``onset<TAB>offset<TAB>pitch`` (no header)."""
+    rows: list[tuple[float, float, int]] = []
+    for lineno, line in enumerate(Path(path).read_text(encoding="utf-8").splitlines(), start=1):
+        line = line.strip()
+        if not line:
             continue
-        if line and n.midi == line[-1][2] and n.onset - line[-1][1] < merge_gap and n.velocity <= line[-1][3] * 1.15:
-            line[-1][1] = max(line[-1][1], n.offset)
-            line[-1][3] = max(line[-1][3], n.velocity)
-            continue
-        line.append([n.onset, n.offset, n.midi, n.velocity])
-    rows = sorted((a, b, int(p)) for a, b, p, _ in line if b - a >= min_dur)
+        parts = line.split("\t")
+        if len(parts) != 3:
+            raise ValueError(f"{path}:{lineno}: expected onset<TAB>offset<TAB>pitch, got {line!r}")
+        onset, offset, pitch = parts
+        midi = float(pitch)
+        if midi != int(midi):
+            raise ValueError(f"{path}:{lineno}: pitch {pitch!r} is not an integer MIDI number")
+        rows.append((float(onset), float(offset), int(midi)))
+    rows.sort()
+    return rows
+
+
+def convert_notes_tsv(tsv_path: Path, dest: Path) -> list[tuple[float, float, int]]:
+    """Read a bench notes-TSV, reduce to the melody line, and write a board drop-in TSV; return the rows."""
+    rows = melody_line_rows(read_notes_tsv(tsv_path))
+    write_system_tsv(rows, dest)
     return rows
 
 
@@ -237,14 +284,22 @@ def convert_midi(midi_path: Path, dest: Path) -> list[tuple[float, float, int]]:
 
 
 def convert_dir(raw_dir: Path, system_dir: Path, items: list[str]) -> list[str]:
-    """Convert every ``<item>.mid`` in ``raw_dir`` to ``<item>.tsv`` in ``system_dir``; return items done."""
+    """Convert every ``<item>`` in ``raw_dir`` to ``<item>.tsv`` in ``system_dir``; return items done.
+
+    Prefers the bench's notes-TSV (``<item>.notes.tsv``), then a MIDI (``<item>.mid``/``.midi``).
+    """
     done = []
     for item in items:
+        notes_tsv = raw_dir / f"{item}.notes.tsv"
         midi = raw_dir / f"{item}.mid"
-        if not midi.exists():
-            midi = raw_dir / f"{item}.midi"
-        if not midi.exists():
+        midi_alt = raw_dir / f"{item}.midi"
+        if notes_tsv.exists():
+            convert_notes_tsv(notes_tsv, system_dir / f"{item}.tsv")
+        elif midi.exists():
+            convert_midi(midi, system_dir / f"{item}.tsv")
+        elif midi_alt.exists():
+            convert_midi(midi_alt, system_dir / f"{item}.tsv")
+        else:
             continue
-        convert_midi(midi, system_dir / f"{item}.tsv")
         done.append(item)
     return done

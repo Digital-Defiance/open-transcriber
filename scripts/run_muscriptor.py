@@ -1,26 +1,28 @@
 #!/usr/bin/env python3
 """Run MuScriptor over the dev sets and land its melody line on the scoreboard. Testing only.
 
-Six systems: the three model sizes (small, medium, large) on the full mixture and on the Demucs vocal stem.
-MuScriptor's CLI transcribes one file at a time, so for each config this:
+The owner chose the non-gated GGUF mirror (``DamRsn/muscriptor-gguf``, CC BY-NC 4.0) run through
+``muscriptor.cpp``'s benchmark, so this needs no Hugging Face account. Six systems: the three model sizes
+(small, medium, large) on the full mixture and on the Demucs vocal stem. For each config this:
 
-1. for each dev item, runs ``muscriptor transcribe <audio> --output <raw>/<id>.mid`` (one call per song, the
-   model is re-loaded each call -- MuScriptor has no batch mode), skipping songs already transcribed;
-2. extracts the melody line from each MIDI and writes ``out/judge/systems/muscriptor-<size>-<mix|stem>/<id>.tsv``
+1. for each dev item, resamples its audio to 16 kHz mono float32 (``ffmpeg``) and runs
+   ``muscriptor_bench --transcribe --weights <size>.gguf --device <dev> --audio <wav>
+   --notes-out <raw>/<id>.notes.tsv`` (the bench loads the model each call; MuScriptor has no batch mode),
+   skipping items already transcribed;
+2. reduces each notes-TSV to one melody line and writes ``out/judge/systems/muscriptor-<size>-<mix|stem>/<id>.tsv``
    (the board drop-in format), so the scoreboard picks it up with no code change;
 3. records wall-clock seconds and seconds-per-song in ``out/judge/systems/muscriptor-timings.json``.
 
-Resumable at the song level: an item whose MIDI already exists is not re-transcribed, and a config whose every
-TSV exists is skipped.
+Resumable at the song level: an item whose notes-TSV already exists is not re-transcribed, and a config whose
+every board TSV exists is skipped.
 
-**Hugging Face access is required.** MuScriptor's official weights are gated under CC BY-NC 4.0: the owner must
-accept the licence on the model page and authenticate (``hf auth login`` or ``HF_TOKEN``). Without a token the
-run stops with that message rather than guessing. MuScriptor is a yardstick only: never on the owner's songs,
-never shipped.
+``muscriptor.cpp`` is expected under ``.cache/muscriptor/muscriptor.cpp`` (built bench at
+``cpp/build/bench/muscriptor_bench``, GGUF weights in ``testdata/weights/muscriptor-<size>-f16.gguf``), or set
+``$MUSCRIPTOR_CPP`` to its root. MuScriptor is a yardstick only: never on the owner's songs, never shipped.
 
-``--smoke`` is the CPU pre-run the GPU rules require: it resolves every dev input, checks the MuScriptor CLI is
-importable, and converts a MIDI synthesised in-process through the real converter onto the board, without
-loading the model, downloading weights, or touching the GPU.
+``--smoke`` is the CPU pre-run the GPU rules require: it resolves every dev input, checks the bench binary and
+the GGUF weights exist, and round-trips a synthetic notes-TSV through the real melody reduction and board
+loader, without loading the model or touching the GPU.
 
 Content was rephrased for compliance with licensing restrictions.
 """
@@ -30,7 +32,6 @@ from __future__ import annotations
 import argparse
 import os
 import shutil
-import struct
 import subprocess
 import sys
 import time
@@ -49,89 +50,78 @@ def dev_items() -> list[str]:
 
 
 def config_done(config: str, items: list[str], out: Path) -> bool:
-    """True if every item already has a converted TSV for this config."""
+    """True if every item already has a converted board TSV for this config."""
     system_dir = out / "systems" / config
     return all((system_dir / f"{item}.tsv").exists() for item in items)
 
 
-def muscriptor_cmd(size: str) -> list[str]:
-    """The base MuScriptor invocation: a local install if present, else ``uvx muscriptor``.
-
-    ``$MUSCRIPTOR`` overrides the executable. On Apple Silicon ``uvx muscriptor`` runs on MPS automatically.
-    """
-    exe = os.environ.get("MUSCRIPTOR")
-    if exe:
-        base = exe.split()
-    elif shutil.which("muscriptor"):
-        base = ["muscriptor"]
-    else:
-        base = ["uvx", "muscriptor"]
-    return base
+def muscriptor_cpp_root() -> Path:
+    """The muscriptor.cpp checkout: ``$MUSCRIPTOR_CPP`` else ``.cache/muscriptor/muscriptor.cpp``."""
+    env = os.environ.get("MUSCRIPTOR_CPP")
+    if env:
+        return Path(env)
+    return paths.copyist_root() / ".cache" / "muscriptor" / "muscriptor.cpp"
 
 
-def transcribe_one(size: str, audio: Path, dest_midi: Path) -> None:
-    """Transcribe one file to a single MIDI with ``--fixed-tempo`` (we only need note times, not notation)."""
-    dest_midi.parent.mkdir(parents=True, exist_ok=True)
-    cmd = muscriptor_cmd(size) + [
-        "transcribe", str(audio),
-        "--model", size,
-        "--format", "midi",
-        "--output", str(dest_midi),
-    ]
-    subprocess.run(cmd, check=True)
+def bench_path(root: Path) -> Path:
+    return root / "cpp" / "build" / "bench" / "muscriptor_bench"
 
 
-def have_hf_token() -> bool:
-    """Whether a Hugging Face token is available for the gated MuScriptor weights."""
-    if os.environ.get("HF_TOKEN") or os.environ.get("HUGGING_FACE_HUB_TOKEN"):
-        return True
-    token = Path.home() / ".cache" / "huggingface" / "token"
-    return token.exists() and token.read_text(encoding="utf-8").strip() != ""
+def weights_path(root: Path, size: str) -> Path:
+    return root / "testdata" / "weights" / f"muscriptor-{size}-f16.gguf"
 
 
-def _write_probe_midi(path: Path) -> None:
-    """Write a tiny two-note type-0 SMF (480 tpb, 120 BPM) the real reader must parse: C4 then G4."""
-    def vlq(n: int) -> bytes:
-        out = bytearray([n & 0x7F])
-        n >>= 7
-        while n:
-            out.insert(0, (n & 0x7F) | 0x80)
-            n >>= 7
-        return bytes(out)
+def resample(audio: Path, dest_wav: Path) -> None:
+    """Resample ``audio`` to 16 kHz mono float32 WAV with ffmpeg (the bench's required input)."""
+    dest_wav.parent.mkdir(parents=True, exist_ok=True)
+    # -nostdin: detached (nohup) ffmpeg otherwise reads stdin and blocks forever.
+    subprocess.run(
+        ["ffmpeg", "-nostdin", "-y", "-loglevel", "error", "-i", str(audio),
+         "-ac", "1", "-ar", "16000", "-c:a", "pcm_f32le", str(dest_wav)],
+        check=True, stdin=subprocess.DEVNULL)
 
-    tpb = 480
-    events = bytearray()
-    events += vlq(0) + bytes([0xFF, 0x51, 0x03]) + (500000).to_bytes(3, "big")  # 120 BPM
-    events += vlq(0) + bytes([0x90, 60, 100])        # C4 on at tick 0
-    events += vlq(tpb) + bytes([0x80, 60, 0])        # C4 off at tick 480 (0.5 s)
-    events += vlq(0) + bytes([0x90, 67, 90])         # G4 on
-    events += vlq(tpb) + bytes([0x80, 67, 0])        # G4 off (0.5 s)
-    events += vlq(0) + bytes([0xFF, 0x2F, 0x00])     # end of track
-    track = b"MTrk" + struct.pack(">I", len(events)) + bytes(events)
-    header = b"MThd" + struct.pack(">IHHH", 6, 0, 1, tpb)
-    path.write_bytes(header + track)
+
+def transcribe_one(bench: Path, weights: Path, wav: Path, notes_out: Path, device: str) -> None:
+    """Run the bench on one wav, writing non-drum notes to ``notes_out``."""
+    notes_out.parent.mkdir(parents=True, exist_ok=True)
+    cmd = [str(bench), "--transcribe", "--weights", str(weights),
+           "--device", device, "--audio", str(wav), "--notes-out", str(notes_out)]
+    subprocess.run(cmd, check=True, stdin=subprocess.DEVNULL)
+
+
+def on_battery() -> bool:
+    """True if the Mac is on battery (so a GPU config should wait for AC)."""
+    try:
+        out = subprocess.run(["pmset", "-g", "batt"], capture_output=True, text=True, check=True).stdout
+    except Exception:
+        return False
+    return "Battery Power" in out
 
 
 def smoke(data: Path, out: Path) -> None:
-    """CPU pre-run: resolve every dev input and round-trip a synthetic MIDI through the real converter."""
+    """CPU pre-run: resolve every dev input and round-trip a synthetic notes-TSV through the real reduction."""
     items = dev_items()
     for source in muscriptor.SOURCES:
         for item in items:
             audio = muscriptor.source_path(item, source, data, out)
             if not audio.exists():
                 raise FileNotFoundError(f"missing {source} audio for {item}: {audio}")
+    root = muscriptor_cpp_root()
+    bench = bench_path(root)
+    present = {size: weights_path(root, size).exists() for size in muscriptor.SIZES}
     tmp = out / "muscriptor-run" / "_smoke"
     tmp.mkdir(parents=True, exist_ok=True)
-    probe = tmp / "probe.mid"
-    _write_probe_midi(probe)
-    rows = muscriptor.convert_midi(probe, tmp / "probe.tsv")
-    assert [r[2] for r in rows] == [60, 67], f"converter round-trip failed: {rows}"
-    assert abs(rows[0][1] - rows[0][0] - 0.5) < 1e-3, f"tempo map off: {rows}"
+    # Two sustained melody notes with a short overlapping accompaniment hit the reduction must drop.
+    probe = tmp / "probe.notes.tsv"
+    probe.write_text("0.000\t0.500\t60\n0.100\t0.180\t72\n0.600\t1.100\t67\n", encoding="utf-8")
+    rows = muscriptor.convert_notes_tsv(probe, tmp / "probe.tsv")
+    assert [r[2] for r in rows] == [60, 67], f"melody reduction failed: {rows}"
     loaded = board._tsv_loader(tmp / "probe.tsv")()
     assert len(loaded) == 2 and list(loaded.midi) == [60.0, 67.0], "board loader round-trip failed"
-    token = "present" if have_hf_token() else "MISSING (owner must accept the CC BY-NC 4.0 licence)"
-    print(f"smoke OK: {len(items)} dev items resolve for mix and stem; MIDI converter round-trips; "
-          f"HF token {token}.")
+    bench_ok = "present" if bench.exists() else f"MISSING (build muscriptor.cpp: {bench})"
+    weights_ok = ",".join(f"{s}:{'ok' if present[s] else 'MISSING'}" for s in muscriptor.SIZES)
+    print(f"smoke OK: {len(items)} dev items resolve for mix and stem; melody reduction round-trips; "
+          f"bench {bench_ok}; weights {weights_ok}.")
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -141,6 +131,7 @@ def main(argv: list[str] | None = None) -> int:
                         help="comma-separated MuScriptor sizes to run (default: all)")
     parser.add_argument("--sources", default=",".join(muscriptor.SOURCES),
                         help="comma-separated sources to run: mix,stem (default: both)")
+    parser.add_argument("--device", default="gpu", help="bench device: cpu, gpu, auto, or an index (default: gpu)")
     parser.add_argument("--data", type=Path, default=None, help="judge data folder (default: .cache/judge)")
     parser.add_argument("--out", type=Path, default=None, help="judge output folder (default: out/judge)")
     args = parser.parse_args(argv)
@@ -152,9 +143,12 @@ def main(argv: list[str] | None = None) -> int:
         smoke(data, out)
         return 0
 
-    if not have_hf_token():
-        print("MuScriptor's weights are gated (CC BY-NC 4.0). Accept the licence on the Hugging Face model "
-              "page and set HF_TOKEN (or run `hf auth login`) before this run. Testing only.", file=sys.stderr)
+    root = muscriptor_cpp_root()
+    bench = bench_path(root)
+    if not bench.exists():
+        print(f"muscriptor.cpp bench not built: {bench}. See .cache/muscriptor/muscriptor.cpp "
+              "(cmake -S cpp -B cpp/build -G Ninja -DMUSCRIPTOR_METAL_PRECOMPILED=OFF && cmake --build cpp/build).",
+              file=sys.stderr)
         return 2
 
     items = dev_items()
@@ -163,24 +157,37 @@ def main(argv: list[str] | None = None) -> int:
 
     timings = muscriptor.load_timings(out, name="muscriptor-timings.json")
     for size in sizes:
+        weights = weights_path(root, size)
+        if not weights.exists():
+            print(f"[skip] size {size}: weights missing ({weights}); fetch with `uv run msl-fetch --size {size}`")
+            continue
         for source in sources:
             config = muscriptor.config_name(size, source)
             if config_done(config, items, out):
                 print(f"[skip] {config}: all {len(items)} TSVs present")
                 continue
-            print(f"[run ] {config}: {len(items)} songs")
+            # A GPU config waits for AC power (the grant is for mains only).
+            if args.device not in ("cpu",):
+                while on_battery():
+                    print(f"[wait] {config}: on battery; waiting for AC before a GPU run", flush=True)
+                    time.sleep(30)
+            print(f"[run ] {config}: {len(items)} songs on device {args.device}")
             raw_dir = out / "muscriptor-run" / config / "raw"
+            wav_dir = out / "muscriptor-run" / config / "wav"
             raw_dir.mkdir(parents=True, exist_ok=True)
             t0 = time.monotonic()
             for item in items:
-                dest_midi = raw_dir / f"{item}.mid"
-                if dest_midi.exists():
+                notes_out = raw_dir / f"{item}.notes.tsv"
+                if notes_out.exists():
                     continue
                 audio = muscriptor.source_path(item, source, data, out)
                 if not audio.exists():
                     print(f"[warn] {config}: missing {source} audio for {item}: {audio}")
                     continue
-                transcribe_one(size, audio, dest_midi)
+                wav = wav_dir / f"{item}.wav"
+                resample(audio, wav)
+                transcribe_one(bench, weights, wav, notes_out, args.device)
+                wav.unlink(missing_ok=True)  # the 16 kHz copy is disposable
             elapsed = time.monotonic() - t0
             done = muscriptor.convert_dir(raw_dir, out / "systems" / config, items)
             if len(done) != len(items):
