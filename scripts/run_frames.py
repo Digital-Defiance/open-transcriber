@@ -190,6 +190,40 @@ def eval_real_dev(model: frames.FrameModel, feats_by_split: dict[str, dict[str, 
     return result
 
 
+def prep_dev_stems(root: Path, out: Path, splits=("rwc-other-dev", "karaoke-dev")) -> dict:
+    """Pre-compute, once, the realistic separated vocal + BP posteriors for every real-dev item.
+
+    For each dev item: Demucs two-stem separation of its source recording into ``out/dev-vocal/<item>.wav``
+    (the realistic case the eval scores on), then cache that vocal's Basic Pitch posteriors. Both heavy
+    stages run in the main ``.venv``; Demucs uses the GPU. Idempotent — an existing stem/posterior is reused,
+    so this resumes cleanly inside a GPU window. Returns a small summary (counts) for the run log.
+    """
+    dev_dir = out / "dev-vocal"
+    dev_dir.mkdir(parents=True, exist_ok=True)
+    npz_dir = out / "frames-run" / "dev-bp"
+    done = {"stems": 0, "posteriors": 0, "missing_source": []}
+    for split in splits:
+        for item in board.set_members(split):
+            src = out / "copyist-open-audio" / item / "transcribe" / "source.wav"
+            if not src.exists():
+                done["missing_source"].append(item)
+                continue
+            stem = dev_dir / f"{item}.wav"
+            if not stem.exists():
+                vocals, _rest = _split_vocals(root, src, dev_dir / "_sep" / item)
+                if vocals.exists():
+                    import shutil
+
+                    shutil.copyfile(vocals, stem)
+                    done["stems"] += 1
+            if stem.exists():
+                npz = npz_dir / f"{stem.stem}.npz"
+                if not npz.exists():
+                    bp_posteriors(root, stem, npz)
+                    done["posteriors"] += 1
+    return done
+
+
 def dev_features(root: Path, out: Path, data: Path, splits=("rwc-other-dev", "karaoke-dev")
                  ) -> dict[str, dict[str, np.ndarray]]:
     """Frozen features for every dev item that has a (vocal/source) wav. Cached posteriors are reused."""
@@ -241,9 +275,81 @@ def build_sung_dataset(root: Path, out: Path, n_songs: int, seed: int) -> frames
 
 
 def _sing_and_separate(root: Path, out: Path, slug: str) -> Path | None:
-    """SoulX sings the song's melody, mix over the band, Demucs-separate the vocal. GPU. Returns the stem."""
-    # Implemented against copyist.sing + copyist.stems in the GPU window; left as a hook for the CPU proof.
-    raise NotImplementedError("sung-data generation runs in a granted GPU window (see run script header)")
+    """SoulX sings the song's melody, mix over the band, Demucs-separate the vocal. GPU. Returns the stem.
+
+    Reuses Copyist's own tools so the vocal is the realistic case the field faces (a separated stem, bleed
+    and all): ``copyist sing`` renders the band, sings the melody with SoulX and lays the vocal over the band
+    (``sung/verse1/mix.wav``); then Demucs two-stem separation pulls the vocal back out
+    (``copyist.stems.split_vocals``). Both heavy stages run in the main ``.venv`` (TensorFlow/torch there) and
+    on the GPU; this is why the whole generation stage runs only in a granted GPU window.
+
+    ``COPYIST_FRAMES_FAKE_SING=1`` short-circuits the GPU stages for the CPU plumbing proof: it fabricates a
+    short silent-plus-tone "vocal" wav so the feature/label/dataset path downstream can be exercised end to
+    end without SoulX, a band render or Demucs. It is NEVER used for a real result.
+    """
+    run_dir = out / "frames-run"
+    sep_dir = run_dir / "sep" / slug
+    sep_dir.mkdir(parents=True, exist_ok=True)
+
+    if os.environ.get("COPYIST_FRAMES_FAKE_SING") == "1":
+        return _fake_vocal(root, slug, sep_dir)
+
+    yaml = run_dir / "scores" / f"{slug}.yaml"
+    # 1. Band render + SoulX sing + lay the vocal over the band → a realistic full mix.
+    subprocess.run([str(venv_python(root)), "-m", "copyist.cli", "sing", str(yaml),
+                    "--verse", "1", "--out", str(out), "--device", os.environ.get("COPYIST_SOULX_DEVICE", "auto")],
+                   cwd=str(root), check=True)
+    mix = out / slug / "sung" / "verse1" / "mix.wav"
+    if not mix.exists():
+        print(f"[skip] {slug}: no mix.wav from copyist sing")
+        return None
+    # 2. Demucs pulls the vocal back out of the mix (the realistic separated-vocal case).
+    try:
+        vocals, _rest = _split_vocals(root, mix, sep_dir)
+    except Exception as e:  # pragma: no cover - exercised only in a GPU window
+        print(f"[skip] {slug}: Demucs separation failed: {e}")
+        return None
+    return vocals if vocals.exists() else None
+
+
+def _split_vocals(root: Path, mix: Path, out_dir: Path) -> tuple[Path, Path]:
+    """Call ``copyist.stems.split_vocals`` in the main ``.venv`` (Demucs/torch live there), returning the two
+    stem paths. Shelled out so this script's own (torch) env is never Demucs's."""
+    helper = (
+        "import json,sys;from pathlib import Path;from copyist.stems import split_vocals;"
+        "v,r=split_vocals(Path(sys.argv[1]),Path(sys.argv[2]));"
+        "print(json.dumps([str(v),str(r)]))"
+    )
+    res = subprocess.run([str(venv_python(root)), "-c", helper, str(mix), str(out_dir)],
+                         cwd=str(root), check=True, capture_output=True, text=True)
+    vocals, rest = json.loads(res.stdout.strip().splitlines()[-1])
+    return Path(vocals), Path(rest)
+
+
+def _fake_vocal(root: Path, slug: str, sep_dir: Path) -> Path:
+    """A short deterministic tone-over-silence wav standing in for a separated vocal (CPU plumbing only)."""
+    import wave
+
+    truth_mid = root / "out" / slug / "stems" / "midi" / "melody.mid"
+    sr = 22050
+    seconds = 5.0
+    t = np.arange(int(sr * seconds)) / sr
+    # A few steady tones so Basic Pitch (when it runs) and the log-mel both see non-trivial signal.
+    sig = np.zeros_like(t)
+    for k, f in enumerate((220.0, 262.0, 330.0)):
+        lo, hi = k / 3 * seconds, (k + 1) / 3 * seconds
+        m = (t >= lo) & (t < hi)
+        sig[m] = 0.3 * np.sin(2 * np.pi * f * t[m])
+    out = sep_dir / "vocal.wav"
+    pcm = (np.clip(sig, -1, 1) * 32767).astype(np.int16)
+    with wave.open(str(out), "wb") as w:
+        w.setnchannels(1)
+        w.setsampwidth(2)
+        w.setframerate(sr)
+        w.writeframes(pcm.tobytes())
+    if not truth_mid.exists():
+        print(f"[fake] {slug}: no melody.mid label (build may have been skipped)")
+    return out
 
 
 def _midi_truth(path: Path) -> notes_io.Notes:
@@ -329,6 +435,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--hidden", type=int, default=64)
     parser.add_argument("--frame-thresh", type=float, default=0.3)
     parser.add_argument("--onset-thresh", type=float, default=0.5)
+    parser.add_argument("--prep-dev", action="store_true",
+                        help="pre-compute Demucs vocal stems + BP posteriors for the real-dev sets, then exit")
     parser.add_argument("--eval-only", action="store_true", help="skip generation/training; score a saved model")
     parser.add_argument("--model", type=Path, default=None, help="path to a saved frame model (eval-only)")
     parser.add_argument("--out", type=Path, default=None)
@@ -340,6 +448,12 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.smoke:
         return smoke(out, data)
+
+    if args.prep_dev:
+        print("[prep] Demucs vocal stems + BP posteriors for the real-dev sets (GPU; idempotent)")
+        summary = prep_dev_stems(root, out)
+        print(f"[prep] done: {summary}")
+        return 0
 
     dec = {"frame_thresh": args.frame_thresh, "onset_thresh": args.onset_thresh}
     run_dir = out / "frames-run"
