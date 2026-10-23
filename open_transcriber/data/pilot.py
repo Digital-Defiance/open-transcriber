@@ -234,6 +234,36 @@ def apply_head(notes: list[tuple[float, float, int, float]], head: Head, thresho
                        np.array([r[2] for r in rows])), False, "head")
 
 
+def refine_baseline(baseline: notes_io.Notes, head: Head, drop_below: float,
+                    onset_shift: float = 0.0) -> notes_io.Notes:
+    """Light touch: keep the baseline skyline's notes, dropping only those the head scores below ``drop_below``.
+
+    Unlike :func:`apply_head` (the head *replaces* the skyline), this tests whether the learned signal adds
+    anything *on top* of the strong hand-tuned ``mono_bp`` baseline: the baseline's notes are the candidates,
+    featurised the same way, and only the ones the head is confident are wrong (score < ``drop_below``) are
+    removed. A low ``drop_below`` is a gentle veto.
+    """
+    notes = [(float(o), float(f), int(m), 1.0)
+             for o, f, m in zip(baseline.onset, baseline.offset, baseline.midi)]
+    cands = candidate_features(notes)
+    if not cands:
+        return baseline
+    scores = head.scores(feature_matrix(cands))
+    rows = []
+    for c, s in zip(cands, scores):
+        if s < drop_below:
+            continue
+        onset = max(c.onset + onset_shift, 0.0)
+        offset = max(c.offset + onset_shift, onset + notes_io.MIN_DURATION)
+        rows.append((onset, offset, float(c.midi)))
+    rows.sort()
+    if not rows:
+        return baseline
+    return notes_io._validate(
+        notes_io.Notes(np.array([r[0] for r in rows]), np.array([r[1] for r in rows]),
+                       np.array([r[2] for r in rows])), False, "refine")
+
+
 @dataclass
 class Dataset:
     """The pilot training table: stacked candidate features and match labels, with provenance."""

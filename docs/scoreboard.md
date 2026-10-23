@@ -115,12 +115,17 @@ Result (seed 20261022, 12 render songs stem+mix, 1578 candidates, both sides cal
 | rwc-other-dev | 18.8 | 22.9 |
 | karaoke-dev | 31.9 | 36.7 |
 
-**The head does not beat the fairly-calibrated baseline on either set.** An earlier run looked like a karaoke
-win (31.9 vs an *uncalibrated* 25.4), but that gain was the onset shift, which the baseline benefits from more
-(→ 36.7). This is the clean-render-vs-messy-real gap the plan warns about: a head trained on clean
-sampled-instrument melodies does not transfer to sung vocal stems. The plumbing and the fair test are proven;
-closing the gap needs realistic **sung** data (SoulX, not sampled instruments) and/or richer features — the
-GPU-scale step — not more clean renders.
+A ``head (refine)`` column reports the head as a gentle veto on the baseline skyline (drop only notes it
+scores below 0.1): rwc 23.1, karaoke 36.3 — i.e. ≈ baseline (+0.2 / −0.4, noise). So the learned head adds
+nothing whether it *replaces* the skyline (18.8 / 31.9, worse) or *refines* it.
+
+**The head does not beat the fairly-calibrated baseline on either set, by either use.** An earlier run looked
+like a karaoke win (31.9 vs an *uncalibrated* 25.4), but that gain was the onset shift, which the baseline
+benefits from more (→ 36.7). This is the clean-render-vs-messy-real gap the plan warns about: a per-note head
+trained on clean sampled-instrument melodies carries no transferable signal for sung vocal stems. The plumbing
+and the fair test are proven; closing the gap needs realistic **sung** data (SoulX, not sampled instruments)
+and/or richer features (the frozen Basic Pitch posteriors, not just per-note summaries) — the GPU-scale step —
+not more clean renders.
 
 **yue2.cpp cannot write the vocal track alone** (checked 2026-10-22, `yue-synth --help`): it emits one mixed
 audio (`--out`), with no stem/track flag. So the YuE2 singing-data path would need Demucs to isolate the vocal

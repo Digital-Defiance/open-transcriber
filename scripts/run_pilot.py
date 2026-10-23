@@ -156,9 +156,19 @@ def eval_real_dev(head: pilot.Head, threshold: float, onset_shift: float,
         b_shift = base_fit.get(other, 0.0)
         head_rows = _head_rows_at_shift(head, threshold, h_shift, split, data, out)
         base_rows = _base_rows_at_shift(split, b_shift, data, out)
+        # The head as a light refinement of the baseline skyline (drop only very-low-score notes).
+        kind = board.SET_METRICS[split][0]
+        refine_rows = []
+        for item in board.set_members(split):
+            bp_path = out / "basic-pitch-raw" / item / "notes.tsv"
+            if not bp_path.exists():
+                continue
+            est = pilot.refine_baseline(board.mono_bp(bp_path), head, drop_below=0.1, onset_shift=b_shift)
+            refine_rows.append(board._score_item(split, kind, item, est, data))
         result[split] = {
             "head_pc_on50": round(100 * score.mean_f1(head_rows, "pc_on50"), 3),
             "baseline_pc_on50": round(100 * score.mean_f1(base_rows, "pc_on50"), 3),
+            "refine_pc_on50": round(100 * score.mean_f1(refine_rows, "pc_on50"), 3),
             "head_shift": h_shift,
             "baseline_shift": b_shift,
             "n": len(head_rows),

@@ -94,6 +94,20 @@ class HeadTests(unittest.TestCase):
         with self.assertRaises(Exception):
             head.scores(bad)
 
+    def test_refine_baseline_drops_only_low_scoring_notes(self):
+        X, y = self._synthetic()
+        head = pilot.Head(seed=0); head.fit(X, y, epochs=300)
+        # A baseline with two in-range notes and one far out-of-range (the head should score it low).
+        base = notes_io._validate(
+            notes_io.Notes(np.array([0.0, 0.5, 1.0]), np.array([0.5, 1.0, 1.5]),
+                           np.array([60.0, 62.0, 20.0])), False, "b")
+        refined = pilot.refine_baseline(base, head, drop_below=0.5)
+        self.assertNotIn(20.0, list(refined.midi))      # the out-of-range note is vetoed
+        self.assertIn(60.0, list(refined.midi))         # the good notes stay
+        # A zero threshold vetoes nothing (every note kept).
+        kept_all = pilot.refine_baseline(base, head, drop_below=0.0)
+        self.assertEqual(len(kept_all), 3)
+
     def test_dataset_round_trip(self):
         X, y = self._synthetic(n=10)
         ds = pilot.Dataset(X=X, y=y, songs=["s1", "s2"], seed=3)
