@@ -248,16 +248,29 @@ def build_sung_dataset(root: Path, out: Path, n_songs: int, seed: int) -> frames
     This is the real data stage; the CPU smoke never calls it. Each song: generate → ``copyist build`` →
     SoulX sings → mix over the band → Demucs vocal → BP posteriors + log-mel → frame features; rasterise the
     exact melody MIDI to per-frame labels.
+
+    Resumable: each song's (features, note-label, onset-label) is cached to ``frames-run/clips/<slug>.npz``
+    the moment it is produced, and an existing clip is reused. A window cap or crash therefore never discards
+    the singing/separation already done — a re-launch picks up where it stopped.
     """
     from open_transcriber.data import scores as score_gen
 
     run_dir = out / "frames-run"
     song_dir = run_dir / "scores"
+    clip_dir = run_dir / "clips"
+    clip_dir.mkdir(parents=True, exist_ok=True)
     songs = score_gen.write_batch(out_dir=song_dir, n=n_songs, start_seed=seed)
     seqs: list[tuple[np.ndarray, np.ndarray, np.ndarray]] = []
     used: list[str] = []
     for yaml in songs:
         slug = yaml.stem
+        clip = clip_dir / f"{slug}.npz"
+        if clip.exists():  # resume: this song's features/labels are already cached
+            blob = np.load(clip)
+            seqs.append((blob["feats"], blob["yn"], blob["yo"]))
+            used.append(slug)
+            print(f"[data] {slug}: cached ({blob['feats'].shape[0]} frames)")
+            continue
         subprocess.run([str(venv_python(root)), "-m", "copyist.cli", "build", str(yaml)],
                        cwd=str(root), check=True)
         truth_mid = root / "out" / slug / "stems" / "midi" / "melody.mid"
@@ -268,6 +281,7 @@ def build_sung_dataset(root: Path, out: Path, n_songs: int, seed: int) -> frames
         feats = features_for_wav(root, vocal, run_dir / "train-bp")
         truth = _midi_truth(truth_mid)
         yn, yo = frames.rasterise_labels(truth, n_frames=len(feats))
+        np.savez_compressed(clip, feats=feats, yn=yn, yo=yo)
         seqs.append((feats, yn, yo))
         used.append(slug)
         print(f"[data] {slug}: {len(feats)} frames, {int(yo.sum())} onset labels")
