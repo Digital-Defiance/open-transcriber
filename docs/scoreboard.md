@@ -88,6 +88,32 @@ python scripts/run_bandparts.py                  # build, transcribe bass stem +
 python scripts/run_bandparts.py --parts bass,piano,melody --songs when-the-saints,amazing-grace
 ```
 
+## Data-engine pilot (`run_pilot.py`, `data/pilot.py`)
+
+The pilot is the smallest honest test of "write music, then train a network to hear it": generate a few
+validated sampler songs, render each with the band for an exact melody label and stem, run Basic Pitch on the
+melody stem, build a per-candidate table (features + match labels), and train a tiny head
+(`data.pilot.Head`, a small torch MLP, CPU) that decides which Basic Pitch notes to keep. **Success is judged
+on real recordings, not our renders**: the head is applied to the RWC-other-dev and karaoke-dev Basic Pitch
+outputs (already computed on the Demucs vocal stem) and scored with the strict scorer against the
+`basic-pitch one line` baseline, into `out/judge/pilot.{md,json}`.
+
+```
+python scripts/run_pilot.py --smoke      # CPU plumbing only (no build/Basic Pitch)
+python scripts/run_pilot.py --songs 6    # end to end on CPU; a full run is a separate GPU step
+```
+
+First pilot (seed 20261022, 6 render songs, 235 candidates): the head does **not** yet beat the baseline on
+real dev — RWC `pc_on50` 18.5 vs baseline 22.3, karaoke 24.7 vs 25.4. That is the clean-render-vs-messy-real
+gap the plan warns about: a head trained on a handful of clean sampled-instrument melodies underperforms the
+plain skyline on sung vocal stems. The plumbing is proven; closing the gap needs more and more-realistic data
+(SoulX-sung vocals, not sampled instruments) and is the GPU-scale step.
+
+**yue2.cpp cannot write the vocal track alone** (checked 2026-10-22, `yue-synth --help`): it emits one mixed
+audio (`--out`), with no stem/track flag. So the YuE2 singing-data path would need Demucs to isolate the vocal
+after synthesis, which reintroduces separation — a reason the pilot uses the sfizz band render (each part is a
+known stem by construction) for CPU labels, and keeps YuE2 singing as a later, melody-only, gated slice.
+
 ## Calibration (`--calibrate`)
 
 A constant onset shift per system, searched over ±100 ms in 10 ms steps, **fitted on one set and reported on
