@@ -90,25 +90,77 @@ def dev_bp_notes(item: str, out: Path) -> list[tuple[float, float, int, float]]:
     return pilot.load_bp_notes(path) if path.exists() else []
 
 
+SHIFT_RANGE = np.round(np.arange(-0.06, 0.06 + 1e-9, 0.01), 3).tolist()
+
+
+def _head_rows_at_shift(head: pilot.Head, threshold: float, shift: float, split: str,
+                        data: Path, out: Path) -> list[dict]:
+    kind = board.SET_METRICS[split][0]
+    rows = []
+    for item in board.set_members(split):
+        notes = dev_bp_notes(item, out)
+        if not notes:
+            continue
+        est = pilot.apply_head(notes, head, threshold=threshold, onset_shift=shift)
+        rows.append(board._score_item(split, kind, item, est, data))
+    return rows
+
+
+def _fit_shift(head: pilot.Head, threshold: float, split: str, data: Path, out: Path) -> float:
+    """The onset shift maximising the head's pc_on50 on ``split`` (used as the OTHER set's reported shift)."""
+    best_shift, best = 0.0, -1.0
+    for shift in SHIFT_RANGE:
+        m = score.mean_f1(_head_rows_at_shift(head, threshold, shift, split, data, out), "pc_on50")
+        if m > best + 1e-12:
+            best, best_shift = m, shift
+    return best_shift
+
+
+def _base_rows_at_shift(split: str, shift: float, data: Path, out: Path) -> list[dict]:
+    kind = board.SET_METRICS[split][0]
+    rows = []
+    for item in board.set_members(split):
+        bp_path = out / "basic-pitch-raw" / item / "notes.tsv"
+        if not bp_path.exists():
+            continue
+        est = board.shift_notes(board.mono_bp(bp_path), shift)
+        rows.append(board._score_item(split, kind, item, est, data))
+    return rows
+
+
+def _fit_base_shift(split: str, data: Path, out: Path) -> float:
+    best_shift, best = 0.0, -1.0
+    for shift in SHIFT_RANGE:
+        m = score.mean_f1(_base_rows_at_shift(split, shift, data, out), "pc_on50")
+        if m > best + 1e-12:
+            best, best_shift = m, shift
+    return best_shift
+
+
 def eval_real_dev(head: pilot.Head, threshold: float, onset_shift: float,
-                  data: Path, out: Path) -> dict:
-    """Score the head's kept notes and the ``basic-pitch one line`` baseline on both real dev sets."""
+                  data: Path, out: Path, calibrate: bool = False) -> dict:
+    """Score the head's kept notes and the ``basic-pitch one line`` baseline on both real dev sets.
+
+    With ``calibrate``, the onset shift reported on each set is cross-fitted on the OTHER set (never fit and
+    reported on the same data), the same honesty rule as the scoreboard's ``--calibrate``.
+    """
+    splits = ("rwc-other-dev", "karaoke-dev")
+    head_fit = {s: _fit_shift(head, threshold, s, data, out) for s in splits} if calibrate else {}
+    base_fit = {s: _fit_base_shift(s, data, out) for s in splits} if calibrate else {}
     result = {}
-    for split in ("rwc-other-dev", "karaoke-dev"):
-        kind = board.SET_METRICS[split][0]
-        head_rows, base_rows = [], []
-        for item in board.set_members(split):
-            notes = dev_bp_notes(item, out)
-            if not notes:
-                continue
-            est_head = pilot.apply_head(notes, head, threshold=threshold, onset_shift=onset_shift)
-            bp_path = out / "basic-pitch-raw" / item / "notes.tsv"
-            est_base = board.mono_bp(bp_path)
-            head_rows.append(board._score_item(split, kind, item, est_head, data))
-            base_rows.append(board._score_item(split, kind, item, est_base, data))
+    for split in splits:
+        other = next(s for s in splits if s != split)
+        # Cross-fit BOTH sides with the shift fitted on the other set, so the comparison is apples-to-apples:
+        # the onset shift is a calibration the baseline gets too, not a free win for the head.
+        h_shift = head_fit.get(other, onset_shift)
+        b_shift = base_fit.get(other, 0.0)
+        head_rows = _head_rows_at_shift(head, threshold, h_shift, split, data, out)
+        base_rows = _base_rows_at_shift(split, b_shift, data, out)
         result[split] = {
             "head_pc_on50": round(100 * score.mean_f1(head_rows, "pc_on50"), 3),
             "baseline_pc_on50": round(100 * score.mean_f1(base_rows, "pc_on50"), 3),
+            "head_shift": h_shift,
+            "baseline_shift": b_shift,
             "n": len(head_rows),
         }
     return result
@@ -116,8 +168,14 @@ def eval_real_dev(head: pilot.Head, threshold: float, onset_shift: float,
 
 # --- the pilot ------------------------------------------------------------------------------------------
 
-def build_dataset(root: Path, data_songs: list[Path], run_dir: Path, seed: int) -> pilot.Dataset:
-    """Render each song, run Basic Pitch on its melody stem, and build the labelled candidate table."""
+def build_dataset(root: Path, data_songs: list[Path], run_dir: Path, seed: int,
+                  mix_negatives: bool = False) -> pilot.Dataset:
+    """Render each song, run Basic Pitch on its melody stem, and build the labelled candidate table.
+
+    With ``mix_negatives``, also run Basic Pitch on the full band mix and add those candidates (labelled
+    against the same melody truth). The mix carries other instruments' notes the head must learn to reject,
+    which is closer to the bleed in a real Demucs vocal stem than the clean isolated melody stem.
+    """
     Xs, ys, used = [], [], []
     for yaml in data_songs:
         slug = build_song(root, yaml)
@@ -126,16 +184,25 @@ def build_dataset(root: Path, data_songs: list[Path], run_dir: Path, seed: int) 
         if not stem.exists() or not truth_mid.exists():
             print(f"[skip] {slug}: no melody stem/label")
             continue
-        tsv = bp_on(root, stem, run_dir / slug / "melody-bp.tsv")
-        notes = pilot.load_bp_notes(tsv)
-        cands = pilot.label_candidates(pilot.candidate_features(notes), midi_truth(truth_mid))
-        if not cands:
-            continue
-        Xs.append(pilot.feature_matrix(cands))
-        ys.append(np.array([c.label for c in cands], dtype=np.int64))
+        truth = midi_truth(truth_mid)
+        sources = [("stem", stem)]
+        mix = root / "out" / slug / f"{slug}.wav"
+        if mix_negatives and mix.exists():
+            sources.append(("mix", mix))
+        song_total, song_pos = 0, 0
+        for tag, wav in sources:
+            tsv = bp_on(root, wav, run_dir / slug / f"{tag}-bp.tsv")
+            notes = pilot.load_bp_notes(tsv)
+            cands = pilot.label_candidates(pilot.candidate_features(notes), truth)
+            if not cands:
+                continue
+            Xs.append(pilot.feature_matrix(cands))
+            ys.append(np.array([c.label for c in cands], dtype=np.int64))
+            song_total += len(cands)
+            song_pos += int(sum(c.label for c in cands))
         used.append(slug)
-        pos = int(sum(c.label for c in cands))
-        print(f"[data] {slug}: {len(cands)} candidates, {pos} positive")
+        print(f"[data] {slug}: {song_total} candidates, {song_pos} positive"
+              f"{' (stem+mix)' if mix_negatives else ''}")
     X = np.concatenate(Xs) if Xs else np.zeros((0, len(pilot.FEATURES)), np.float32)
     y = np.concatenate(ys) if ys else np.zeros((0,), np.int64)
     return pilot.Dataset(X=X, y=y, songs=used, seed=seed)
@@ -177,6 +244,10 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--epochs", type=int, default=300)
     parser.add_argument("--threshold", type=float, default=0.5)
     parser.add_argument("--onset-shift", type=float, default=0.0, help="constant onset shift at inference (s)")
+    parser.add_argument("--mix-negatives", action="store_true",
+                        help="also train on the full band mix's Basic Pitch (realistic negatives)")
+    parser.add_argument("--calibrate", action="store_true",
+                        help="cross-fit the onset shift (fit on one dev set, report on the other)")
     parser.add_argument("--out", type=Path, default=None)
     args = parser.parse_args(argv)
 
@@ -194,7 +265,7 @@ def main(argv: list[str] | None = None) -> int:
     song_dir = run_dir / "scores"
     data_songs = scores.write_batch(out_dir=song_dir, n=args.songs, start_seed=args.seed)
 
-    ds = build_dataset(root, data_songs, run_dir, args.seed)
+    ds = build_dataset(root, data_songs, run_dir, args.seed, mix_negatives=args.mix_negatives)
     ds.save(run_dir / "dataset.npz")
     pos = int(ds.y.sum())
     print(f"[train] {len(ds.X)} candidates ({pos} positive) over {len(ds.songs)} songs")
@@ -204,17 +275,23 @@ def main(argv: list[str] | None = None) -> int:
     print(f"[train] done: {info}")
 
     print("[eval] on real dev (the honest success test)")
-    ev = eval_real_dev(head, args.threshold, args.onset_shift, data, out)
+    ev = eval_real_dev(head, args.threshold, args.onset_shift, data, out, calibrate=args.calibrate)
     payload = {"seed": args.seed, "songs": len(ds.songs), "candidates": int(len(ds.X)),
                "positives": pos, "train": info, "threshold": args.threshold,
-               "onset_shift": args.onset_shift, "real_dev": ev}
+               "onset_shift": args.onset_shift, "mix_negatives": args.mix_negatives,
+               "calibrate": args.calibrate, "real_dev": ev}
     out.mkdir(parents=True, exist_ok=True)
     (out / "pilot.json").write_text(json.dumps(payload, indent=1) + "\n", encoding="utf-8")
     lines = ["# Data-engine pilot (real-dev success test)", "",
-             f"Seed {args.seed}; {len(ds.songs)} render songs; {len(ds.X)} candidates ({pos} positive).", "",
-             "| Real dev set | head pc_on50 | baseline (BP one line) pc_on50 | n |", "|---|---|---|---|"]
+             f"Seed {args.seed}; {len(ds.songs)} render songs"
+             f"{' (stem+mix)' if args.mix_negatives else ''}; {len(ds.X)} candidates ({pos} positive).",
+             "", "Both sides cross-fit the onset shift (fit on the other dev set), so the shift is not a free",
+             "win for the head.", "",
+             "| Real dev set | head pc_on50 | baseline (BP one line) pc_on50 | head/base shift | n |",
+             "|---|---|---|---|---|"]
     for split, r in ev.items():
-        lines.append(f"| {split} | {r['head_pc_on50']} | {r['baseline_pc_on50']} | {r['n']} |")
+        shifts = f"{r.get('head_shift', 0)}/{r.get('baseline_shift', 0)}" if args.calibrate else "—"
+        lines.append(f"| {split} | {r['head_pc_on50']} | {r['baseline_pc_on50']} | {shifts} | {r['n']} |")
     (out / "pilot.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print("\n".join(lines))
     return 0

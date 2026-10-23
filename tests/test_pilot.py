@@ -79,6 +79,14 @@ class HeadTests(unittest.TestCase):
         self.assertGreaterEqual(len(est), 1)
         self.assertAlmostEqual(float(est.onset[0]), 0.01, places=3)  # shift applied
 
+    def test_apply_head_clips_negative_shift_at_zero(self):
+        # A negative onset shift must not push a note before t=0 (the scorer rejects negative time).
+        X, y = self._synthetic()
+        head = pilot.Head(seed=0); head.fit(X, y, epochs=50)
+        notes = [(0.0, 0.5, 60, 0.9), (0.02, 0.5, 62, 0.8)]
+        est = pilot.apply_head(notes, head, threshold=0.0, onset_shift=-0.06)  # threshold 0 keeps all
+        self.assertTrue(all(o >= 0.0 for o in est.onset.tolist()))
+
     def test_mismatched_feature_width_rejected(self):
         # The failing input: a feature matrix whose width is not len(FEATURES).
         head = pilot.Head(seed=0)

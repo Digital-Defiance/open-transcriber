@@ -103,11 +103,24 @@ python scripts/run_pilot.py --smoke      # CPU plumbing only (no build/Basic Pit
 python scripts/run_pilot.py --songs 6    # end to end on CPU; a full run is a separate GPU step
 ```
 
-First pilot (seed 20261022, 6 render songs, 235 candidates): the head does **not** yet beat the baseline on
-real dev — RWC `pc_on50` 18.5 vs baseline 22.3, karaoke 24.7 vs 25.4. That is the clean-render-vs-messy-real
-gap the plan warns about: a head trained on a handful of clean sampled-instrument melodies underperforms the
-plain skyline on sung vocal stems. The plumbing is proven; closing the gap needs more and more-realistic data
-(SoulX-sung vocals, not sampled instruments) and is the GPU-scale step.
+The eval cross-fits the onset shift on **both** sides (the head and the baseline), each fitted on the other
+dev set, so the shift is a calibration the baseline gets too — never a free win for the head. `--mix-negatives`
+also trains on the full band mix's Basic Pitch (other instruments the head must reject, closer to the bleed in
+a real vocal stem).
+
+Result (seed 20261022, 12 render songs stem+mix, 1578 candidates, both sides calibrated):
+
+| Real dev | head pc_on50 | baseline (BP one line) pc_on50 |
+|---|---|---|
+| rwc-other-dev | 18.8 | 22.9 |
+| karaoke-dev | 31.9 | 36.7 |
+
+**The head does not beat the fairly-calibrated baseline on either set.** An earlier run looked like a karaoke
+win (31.9 vs an *uncalibrated* 25.4), but that gain was the onset shift, which the baseline benefits from more
+(→ 36.7). This is the clean-render-vs-messy-real gap the plan warns about: a head trained on clean
+sampled-instrument melodies does not transfer to sung vocal stems. The plumbing and the fair test are proven;
+closing the gap needs realistic **sung** data (SoulX, not sampled instruments) and/or richer features — the
+GPU-scale step — not more clean renders.
 
 **yue2.cpp cannot write the vocal track alone** (checked 2026-10-22, `yue-synth --help`): it emits one mixed
 audio (`--out`), with no stem/track flag. So the YuE2 singing-data path would need Demucs to isolate the vocal

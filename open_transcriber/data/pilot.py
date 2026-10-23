@@ -219,8 +219,13 @@ def apply_head(notes: list[tuple[float, float, int, float]], head: Head, thresho
     if not cands:
         return notes_io._validate(notes_io.Notes(np.zeros(0), np.zeros(0), np.zeros(0)), False, "head")
     keep = head.scores(feature_matrix(cands)) >= threshold
-    rows = [(c.onset + onset_shift, c.offset + onset_shift, float(c.midi))
-            for c, k in zip(cands, keep) if k]
+    rows = []
+    for c, k in zip(cands, keep):
+        if not k:
+            continue
+        onset = max(c.onset + onset_shift, 0.0)                      # clip like the board's shift_notes
+        offset = max(c.offset + onset_shift, onset + notes_io.MIN_DURATION)
+        rows.append((onset, offset, float(c.midi)))
     rows.sort()
     if not rows:
         return notes_io._validate(notes_io.Notes(np.zeros(0), np.zeros(0), np.zeros(0)), False, "head")
