@@ -67,6 +67,27 @@ require before a model run.
 For the non-commercial test songs, only scores and credits are published — never their audio or our
 transcriptions.
 
+## Band parts on Copyist renders (`run_bandparts.py`, `board/bandparts.py`)
+
+The band-parts baseline scores a transcriber against the parts Copyist's own band played, which are ground
+truth by construction. `copyist build <song>` writes per-part audio (`out/<song>/stems/<part>.wav`) and the
+exact MIDI (`out/<song>/stems/midi/<part>.mid`); the runner transcribes each part's stem and the full mix with
+Basic Pitch (Apache-2.0, through the `.venv` boundary `bakeoff/bp_notes`) and scores it with the same strict
+note scorer, writing `out/judge/bandparts.{md,json}`. A constant onset shift is cross-fitted (fitted on one
+half of the song set, reported on the other) because the rendered performance sits a little off the quantised
+grid — the same honesty rule as the vocal `--calibrate`.
+
+This is clean-licence (Copyist's own renders), CPU-only, and the first brick of the data engine: render with
+known labels, measure recovery. The pilot (bass on the 5 public-domain test songs; Silent Night is piano-vocal
+so it has no bass part) baselines **bass from the stem at pc_on50 ≈ 31 (33 with the +20 ms cross-fit)** and
+**bass from the mix ≈ 26**, stem above mix as everywhere. Run it:
+
+```
+python scripts/run_bandparts.py --smoke          # guard: .venv Basic Pitch + scorer round-trip
+python scripts/run_bandparts.py                  # build, transcribe bass stem + mix, score
+python scripts/run_bandparts.py --parts bass,piano,melody --songs when-the-saints,amazing-grace
+```
+
 ## Calibration (`--calibrate`)
 
 A constant onset shift per system, searched over ±100 ms in 10 ms steps, **fitted on one set and reported on
