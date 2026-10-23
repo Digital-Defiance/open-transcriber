@@ -115,6 +115,48 @@ class HeldoutFilterTests(unittest.TestCase):
             heldout_mod.is_held_out = original
 
 
+class LyricSingabilityTests(unittest.TestCase):
+    """Every sampled song's lyric must resolve through Copyist's own pronunciation path, so SoulX never
+    raises "No pronunciation for: ..." mid-batch (the data bug that aborted the first GPU pilot)."""
+
+    def test_singable_pool_has_only_known_words(self):
+        from copyist.sing import phones_for
+
+        pool = scores._singable_pool()
+        self.assertTrue(pool)
+        for poem in pool:
+            for w in poem:
+                self.assertIsNotNone(phones_for(w), f"unsingable word left in pool: {w!r}")
+
+    def test_sampled_songs_sing_without_pronunciation_error(self):
+        from copyist.sing import SongError, sung_notes
+
+        with tempfile.TemporaryDirectory() as d:
+            for seed in range(20261022, 20261022 + 40):
+                song = scores.sample_song(seed)
+                path = Path(d) / f"{seed}.yaml"
+                path.write_text(song.yaml_text, encoding="utf-8")
+                s = load_song(path)
+                try:
+                    notes = sung_notes(s, verse=1)
+                except SongError as e:  # pragma: no cover - the regression we are guarding against
+                    self.fail(f"seed {seed} not singable: {e}")
+                self.assertGreater(len(notes), 0)
+
+    def test_lyric_line_never_ends_mid_word(self):
+        # A dangling trailing hyphen (a half-word like "capt-") is what broke pronunciation; it must never
+        # be emitted, for any onset count or hold pattern.
+        import random
+
+        for n_onsets in range(1, 40):
+            for seed in range(5):
+                rng = random.Random(seed * 100 + n_onsets)
+                holds = {i for i in range(n_onsets) if rng.random() < 0.2}
+                line = scores._lyric_line(n_onsets, holds, rng)
+                self.assertFalse(line.rstrip().endswith("-"),
+                                 f"dangling hyphen for n_onsets={n_onsets} seed={seed}: {line!r}")
+
+
 class CoverageTests(unittest.TestCase):
     """Prove the widened musical range across a batch, read from SampledSong.meta."""
 

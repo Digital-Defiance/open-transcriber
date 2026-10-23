@@ -452,11 +452,50 @@ def _pool() -> list[list[str]]:
     return _POOL
 
 
-def _syllabify(word: str) -> list[str]:
-    """Split a word into singable syllable chunks (hyphen-joined for Copyist's `w:` syntax).
+def _is_singable(word: str) -> bool:
+    """True if Copyist's own pronunciation path resolves ``word`` (so SoulX never fails on it).
 
-    Uses the CMU dictionary count when known, else a vowel-group heuristic, then
-    slices the letters into that many pieces so each note gets a chunk.
+    Uses the SAME lookup ``copyist sing`` uses (``copyist.sing.phones_for``: CMU dict plus Copyist's
+    pronunciation table), so a word that passes here is guaranteed singable end to end. Falls back to the
+    ``pronouncing`` dictionary if ``copyist.sing`` is unavailable for any reason.
+    """
+    try:
+        from copyist.sing import phones_for
+
+        return phones_for(word) is not None
+    except Exception:  # pragma: no cover - copyist.sing is always importable here
+        import pronouncing
+
+        return bool(pronouncing.phones_for_word(word))
+
+
+_SINGABLE_POOL: list[list[str]] | None = None
+
+
+def _singable_pool() -> list[list[str]]:
+    """The lyric pool filtered to WHOLE words that Copyist can pronounce (cached, deterministic order).
+
+    Only dictionary-safe words survive, so the generated ``w:`` line never produces an out-of-dictionary
+    token for ``copyist sing``. A poem with no singable words is dropped; if nothing survives (never, with the
+    public-domain pool) a tiny all-known fallback keeps generation working.
+    """
+    global _SINGABLE_POOL
+    if _SINGABLE_POOL is None:
+        filtered = []
+        for poem in _pool():
+            words = [w for w in poem if _is_singable(w)]
+            if words:
+                filtered.append(words)
+        _SINGABLE_POOL = filtered or [["la", "love", "day", "night", "sing", "heart"]]
+    return _SINGABLE_POOL
+
+
+def _syllabify(word: str) -> list[str]:
+    """Split a known word into syllable pieces for the melody's notes.
+
+    The pieces are rejoined by ``copyist sing`` (hyphen-connected syllables of one word), so the ORIGINAL
+    word is what SoulX pronounces — the pieces themselves need not be dictionary words. Uses the CMU syllable
+    count when known, else a vowel-group heuristic.
     """
     import pronouncing
     phones = pronouncing.phones_for_word(word)
@@ -487,17 +526,29 @@ def _syllabify(word: str) -> list[str]:
 def _lyric_line(n_onsets: int, holds: set[int], rng: random.Random) -> str:
     """A `w:`-syntax lyric line whose note_target equals n_onsets.
 
-    One syllable per onset, except ``holds`` (melisma continuations) get a `_`
-    hold instead of a new syllable, so the held notes carry no new syllable.
+    One syllable per onset, except ``holds`` (melisma continuations) get a `_` hold instead of a new
+    syllable. Syllables of ONE word are hyphen-joined so ``copyist sing`` rejoins them into the original,
+    dictionary-safe word; a space starts the next word. Only singable words are used, so SoulX never hits a
+    missing pronunciation.
     """
-    poem = rng.choice(_pool())
-    # Build a flat list of syllable chunks from consecutive words.
-    chunks: list[str] = []
+    n_syllables = n_onsets - len(holds)  # holds take notes but carry no new syllable
+    poem = rng.choice(_singable_pool())
+    one_syllable = [w for w in poem if len(_syllabify(w)) == 1] or ["la"]
+    # A flat list of (piece, is_last_of_word), choosing words so the line NEVER ends mid-word: a word is
+    # only started if it fits whole in the remaining syllable budget, otherwise a one-syllable filler is used.
+    chunks: list[tuple[str, bool]] = []
     wi = rng.randrange(len(poem))
-    while len(chunks) < n_onsets:
+    while len(chunks) < n_syllables:
+        remaining = n_syllables - len(chunks)
         word = poem[wi % len(poem)]
         wi += 1
-        chunks.extend(_syllabify(word))
+        pieces = _syllabify(word)
+        if len(pieces) > remaining:
+            # Not enough notes left to finish this word cleanly: fill with one-syllable words instead, so no
+            # dangling hyphen (a half-word) is ever emitted. Copyist rejoins only complete words.
+            pieces = [one_syllable[wi % len(one_syllable)]]
+        for i, piece in enumerate(pieces):
+            chunks.append((piece, i == len(pieces) - 1))
 
     out_tokens: list[str] = []
     syl_cursor = 0
@@ -505,7 +556,9 @@ def _lyric_line(n_onsets: int, holds: set[int], rng: random.Random) -> str:
         if onset in holds:
             out_tokens.append("_")
             continue
-        out_tokens.append(chunks[syl_cursor])
+        piece, is_last = chunks[syl_cursor]
+        # A non-final syllable of a word ends with a hyphen so Copyist rejoins the word for pronunciation.
+        out_tokens.append(piece if is_last else piece + "-")
         syl_cursor += 1
     return " ".join(out_tokens)
 

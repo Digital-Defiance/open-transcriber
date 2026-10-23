@@ -259,10 +259,17 @@ def build_sung_dataset(root: Path, out: Path, n_songs: int, seed: int) -> frames
     song_dir = run_dir / "scores"
     clip_dir = run_dir / "clips"
     clip_dir.mkdir(parents=True, exist_ok=True)
-    songs = score_gen.write_batch(out_dir=song_dir, n=n_songs, start_seed=seed)
     seqs: list[tuple[np.ndarray, np.ndarray, np.ndarray]] = []
     used: list[str] = []
+    skipped = 0
+    # Keep generating (deterministic by seed) until we reach the target or exhaust a sane headroom, so one
+    # unsingable or unbuildable song never short-changes the batch. write_batch is deterministic per seed, so
+    # a wider request simply yields more candidates to draw the target from.
+    max_candidates = n_songs * 3 + 10
+    songs = score_gen.write_batch(out_dir=song_dir, n=max_candidates, start_seed=seed)
     for yaml in songs:
+        if len(used) >= n_songs:
+            break
         slug = yaml.stem
         clip = clip_dir / f"{slug}.npz"
         if clip.exists():  # resume: this song's features/labels are already cached
@@ -271,20 +278,33 @@ def build_sung_dataset(root: Path, out: Path, n_songs: int, seed: int) -> frames
             used.append(slug)
             print(f"[data] {slug}: cached ({blob['feats'].shape[0]} frames)")
             continue
-        subprocess.run([str(venv_python(root)), "-m", "copyist.cli", "build", str(yaml)],
-                       cwd=str(root), check=True)
-        truth_mid = root / "out" / slug / "stems" / "midi" / "melody.mid"
-        vocal = _sing_and_separate(root, out, slug)
-        if vocal is None or not truth_mid.exists():
-            print(f"[skip] {slug}: no sung vocal or label")
+        try:
+            subprocess.run([str(venv_python(root)), "-m", "copyist.cli", "build", str(yaml)],
+                           cwd=str(root), check=True)
+            truth_mid = root / "out" / slug / "stems" / "midi" / "melody.mid"
+            vocal = _sing_and_separate(root, out, slug)
+        except subprocess.CalledProcessError as e:
+            skipped += 1
+            print(f"[skip] {slug}: build/sing failed ({e}); continuing to target")
             continue
-        feats = features_for_wav(root, vocal, run_dir / "train-bp")
+        if vocal is None or not truth_mid.exists():
+            skipped += 1
+            print(f"[skip] {slug}: no sung vocal or label; continuing to target")
+            continue
+        try:
+            feats = features_for_wav(root, vocal, run_dir / "train-bp")
+        except Exception as e:  # a bad clip (e.g. empty/corrupt) must not kill the batch
+            skipped += 1
+            print(f"[skip] {slug}: feature extraction failed ({e}); continuing to target")
+            continue
         truth = _midi_truth(truth_mid)
         yn, yo = frames.rasterise_labels(truth, n_frames=len(feats))
         np.savez_compressed(clip, feats=feats, yn=yn, yo=yo)
         seqs.append((feats, yn, yo))
         used.append(slug)
         print(f"[data] {slug}: {len(feats)} frames, {int(yo.sum())} onset labels")
+    print(f"[data] built {len(used)} clips, skipped {skipped} unsingable/unbuildable "
+          f"(target {n_songs}, {len(songs)} candidates)")
     return frames.FrameDataset(seqs=seqs, songs=used, seed=seed)
 
 
