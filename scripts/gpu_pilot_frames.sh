@@ -71,8 +71,18 @@ wait_for_ac() {
   done
 }
 
+free_gb() {
+  # Free space on the Code volume in whole GB.
+  df -g /Volumes/Code | awk 'NR==2{print $4}'
+}
+
 guard() {
   within_window || { log "window cap reached — checkpointing and stopping before next stage"; exit 0; }
+  local gb; gb="$(free_gb)"
+  if [ -n "$gb" ] && [ "$gb" -lt 150 ]; then
+    log "free disk ${gb} GB < 150 GB floor — stopping before next stage (checkpoints kept)"
+    exit 0
+  fi
   wait_for_ac || exit 0
 }
 
