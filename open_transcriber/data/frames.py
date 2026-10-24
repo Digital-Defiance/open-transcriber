@@ -173,6 +173,85 @@ def align_truth_to_audio(truth: notes_io.Notes, bp_note: np.ndarray, thresh: flo
     return notes_io._validate(notes_io.Notes(onset, offset, truth.midi.copy()), False, "aligned")
 
 
+def align_truth_dtw(truth: notes_io.Notes, bp_note: np.ndarray, thresh: float = 0.3,
+                    band: float = 0.35) -> notes_io.Notes:
+    """Non-linear label alignment: DTW the exact score-pitch frame sequence to the BP note posterior.
+
+    Score time is linear but SoulX sings expressively (pauses on rests, holds melismas), so a single rescale
+    (:func:`align_truth_to_audio`) can't follow it. Here the exact MIDI is rasterised to a score-time pitch
+    sequence, DTW-matched against the BP note evidence (per audio frame, the emphasis the model's own input
+    puts on each pitch), and each note's onset/offset is moved to the audio frame its score frame warps to.
+    Pitches are never changed — only their timing. A Sakoe-Chiba band (``band`` fraction of the longer axis)
+    keeps it cheap and monotone.
+
+    Falls back to the linear rescale when the DTW is degenerate (too few voiced BP frames).
+    """
+    if truth.offset.size == 0:
+        return truth
+    T_audio = len(bp_note)
+    voiced = np.where(bp_note.max(axis=1) >= thresh)[0]
+    if T_audio < 4 or len(voiced) < 4:
+        return align_truth_to_audio(truth, bp_note, thresh=max(thresh, 0.5))
+
+    # Score-time pitch sequence on the BP frame grid, length = score duration in frames.
+    ld = float(truth.offset.max())
+    S = max(4, int(np.ceil(ld * FPS)))
+    score_pitch = np.full(S, -1, dtype=np.int64)  # -1 = silence
+    for o, f, m in zip(truth.onset, truth.offset, truth.midi):
+        b = int(round(m)) - MIDI_LO
+        if not 0 <= b < N_BINS:
+            continue
+        a0 = min(max(int(np.floor(o * FPS)), 0), S - 1)
+        a1 = min(max(int(np.ceil(f * FPS)), a0 + 1), S)
+        score_pitch[a0:a1] = b
+
+    # Per-audio-frame cost of being at score frame s: 1 - BP posterior at that frame's pitch (silence -> a
+    # flat mid cost so rests can absorb audio pauses without a pitch to match).
+    bp = bp_note
+    cost = np.empty((S, T_audio), dtype=np.float32)
+    flat = 0.6
+    for s in range(S):
+        b = score_pitch[s]
+        cost[s] = flat if b < 0 else (1.0 - bp[:, b])
+
+    # DTW with a Sakoe-Chiba band.
+    w = max(int(band * max(S, T_audio)), abs(S - T_audio) + 1)
+    INF = np.float32(1e9)
+    D = np.full((S + 1, T_audio + 1), INF, dtype=np.float32)
+    D[0, 0] = 0.0
+    for s in range(1, S + 1):
+        j_lo = max(1, int((s) * T_audio / S) - w)
+        j_hi = min(T_audio, int((s) * T_audio / S) + w)
+        for j in range(j_lo, j_hi + 1):
+            c = cost[s - 1, j - 1]
+            D[s, j] = c + min(D[s - 1, j], D[s, j - 1], D[s - 1, j - 1])
+    # Backtrack to get, for each score frame, the audio frame it maps to.
+    s, j = S, int(np.argmin(D[S, 1:])) + 1
+    map_sa = np.zeros(S, dtype=np.int64)
+    while s > 0 and j > 0:
+        map_sa[s - 1] = j - 1
+        step = np.argmin((D[s - 1, j], D[s, j - 1], D[s - 1, j - 1]))
+        if step == 0:
+            s -= 1
+        elif step == 1:
+            j -= 1
+        else:
+            s -= 1; j -= 1
+    # Re-time each note: its score frames -> the audio frames they warp to.
+    on, off, mid = [], [], []
+    for o, f, m in zip(truth.onset, truth.offset, truth.midi):
+        s0 = min(max(int(np.floor(o * FPS)), 0), S - 1)
+        s1 = min(max(int(np.ceil(f * FPS)), s0 + 1), S)
+        a0 = int(map_sa[s0])
+        a1 = int(map_sa[min(s1, S - 1)])
+        t0 = a0 / FPS
+        t1 = max(a1 / FPS, t0 + notes_io.MIN_DURATION)
+        on.append(t0); off.append(t1); mid.append(float(m))
+    order = np.argsort(on)
+    return notes_io._validate(
+        notes_io.Notes(np.array(on)[order], np.array(off)[order], np.array(mid)[order]), False, "dtw")
+
+
 def rasterise_labels(truth: notes_io.Notes, n_frames: int) -> tuple[np.ndarray, np.ndarray]:
     """Exact melody MIDI → per-frame (note_active, onset) label arrays, both (n_frames, 88).
 

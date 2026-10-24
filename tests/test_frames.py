@@ -87,6 +87,29 @@ class AlignTests(unittest.TestCase):
         aligned = frames.align_truth_to_audio(truth, bp)
         self.assertTrue(np.array_equal(aligned.onset, truth.onset))
 
+    def test_dtw_follows_nonlinear_warp(self):
+        # Score: three notes at 0,1,2 s (pitches 60,62,64). Sung audio holds the FIRST note long (a melisma),
+        # so the BP evidence is pitch 60 for [0,3)s, 62 for [3,4)s, 64 for [4,5)s — a non-linear warp a single
+        # rescale cannot follow. DTW must stretch note 1 and push notes 2,3 later.
+        truth = _truth([0.0, 1.0, 2.0], [0.9, 1.9, 2.9], [60, 62, 64])
+        n = int(5.0 * frames.FPS)
+        bp = np.zeros((n, frames.N_BINS), np.float32)
+        seg = [(0, 3, 60), (3, 4, 62), (4, 5, 64)]
+        for t0, t1, m in seg:
+            bp[int(t0 * frames.FPS):int(t1 * frames.FPS), m - frames.MIDI_LO] = 0.9
+        aligned = frames.align_truth_dtw(truth, bp)
+        self.assertEqual(len(aligned.onset), 3)
+        self.assertTrue(np.array_equal(aligned.midi, truth.midi))      # pitches untouched
+        # note 1 should now extend to ~3 s; note 2 onset should be pushed to ~3 s (not stay at 1 s)
+        self.assertGreater(aligned.offset[0], 2.0)
+        self.assertGreater(aligned.onset[1], 2.0)
+
+    def test_dtw_falls_back_when_degenerate(self):
+        truth = _truth([0.0, 1.0], [0.9, 1.9], [60, 62])
+        bp = np.zeros((3, frames.N_BINS), np.float32)  # far too few frames
+        aligned = frames.align_truth_dtw(truth, bp)
+        self.assertEqual(len(aligned.onset), 2)
+
 
 class DecodeTests(unittest.TestCase):
     def test_decode_recovers_clean_notes(self):
