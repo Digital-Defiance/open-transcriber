@@ -90,9 +90,28 @@ def load_wav(path: Path) -> tuple[np.ndarray, int]:
     return data / peak, sr
 
 
-def features_for_wav(root: Path, wav: Path, npz_dir: Path) -> np.ndarray:
-    """Frozen features for one wav: BP note+onset posteriors stacked with a frame-aligned log-mel."""
-    npz = bp_posteriors(root, wav, npz_dir / f"{wav.stem}.npz")
+def _cache_key(wav: Path) -> str:
+    """A cache key unique to the SOURCE wav, not just its filename.
+
+    Demucs names every separated vocal ``vocals.wav`` and nests it under ``.../<slug>/htdemucs/mix/``, so
+    keying the BP-posterior cache on ``wav.stem`` (or even the immediate parent, ``mix``) made every sung
+    clip collide onto one cache file — the whole batch then trained on ONE song's posteriors. Hash the full
+    resolved path so a collision is impossible regardless of how deep the shared filenames go. Callers that
+    know a natural unique id (song slug, dev item) pass ``key=`` instead and never rely on this.
+    """
+    import hashlib
+
+    h = hashlib.sha1(str(wav.resolve()).encode("utf-8")).hexdigest()[:12]
+    return f"{wav.stem}-{h}"
+
+
+def features_for_wav(root: Path, wav: Path, npz_dir: Path, key: str | None = None) -> np.ndarray:
+    """Frozen features for one wav: BP note+onset posteriors stacked with a frame-aligned log-mel.
+
+    ``key`` names the cache file; it defaults to a source-unique key (parent dir + stem) so that different
+    songs/items never share a cached posterior even when their wavs are both called ``vocals.wav``.
+    """
+    npz = bp_posteriors(root, wav, npz_dir / f"{key or _cache_key(wav)}.npz")
     blob = np.load(npz)
     note, onset = blob["note"], blob["onset"]
     wave_data, sr = load_wav(wav)
@@ -235,7 +254,7 @@ def dev_features(root: Path, out: Path, data: Path, splits=("rwc-other-dev", "ka
             wav = dev_vocal_wav(item, out, data)
             if wav is None:
                 continue
-            feats[item] = features_for_wav(root, wav, npz_dir)
+            feats[item] = features_for_wav(root, wav, npz_dir, key=item)
         by_split[split] = feats
     return by_split
 
@@ -292,12 +311,16 @@ def build_sung_dataset(root: Path, out: Path, n_songs: int, seed: int) -> frames
             print(f"[skip] {slug}: no sung vocal or label; continuing to target")
             continue
         try:
-            feats = features_for_wav(root, vocal, run_dir / "train-bp")
+            feats = features_for_wav(root, vocal, run_dir / "train-bp", key=slug)
         except Exception as e:  # a bad clip (e.g. empty/corrupt) must not kill the batch
             skipped += 1
             print(f"[skip] {slug}: feature extraction failed ({e}); continuing to target")
             continue
         truth = _midi_truth(truth_mid)
+        # The exact MIDI is in SCORE time; SoulX sings at a different tempo with a lead-in. Align the labels
+        # to the sung-audio timeline (BP voiced span) before rasterising, or the model trains on mislabeled
+        # frames (diagnosed: BP passthrough ~1.6% at score time vs ~13% time-aligned).
+        truth = frames.align_truth_to_audio(truth, feats[:, :frames.N_BINS])
         yn, yo = frames.rasterise_labels(truth, n_frames=len(feats))
         np.savez_compressed(clip, feats=feats, yn=yn, yo=yo)
         seqs.append((feats, yn, yo))

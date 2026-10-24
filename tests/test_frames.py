@@ -62,6 +62,32 @@ class FeatureTests(unittest.TestCase):
         self.assertEqual(int(onset[:, b62].sum()), 1)
 
 
+class AlignTests(unittest.TestCase):
+    """Label time-alignment: the exact MIDI is in SCORE time, but SoulX sings at a different tempo with a
+    lead-in, so labels must be mapped onto the sung-audio (BP-voiced) span before rasterising. (Diagnosed:
+    BP passthrough ~1.6% at score time vs ~13% time-aligned.)"""
+
+    def test_align_rescales_labels_onto_bp_voiced_span(self):
+        # Score-time notes span [0, 2]s; the BP note posterior is voiced only in frames ~[2.0, 4.0]s (a slower
+        # sung tempo with a lead-in). Alignment must move the first onset from ~0 to ~2 s.
+        truth = _truth([0.0, 1.0, 2.0], [0.9, 1.9, 2.9], [60, 62, 64])
+        n = int(5.0 * frames.FPS)
+        bp = np.zeros((n, frames.N_BINS), np.float32)
+        lo, hi = int(2.0 * frames.FPS), int(4.0 * frames.FPS)
+        bp[lo:hi, 60 - frames.MIDI_LO] = 0.9  # voiced only in [2,4]s
+        aligned = frames.align_truth_to_audio(truth, bp)
+        self.assertAlmostEqual(aligned.onset[0], 2.0, delta=0.1)
+        self.assertAlmostEqual(aligned.offset[-1], 4.0, delta=0.2)
+        # pitches are untouched
+        self.assertTrue(np.array_equal(aligned.midi, truth.midi))
+
+    def test_align_is_noop_without_voiced_bp(self):
+        truth = _truth([0.0, 1.0], [0.9, 1.9], [60, 62])
+        bp = np.zeros((int(3.0 * frames.FPS), frames.N_BINS), np.float32)  # silent
+        aligned = frames.align_truth_to_audio(truth, bp)
+        self.assertTrue(np.array_equal(aligned.onset, truth.onset))
+
+
 class DecodeTests(unittest.TestCase):
     def test_decode_recovers_clean_notes(self):
         truth = _truth([0.0, 0.6, 1.2], [0.5, 1.1, 1.7], [60, 64, 67])

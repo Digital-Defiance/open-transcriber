@@ -45,7 +45,7 @@ class BuildSungDatasetResilienceTests(unittest.TestCase):
             def fake_sing(_root, _out, slug):
                 return None if slug == fail_slug else out / f"{slug}.wav"
 
-            def fake_feats(_root, _wav, _npz_dir):
+            def fake_feats(_root, _wav, _npz_dir, key=None):
                 return np.zeros((20, frames.FEATURE_DIM), np.float32)
 
             def fake_truth(_path):
@@ -74,6 +74,51 @@ class BuildSungDatasetResilienceTests(unittest.TestCase):
                     if d2.exists():
                         import shutil
                         shutil.rmtree(d2, ignore_errors=True)
+
+
+class CacheKeyTests(unittest.TestCase):
+    """Two different songs whose vocals are BOTH named ``vocals.wav`` (Demucs convention) must NOT share a BP
+    posterior cache file. The collision bug trained the whole pilot on one song's features (~1% result)."""
+
+    def test_cache_key_is_unique_per_source_even_with_same_filename(self):
+        a = Path("/x/song-A/htdemucs/mix/vocals.wav")
+        b = Path("/x/song-B/htdemucs/mix/vocals.wav")
+        self.assertNotEqual(run_frames._cache_key(a), run_frames._cache_key(b),
+                            "same-filename vocals from different folders collided")
+
+    def test_features_for_wav_uses_distinct_cache_files(self):
+        # Two different wavs named vocals.wav in different dirs must cache to different npz paths. We stub the
+        # heavy BP call and just assert the out_npz paths differ.
+        seen = []
+
+        def fake_bp(root, wav, out_npz):
+            out_npz.parent.mkdir(parents=True, exist_ok=True)
+            seen.append(out_npz.name)
+            np.savez(out_npz, note=np.zeros((5, frames.N_BINS), np.float32),
+                     onset=np.zeros((5, frames.N_BINS), np.float32))
+            return out_npz
+
+        import wave as wavemod
+
+        with tempfile.TemporaryDirectory() as d:
+            npz_dir = Path(d) / "bp"
+            # make two tiny real wavs so load_wav/log_mel run
+            wavs = []
+            for name in ("song-A", "song-B"):
+                wp = Path(d) / name / "vocals.wav"
+                wp.parent.mkdir(parents=True)
+                with wavemod.open(str(wp), "wb") as w:
+                    w.setnchannels(1); w.setsampwidth(2); w.setframerate(22050)
+                    w.writeframes((np.zeros(2205, np.int16)).tobytes())
+                wavs.append(wp)
+            orig = run_frames.bp_posteriors
+            run_frames.bp_posteriors = fake_bp
+            try:
+                for wp in wavs:
+                    run_frames.features_for_wav(Path("/root"), wp, npz_dir)
+            finally:
+                run_frames.bp_posteriors = orig
+        self.assertEqual(len(set(seen)), 2, f"cache files collided: {seen}")
 
 
 if __name__ == "__main__":

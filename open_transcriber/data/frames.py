@@ -142,6 +142,37 @@ def _mel_filterbank(sr: int, n_fft: int, n_mels: int, fmin: float, fmax: float) 
     return fb
 
 
+def align_truth_to_audio(truth: notes_io.Notes, bp_note: np.ndarray, thresh: float = 0.5
+                         ) -> notes_io.Notes:
+    """Map the exact score-time MIDI onto the sung-audio timeline using the BP note-posterior voiced span.
+
+    The labels are exact in PITCH by construction, but their TIME is score time: SoulX does not sing at the
+    written tempo (it stretches, pauses and has a lead-in latency), so a note at score second ``t`` is not at
+    audio second ``t``. Training on score-time labels teaches the model mislabeled frames (diagnosed: BP
+    passthrough scores ~1.6% against raw labels but ~13% against time-aligned labels).
+
+    The fix used here is a per-clip linear rescale of label time [0, label_dur] onto the BP-voiced span
+    [t0, t1] (where BP's note posterior first/last exceeds ``thresh``). It is deterministic, needs no extra
+    model, and recovers most of the lost signal. Pitches are untouched.
+    """
+    strong = np.where(bp_note.max(axis=1) >= thresh)[0]
+    if len(strong) < 2 or truth.offset.size == 0:
+        return truth
+    t0, t1 = float(strong.min()) / FPS, float(strong.max()) / FPS
+    ld = float(truth.offset.max())
+    if ld <= 1e-6 or t1 <= t0:
+        return truth
+    scale = (t1 - t0) / ld
+
+    def m(x: float) -> float:
+        return t0 + x * scale
+
+    onset = np.array([m(float(o)) for o in truth.onset])
+    offset = np.array([max(m(float(f)), m(float(o)) + notes_io.MIN_DURATION)
+                       for o, f in zip(truth.onset, truth.offset)])
+    return notes_io._validate(notes_io.Notes(onset, offset, truth.midi.copy()), False, "aligned")
+
+
 def rasterise_labels(truth: notes_io.Notes, n_frames: int) -> tuple[np.ndarray, np.ndarray]:
     """Exact melody MIDI → per-frame (note_active, onset) label arrays, both (n_frames, 88).
 
